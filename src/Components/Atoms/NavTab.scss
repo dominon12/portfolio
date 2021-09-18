@@ -4,6 +4,10 @@
   &:hover,
   &:focus {
     background-color: var(--card-background-color);
+
+    .nav-tab__icon {
+      color: var(--headline-color);
+    }
   }
 
   &.active {

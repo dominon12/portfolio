@@ -1,0 +1,25 @@
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+
+  &__content {
+    width: 40%;
+  }
+  &__title {
+    font-size: 3.6rem;
+  }
+  &__description {
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+  &__image-wrapper {
+  }
+  &__image {
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
+  }
+}

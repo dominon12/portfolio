@@ -35,7 +35,6 @@ const App: React.FC = () => {
             <Route path="/hobbies" component={Hobbies} exact />
             <Route path="/donate" component={Donate} exact />
             <Route path="/download" component={Download} exact />
-            <Route path="/download" component={Download} exact />
             <Route path="*" component={NotFound} />
           </Switch>
         </section>

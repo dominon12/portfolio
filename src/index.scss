@@ -11,9 +11,12 @@
   --headline-color: #fffffe;
   --paragraph-color: #94a1b2;
   --color-details: #7f5af0;
+  // fonts
+  --font-family: "Montserrat", sans-serif;
 }
 
 body {
   background-color: var(--doc-background-color);
   color: var(--paragraph-color);
+  font-family: var(--font-family);
 }
