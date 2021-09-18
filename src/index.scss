@@ -1,6 +1,19 @@
+// normalize.css
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
 
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap");
+
 :root {
-  --color-white: #ffffff;
-  --color-black: #000000;
+  // dark theme
+  --doc-background-color: #242629;
+  --card-background-color: #16161a;
+  --headline-color: #fffffe;
+  --paragraph-color: #94a1b2;
+  --color-details: #7f5af0;
+}
+
+body {
+  background-color: var(--doc-background-color);
+  color: var(--paragraph-color);
 }

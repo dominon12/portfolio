@@ -1,6 +1,6 @@
 # About this web app
 
-Main idea is to make boring static portfolio  be interactive and more informative in order to get more chances to be noticed by HR’s
+Main idea is to make boring static portfolio  be interactive and more informative in order to get more chances to be noticed by HRs
 
 # Ideas
 
@@ -16,8 +16,10 @@ Tabs which will be found on the left (top on mobile devices) part of the window 
 
 **On the left part**
 Hi there, my name is Max 👋 
+
 Description from GitHub 
 Description of an idea of this website
+
 Begin button
 
 **On the right part**
@@ -37,15 +39,7 @@ Item is a colored circle which radius depends on the depth of knowing the techno
 
 *URL /experience*
 
-A time scale with different stages of my career life like:
-
-And so on
-    **^**
-    **|**
-first job in alimentary shop (make size smaller if it’s less relevant)
-    **^**
-    **|**
-started university in 2018
+A time scale with different stages of my career life like here: https://usefulcharts.com/products/timeline-of-world-history
 
 ### Projects 
 
