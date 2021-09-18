@@ -1,0 +1,21 @@
+.nav-tab {
+  padding: 1rem;
+
+  &:hover,
+  &:focus {
+    background-color: var(--card-background-color);
+  }
+
+  &.active {
+    background-color: var(--color-details);
+
+    .nav-tab__icon {
+      color: var(--doc-background-color);
+    }
+  }
+
+  &__icon {
+    font-size: 2rem;
+    color: var(--paragraph-color);
+  }
+}

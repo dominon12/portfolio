@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
@@ -6,24 +6,24 @@ import "./App.scss";
 import NavBar from "../Organisms/NavBar";
 import HomeRedirect from "../Services/HomeRedirect";
 // pages
-const About = lazy(() => import("../Pages/About"));
-const Technologies = lazy(() => import("../Pages/Technologies"));
-const Experience = lazy(() => import("../Pages/Experience"));
-const Projects = lazy(() => import("../Pages/Projects"));
-const Contact = lazy(() => import("../Pages/Contact"));
-const Languages = lazy(() => import("../Pages/Languages"));
-const Hobbies = lazy(() => import("../Pages/Hobbies"));
-const Donate = lazy(() => import("../Pages/Donate"));
-const Download = lazy(() => import("../Pages/Download"));
-const NotFound = lazy(() => import("../Pages/NotFound"));
+import About from "../Pages/About";
+import Technologies from "../Pages/Technologies";
+import Experience from "../Pages/Experience";
+import Projects from "../Pages/Projects";
+import Contact from "../Pages/Contact";
+import Languages from "../Pages/Languages";
+import Hobbies from "../Pages/Hobbies";
+import Donate from "../Pages/Donate";
+import Download from "../Pages/Download";
+import NotFound from "../Pages/NotFound";
 
 const App: React.FC = () => {
   return (
-    <main className="main">
-      <NavBar />
+    <Router>
+      <main className="main">
+        <NavBar />
 
-      <section className="content-wrapper">
-        <Router>
+        <section className="content-wrapper">
           <Switch>
             <Route path="/" component={HomeRedirect} exact />
             <Route path="/about" component={About} exact />
@@ -38,9 +38,9 @@ const App: React.FC = () => {
             <Route path="/download" component={Download} exact />
             <Route path="*" component={NotFound} />
           </Switch>
-        </Router>
-      </section>
-    </main>
+        </section>
+      </main>
+    </Router>
   );
 };
 
