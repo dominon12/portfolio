@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 // components
-import NavBar from "../Organisms/NavBar";
+import SideBar from "../Organisms/SideBar";
+import Header from "../Organisms/Header";
 import HomeRedirect from "../Services/HomeRedirect";
 // pages
 import About from "../Pages/About";
@@ -21,7 +22,8 @@ const App: React.FC = () => {
   return (
     <Router>
       <main className="main">
-        <NavBar />
+        <Header />
+        <SideBar />
 
         <section className="content-wrapper">
           <Switch>

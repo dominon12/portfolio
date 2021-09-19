@@ -1,0 +1,12 @@
+$mobile-devices: 425px;
+
+.header {
+  display: none;
+
+  @media (max-width: $mobile-devices) {
+    display: block;
+    width: 100%;
+    background-color: var(--card-background-color);
+    height: 4rem;
+  }
+}

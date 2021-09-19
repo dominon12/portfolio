@@ -1,5 +1,8 @@
+$mobile-devices: 425px;
+
 .nav-tab {
   padding: 1rem;
+  text-decoration: none;
 
   &:hover,
   &:focus {
@@ -13,13 +16,33 @@
   &.active {
     background-color: var(--color-details);
 
-    .nav-tab__icon {
-      color: var(--doc-background-color);
+    .nav-tab__icon,
+    .nav-tab__title {
+      color: var(--headline-color);
     }
+  }
+
+  @media (max-width: $mobile-devices) {
+    display: flex;
+    align-items: center;
+    width: calc(100% - 2rem);
   }
 
   &__icon {
     font-size: 2rem;
     color: var(--paragraph-color);
+
+    @media (max-width: $mobile-devices) {
+      margin-right: 1rem;
+    }
+  }
+
+  &__title {
+    display: none;
+
+    @media (max-width: $mobile-devices) {
+      display: inline;
+      color: var(--paragraph-color);
+    }
   }
 }

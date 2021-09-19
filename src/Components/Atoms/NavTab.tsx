@@ -22,6 +22,7 @@ const NavTab: React.FC<Props> = (props) => {
       title={props.tabData.title}
     >
       {<props.tabData.icon className="nav-tab__icon" />}
+      <span className="nav-tab__title">{props.tabData.title}</span>
     </Link>
   );
 };

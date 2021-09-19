@@ -1,5 +1,11 @@
+$mobile-devices: 425px;
+
 .main {
   display: flex;
+
+  @media (max-width: $mobile-devices) {
+    flex-direction: column;
+  }
 }
 
 .content-wrapper {
