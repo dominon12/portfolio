@@ -3,9 +3,11 @@ $mobile-devices: 425px;
 .nav-tab {
   padding: 1rem;
   text-decoration: none;
+  transition: var(--transition-off);
 
   &:hover,
   &:focus {
+    transition: var(--transition-on);
     background-color: var(--card-background-color);
 
     .nav-tab__icon {
@@ -14,6 +16,7 @@ $mobile-devices: 425px;
   }
 
   &.active {
+    transition: var(--transition-on);
     background-color: var(--color-details);
 
     .nav-tab__icon,

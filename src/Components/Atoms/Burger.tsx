@@ -1,22 +1,24 @@
-import React, { useContext, useState } from "react";
-import { GiHamburgerMenu, GiSplitCross } from "react-icons/gi";
+import React, { useContext } from "react";
 import { SideBarContext } from "../../Contexts/SideBarContext";
 
 import "./Burger.scss";
 
-interface Props {}
-
-const Burger: React.FC<Props> = (props) => {
+const Burger: React.FC = () => {
   const { visible, toggleVisible } = useContext(SideBarContext);
 
-  const renderBurger = () =>
-    visible ? (
-      <GiSplitCross className="burger active" onClick={toggleVisible} />
-    ) : (
-      <GiHamburgerMenu className="burger inactive" onClick={toggleVisible} />
-    );
-
-  return renderBurger();
+  return (
+    <div
+      onClick={toggleVisible}
+      className={`burger ${visible ? "active" : "inactive"}`}
+    >
+      <div className="burger__wrapper">
+        <span className="burger__line"></span>
+        <span className="burger__line"></span>
+        <span className="burger__line"></span>
+        <span className="burger__line"></span>
+      </div>
+    </div>
+  );
 };
 
 export default Burger;

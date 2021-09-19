@@ -9,12 +9,12 @@
     font-weight: 700;
     letter-spacing: 2px;
     border-radius: 3px;
-    transition: 0.1s;
+    transition: var(--transition-off);
 
     &:hover,
     &:focus {
       box-shadow: 0 5px 15px var(--card-background-color);
-      transition: 0.2s;
+      transition: var(--transition-on);
       transform: translateY(-5px);
     }
   }

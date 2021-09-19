@@ -1,9 +1,53 @@
 .burger {
-  display: block;
-  font-size: 2rem;
-  color: var(--paragraph-color);
+  width: 2rem;
+  height: 2rem;
+  transition: var(--transition-off);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__wrapper {
+    width: 1.75rem;
+    height: 1.25rem;
+    position: relative;
+  }
+
+  &__line {
+    position: absolute;
+    right: 0;
+    height: 4px;
+    width: 100%;
+    background-color: var(--paragraph-color);
+
+    &:first-child {
+      top: 0;
+    }
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:last-child {
+      bottom: 0;
+    }
+  }
 
   &.active {
-    color: var(--headline-color);
+    .burger__line {
+      transition: var(--transition-on);
+
+      &:first-child,
+      &:last-child {
+        opacity: 0;
+      }
+      &:nth-child(2) {
+        transform: rotate(45deg);
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
   }
 }

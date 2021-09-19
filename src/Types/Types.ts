@@ -15,4 +15,5 @@ export interface Tab {
   link: string;
   icon: IconType;
   title: string;
+  isActive: boolean;
 }
