@@ -1,0 +1,9 @@
+.burger {
+  display: block;
+  font-size: 2rem;
+  color: var(--paragraph-color);
+
+  &.active {
+    color: var(--headline-color);
+  }
+}

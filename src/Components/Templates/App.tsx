@@ -17,13 +17,17 @@ import Hobbies from "../Pages/Hobbies";
 import Donate from "../Pages/Donate";
 import Download from "../Pages/Download";
 import NotFound from "../Pages/NotFound";
+// contexts
+import SideBarProvider from "../../Contexts/SideBarContext";
 
 const App: React.FC = () => {
   return (
     <Router>
       <main className="main">
-        <Header />
-        <SideBar />
+        <SideBarProvider>
+          <Header />
+          <SideBar />
+        </SideBarProvider>
 
         <section className="content-wrapper">
           <Switch>

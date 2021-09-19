@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 // icons
 import { IoAccessibility, IoLanguage } from "react-icons/io5";
 import { AiFillApi } from "react-icons/ai";
@@ -6,14 +6,14 @@ import { MdWork } from "react-icons/md";
 import { FaProjectDiagram, FaDonate, FaDownload } from "react-icons/fa";
 import { BiCycling } from "react-icons/bi";
 import { TiMessageTyping } from "react-icons/ti";
-import { GiHamburgerMenu, GiSplitCross } from "react-icons/gi";
 
 import "./SideBar.scss";
 import NavTab from "../Atoms/NavTab";
 import { Tab } from "../../Types/Types";
+import { SideBarContext } from "../../Contexts/SideBarContext";
 
 const SideBar: React.FC = () => {
-  const [showSideBar, setShowSideBar] = useState(false);
+  const { visible } = useContext(SideBarContext);
 
   const TABS: Tab[] = [
     {
@@ -72,22 +72,8 @@ const SideBar: React.FC = () => {
     },
   ];
 
-  const renderBurger = () =>
-    showSideBar ? (
-      <GiSplitCross
-        className="aside__burger"
-        onClick={() => setShowSideBar(false)}
-      />
-    ) : (
-      <GiHamburgerMenu
-        className="aside__burger"
-        onClick={() => setShowSideBar(true)}
-      />
-    );
-
   return (
-    <aside className={`aside ${showSideBar ? "active" : "inactive"}`}>
-      {renderBurger()}
+    <aside className={`aside ${visible ? "active" : "inactive"}`}>
       {TABS.map((tab) => (
         <NavTab key={tab.id} tabData={tab} />
       ))}

@@ -4,9 +4,10 @@ $mobile-devices: 425px;
   display: none;
 
   @media (max-width: $mobile-devices) {
-    display: block;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
     background-color: var(--card-background-color);
-    height: 4rem;
   }
 }

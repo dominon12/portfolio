@@ -12,24 +12,11 @@ $mobile-devices: 425px;
     border-right: none;
     background-color: var(--card-background-color);
     position: absolute;
-    transform: translateX(-100%);
+    min-height: calc(100vh - 4rem);
+    transform: translate(-100%, 4rem);
 
     &.active {
-      transform: translateX(0);
-    }
-  }
-
-  &__burger {
-    display: none;
-
-    @media (max-width: $mobile-devices) {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 100%;
-      transform: translate(50%, 50%);
-      font-size: 2rem;
-      color: var(--paragraph-color);
+      transform: translate(0, 4rem);
     }
   }
 }
