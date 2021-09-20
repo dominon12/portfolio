@@ -1,0 +1,38 @@
+.form-field-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--default-padding);
+}
+
+.form-field {
+  padding: var(--default-padding);
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid var(--card-background-color);
+  border-radius: 3px;
+  box-shadow: none;
+  background-color: var(--card-background-color);
+  color: var(--headline-color);
+  transition: var(--transition-off);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-details);
+  }
+
+  &:hover {
+    border-color: var(--color-details);
+  }
+
+  &:not(:focus):not(:placeholder-shown).valid {
+    // apply styles when (!focused && valid)
+    border-color: var(--card-background-color);
+  }
+
+  &.invalid {
+    border-color: var(--color-danger);
+  }
+
+  &.untouched {
+  }
+}

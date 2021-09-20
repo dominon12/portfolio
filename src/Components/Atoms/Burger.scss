@@ -1,6 +1,6 @@
 .burger {
-  width: 2rem;
-  height: 2rem;
+  width: calc(var(--default-padding) * 2);
+  height: calc(var(--default-padding) * 2);
   transition: var(--transition-off);
   display: flex;
   align-items: center;

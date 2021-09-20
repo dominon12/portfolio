@@ -8,7 +8,7 @@ import { getAbout } from "../../Services/DataService";
 import { About as IAbout } from "../../Types/Types";
 import { useHistory } from "react-router";
 
-const About: React.FC = (props) => {
+const About: React.FC = () => {
   const history = useHistory();
   const aboutData: IAbout = getAbout();
 

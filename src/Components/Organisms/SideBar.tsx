@@ -22,20 +22,7 @@ const SideBar: React.FC = () => {
       icon: IoAccessibility,
       title: "About",
       isActive: false,
-    },
-    {
-      id: 2,
-      link: "/technologies",
-      icon: AiFillApi,
-      title: "Technologies",
-      isActive: false,
-    },
-    {
-      id: 3,
-      link: "/experience",
-      icon: MdWork,
-      title: "Experience",
-      isActive: false,
+      orderNumber: 1,
     },
     {
       id: 4,
@@ -43,13 +30,23 @@ const SideBar: React.FC = () => {
       icon: FaProjectDiagram,
       title: "Projects",
       isActive: false,
+      orderNumber: 2,
     },
     {
-      id: 5,
-      link: "/contact",
-      icon: TiMessageTyping,
-      title: "Contact",
+      id: 2,
+      link: "/technologies",
+      icon: AiFillApi,
+      title: "Technologies",
       isActive: false,
+      orderNumber: 3,
+    },
+    {
+      id: 3,
+      link: "/experience",
+      icon: MdWork,
+      title: "Experience",
+      isActive: false,
+      orderNumber: 4,
     },
     {
       id: 6,
@@ -57,6 +54,7 @@ const SideBar: React.FC = () => {
       icon: IoLanguage,
       title: "Languages",
       isActive: false,
+      orderNumber: 5,
     },
     {
       id: 7,
@@ -64,6 +62,7 @@ const SideBar: React.FC = () => {
       icon: BiCycling,
       title: "Hobbies",
       isActive: false,
+      orderNumber: 6,
     },
     {
       id: 8,
@@ -71,6 +70,15 @@ const SideBar: React.FC = () => {
       icon: FaDonate,
       title: "Donate",
       isActive: false,
+      orderNumber: 7,
+    },
+    {
+      id: 5,
+      link: "/contact",
+      icon: TiMessageTyping,
+      title: "Contact",
+      isActive: false,
+      orderNumber: 8,
     },
     {
       id: 9,
@@ -78,14 +86,17 @@ const SideBar: React.FC = () => {
       icon: FaDownload,
       title: "Download",
       isActive: false,
+      orderNumber: 9,
     },
   ];
 
   return (
     <aside className={`aside ${visible ? "active" : "inactive"}`}>
-      {TABS.map((tab) => (
-        <NavTab key={tab.id} tabData={tab} />
-      ))}
+      <div className="aside__content">
+        {TABS.sort((a, b) => a.orderNumber - b.orderNumber).map((tab) => (
+          <NavTab key={tab.id} tabData={tab} />
+        ))}
+      </div>
     </aside>
   );
 };

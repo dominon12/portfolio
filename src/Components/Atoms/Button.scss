@@ -3,20 +3,12 @@
   border: none;
 
   &.primary {
-    padding: 1.5rem 4rem;
+    padding: 1.5rem calc(var(--default-padding) * 4);
     background-color: var(--color-details);
     color: var(--headline-color);
     font-weight: 700;
     letter-spacing: 2px;
     border-radius: 3px;
-    transition: var(--transition-off);
-
-    &:hover,
-    &:focus {
-      box-shadow: 0 5px 15px var(--card-background-color);
-      transition: var(--transition-on);
-      transform: translateY(-5px);
-    }
   }
 
   &.mini {

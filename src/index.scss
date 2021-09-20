@@ -11,15 +11,34 @@
   --headline-color: #fffffe;
   --paragraph-color: #94a1b2;
   --color-details: #7f5af0;
+  // system colors
+  --color-danger: red;
   // fonts
   --font-family: "Montserrat", sans-serif;
   // animations
   --transition-on: 0.2s;
   --transition-off: 0.1s;
+  // structuring
+  --default-padding: 1rem;
 }
 
 body {
   background-color: var(--doc-background-color);
   color: var(--paragraph-color);
   font-family: var(--font-family);
+}
+
+.hover-animation {
+  transition: var(--transition-off);
+
+  &:focus,
+  &:hover {
+    box-shadow: 0 5px 15px var(--card-background-color);
+    transform: translateY(-5px);
+    transition: var(--transition-on);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
 }
