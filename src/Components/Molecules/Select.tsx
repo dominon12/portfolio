@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Select.scss";
 import FormError from "../Atoms/FormError";
-import { SelectValue } from "../../Types/Types";
+import { SelectValue, SelectValuesGroup } from "../../Types/Types";
 import { validateField } from "../../Services/FormService";
 import FormLabel from "../Atoms/FormLabel";
 import FormFieldContainer from "../Atoms/FormFieldContainer";
@@ -10,8 +10,8 @@ import FormFieldContainer from "../Atoms/FormFieldContainer";
 interface Props {
   label: string;
   value: string | number;
-  values: SelectValue[];
-  handleChange: (value: string) => void;
+  values: SelectValue[] | SelectValuesGroup[];
+  handleChange: React.Dispatch<React.SetStateAction<string>>;
   defaultValue?: string | number;
   required?: boolean;
 }
@@ -54,6 +54,32 @@ const Select: React.FC<Props> = ({
     }
   };
 
+  const isSelectValuesGroup = (object: any): object is SelectValuesGroup =>
+    "groupName" in object;
+
+  const renderSelectOptions = (selectValues: any) => {
+    if (isSelectValuesGroup(selectValues[0])) {
+      // SelectValuesGroup
+      return selectValues
+        .sort(
+          (a: SelectValuesGroup, b: SelectValuesGroup) =>
+            a.values.length - b.values.length
+        )
+        .map((value: SelectValuesGroup) => (
+          <optgroup key={value.id} label={value.groupName}>
+            {renderSelectOptions(value.values)}
+          </optgroup>
+        ));
+    } else {
+      // SelectValue
+      return selectValues.map((value: SelectValue) => (
+        <option key={value.id} value={value.value}>
+          {value.displayValue}
+        </option>
+      ));
+    }
+  };
+
   return (
     <FormFieldContainer>
       {label && <FormLabel required={required}>{label}</FormLabel>}
@@ -67,11 +93,7 @@ const Select: React.FC<Props> = ({
         required={required}
       >
         <option value="">Please choose an option</option>
-        {values.map((value) => (
-          <option key={value.id} value={value.value}>
-            {value.displayValue}
-          </option>
-        ))}
+        {values.length && renderSelectOptions(values)}
       </select>
 
       {touched && !valid && errMessage && <FormError>{errMessage}</FormError>}

@@ -17,16 +17,17 @@ export interface Project {
   image: string;
   shortDescription: string;
   dateStarted: string;
-  type: "Bot" | "Web app" | "REST API";
+  type: "Bot" | "Web app" | "REST API" | "E-commerce" | "Landing";
   technologies: ProjectTechnologies;
+  implementationTime: number;
   repository?: string;
   link?: string;
 }
 
 export interface ProjectTechnologies {
-  backend?: string[];
-  frontend?: string[];
-  devops?: string[];
+  backend: string[];
+  frontend: string[];
+  devops: string[];
 }
 
 export interface Tab {
@@ -42,4 +43,10 @@ export interface SelectValue {
   id: number;
   value: string | number;
   displayValue: string;
+}
+
+export interface SelectValuesGroup {
+  id: number;
+  groupName: string;
+  values: SelectValue[];
 }

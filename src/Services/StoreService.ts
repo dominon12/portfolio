@@ -21,8 +21,11 @@ const portfolioData: Portfolio = {
       type: "Bot",
       technologies: {
         backend: ["Python3", "PyTelegramBotAPI", "MongoDB", "REST API"],
+        frontend: [],
+        devops: [],
       },
       link: "https://t.me/PriceTomatBot",
+      implementationTime: 0,
     },
     {
       id: 2,
@@ -30,7 +33,7 @@ const portfolioData: Portfolio = {
       image: "https://pokyzashop.com/assets/img/favicons/logo.png",
       shortDescription: "E-commerce web app for dropshipping project",
       dateStarted: "10-02-2021",
-      type: "Web app",
+      type: "E-commerce",
       technologies: {
         backend: [
           "Python3",
@@ -51,6 +54,7 @@ const portfolioData: Portfolio = {
         ],
       },
       link: "https://pokyzashop.com",
+      implementationTime: 0,
     },
     {
       id: 3,
@@ -58,7 +62,7 @@ const portfolioData: Portfolio = {
       image: "https://cartel-hookah.com/static/media/logo.de6858c6.png",
       shortDescription: 'E-commerce web site for company "Cartel Hookah"',
       dateStarted: "15-04-2021",
-      type: "Web app",
+      type: "E-commerce",
       technologies: {
         backend: [
           "Python3",
@@ -72,6 +76,7 @@ const portfolioData: Portfolio = {
         devops: ["Debian 10", "supervisord", "pgbouncer", "Nginx", "gunicorn"],
       },
       link: "https://cartel-hookah.com/",
+      implementationTime: 0,
     },
     {
       id: 4,
@@ -79,7 +84,7 @@ const portfolioData: Portfolio = {
       image: "https://smokelaboratory.eu/static/img/favicons/logo.png",
       shortDescription: 'E-commerce web site for company "Smoke Laboratory"',
       dateStarted: "15-04-2021",
-      type: "Web app",
+      type: "E-commerce",
       technologies: {
         backend: [
           "Python3",
@@ -93,6 +98,7 @@ const portfolioData: Portfolio = {
         devops: ["Debian 10", "supervisord", "pgbouncer", "Nginx", "gunicorn"],
       },
       link: "https://smokelaboratory.eu/",
+      implementationTime: 0,
     },
     {
       id: 5,
@@ -109,6 +115,7 @@ const portfolioData: Portfolio = {
       },
       link: "https://learn-sorting.web.app/",
       repository: "https://github.com/dominon12/SortVisualizer",
+      implementationTime: 0,
     },
     {
       id: 6,
@@ -117,13 +124,14 @@ const portfolioData: Portfolio = {
       shortDescription:
         'Landing page with simple animations for outdoor children\'s playground "Rio"',
       dateStarted: "15-04-2021",
-      type: "Web app",
+      type: "Landing",
       technologies: {
         backend: ["Python3", "Django", "PostgreSQL", "Celery", "RabbitMQ"],
         frontend: ["HTML", "CSS", "JavaScript", "jQuery"],
         devops: ["Debian 10", "supervisord", "memcached", "Nginx", "gunicorn"],
       },
       link: "https://learn-sorting.web.app/",
+      implementationTime: 0,
     },
     {
       id: 7,
@@ -147,6 +155,7 @@ const portfolioData: Portfolio = {
       },
       link: "https://learn-sorting.web.app/",
       repository: "https://github.com/dominon12/SortVisualizer",
+      implementationTime: 0,
     },
   ],
 };
