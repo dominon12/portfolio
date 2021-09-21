@@ -18,6 +18,11 @@ const ProjectsGrid: React.FC<Props> = (props) => {
             title={project.title}
             image={project.image}
             shortDescription={project.shortDescription}
+            dateStarted={project.dateStarted}
+            technologies={project.technologies}
+            description={project.description}
+            repository={project.repository}
+            link={project.link}
           />
         ))
       ) : (

@@ -1,5 +1,6 @@
 $first-media: 1108px;
 $second-media: 772px;
+$mobile-devices: 425px;
 
 .project-card {
   width: calc(100% / 3 - 2.7rem);
@@ -12,6 +13,10 @@ $second-media: 772px;
 
   &:nth-child(3n) {
     margin-right: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 
   @media (max-width: $first-media) {
@@ -34,27 +39,114 @@ $second-media: 772px;
     }
   }
 
-  &__img {
-    width: 100%;
-    height: 250px;
-    object-fit: contain;
+  &.expanded {
+    transition: 0;
+    box-shadow: none;
+    transform: none;
+    position: fixed;
+    cursor: auto;
+    z-index: 10;
+    top: 0;
+    left: 4rem;
+    width: calc(100% - var(--default-padding) * 6);
+    height: calc(100vh - var(--default-padding) * 2);
+    overflow-y: scroll;
 
-    &.expanded {
-      transition: calc(var(--transition-on) * 3);
+    @media (max-width: $mobile-devices) {
+      top: 4rem;
+      left: 0;
+      width: calc(100% - var(--default-padding) * 2);
+      height: calc(100vh - var(--default-padding) * 6);
     }
   }
 
   &__content {
+    &.expanded {
+      display: flex;
+      height: 100%;
+
+      @media (max-width: $second-media) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    margin-bottom: var(--default-padding);
+
+    &.expanded {
+      width: 40%;
+      height: unset;
+      margin-bottom: 0;
+      margin-right: var(--default-padding);
+
+      @media (max-width: $second-media) {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: var(--default-padding);
+      }
+    }
+  }
+
+  &__text-content {
+    &.expanded {
+      width: 60%;
+
+      @media (max-width: $second-media) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__title-wrapper {
+    &.expanded {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   &__title {
     color: var(--headline-color);
     font-weight: 700;
-    margin-top: 1rem;
+    margin: 0;
+    margin-right: var(--default-padding);
   }
 
   &__short-description {
     line-height: 1.4;
     margin-bottom: 0;
+  }
+
+  &__full-description {
+    line-height: 1.6;
+  }
+
+  &__description-list {
+    &_item {
+      margin-bottom: var(--default-padding);
+
+      dt {
+        font-weight: 700;
+        color: var(--headline-color);
+        margin-bottom: 0.5rem;
+      }
+      dd {
+        margin-left: 0;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+  }
+
+  &__link {
+    margin-right: var(--default-padding);
+    margin-bottom: var(--default-padding);
   }
 }

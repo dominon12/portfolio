@@ -6,6 +6,7 @@ $mobile-devices: 425px;
 
   @media (max-width: $mobile-devices) {
     position: fixed;
+    z-index: 100;
     border-right: none;
     background-color: var(--card-background-color);
     align-items: flex-start;

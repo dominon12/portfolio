@@ -1,4 +1,5 @@
 $mobile-devices: 425px;
+$short-devices: 635px;
 
 .nav-tab {
   padding: 1rem;
@@ -37,6 +38,9 @@ $mobile-devices: 425px;
 
     @media (max-width: $mobile-devices) {
       margin-right: 1rem;
+    }
+    @media (max-height: $short-devices) {
+      font-size: 1rem;
     }
   }
 
