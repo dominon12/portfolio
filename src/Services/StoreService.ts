@@ -17,7 +17,7 @@ const portfolioData: Portfolio = {
         "https://mediacloud.kiplinger.com/image/private/s--x2_BoIgn--/v1604352227/Investing/stock-market-today-110220.jpg",
       shortDescription:
         "Telegram bot which sends a message when price for selected assets meets target price set by user",
-      dateStarted: "01-01-2019",
+      dateStarted: new Date("07-13-2020"),
       type: "Bot",
       technologies: {
         backend: ["Python3", "PyTelegramBotAPI", "MongoDB", "REST API"],
@@ -32,7 +32,7 @@ const portfolioData: Portfolio = {
       title: "Pokyza Shop",
       image: "https://pokyzashop.com/assets/img/favicons/logo.png",
       shortDescription: "E-commerce web app for dropshipping project",
-      dateStarted: "10-02-2021",
+      dateStarted: new Date("01-26-2021"),
       type: "E-commerce",
       technologies: {
         backend: [
@@ -61,7 +61,7 @@ const portfolioData: Portfolio = {
       title: "Cartel Hookah",
       image: "https://cartel-hookah.com/static/media/logo.de6858c6.png",
       shortDescription: 'E-commerce web site for company "Cartel Hookah"',
-      dateStarted: "15-04-2021",
+      dateStarted: new Date("05-05-2021"),
       type: "E-commerce",
       technologies: {
         backend: [
@@ -83,7 +83,7 @@ const portfolioData: Portfolio = {
       title: "Smoke Laboratory",
       image: "https://smokelaboratory.eu/static/img/favicons/logo.png",
       shortDescription: 'E-commerce web site for company "Smoke Laboratory"',
-      dateStarted: "15-04-2021",
+      dateStarted: new Date("12-20-2020"),
       type: "E-commerce",
       technologies: {
         backend: [
@@ -106,7 +106,7 @@ const portfolioData: Portfolio = {
       image: "https://learn-sorting.web.app/favicon.ico",
       shortDescription:
         "Visualization of the operation of some sorting algorithms. A project made in two evenings.",
-      dateStarted: "15-04-2021",
+      dateStarted: new Date("03-25-2021"),
       type: "Web app",
       technologies: {
         backend: [],
@@ -123,7 +123,7 @@ const portfolioData: Portfolio = {
       image: "https://rio-kld.ru/static/img/main/big_logo.jpg",
       shortDescription:
         'Landing page with simple animations for outdoor children\'s playground "Rio"',
-      dateStarted: "15-04-2021",
+      dateStarted: new Date("12-04-2020"),
       type: "Landing",
       technologies: {
         backend: ["Python3", "Django", "PostgreSQL", "Celery", "RabbitMQ"],
@@ -139,7 +139,7 @@ const portfolioData: Portfolio = {
       image: "https://reac39.ru/static/img/logos/big-logo.png",
       shortDescription:
         "Website for the Children's Department of Neurology and Reflexology",
-      dateStarted: "15-04-2021",
+      dateStarted: new Date("12-09-2020"),
       type: "Web app",
       technologies: {
         backend: ["Python3", "Django", "PostgreSQL", "Celery", "RabbitMQ"],

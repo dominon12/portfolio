@@ -6,44 +6,79 @@ import { Project, SelectValue, SelectValuesGroup } from "../../Types/Types";
 import ProjectsGrid from "../Organisms/ProjectsGrid";
 
 function getFilterValues(projects: Project[]): SelectValuesGroup[] {
-  let technologies = new Set<string>();
-  let projectTypes = new Set<string>();
+  let projectTypes = new Set<string>(),
+    frontend = new Set<string>(),
+    backend = new Set<string>(),
+    devops = new Set<string>();
 
   projects.forEach((project: Project) => {
-    // join backend, frontend and devops arrays
-    const projectTechnologies: string[] = [
-      ...project.technologies.backend,
-      ...project.technologies.frontend,
-      ...project.technologies.devops,
-    ];
-    // add technologies
-    projectTechnologies.forEach(technologies.add, technologies);
-    // add project type
+    project.technologies.backend.forEach(backend.add, backend);
+    project.technologies.frontend.forEach(frontend.add, frontend);
+    project.technologies.devops.forEach(devops.add, devops);
     projectTypes.add(project.type);
   });
 
-  const randomId = () => Math.floor(Math.random() * 1000000);
+  const randomId = () => Math.floor(Math.random() * 1_000_000);
 
-  // convert string to SelectValuesGroup type
-  const technologyValues: SelectValuesGroup = {
+  const stringSetToSelectValuesGroup = (
+    stringArray: Set<string>,
+    groupName: string
+  ): SelectValuesGroup => ({
+    groupName,
     id: randomId(),
-    groupName: "Technology",
-    values: Array.from(technologies).map((technology) => ({
-      id: randomId(),
-      value: technology,
-      displayValue: technology,
-    })),
-  };
-  const projectTypeValues: SelectValuesGroup = {
-    id: randomId(),
-    groupName: "Type",
-    values: Array.from(projectTypes).map((projectType) => ({
-      id: randomId(),
-      value: projectType,
-      displayValue: projectType,
-    })),
-  };
-  return [technologyValues, projectTypeValues];
+    values: Array.from(stringArray)
+      .sort()
+      .map((string) => ({
+        id: randomId(),
+        value: string,
+        displayValue: string,
+      })),
+  });
+
+  const filterValues: SelectValuesGroup[] = [
+    stringSetToSelectValuesGroup(backend, "Back-end"),
+    stringSetToSelectValuesGroup(frontend, "Front-end"),
+    stringSetToSelectValuesGroup(devops, "DevOps"),
+    stringSetToSelectValuesGroup(projectTypes, "Type"),
+  ];
+
+  return filterValues;
+}
+
+function filterProjects(
+  projects: Project[],
+  filterBy: string,
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>
+) {
+  if (!filterBy) {
+    setProjects(projects);
+  } else {
+    const filteredProjects = projects.filter(
+      (project) =>
+        project.type === filterBy ||
+        project.technologies.backend.includes(filterBy) ||
+        project.technologies.frontend.includes(filterBy) ||
+        project.technologies.devops.includes(filterBy)
+    );
+    setProjects(filteredProjects);
+  }
+}
+
+function sortProjects(
+  projects: Project[],
+  sortBy: string,
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>
+) {
+  if (!sortBy) {
+    sortProjects(projects, "-dateStarted", setProjects);
+  } else {
+    const isDesc = sortBy.startsWith("-");
+    if (isDesc) sortBy = sortBy.slice(1, sortBy.length);
+    const sortedProjects = projects.sort((a: any, b: any) =>
+      isDesc ? b[sortBy] - a[sortBy] : a[sortBy] - b[sortBy]
+    );
+    setProjects(sortedProjects);
+  }
 }
 
 const Projects: React.FC = () => {
@@ -55,14 +90,14 @@ const Projects: React.FC = () => {
 
   const sortValues: SelectValue[] = [
     {
-      id: 1,
-      value: "date",
-      displayValue: "Date, low to high",
+      id: 2,
+      value: "-dateStarted",
+      displayValue: "Date, new to old",
     },
     {
-      id: 2,
-      value: "-date",
-      displayValue: "Date, high to low",
+      id: 1,
+      value: "dateStarted",
+      displayValue: "Date, old to new",
     },
     {
       id: 3,
@@ -76,11 +111,37 @@ const Projects: React.FC = () => {
     },
   ];
 
-  useEffect(() => {
+  const initializeFilterValues = () => {
     if (projects.length) {
       setFilterValues(getFilterValues(projects));
     }
-  }, [projects]);
+  };
+
+  const applyDefaultSorting = () => {
+    if (projects.length) {
+      sortProjects([...projects], "-dateStarted", setProjects);
+    }
+  };
+
+  const handleFilterValuesChange = () => {
+    if (projects.length) {
+      const allProjects = getProjects();
+      filterProjects(allProjects, filterBy, setProjects);
+    }
+  };
+
+  const handleSortValuesChange = () => {
+    if (projects.length) {
+      sortProjects([...projects], sortBy, setProjects);
+    }
+  };
+
+  useEffect(() => {
+    initializeFilterValues();
+    applyDefaultSorting();
+  }, []);
+  useEffect(() => handleFilterValuesChange(), [filterBy]);
+  useEffect(() => handleSortValuesChange(), [sortBy]);
 
   return (
     <div className="projects">

@@ -16,7 +16,7 @@ export interface Project {
   title: string;
   image: string;
   shortDescription: string;
-  dateStarted: string;
+  dateStarted: Date;
   type: "Bot" | "Web app" | "REST API" | "E-commerce" | "Landing";
   technologies: ProjectTechnologies;
   implementationTime: number;
