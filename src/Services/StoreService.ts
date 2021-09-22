@@ -168,6 +168,121 @@ const portfolioData: Portfolio = {
       implementationTime: 0,
     },
   ],
+  technologies: [
+    {
+      id: 1,
+      name: "Front-end",
+      technologies: [
+        {
+          id: 1,
+          name: "JavaScript",
+          level: 4,
+        },
+        {
+          id: 2,
+          name: "TypeScript",
+          level: 4,
+        },
+        {
+          id: 3,
+          name: "HTML",
+          level: 5,
+        },
+        {
+          id: 4,
+          name: "CSS",
+          level: 5,
+        },
+        {
+          id: 5,
+          name: "SCSS",
+          level: 4,
+        },
+        {
+          id: 14,
+          name: "React",
+          level: 4,
+        },
+        {
+          id: 15,
+          name: "Angular",
+          level: 3,
+        },
+        {
+          id: 16,
+          name: "Vue",
+          level: 2,
+        }
+      ],
+    },
+    {
+      id: 2,
+      name: "Back-end",
+      technologies: [
+        {
+          id: 6,
+          name: "Python 3",
+          level: 3,
+        },
+        {
+          id: 8,
+          name: "Django",
+          level: 4,
+        },
+        {
+          id: 8,
+          name: "DRF",
+          level: 4,
+        },
+        {
+          id: 7,
+          name: "C#",
+          level: 2,
+        },
+        {
+          id: 9,
+          name: "Flask",
+          level: 2,
+        },
+        {
+          id: 10,
+          name: "SQL",
+          level: 3,
+        },
+      ],
+    },
+    {
+      id: 3,
+      name: "Other",
+      technologies: [
+        {
+          id: 11,
+          name: "Git",
+          level: 3,
+        },
+        {
+          id: 12,
+          name: "VS Code",
+          level: 4,
+        },
+        {
+          id: 13,
+          name: "Bash",
+          level: 4,
+        },
+        {
+          id: 17,
+          name: "PostgreSQL",
+          level: 3
+        },
+        {
+          id: 18,
+          name: "MongoDB",
+          level: 3
+        }
+      ],
+    },
+  ],
 };
 
 export default portfolioData;

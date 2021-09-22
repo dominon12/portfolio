@@ -1,0 +1,17 @@
+$first-media: 1234px;
+$second-media: 1048px;
+$third-media: 852px;
+
+.subtitle {
+  font-weight: 700;
+  color: var(--headline-color);
+
+  font-size: 2.6rem;
+
+  @media (max-width: $first-media) {
+    font-size: 2rem;
+  }
+  @media (max-width: $second-media) {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,53 @@
+.technologies-group {
+  &__title {
+    text-align: left;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tbody {
+      tr {
+        &:hover,
+        &:focus {
+          background-color: var(--card-background-color);
+        }
+      }
+    }
+
+    col:hover {
+      background-color: var(--card-background-color);
+    }
+  }
+
+  &__scale-name {
+    text-align: left;
+    padding: var(--default-padding);
+    background-color: var(--color-details);
+    color: var(--headline-color);
+    width: 60%;
+  }
+
+  &__technology-name {
+    padding: var(--default-padding);
+    color: var(--headline-color);
+    font-weight: 700;
+    width: 60%;
+  }
+
+  &__technology-level-cell {
+    border-left: 1px solid var(--color-details);
+  }
+
+  &__filled-cell {
+    padding: var(--default-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_icon {
+      font-size: 3rem;
+    }
+  }
+}
