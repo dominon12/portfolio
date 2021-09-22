@@ -212,7 +212,7 @@ const portfolioData: Portfolio = {
           id: 16,
           name: "Vue",
           level: 2,
-        }
+        },
       ],
     },
     {
@@ -221,7 +221,7 @@ const portfolioData: Portfolio = {
       technologies: [
         {
           id: 6,
-          name: "Python 3",
+          name: "Python3",
           level: 3,
         },
         {
@@ -262,7 +262,7 @@ const portfolioData: Portfolio = {
         },
         {
           id: 12,
-          name: "VS Code",
+          name: "VSCode",
           level: 4,
         },
         {
@@ -272,14 +272,14 @@ const portfolioData: Portfolio = {
         },
         {
           id: 17,
-          name: "PostgreSQL",
-          level: 3
+          name: "Postgres",
+          level: 3,
         },
         {
           id: 18,
           name: "MongoDB",
-          level: 3
-        }
+          level: 3,
+        },
       ],
     },
   ],

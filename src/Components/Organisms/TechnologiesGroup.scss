@@ -1,3 +1,5 @@
+$first-media: 1024px;
+
 .technologies-group {
   &__title {
     text-align: left;
@@ -7,47 +9,125 @@
     width: 100%;
     border-collapse: collapse;
 
-    tbody {
-      tr {
-        &:hover,
-        &:focus {
-          background-color: var(--card-background-color);
+    &_caption {
+      @media (max-width: $first-media) {
+        margin-bottom: calc(var(--default-padding) * 2);
+      }
+    }
+
+    &_head {
+      th {
+        position: relative;
+
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5) {
+          @media (max-width: $first-media) {
+            font-size: 0;
+          }
+
+          .technologies-group__scale-name {
+            @media (max-width: $first-media) {
+              font-size: 0;
+              background-color: unset;
+              padding: 0;
+            }
+          }
         }
       }
     }
 
-    col:hover {
-      background-color: var(--card-background-color);
+    &_body {
+      tr {
+        position: relative;
+        transition: var(--transition-off);
+
+        &:hover,
+        &:focus {
+          transition: var(--transition-on);
+          background-color: var(--card-background-color);
+
+          @media (max-width: $first-media) {
+            background: none;
+          }
+
+          &::after {
+            @media (max-width: $first-media) {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: -1rem;
+              z-index: -1;
+              height: 100%;
+              width: calc(100% + var(--default-padding) * 2);
+              background-color: var(--card-background-color);
+            }
+          }
+        }
+      }
+
+      td {
+        @media (max-width: $first-media) {
+          width: calc(100% / 6); // 6 columns
+        }
+      }
     }
   }
 
   &__scale-name {
     text-align: left;
+    width: 60%;
     padding: var(--default-padding);
     background-color: var(--color-details);
     color: var(--headline-color);
-    width: 60%;
+
+    @media (max-width: $first-media) {
+      width: 100%;
+      background-color: unset;
+      position: absolute;
+      top: -2.5rem;
+      left: 0;
+      text-align: center;
+      padding: var(--default-padding) 0;
+    }
   }
 
   &__technology-name {
-    padding: var(--default-padding);
-    color: var(--headline-color);
     font-weight: 700;
     width: 60%;
+    padding: var(--default-padding);
+    color: var(--headline-color);
+
+    @media (max-width: $first-media) {
+      padding-left: 0;
+    }
   }
 
   &__technology-level-cell {
     border-left: 1px solid var(--color-details);
+
+    @media (max-width: $first-media) {
+      border-left: none;
+    }
   }
 
   &__filled-cell {
-    padding: var(--default-padding);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: var(--default-padding);
+
+    @media (max-width: $first-media) {
+      padding: calc(var(--default-padding) / 2);
+      background-color: var(--color-details);
+    }
 
     &_icon {
       font-size: 3rem;
+
+      @media (max-width: $first-media) {
+        display: none;
+      }
     }
   }
 }

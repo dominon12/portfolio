@@ -21,12 +21,12 @@ const TechnologiesGroup: React.FC<Props> = (props) => {
   return (
     <div className="technologies-group">
       <table className="technologies-group__table">
-        <caption>
+        <caption className="technologies-group__table_caption">
           <Subtitle className="technologies-group__title">
             {props.technologiesGroup.name}
           </Subtitle>
         </caption>
-        <thead>
+        <thead className="technologies-group__table_head">
           <tr>
             <th></th>
             {progressLevelNames.map((scaleName) => (
@@ -38,7 +38,7 @@ const TechnologiesGroup: React.FC<Props> = (props) => {
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="technologies-group__table_body">
           {props.technologiesGroup.technologies
             .sort((a, b) => b.level - a.level)
             .map((technology) => (
