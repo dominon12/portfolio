@@ -1,4 +1,5 @@
 .burger {
+  padding: var(--default-padding);
   width: calc(var(--default-padding) * 2);
   height: calc(var(--default-padding) * 2);
   transition: var(--transition-off);

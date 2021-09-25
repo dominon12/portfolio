@@ -19,14 +19,17 @@ import Download from "../Pages/Download";
 import NotFound from "../Pages/NotFound";
 // contexts
 import SideBarProvider from "../../Contexts/SideBarContext";
+import ThemeProvider from "../../Contexts/ThemeContext";
 
 const App: React.FC = () => {
   return (
     <Router>
       <main className="main">
         <SideBarProvider>
-          <Header />
-          <SideBar />
+          <ThemeProvider>
+            <Header />
+            <SideBar />
+          </ThemeProvider>
         </SideBarProvider>
 
         <section className="content-wrapper">

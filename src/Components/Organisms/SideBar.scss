@@ -1,8 +1,10 @@
 $mobile-devices: 425px;
 
 .aside {
-  // min-height: 100vh;
   border-right: 4px solid var(--card-background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media (max-width: $mobile-devices) {
     position: fixed;
@@ -18,16 +20,16 @@ $mobile-devices: 425px;
       transition: var(--transition-on);
       transform: translate(0, calc(var(--default-padding) * 4));
     }
-
-    // .aside__content {
-    //   position: relative;
-    // }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    // position: sticky;
-    // top: 0;
+  }
+
+  &__theme-switch {
+    @media (max-width: $mobile-devices) {
+      display: none;
+    }
   }
 }

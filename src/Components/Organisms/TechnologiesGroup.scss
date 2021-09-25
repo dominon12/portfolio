@@ -79,7 +79,7 @@ $first-media: 1024px;
     width: 60%;
     padding: var(--default-padding);
     background-color: var(--color-details);
-    color: var(--headline-color);
+    color: var(--button-text);
 
     @media (max-width: $first-media) {
       width: 100%;

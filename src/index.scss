@@ -5,24 +5,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap");
 
 :root {
-  // dark theme
-  --doc-background-color: #242629;
-  --card-background-color: #16161a;
-  --headline-color: #fffffe;
-  --paragraph-color: #94a1b2;
-  --color-details: #7f5af0;
   // system colors
   --color-danger: red;
   // fonts
   --font-family: "Montserrat", sans-serif;
   // animations
-  --transition-on: 0.2s;
   --transition-off: 0.1s;
+  --transition-on: 0.2s;
   // structuring
   --default-padding: 1rem;
 }
 
 body {
+  transition: var(--transition-on);
+
+  &.light {
+    // light theme
+    --doc-background-color: #fffffe;
+    --card-background-color: #d1d1e9;
+    --headline-color: #2b2c34;
+    --paragraph-color: #2b2c34;
+    --button-text: #fffffe;
+    --color-details: #6246ea;
+  }
+
+  &.dark {
+    // dark theme
+    --doc-background-color: #242629;
+    --card-background-color: #16161a;
+    --headline-color: #fffffe;
+    --paragraph-color: #94a1b2;
+    --button-text: #fffffe;
+    --color-details: #7f5af0;
+  }
+
   background-color: var(--doc-background-color);
   color: var(--paragraph-color);
   font-family: var(--font-family);

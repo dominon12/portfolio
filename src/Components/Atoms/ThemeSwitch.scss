@@ -1,0 +1,10 @@
+.theme-switch {
+  padding: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+
+  &__icon {
+    font-size: 2rem;
+    color: var(--paragraph-color);
+  }
+}

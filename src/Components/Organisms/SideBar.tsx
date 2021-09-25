@@ -11,6 +11,7 @@ import "./SideBar.scss";
 import NavTab from "../Atoms/NavTab";
 import { Tab } from "../../Types/Types";
 import { SideBarContext } from "../../Contexts/SideBarContext";
+import ThemeSwitch from "../Atoms/ThemeSwitch";
 
 const SideBar: React.FC = () => {
   const { visible } = useContext(SideBarContext);
@@ -96,6 +97,9 @@ const SideBar: React.FC = () => {
         {TABS.sort((a, b) => a.orderNumber - b.orderNumber).map((tab) => (
           <NavTab key={tab.id} tabData={tab} />
         ))}
+      </div>
+      <div className="aside__theme-switch">
+        <ThemeSwitch />
       </div>
     </aside>
   );
