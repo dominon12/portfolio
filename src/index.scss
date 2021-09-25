@@ -14,6 +14,7 @@
   --transition-on: 0.2s;
   // structuring
   --default-padding: 1rem;
+  --default-border-radius: 3px;
 }
 
 body {
@@ -22,11 +23,11 @@ body {
   &.light {
     // light theme
     --doc-background-color: #fffffe;
-    --card-background-color: #d1d1e9;
-    --headline-color: #2b2c34;
-    --paragraph-color: #2b2c34;
+    --card-background-color: #eff0f3;
+    --headline-color: #0d0d0d;
+    --paragraph-color: #2a2a2a;
     --button-text: #fffffe;
-    --color-details: #6246ea;
+    --color-details: #ff8e3c;
   }
 
   &.dark {
@@ -42,6 +43,18 @@ body {
   background-color: var(--doc-background-color);
   color: var(--paragraph-color);
   font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--headline-color);
+}
+
+p {
+  color: var(--paragraph-color);
 }
 
 .hover-animation {

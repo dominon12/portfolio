@@ -1,0 +1,9 @@
+.experience-liana {
+  border-left: var(--default-padding) solid var(--color-details);
+  border-radius: var(--default-border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: calc(var(--default-padding) * 2);
+  padding-left: calc(var(--default-padding) * 3);
+}

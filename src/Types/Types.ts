@@ -1,9 +1,14 @@
 import { IconType } from "react-icons";
 
+/*
+PORTFOLIO
+*/
+
 export interface Portfolio {
   about: About;
   projects: Project[];
   technologies: TechnologiesGroup[];
+  experience: CareerEvent[];
 }
 
 export interface About {
@@ -43,6 +48,19 @@ export interface Technology {
   name: string;
   level: 1 | 2 | 3 | 4 | 5;
 }
+
+export interface CareerEvent {
+  id: number;
+  title: string;
+  description: string;
+  date: Date;
+  place: string;
+  isRelevant: boolean;
+}
+
+/*
+OTHER
+*/
 
 export interface Tab {
   id: number;

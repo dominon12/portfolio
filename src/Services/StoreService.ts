@@ -283,6 +283,129 @@ const portfolioData: Portfolio = {
       ],
     },
   ],
+  experience: [
+    {
+      id: 1,
+      title: "Finished high school",
+      description:
+        "Information technology class with an emphasis on physics, mathematics and computer science.",
+      place: "Lyceum №49, Kaliningrad, Russia",
+      date: new Date("05-31-2018"),
+      isRelevant: true,
+    },
+    {
+      id: 2,
+      title: "Obtained driver's license",
+      description: "Passed all the stages in one try",
+      place: "Kaliningrad, Russia",
+      date: new Date("07-15-2018"),
+      isRelevant: false,
+    },
+    {
+      id: 3,
+      title: "Started university",
+      description:
+        "In the direction of Enterprise Management. Studying in Polish.",
+      place: "Gdansk, Poland",
+      date: new Date("10-01-2018"),
+      isRelevant: true,
+    },
+    {
+      id: 4,
+      title: "First job",
+      description: "As a salesman and cashier. Worked there for 1 month.",
+      place: 'Alimentary shop "Dobry Sklep", Gdansk, Poland',
+      date: new Date("03-10-2019"),
+      isRelevant: false,
+    },
+    {
+      id: 5,
+      title: "First business",
+      description:
+        'Alimentary shop "Magnat". Managed a team of 10 people. Became a bankrupt 1 year later.',
+      place: "Kaliningrad, Russia",
+      date: new Date("06-20-2019"),
+      isRelevant: false,
+    },
+    {
+      id: 6,
+      title: "Food truck",
+      description:
+        'Second business. In collaboration with a contact zoo "Ara park". Sold 1 year later.',
+      place: "Kaliningrad, Russia",
+      date: new Date("09-10-2019"),
+      isRelevant: false,
+    },
+    {
+      id: 7,
+      title: "Pyszne.pl (Takeaway.com)",
+      description:
+        'Worked as a courier for 4 month. Could have been promoted to a "Team leader", but went to Glovo.',
+      place: "Gdansk, Poland",
+      date: new Date("11-10-2019"),
+      isRelevant: false,
+    },
+    {
+      id: 13,
+      title: "Started learning programming",
+      description: "From Python3 language.",
+      place: "Gdansk, Poland",
+      date: new Date("02-10-2020"),
+      isRelevant: true,
+    },
+    {
+      id: 8,
+      title: "Glovo",
+      description: "Worked 5 month until left Poland.",
+      place: "Gdansk, Poland",
+      date: new Date("03-01-2020"),
+      isRelevant: false,
+    },
+    {
+      id: 9,
+      title: "Finished university",
+      description:
+        'Defended my bachelor\'s degree on the topic "The influence of management style on employee motivation".',
+      place: "Gdansk, Poland",
+      date: new Date("07-10-2020"),
+      isRelevant: false,
+    },
+    {
+      id: 10,
+      title: "Started learning spanish",
+      description:
+        "And moved to Spain realizing the dream of living in a country with a pleasant climate.",
+      place: "Valencia, Spain",
+      date: new Date("08-10-2020"),
+      isRelevant: false,
+    },
+    {
+      id: 123,
+      title: "First freelance order",
+      description:
+        'E-commerce website for "Smoke Laboratory" made with Django.',
+      place: "Valencia, Spain",
+      date: new Date("12-16-2020"),
+      isRelevant: true,
+    },
+    {
+      id: 11,
+      title: "Obtained DELE B2 diploma (Spanish)",
+      description: "After finishing 2 month long preparation course.",
+      place: "Valencia, Spain",
+      date: new Date("07-14-2021"),
+      isRelevant: false,
+    },
+    {
+      id: 12,
+      title: "Started college",
+      description:
+        'In the direction of "Web applications development". Studying in Spanish.',
+      place: "Valencia, Spain",
+      date: new Date("09-20-2021"),
+      isRelevant: true,
+    },
+  ],
 };
 
 export default portfolioData;

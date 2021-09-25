@@ -1,4 +1,9 @@
-import { About, Project, TechnologiesGroup } from "./../Types/Types";
+import {
+  About,
+  CareerEvent,
+  Project,
+  TechnologiesGroup,
+} from "./../Types/Types";
 import portfolioData from "./StoreService";
 
 export function getAbout(): About {
@@ -11,4 +16,8 @@ export function getProjects(): Project[] {
 
 export function getTechnologies(): TechnologiesGroup[] {
   return portfolioData.technologies;
+}
+
+export function getExperience(): CareerEvent[] {
+  return portfolioData.experience;
 }

@@ -18,9 +18,7 @@ const Technologies: React.FC = () => {
 
   return (
     <div className="technologies">
-      <div className="technologies__header">
-        <Title className="technologies__title">Technologies I've learnt</Title>
-      </div>
+      <Title className="technologies__title">Technologies I've learnt</Title>
       <div className="technologies__wrapper">{renderTechnologies()}</div>
     </div>
   );

@@ -80,6 +80,7 @@ $first-media: 1024px;
     padding: var(--default-padding);
     background-color: var(--color-details);
     color: var(--button-text);
+    border-radius: var(--default-border-radius);
 
     @media (max-width: $first-media) {
       width: 100%;

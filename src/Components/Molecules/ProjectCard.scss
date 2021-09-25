@@ -5,7 +5,7 @@ $mobile-devices: 425px;
 .project-card {
   width: calc(100% / 3 - 2.7rem);
   padding: var(--default-padding);
-  border-radius: 3px;
+  border-radius: var(--default-border-radius);
   background-color: var(--card-background-color);
   cursor: pointer;
   margin-right: var(--default-padding);

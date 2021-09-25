@@ -1,0 +1,7 @@
+.experience {
+  &__title {
+    text-align: center;
+    margin: 0;
+    margin-bottom: calc(var(--default-padding) * 2);
+  }
+}

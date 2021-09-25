@@ -1,0 +1,57 @@
+.career-event {
+  background-color: var(--card-background-color);
+  margin: var(--default-padding) 0;
+  padding: var(--default-padding);
+  border-radius: var(--default-border-radius);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(0px - var(--default-padding) * 3.5);
+    transform: translate(-50%, -50%);
+    height: calc(var(--default-padding) * 3.5);
+    width: calc(var(--default-padding) * 3.5);
+    background-color: var(--doc-background-color);
+    border: calc(var(--default-padding) / 2) solid var(--color-details);
+    border-radius: 50%;
+  }
+
+  &.irrelevant {
+    margin-left: calc(var(--default-padding) * 4);
+
+    &::before {
+      height: calc(var(--default-padding) * 2);
+      width: calc(var(--default-padding) * 2);
+    }
+  }
+
+  &__content {
+    margin-bottom: calc(var(--default-padding));
+  }
+  &__title {
+    margin: 0;
+  }
+  &__description {
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+
+    &_data-container {
+      display: flex;
+      align-items: center;
+
+      &:first-child {
+        margin-right: var(--default-padding);
+      }
+    }
+    &_icon {
+      margin-right: calc(var(--default-padding) / 2);
+    }
+  }
+}
