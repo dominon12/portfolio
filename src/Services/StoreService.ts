@@ -314,7 +314,7 @@ const portfolioData: Portfolio = {
       id: 4,
       title: "First job",
       description: "As a salesman and cashier. Worked there for 1 month.",
-      place: 'Alimentary shop "Dobry Sklep", Gdansk, Poland',
+      place: '"Dobry Sklep", Gdansk, Poland',
       date: new Date("03-10-2019"),
       isRelevant: false,
     },

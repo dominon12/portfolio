@@ -1,3 +1,6 @@
+$first-media: 609px;
+$second-media: 374px;
+
 .career-event {
   background-color: var(--card-background-color);
   margin: var(--default-padding) 0;
@@ -13,8 +16,8 @@
     transform: translate(-50%, -50%);
     height: calc(var(--default-padding) * 3.5);
     width: calc(var(--default-padding) * 3.5);
-    background-color: var(--doc-background-color);
     border: calc(var(--default-padding) / 2) solid var(--color-details);
+    background-color: var(--doc-background-color);
     border-radius: 50%;
   }
 
@@ -27,13 +30,50 @@
     }
   }
 
+  @media (max-width: $first-media) {
+    &::before {
+      height: calc(var(--default-padding) * 2.5);
+      width: calc(var(--default-padding) * 2.5);
+      left: calc(0px - var(--default-padding) * 2.5);
+      border-width: calc(var(--default-padding) / 4);
+    }
+
+    &.irrelevant {
+      margin-left: calc(var(--default-padding) * 3);
+
+      &::before {
+        height: calc(var(--default-padding) * 1.5);
+        width: calc(var(--default-padding) * 1.5);
+      }
+    }
+  }
+  @media (max-width: $second-media) {
+    &::before {
+      height: calc(var(--default-padding) * 1.5);
+      width: calc(var(--default-padding) * 1.5);
+      left: calc(0px - var(--default-padding) * 2);
+    }
+
+    &.irrelevant {
+      margin-left: 1.75rem;
+
+      &::before {
+        left: calc(0px - var(--default-padding) * 1.75);
+        height: calc(var(--default-padding) * 0.5);
+        width: calc(var(--default-padding) * 0.5);
+      }
+    }
+  }
+
   &__content {
     margin-bottom: calc(var(--default-padding));
   }
   &__title {
     margin: 0;
+    line-height: 1.4;
   }
   &__description {
+    line-height: 1.6;
   }
 
   &__footer {
@@ -45,6 +85,7 @@
     &_data-container {
       display: flex;
       align-items: center;
+      line-height: 1.4;
 
       &:first-child {
         margin-right: var(--default-padding);
