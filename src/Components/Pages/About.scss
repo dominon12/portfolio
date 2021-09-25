@@ -2,18 +2,24 @@ $first-media: 1234px;
 $second-media: 1048px;
 $third-media: 852px;
 $fourth-media: 592px;
-$fifth-media: 425px;
+$mobile-devices: 425px;
 
 .about {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 100%;
+  min-height: calc(100vh - var(--default-padding) * 2);
 
   @media (max-width: $third-media) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: $mobile-devices) {
+    min-height: calc(
+      100vh - var(--default-padding) * 2 - var(--default-padding) * 4
+    );
   }
 
   &__content {

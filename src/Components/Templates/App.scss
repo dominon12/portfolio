@@ -11,4 +11,12 @@ $mobile-devices: 425px;
 .content-wrapper {
   padding: var(--default-padding);
   flex: 1;
+  overflow-y: scroll;
+  max-height: calc(100vh - var(--default-padding) * 2);
+
+  @media (max-width: $mobile-devices) {
+    max-height: calc(
+      100vh - var(--default-padding) * 2 - var(--default-padding) * 4
+    );
+  }
 }
