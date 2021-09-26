@@ -5,14 +5,16 @@ $mobile-devices: 425px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100vh;
+  overflow-y: scroll;
 
   @media (max-width: $mobile-devices) {
+    height: calc(100vh - 4rem);
     position: fixed;
     z-index: 100;
     border-right: none;
     background-color: var(--card-background-color);
     align-items: flex-start;
-    min-height: 100vh;
     transform: translate(-100%, 4rem);
     transition: var(--transition-off);
 

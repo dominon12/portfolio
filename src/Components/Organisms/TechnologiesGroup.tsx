@@ -29,8 +29,8 @@ const TechnologiesGroup: React.FC<Props> = (props) => {
         <thead className="technologies-group__table_head">
           <tr>
             <th></th>
-            {progressLevelNames.map((scaleName) => (
-              <th>
+            {progressLevelNames.map((scaleName, index) => (
+              <th key={index}>
                 <div className="technologies-group__scale-name">
                   {scaleName}
                 </div>
@@ -42,14 +42,17 @@ const TechnologiesGroup: React.FC<Props> = (props) => {
           {props.technologiesGroup.technologies
             .sort((a, b) => b.level - a.level)
             .map((technology) => (
-              <tr>
+              <tr key={technology.id}>
                 <td>
                   <div className="technologies-group__technology-name">
                     {technology.name}
                   </div>
                 </td>
                 {progressLevelNames.map((_, index) => (
-                  <td className="technologies-group__technology-level-cell">
+                  <td
+                    key={index}
+                    className="technologies-group__technology-level-cell"
+                  >
                     {technology.level > index && (
                       <div className="technologies-group__filled-cell">
                         <AiOutlineFileDone className="technologies-group__filled-cell_icon" />

@@ -9,6 +9,10 @@
 # production
 /build
 /src/Services/CredentialsService.ts
+.firebaserc
+firebase.json
+.firebase/
+.github/
 
 # misc
 .DS_Store

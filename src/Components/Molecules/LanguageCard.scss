@@ -28,11 +28,11 @@ $fourth-media: 374px;
     transition: var(--transition-on);
     position: absolute;
     top: calc(100% - 5rem);
-    left: 0;
+    left: -0.25rem;
+    width: calc(100% - 1.5rem);
+    height: calc(100% - 1.5rem);
     padding: 1rem;
     background-color: var(--card-background-color);
-    width: calc(100% - 2rem);
-    height: calc(100% - 2rem);
 
     @media (max-width: $first-media) {
       top: calc(100% - 4rem);

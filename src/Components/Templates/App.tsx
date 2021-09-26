@@ -20,10 +20,13 @@ import NotFound from "../Pages/NotFound";
 // contexts
 import SideBarProvider from "../../Contexts/SideBarContext";
 import ThemeProvider from "../../Contexts/ThemeContext";
+import ScrollToTop from "../Services/ScrollToTop";
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
+
       <main className="main">
         <SideBarProvider>
           <ThemeProvider>
@@ -32,7 +35,7 @@ const App: React.FC = () => {
           </ThemeProvider>
         </SideBarProvider>
 
-        <section className="content-wrapper">
+        <section className="content-wrapper" id="scrollContainer">
           <Switch>
             <Route path="/" component={HomeRedirect} exact />
             <Route path="/about" component={About} exact />

@@ -83,6 +83,7 @@ $first-media: 1024px;
     border-radius: var(--default-border-radius);
 
     @media (max-width: $first-media) {
+      color: var(--headline-color);
       width: 100%;
       background-color: unset;
       position: absolute;
