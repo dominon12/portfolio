@@ -6,66 +6,24 @@ Main idea is to make boring static portfolio  be interactive and more informativ
 
 Here you can find my plans for the web app’s future look
 
-Tabs which will be found on the left (top on mobile devices) part of the window will present different portfolio’s parts 
+Tabs which will be found on the left part of the window will present different portfolio’s parts 
+
+## Animations 
+
+### NavBar
+Shake an icon on NavTab hover or focus
+Background color changes for a few millisecond on NavTabs which are located between the one which is currently active and the next target. 
+
+### Routing
+Colored waterfall from top of the page to the bottom on pathname changes 
 
 ## Tabs list and their description
 
-### About 
+### Books 
 
-*URL /about*
+*URL /books*
 
-**On the left part**
-Hi there, my name is Max 👋 
-
-Description from GitHub 
-Description of an idea of this website
-
-Begin button
-
-**On the right part**
-My profile picture 
-
-### Technologies
-
-*URL /technologies*
-
-A lot of stuff on the page
-
-Item is a colored circle which radius depends on the depth of knowing the technology with name of the technology on it
-
-**On click** opens a modal window with technology’s name and description of my experience with it
-
-### Experience
-
-*URL /experience*
-
-A time scale with different stages of my career life like here: https://usefulcharts.com/products/timeline-of-world-history
-
-### Projects 
-
-*URL /projects*
-
-A grid like in e-commerce web sites with cards containing info about projects I’ve made and participated in
-
-**On click** opens modal window containing comprehensive description (use dl tag https://benmyers.dev/blog/on-the-dl/)
-
-**Features**
-- filter by language, technology, app type
-- sort by date created, subjective difficulty level
-
-### Contact
-
-*URL /contact*
-
-Page with links on my social networks, gmail, messengers (something like linktree)
-
-### Languages
-
-*URL /languages*
-
-Page with cards containing info about languages I speak
-
-**On click** opens a modal window with an info about how I did learn this language, my certificate, practical experience 
+Interactive book shelve with books I’ve read. Books lie on the shelves titled with an angle like it would be on a real shelve. When u hover over a book, books to the right will change angle to 90. 
 
 ### Hobbies 
 
@@ -79,12 +37,38 @@ Don’t know yet how will be better to present it
 
 *URL /donate*
 
-What if?)
+Why not?
 
-Donations will be accepted in **crypto currencies, PayPal**
+Donations will be accepted in **crypto currencies, PayPal, buymeacoffee**
 
 ### Download 
 
 *URL /download*
  
 Page where static cv will be generated based on info used to generate other site’s pages
+
+### Contact
+
+*URL /contact*
+
+Page with links on my social networks, gmail, messengers (something like linktree) and possibility to submit a contact form. 
+
+### About ✅
+
+*URL /about*
+
+### Technologies ✅
+
+*URL /technologies*
+
+### Experience ✅
+
+*URL /experience*
+
+### Projects ✅
+
+*URL /projects*
+
+### Languages ✅
+
+*URL /languages*

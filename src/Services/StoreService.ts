@@ -285,6 +285,14 @@ const portfolioData: Portfolio = {
   ],
   experience: [
     {
+      id: 14,
+      title: "Was born",
+      description: "",
+      place: "Kaliningrad, Russia",
+      date: new Date("05-27-1999"),
+      isRelevant: true,
+    },
+    {
       id: 1,
       title: "Finished high school",
       description:
