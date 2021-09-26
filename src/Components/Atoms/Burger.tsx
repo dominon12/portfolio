@@ -4,7 +4,9 @@ import { SideBarContext } from "../../Contexts/SideBarContext";
 import "./Burger.scss";
 
 const Burger: React.FC = () => {
-  const { visible, toggleVisible } = useContext(SideBarContext);
+  const { visible, setVisible } = useContext(SideBarContext);
+
+  const toggleVisible = () => setVisible((prev) => !prev);
 
   return (
     <div

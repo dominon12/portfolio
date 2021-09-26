@@ -21,7 +21,7 @@ const portfolioData: Portfolio = {
       shortDescription:
         "Telegram bot which sends a message when price for selected assets meets target price set by user",
       description: lorem,
-      dateStarted: new Date("07-13-2020"),
+      dateStarted: new Date("2020/07/13"),
       type: "Bot",
       technologies: {
         backend: ["Python3", "PyTelegramBotAPI", "MongoDB", "REST API"],
@@ -37,7 +37,7 @@ const portfolioData: Portfolio = {
       image: "https://pokyzashop.com/assets/img/favicons/logo.png",
       shortDescription: "E-commerce web app for dropshipping project",
       description: lorem,
-      dateStarted: new Date("01-26-2021"),
+      dateStarted: new Date("2021/01/26"),
       type: "E-commerce",
       technologies: {
         backend: [
@@ -67,7 +67,7 @@ const portfolioData: Portfolio = {
       image: "https://cartel-hookah.com/static/media/logo.de6858c6.png",
       shortDescription: 'E-commerce web site for company "Cartel Hookah"',
       description: lorem,
-      dateStarted: new Date("05-05-2021"),
+      dateStarted: new Date("2021/05/05"),
       type: "E-commerce",
       technologies: {
         backend: [
@@ -90,7 +90,7 @@ const portfolioData: Portfolio = {
       image: "https://smokelaboratory.eu/static/img/favicons/logo.png",
       shortDescription: 'E-commerce web site for company "Smoke Laboratory"',
       description: lorem,
-      dateStarted: new Date("12-20-2020"),
+      dateStarted: new Date("2020/12/20"),
       type: "E-commerce",
       technologies: {
         backend: [
@@ -114,7 +114,7 @@ const portfolioData: Portfolio = {
       shortDescription:
         "Visualization of the operation of some sorting algorithms. A project made in two evenings.",
       description: lorem,
-      dateStarted: new Date("03-25-2021"),
+      dateStarted: new Date("2021/03/25"),
       type: "Web app",
       technologies: {
         backend: [],
@@ -132,7 +132,7 @@ const portfolioData: Portfolio = {
       shortDescription:
         'Landing page with simple animations for outdoor children\'s playground "Rio"',
       description: lorem,
-      dateStarted: new Date("12-04-2020"),
+      dateStarted: new Date("2020/12/04"),
       type: "Landing",
       technologies: {
         backend: ["Python3", "Django", "PostgreSQL", "Celery", "RabbitMQ"],
@@ -149,7 +149,7 @@ const portfolioData: Portfolio = {
       shortDescription:
         "Website for the Children's Department of Neurology and Reflexology",
       description: lorem,
-      dateStarted: new Date("12-09-2020"),
+      dateStarted: new Date("2020/12/09"),
       type: "Web app",
       technologies: {
         backend: ["Python3", "Django", "PostgreSQL", "Celery", "RabbitMQ"],
@@ -289,7 +289,7 @@ const portfolioData: Portfolio = {
       title: "Was born",
       description: "",
       place: "Kaliningrad, Russia",
-      date: new Date("05-27-1999"),
+      date: new Date("1999/05/27"),
       isRelevant: true,
     },
     {
@@ -298,7 +298,7 @@ const portfolioData: Portfolio = {
       description:
         "Information technology class with an emphasis on physics, mathematics and computer science.",
       place: "Lyceum №49, Kaliningrad, Russia",
-      date: new Date("05-31-2018"),
+      date: new Date("2018/05/31"),
       isRelevant: true,
     },
     {
@@ -306,7 +306,7 @@ const portfolioData: Portfolio = {
       title: "Obtained driver's license",
       description: "Passed all the stages in one try",
       place: "Kaliningrad, Russia",
-      date: new Date("07-15-2018"),
+      date: new Date("2018/07/15"),
       isRelevant: false,
     },
     {
@@ -315,7 +315,7 @@ const portfolioData: Portfolio = {
       description:
         "In the direction of Enterprise Management. Studying in Polish.",
       place: "Gdansk, Poland",
-      date: new Date("10-01-2018"),
+      date: new Date("2018/10/01"),
       isRelevant: true,
     },
     {
@@ -323,7 +323,7 @@ const portfolioData: Portfolio = {
       title: "First job",
       description: "As a salesman and cashier. Worked there for 1 month.",
       place: '"Dobry Sklep", Gdansk, Poland',
-      date: new Date("03-10-2019"),
+      date: new Date("2019/03/10"),
       isRelevant: false,
     },
     {
@@ -332,7 +332,7 @@ const portfolioData: Portfolio = {
       description:
         'Alimentary shop "Magnat". Managed a team of 10 people. Became a bankrupt 1 year later.',
       place: "Kaliningrad, Russia",
-      date: new Date("06-20-2019"),
+      date: new Date("2019/06/20"),
       isRelevant: false,
     },
     {
@@ -341,7 +341,7 @@ const portfolioData: Portfolio = {
       description:
         'Second business. In collaboration with a contact zoo "Ara park". Sold 1 year later.',
       place: "Kaliningrad, Russia",
-      date: new Date("09-10-2019"),
+      date: new Date("2019/09/10"),
       isRelevant: false,
     },
     {
@@ -350,7 +350,7 @@ const portfolioData: Portfolio = {
       description:
         'Worked as a courier for 4 month. Could have been promoted to a "Team leader", but went to Glovo.',
       place: "Gdansk, Poland",
-      date: new Date("11-10-2019"),
+      date: new Date("2019/11/10"),
       isRelevant: false,
     },
     {
@@ -358,7 +358,7 @@ const portfolioData: Portfolio = {
       title: "Started learning programming",
       description: "From Python3 language.",
       place: "Gdansk, Poland",
-      date: new Date("02-10-2020"),
+      date: new Date("2020/02/10"),
       isRelevant: true,
     },
     {
@@ -366,7 +366,7 @@ const portfolioData: Portfolio = {
       title: "Glovo",
       description: "Worked 5 month until left Poland.",
       place: "Gdansk, Poland",
-      date: new Date("03-01-2020"),
+      date: new Date("2020/03/01"),
       isRelevant: false,
     },
     {
@@ -375,7 +375,7 @@ const portfolioData: Portfolio = {
       description:
         'Defended my bachelor\'s degree on the topic "The influence of management style on employee motivation".',
       place: "Gdansk, Poland",
-      date: new Date("07-10-2020"),
+      date: new Date("2020/07/10"),
       isRelevant: false,
     },
     {
@@ -384,7 +384,7 @@ const portfolioData: Portfolio = {
       description:
         "And moved to Spain realizing the dream of living in a country with a pleasant climate.",
       place: "Valencia, Spain",
-      date: new Date("08-10-2020"),
+      date: new Date("2020/08/10"),
       isRelevant: false,
     },
     {
@@ -393,7 +393,7 @@ const portfolioData: Portfolio = {
       description:
         'E-commerce website for "Smoke Laboratory" made with Django.',
       place: "Valencia, Spain",
-      date: new Date("12-16-2020"),
+      date: new Date("2020/12/16"),
       isRelevant: true,
     },
     {
@@ -401,7 +401,7 @@ const portfolioData: Portfolio = {
       title: "Obtained DELE B2 diploma (Spanish)",
       description: "After finishing 2 month long preparation course.",
       place: "Valencia, Spain",
-      date: new Date("07-14-2021"),
+      date: new Date("2021/07/14"),
       isRelevant: false,
     },
     {
@@ -410,7 +410,7 @@ const portfolioData: Portfolio = {
       description:
         'In the direction of "Web applications development". Studying in Spanish.',
       place: "Valencia, Spain",
-      date: new Date("09-20-2021"),
+      date: new Date("2021/09/20"),
       isRelevant: true,
     },
   ],

@@ -5,7 +5,6 @@ import "./App.scss";
 // components
 import SideBar from "../Organisms/SideBar";
 import Header from "../Organisms/Header";
-import HomeRedirect from "../Services/HomeRedirect";
 // pages
 import About from "../Pages/About";
 import Technologies from "../Pages/Technologies";
@@ -17,9 +16,8 @@ import Hobbies from "../Pages/Hobbies";
 import Donate from "../Pages/Donate";
 import Download from "../Pages/Download";
 import NotFound from "../Pages/NotFound";
-// contexts
-import SideBarProvider from "../../Contexts/SideBarContext";
-import ThemeProvider from "../../Contexts/ThemeContext";
+// services
+import HomeRedirect from "../Services/HomeRedirect";
 import ScrollToTop from "../Services/ScrollToTop";
 
 const App: React.FC = () => {
@@ -28,12 +26,8 @@ const App: React.FC = () => {
       <ScrollToTop />
 
       <main className="main">
-        <SideBarProvider>
-          <ThemeProvider>
-            <Header />
-            <SideBar />
-          </ThemeProvider>
-        </SideBarProvider>
+        <Header />
+        <SideBar />
 
         <section className="content-wrapper" id="scrollContainer">
           <Switch>

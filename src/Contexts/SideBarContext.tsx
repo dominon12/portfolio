@@ -2,12 +2,12 @@ import React, { createContext, useState } from "react";
 
 export interface SideBarContextState {
   visible: boolean;
-  toggleVisible: () => void;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const contextDefaultValues: SideBarContextState = {
   visible: false,
-  toggleVisible: () => {},
+  setVisible: () => {},
 };
 
 export const SideBarContext =
@@ -16,13 +16,11 @@ export const SideBarContext =
 const SideBarProvider: React.FC = (props) => {
   const [visible, setVisible] = useState<boolean>(contextDefaultValues.visible);
 
-  const toggleVisible = () => setVisible((prev) => !prev);
-
   return (
     <SideBarContext.Provider
       value={{
         visible,
-        toggleVisible,
+        setVisible,
       }}
     >
       {props.children}

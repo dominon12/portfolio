@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 // icons
 import { IoAccessibility, IoLanguage } from "react-icons/io5";
 import { AiFillApi } from "react-icons/ai";
@@ -12,9 +12,36 @@ import NavTab from "../Atoms/NavTab";
 import { Tab } from "../../Types/Types";
 import { SideBarContext } from "../../Contexts/SideBarContext";
 import ThemeSwitch from "../Atoms/ThemeSwitch";
+import { useLocation } from "react-router";
 
 const SideBar: React.FC = () => {
-  const { visible } = useContext(SideBarContext);
+  const { pathname } = useLocation();
+  const { visible, setVisible } = useContext(SideBarContext);
+
+  const asideRef = useRef<any>(null);
+
+  useEffect(() => {
+    const headerElement = document.getElementById("header");
+
+    const handleClickOutside = (event: any) => {
+      if (
+        asideRef.current &&
+        !asideRef.current.contains(event.target) &&
+        !headerElement?.contains(event.target)
+      ) {
+        setVisible(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [asideRef]);
+
+  useEffect(() => {
+    setVisible(false);
+  }, [pathname]);
 
   const TABS: Tab[] = [
     {
@@ -92,7 +119,10 @@ const SideBar: React.FC = () => {
   ];
 
   return (
-    <aside className={`aside ${visible ? "active" : "inactive"}`}>
+    <aside
+      ref={asideRef}
+      className={`aside ${visible ? "active" : "inactive"}`}
+    >
       <div className="aside__content">
         {TABS.sort((a, b) => a.orderNumber - b.orderNumber).map((tab) => (
           <NavTab key={tab.id} tabData={tab} />
