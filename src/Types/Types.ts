@@ -7,7 +7,7 @@ PORTFOLIO
 export interface Portfolio {
   about: About;
   projects: Project[];
-  technologies: TechnologiesGroup[];
+  skills: SkillsGroup[];
   experience: CareerEvent[];
   languages: Language[];
 }
@@ -38,13 +38,13 @@ export interface ProjectTechnologies {
   devops: string[];
 }
 
-export interface TechnologiesGroup {
+export interface SkillsGroup {
   id: number;
   name: string;
-  technologies: Technology[];
+  skills: Skill[];
 }
 
-export interface Technology {
+export interface Skill {
   id: number;
   name: string;
   level: 1 | 2 | 3 | 4 | 5;

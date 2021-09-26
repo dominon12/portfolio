@@ -168,11 +168,11 @@ const portfolioData: Portfolio = {
       implementationTime: 0,
     },
   ],
-  technologies: [
+  skills: [
     {
       id: 1,
       name: "Front-end",
-      technologies: [
+      skills: [
         {
           id: 1,
           name: "JavaScript",
@@ -218,7 +218,7 @@ const portfolioData: Portfolio = {
     {
       id: 2,
       name: "Back-end",
-      technologies: [
+      skills: [
         {
           id: 6,
           name: "Python3",
@@ -254,7 +254,7 @@ const portfolioData: Portfolio = {
     {
       id: 3,
       name: "Other",
-      technologies: [
+      skills: [
         {
           id: 11,
           name: "Git",

@@ -3,7 +3,7 @@ import {
   CareerEvent,
   Language,
   Project,
-  TechnologiesGroup,
+  SkillsGroup,
 } from "./../Types/Types";
 import portfolioData from "./StoreService";
 
@@ -15,8 +15,8 @@ export function getProjects(): Project[] {
   return portfolioData.projects;
 }
 
-export function getTechnologies(): TechnologiesGroup[] {
-  return portfolioData.technologies;
+export function getSkills(): SkillsGroup[] {
+  return portfolioData.skills;
 }
 
 export function getExperience(): CareerEvent[] {

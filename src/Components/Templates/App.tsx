@@ -7,7 +7,7 @@ import SideBar from "../Organisms/SideBar";
 import Header from "../Organisms/Header";
 // pages
 import About from "../Pages/About";
-import Technologies from "../Pages/Technologies";
+import Skills from "../Pages/Skills";
 import Experience from "../Pages/Experience";
 import Projects from "../Pages/Projects";
 import Contact from "../Pages/Contact";
@@ -33,7 +33,7 @@ const App: React.FC = () => {
           <Switch>
             <Route path="/" component={HomeRedirect} exact />
             <Route path="/about" component={About} exact />
-            <Route path="/technologies" component={Technologies} exact />
+            <Route path="/skills" component={Skills} exact />
             <Route path="/experience" component={Experience} exact />
             <Route path="/projects" component={Projects} exact />
             <Route path="/contact" component={Contact} exact />

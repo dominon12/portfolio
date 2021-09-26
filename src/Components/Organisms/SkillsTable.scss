@@ -1,6 +1,6 @@
 $first-media: 1024px;
 
-.technologies-group {
+.skills-table {
   &__title {
     text-align: left;
   }
@@ -8,68 +8,68 @@ $first-media: 1024px;
   &__table {
     width: 100%;
     border-collapse: collapse;
+  }
 
-    &_caption {
-      @media (max-width: $first-media) {
-        margin-bottom: 2rem;
-      }
+  &__caption {
+    @media (max-width: $first-media) {
+      margin-bottom: 2rem;
     }
+  }
 
-    &_head {
-      th {
-        position: relative;
+  &__head {
+    th {
+      position: relative;
 
-        &:nth-child(3),
-        &:nth-child(4),
-        &:nth-child(5) {
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5) {
+        @media (max-width: $first-media) {
+          font-size: 0;
+        }
+
+        .skills-table__scale-name {
           @media (max-width: $first-media) {
             font-size: 0;
+            background-color: unset;
+            padding: 0;
           }
+        }
+      }
+    }
+  }
 
-          .technologies-group__scale-name {
-            @media (max-width: $first-media) {
-              font-size: 0;
-              background-color: unset;
-              padding: 0;
-            }
+  &__body {
+    tr {
+      position: relative;
+      transition: var(--transition-off);
+
+      &:hover,
+      &:focus {
+        transition: var(--transition-on);
+        background-color: var(--card-background-color);
+
+        @media (max-width: $first-media) {
+          background: none;
+        }
+
+        &::after {
+          @media (max-width: $first-media) {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -1rem;
+            z-index: -1;
+            height: 100%;
+            width: calc(100% + 2rem);
+            background-color: var(--card-background-color);
           }
         }
       }
     }
 
-    &_body {
-      tr {
-        position: relative;
-        transition: var(--transition-off);
-
-        &:hover,
-        &:focus {
-          transition: var(--transition-on);
-          background-color: var(--card-background-color);
-
-          @media (max-width: $first-media) {
-            background: none;
-          }
-
-          &::after {
-            @media (max-width: $first-media) {
-              content: "";
-              position: absolute;
-              top: 0;
-              left: -1rem;
-              z-index: -1;
-              height: 100%;
-              width: calc(100% + 2rem);
-              background-color: var(--card-background-color);
-            }
-          }
-        }
-      }
-
-      td {
-        @media (max-width: $first-media) {
-          width: calc(100% / 6); // 6 columns
-        }
+    td {
+      @media (max-width: $first-media) {
+        width: calc(100% / 6); // 6 columns
       }
     }
   }
@@ -94,7 +94,7 @@ $first-media: 1024px;
     }
   }
 
-  &__technology-name {
+  &__skill-name {
     font-weight: 700;
     width: 60%;
     padding: 1rem;
@@ -105,7 +105,7 @@ $first-media: 1024px;
     }
   }
 
-  &__technology-level-cell {
+  &__skill-level-cell {
     border-left: 1px solid var(--color-details);
 
     @media (max-width: $first-media) {

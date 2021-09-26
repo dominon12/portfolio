@@ -62,9 +62,9 @@ const SideBar: React.FC = () => {
     },
     {
       id: 2,
-      link: "/technologies",
+      link: "/skills",
       icon: AiFillApi,
-      title: "Technologies",
+      title: "Skills",
       isActive: false,
       orderNumber: 3,
     },
