@@ -17,6 +17,7 @@ $mobile-devices: 425px;
     align-items: flex-start;
     transform: translate(-100%, 4rem);
     transition: var(--transition-off);
+    border-right: 2px solid var(--color-details);
 
     &.active {
       transition: var(--transition-on);

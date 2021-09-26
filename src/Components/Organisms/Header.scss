@@ -10,6 +10,7 @@ $mobile-devices: 425px;
     background-color: var(--card-background-color);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 101;
+    border-bottom: 2px solid var(--color-details);
   }
 }
