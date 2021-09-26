@@ -1,11 +1,11 @@
 .form-field-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--default-padding);
+  margin-bottom: 1rem;
 }
 
 .form-field {
-  padding: var(--default-padding);
+  padding: 1rem;
   font-size: 1rem;
   border: none;
   border-bottom: 2px solid var(--card-background-color);

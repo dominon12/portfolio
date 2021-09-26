@@ -6,42 +6,30 @@ $fourth-media: 374px;
 .languages-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  // 100vh - title's size - title's margin
-  grid-template-rows: repeat(
-    2,
-    calc(100vh / 2 - var(--default-padding) * 3.6 - var(--default-padding))
-  );
-  gap: var(--default-padding);
+  // 100vh - title's size - title's margin - header's height
+  grid-template-rows: repeat(2, calc(100vh / 2 - 3.6rem - 1rem));
+  gap: 1rem;
 
   @media (max-width: $first-media) {
-    grid-template-rows: repeat(
-      2,
-      calc(100vh / 2 - var(--default-padding) * 3.25 - var(--default-padding))
-    );
+    grid-template-rows: repeat(2, calc(100vh / 2 - 3.25rem - 1rem));
   }
   @media (max-width: $second-media) {
     grid-template-rows: repeat(
       2,
-      calc(100vh / 2 - var(--default-padding) * 2.75 - var(--default-padding))
+      calc(100vh / 2 - 2.75rem - 1rem)
     );
   }
   @media (max-width: $mobile-devices) {
     grid-template-rows: repeat(
       2,
-      calc(
-        100vh / 2 - var(--default-padding) * 2.75 - var(--default-padding) -
-          var(--default-padding) * 2
-      )
+      calc(100vh / 2 - 2.75rem - 1rem - 2rem)
     );
   }
   @media (max-width: $fourth-media) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(
       4,
-      calc(
-        100vh / 2 - var(--default-padding) * 2.75 - var(--default-padding) -
-          var(--default-padding) * 2
-      )
+      calc(100vh / 2 - 2.75rem - 1rem - 2rem)
     );
   }
 }

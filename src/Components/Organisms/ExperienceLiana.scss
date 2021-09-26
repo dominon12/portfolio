@@ -2,21 +2,21 @@ $first-media: 609px;
 $second-media: 374px;
 
 .experience-liana {
-  border-left: var(--default-padding) solid var(--color-details);
+  border-left: 1rem solid var(--color-details);
   border-radius: var(--default-border-radius);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: calc(var(--default-padding) * 2);
-  padding-left: calc(var(--default-padding) * 3);
+  margin-left: 2rem;
+  padding-left: 3rem;
 
   @media (max-width: $first-media) {
-    margin-left: var(--default-padding);
-    padding-left: calc(var(--default-padding) * 2);
+    margin-left: 1rem;
+    padding-left: 2rem;
   }
   @media (max-width: $second-media) {
-    margin-left: calc(var(--default-padding) * 0.75);
-    padding-left: calc(var(--default-padding) * 1.75);
-    border-width: calc(var(--default-padding) / 2);
+    margin-left: 0.75rem;
+    padding-left: 1.75rem;
+    border-width: 0.5rem;
   }
 }

@@ -8,7 +8,7 @@ $mobile-devices: 425px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  min-height: calc(100vh - var(--default-padding) * 2);
+  min-height: calc(100vh - 2rem);
 
   @media (max-width: $third-media) {
     flex-direction: column;
@@ -18,7 +18,7 @@ $mobile-devices: 425px;
 
   @media (max-width: $mobile-devices) {
     min-height: calc(
-      100vh - var(--default-padding) * 2 - var(--default-padding) * 4
+      100vh - 2rem - 4rem
     );
   }
 

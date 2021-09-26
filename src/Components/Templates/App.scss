@@ -9,14 +9,14 @@ $mobile-devices: 425px;
 }
 
 .content-wrapper {
-  padding: var(--default-padding);
+  padding: 1rem;
   flex: 1;
   overflow-y: scroll;
-  height: calc(100vh - var(--default-padding) * 2);
+  height: calc(100vh - 2rem);
 
   @media (max-width: $mobile-devices) {
     height: calc(
-      100vh - var(--default-padding) * 2 - var(--default-padding) * 4
+      100vh - 2rem - 4rem
     );
   }
 }

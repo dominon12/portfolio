@@ -27,24 +27,24 @@ $fourth-media: 374px;
   &__content {
     transition: var(--transition-on);
     position: absolute;
-    top: calc(100% - var(--default-padding) * 5);
+    top: calc(100% - 5rem);
     left: 0;
-    padding: var(--default-padding);
+    padding: 1rem;
     background-color: var(--card-background-color);
-    width: calc(100% - var(--default-padding) * 2);
-    height: calc(100% - var(--default-padding) * 2);
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
 
     @media (max-width: $first-media) {
-      top: calc(100% - var(--default-padding) * 4);
+      top: calc(100% - 4rem);
     }
     @media (max-width: $second-media) {
-      top: calc(100% - var(--default-padding) * 3.5);
+      top: calc(100% - 3.5rem);
     }
     @media (max-width: $third-media) {
-      top: calc(100% - var(--default-padding) * 4);
+      top: calc(100% - 4rem);
     }
     @media (max-width: $fourth-media) {
-      top: calc(100% - var(--default-padding) * 3.5);
+      top: calc(100% - 3.5rem);
     }
 
     &_name {

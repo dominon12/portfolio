@@ -3,8 +3,8 @@ $second-media: 374px;
 
 .career-event {
   background-color: var(--card-background-color);
-  margin: var(--default-padding) 0;
-  padding: var(--default-padding);
+  margin: 1rem 0;
+  padding: 1rem;
   border-radius: var(--default-border-radius);
   position: relative;
 
@@ -12,61 +12,61 @@ $second-media: 374px;
     content: "";
     position: absolute;
     top: 50%;
-    left: calc(0px - var(--default-padding) * 3.5);
+    left: -3.5rem;
     transform: translate(-50%, -50%);
-    height: calc(var(--default-padding) * 3.5);
-    width: calc(var(--default-padding) * 3.5);
-    border: calc(var(--default-padding) / 2) solid var(--color-details);
+    height: 3.5rem;
+    width: 3.5rem;
+    border: 0.5rem solid var(--color-details);
     background-color: var(--doc-background-color);
     border-radius: 50%;
   }
 
   &.irrelevant {
-    margin-left: calc(var(--default-padding) * 4);
+    margin-left: 4rem;
 
     &::before {
-      height: calc(var(--default-padding) * 2);
-      width: calc(var(--default-padding) * 2);
+      height: 2rem;
+      width: 2rem;
     }
   }
 
   @media (max-width: $first-media) {
     &::before {
-      height: calc(var(--default-padding) * 2.5);
-      width: calc(var(--default-padding) * 2.5);
-      left: calc(0px - var(--default-padding) * 2.5);
-      border-width: calc(var(--default-padding) / 4);
+      height: 2.5rem;
+      width: 2.5rem;
+      left: -2.5rem;
+      border-width: 0.25rem;
     }
 
     &.irrelevant {
-      margin-left: calc(var(--default-padding) * 3);
+      margin-left: 3rem;
 
       &::before {
-        height: calc(var(--default-padding) * 1.5);
-        width: calc(var(--default-padding) * 1.5);
+        height: 1.5rem;
+        width: 1.5rem;
       }
     }
   }
   @media (max-width: $second-media) {
     &::before {
-      height: calc(var(--default-padding) * 1.5);
-      width: calc(var(--default-padding) * 1.5);
-      left: calc(0px - var(--default-padding) * 2);
+      height: 1.5rem;
+      width: 1.5rem;
+      left: -2rem;
     }
 
     &.irrelevant {
       margin-left: 1.75rem;
 
       &::before {
-        left: calc(0px - var(--default-padding) * 1.75);
-        height: calc(var(--default-padding) * 0.5);
-        width: calc(var(--default-padding) * 0.5);
+        left: -1.75rem;
+        height: 0.5rem;
+        width: 0.5rem;
       }
     }
   }
 
   &__content {
-    margin-bottom: calc(var(--default-padding));
+    margin-bottom: 1rem;
   }
   &__title {
     margin: 0;
@@ -88,11 +88,11 @@ $second-media: 374px;
       line-height: 1.4;
 
       &:first-child {
-        margin-right: var(--default-padding);
+        margin-right: 1rem;
       }
     }
     &_icon {
-      margin-right: calc(var(--default-padding) / 2);
+      margin-right: 0.5rem;
     }
   }
 }

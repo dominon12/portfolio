@@ -3,7 +3,7 @@
   border: none;
 
   &.primary {
-    padding: 1.5rem calc(var(--default-padding) * 4);
+    padding: 1.5rem 4rem;
     background-color: var(--color-details);
     color: var(--button-text);
     font-weight: 700;

@@ -11,7 +11,7 @@ $first-media: 1024px;
 
     &_caption {
       @media (max-width: $first-media) {
-        margin-bottom: calc(var(--default-padding) * 2);
+        margin-bottom: 2rem;
       }
     }
 
@@ -59,7 +59,7 @@ $first-media: 1024px;
               left: -1rem;
               z-index: -1;
               height: 100%;
-              width: calc(100% + var(--default-padding) * 2);
+              width: calc(100% + 2rem);
               background-color: var(--card-background-color);
             }
           }
@@ -77,7 +77,7 @@ $first-media: 1024px;
   &__scale-name {
     text-align: left;
     width: 60%;
-    padding: var(--default-padding);
+    padding: 1rem;
     background-color: var(--color-details);
     color: var(--button-text);
     border-radius: var(--default-border-radius);
@@ -89,14 +89,14 @@ $first-media: 1024px;
       top: -2.5rem;
       left: 0;
       text-align: center;
-      padding: var(--default-padding) 0;
+      padding: 1rem 0;
     }
   }
 
   &__technology-name {
     font-weight: 700;
     width: 60%;
-    padding: var(--default-padding);
+    padding: 1rem;
     color: var(--headline-color);
 
     @media (max-width: $first-media) {
@@ -116,10 +116,10 @@ $first-media: 1024px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--default-padding);
+    padding: 1rem;
 
     @media (max-width: $first-media) {
-      padding: calc(var(--default-padding) / 2);
+      padding: 0.5rem;
       background-color: var(--color-details);
     }
 

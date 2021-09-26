@@ -13,7 +13,7 @@ $second-media: 662px;
     @media (max-width: $first-media) {
       width: 100%;
       order: -1;
-      margin-top: calc(1.5rem - var(--default-padding));
+      margin-top: 0.5rem;
       margin-bottom: 1.5rem;
     }
   }
