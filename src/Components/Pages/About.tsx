@@ -5,23 +5,25 @@ import Title from "../Atoms/Title";
 import Image from "../Atoms/Image";
 import Button from "../Atoms/Button";
 import { getAbout } from "../../Services/DataService";
-import { About as IAbout } from "../../Types/Types";
 import { useHistory } from "react-router";
+import InfoSection from "../Organisms/InfoSection";
 
 const About: React.FC = () => {
   const history = useHistory();
-  const aboutData: IAbout = getAbout();
+  const aboutData = getAbout();
 
   return (
-    <div className="about">
-      <div className="about__content">
-        <Title className="about__title">{aboutData?.title}</Title>
-        <p className="about__description">{aboutData?.description}</p>
-        <Button type="primary" onClick={() => history.push("/projects")}>
-          Begin
-        </Button>
-      </div>
-      <div className="about__image-wrapper">
+    <InfoSection
+      left={
+        <>
+          <Title className="about__title">{aboutData?.title}</Title>
+          <p className="about__description">{aboutData?.description}</p>
+          <Button type="primary" onClick={() => history.push("/projects")}>
+            Begin
+          </Button>
+        </>
+      }
+      right={
         <Image
           src={aboutData.image}
           alt="My profile picture"
@@ -29,8 +31,8 @@ const About: React.FC = () => {
           height="500"
           className="about__image"
         />
-      </div>
-    </div>
+      }
+    />
   );
 };
 
