@@ -1,0 +1,67 @@
+$first-media: 1234px;
+$second-media: 1048px;
+$third-media: 625px;
+$mobile-devices: 425px;
+$fourth-media: 374px;
+
+.language-card {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: var(--default-border-radius);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid var(--card-background-color);
+  border-bottom: 5px solid var(--color-details);
+  transition: var(--transition-off);
+
+  &:hover,
+  &:focus {
+    .language-card__content {
+      top: 0;
+      overflow-y: scroll;
+    }
+  }
+
+  &__content {
+    transition: var(--transition-on);
+    position: absolute;
+    top: calc(100% - var(--default-padding) * 5);
+    left: 0;
+    padding: var(--default-padding);
+    background-color: var(--card-background-color);
+    width: calc(100% - var(--default-padding) * 2);
+    height: calc(100% - var(--default-padding) * 2);
+
+    @media (max-width: $first-media) {
+      top: calc(100% - var(--default-padding) * 4);
+    }
+    @media (max-width: $second-media) {
+      top: calc(100% - var(--default-padding) * 3.5);
+    }
+    @media (max-width: $third-media) {
+      top: calc(100% - var(--default-padding) * 4);
+    }
+    @media (max-width: $fourth-media) {
+      top: calc(100% - var(--default-padding) * 3.5);
+    }
+
+    &_name {
+      margin: 0;
+
+      @media (max-width: $third-media) {
+        margin-bottom: 2rem;
+        font-size: 1rem;
+      }
+      @media (max-width: $fourth-media) {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+      }
+    }
+    &_learning-story {
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+  }
+}

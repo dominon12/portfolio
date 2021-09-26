@@ -1,11 +1,16 @@
 import React from "react";
 
-import './Languages.scss'
+import "./Languages.scss";
+import Title from "../Atoms/Title";
+import LanguagesGrid from "../Organisms/LanguagesGrid";
 
-interface Props {}
-
-const Languages: React.FC = (props: Props) => {
-  return <div>Languages</div>;
+const Languages: React.FC = () => {
+  return (
+    <div className="languages">
+      <Title className="languages__title">Languages I speak</Title>
+      <LanguagesGrid />
+    </div>
+  );
 };
 
 export default Languages;

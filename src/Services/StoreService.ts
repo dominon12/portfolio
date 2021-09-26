@@ -406,6 +406,40 @@ const portfolioData: Portfolio = {
       isRelevant: true,
     },
   ],
+  languages: [
+    {
+      id: 1,
+      name: "English",
+      code: "gb",
+      level: "B2",
+      learningStory:
+        "I learn english all my life. Can't say that I know grammar very well, but I can freely talk about any topic. I always search coding info in english, read technical documentation.",
+    },
+    {
+      id: 2,
+      name: "Russian",
+      code: "ru",
+      level: "Native",
+      learningStory:
+        "I'm russian native speaker with all the ensuing consequences",
+    },
+    {
+      id: 3,
+      name: "Polish",
+      code: "pl",
+      level: "C1",
+      learningStory:
+        "I was learning Polish for 1 year become coming to Poland for studying and then lived and studied there for 3 years. I have a lot of experience in speaking Polish because I was studying in this language in university and working on different jobs for about 1 year.",
+    },
+    {
+      id: 4,
+      name: "Spanish",
+      code: "es",
+      level: "C1",
+      learningStory:
+        'I started learning Spanish using mobile app called "Duolingo" and continued in school of spanish language in Valencia "Hispania". After about 1 year of studying I\'ve passed DELE B2 exam.',
+    },
+  ],
 };
 
 export default portfolioData;

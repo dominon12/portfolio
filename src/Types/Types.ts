@@ -9,6 +9,7 @@ export interface Portfolio {
   projects: Project[];
   technologies: TechnologiesGroup[];
   experience: CareerEvent[];
+  languages: Language[];
 }
 
 export interface About {
@@ -56,6 +57,14 @@ export interface CareerEvent {
   date: Date;
   place: string;
   isRelevant: boolean;
+}
+
+export interface Language {
+  id: number;
+  name: string;
+  code: string;
+  level: string;
+  learningStory: string;
 }
 
 /*

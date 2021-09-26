@@ -1,6 +1,7 @@
 import {
   About,
   CareerEvent,
+  Language,
   Project,
   TechnologiesGroup,
 } from "./../Types/Types";
@@ -20,4 +21,8 @@ export function getTechnologies(): TechnologiesGroup[] {
 
 export function getExperience(): CareerEvent[] {
   return portfolioData.experience;
+}
+
+export function getLanguages(): Language[] {
+  return portfolioData.languages;
 }
