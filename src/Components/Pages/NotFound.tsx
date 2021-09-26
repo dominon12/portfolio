@@ -8,9 +8,7 @@ import Title from "../Atoms/Title";
 import Button from "../Atoms/Button";
 import Image from "../Atoms/Image";
 
-interface Props {}
-
-const NotFound: React.FC = (props: Props) => {
+const NotFound: React.FC = () => {
   const history = useHistory();
 
   return (

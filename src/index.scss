@@ -27,6 +27,7 @@ body {
     --paragraph-color: #2a2a2a;
     --button-text: #fffffe;
     --color-details: #ff8e3c;
+    --color-disabled: rgba(255, 142, 60, 0.5);
   }
 
   &.dark {
@@ -37,6 +38,7 @@ body {
     --paragraph-color: #94a1b2;
     --button-text: #fffffe;
     --color-details: #7f5af0;
+    --color-disabled: rgba(127, 90, 240, 0.3);
   }
 
   background-color: var(--doc-background-color);

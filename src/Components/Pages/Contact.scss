@@ -1,0 +1,25 @@
+$first-media: 852px;
+$second-media: 554px;
+
+.contact {
+  &__title {
+  }
+  &__illustration {
+    width: 100%;
+    height: 50%;
+    object-fit: contain;
+
+    @media (max-width: $first-media) {
+      display: none;
+    }
+  }
+  &__form-container {
+    @media (max-width: $first-media) {
+      text-align: left;
+      width: 70%;
+    }
+    @media (max-width: $second-media) {
+      width: 100%;
+    }
+  }
+}

@@ -26,7 +26,7 @@
 
   &:not(:focus):not(:placeholder-shown).valid {
     // apply styles when (!focused && valid)
-    border-color: var(--card-background-color);
+    border-color: var(--color-details);
   }
 
   &.invalid {

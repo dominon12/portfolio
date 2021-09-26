@@ -9,6 +9,10 @@
     font-weight: 700;
     letter-spacing: 2px;
     border-radius: var(--default-border-radius);
+
+    &:disabled {
+      background-color: var(--color-disabled);
+    }
   }
 
   &.mini {
