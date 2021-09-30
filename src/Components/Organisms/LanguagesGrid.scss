@@ -1,7 +1,6 @@
 $first-media: 1234px;
 $second-media: 1048px;
-$mobile-devices: 425px;
-$fourth-media: 374px;
+$third-media: 630px;
 
 .languages-grid {
   display: grid;
@@ -14,22 +13,10 @@ $fourth-media: 374px;
     grid-template-rows: repeat(2, calc(100vh / 2 - 3.25rem - 1rem));
   }
   @media (max-width: $second-media) {
-    grid-template-rows: repeat(
-      2,
-      calc(100vh / 2 - 2.75rem - 1rem)
-    );
+    grid-template-rows: repeat(2, calc(100vh / 2 - 2.75rem - 1rem));
   }
-  @media (max-width: $mobile-devices) {
-    grid-template-rows: repeat(
-      2,
-      calc(100vh / 2 - 2.75rem - 1rem - 2rem)
-    );
-  }
-  @media (max-width: $fourth-media) {
+  @media (max-width: $third-media) {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(
-      4,
-      calc(100vh / 2 - 2.75rem - 1rem - 2rem)
-    );
+    grid-template-rows: repeat(4, calc(100vh / 2 - 2.75rem - 1rem - 2rem));
   }
 }

@@ -19,6 +19,7 @@ $first-media: 1024px;
   &__head {
     th {
       position: relative;
+      padding: 0;
 
       &:nth-child(3),
       &:nth-child(4),
@@ -68,7 +69,10 @@ $first-media: 1024px;
     }
 
     td {
+      padding: 0;
+
       @media (max-width: $first-media) {
+        padding: 1px;
         width: calc(100% / 6); // 6 columns
       }
     }
@@ -81,6 +85,7 @@ $first-media: 1024px;
     background-color: var(--color-details);
     color: var(--button-text);
     border-radius: var(--default-border-radius);
+    border-bottom-left-radius: 0px;
 
     @media (max-width: $first-media) {
       color: var(--headline-color);

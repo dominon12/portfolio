@@ -25,8 +25,11 @@ $second-media: 374px;
     margin-left: 4rem;
 
     &::before {
-      height: 2rem;
+      border-radius: 0px;
+      border: none;
+      height: 1rem;
       width: 2rem;
+      background-color: var(--color-details);
     }
   }
 
@@ -42,7 +45,7 @@ $second-media: 374px;
       margin-left: 3rem;
 
       &::before {
-        height: 1.5rem;
+        height: 0.5rem;
         width: 1.5rem;
       }
     }
@@ -60,7 +63,7 @@ $second-media: 374px;
       &::before {
         left: -1.75rem;
         height: 0.5rem;
-        width: 0.5rem;
+        width: 1rem;
       }
     }
   }
