@@ -77,13 +77,15 @@ const ProjectCard: React.FC<Props> = (props) => {
       onClick={toggleExpanded}
     >
       <div className={`project-card__content ${expandedClass()}`}>
-        <img
-          className={`project-card__img ${expandedClass()}`}
-          src={props.image}
-          alt={props.title}
-          width="200"
-          height="250"
-        />
+        <div className={`project-card__img-container ${expandedClass()}`}>
+          <img
+            className={`project-card__img ${expandedClass()}`}
+            src={props.image}
+            alt={props.title}
+            width="200"
+            height="250"
+          />
+        </div>
         <div className={`project-card__text-content ${expandedClass()}`}>
           <div className={`project-card__title-wrapper ${expandedClass()}`}>
             <h2 className="project-card__title">{props.title}</h2>

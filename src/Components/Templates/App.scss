@@ -15,8 +15,6 @@ $mobile-devices: 425px;
   height: calc(100vh - 2rem);
 
   @media (max-width: $mobile-devices) {
-    height: calc(
-      100vh - 2rem - 4rem
-    );
+    height: calc(100vh - 2rem - 4rem);
   }
 }

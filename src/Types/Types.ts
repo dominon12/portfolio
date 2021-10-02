@@ -10,6 +10,7 @@ export interface Portfolio {
   skills: SkillsGroup[];
   experience: CareerEvent[];
   languages: Language[];
+  contactLinks: ContactLink[];
 }
 
 export interface About {
@@ -18,6 +19,13 @@ export interface About {
   image: string;
 }
 
+export type ProjectType =
+  | "Bot"
+  | "Web app"
+  | "REST API"
+  | "E-commerce"
+  | "Landing";
+
 export interface Project {
   id: number;
   title: string;
@@ -25,7 +33,7 @@ export interface Project {
   shortDescription: string;
   description: string;
   dateStarted: Date;
-  type: "Bot" | "Web app" | "REST API" | "E-commerce" | "Landing";
+  type: ProjectType;
   technologies: ProjectTechnologies;
   implementationTime: number;
   repository?: string;
@@ -65,6 +73,12 @@ export interface Language {
   code: string;
   level: string;
   learningStory: string;
+}
+
+export interface ContactLink {
+  id: number;
+  name: string;
+  url: string;
 }
 
 /*

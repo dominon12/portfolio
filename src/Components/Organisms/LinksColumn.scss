@@ -1,0 +1,18 @@
+$first-media: 852px;
+$second-media: 554px;
+
+.links-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  margin: 0 auto;
+
+  @media (max-width: $first-media) {
+    width: 70%;
+  }
+  @media (max-width: $second-media) {
+    width: 100%;
+  }
+}

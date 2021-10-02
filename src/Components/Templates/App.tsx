@@ -12,7 +12,6 @@ import Experience from "../Pages/Experience";
 import Projects from "../Pages/Projects";
 import Contact from "../Pages/Contact";
 import Languages from "../Pages/Languages";
-import Hobbies from "../Pages/Hobbies";
 import Donate from "../Pages/Donate";
 import Download from "../Pages/Download";
 import NotFound from "../Pages/NotFound";
@@ -38,7 +37,6 @@ const App: React.FC = () => {
             <Route path="/projects" component={Projects} exact />
             <Route path="/contact" component={Contact} exact />
             <Route path="/languages" component={Languages} exact />
-            <Route path="/hobbies" component={Hobbies} exact />
             <Route path="/donate" component={Donate} exact />
             <Route path="/download" component={Download} exact />
             <Route path="*" component={NotFound} />

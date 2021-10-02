@@ -1,6 +1,17 @@
 import { Portfolio } from "./../Types/Types";
 
-import MyProfilePhoto from "../Assets/Images/profile_gray.jpeg";
+// about
+import myProfilePhoto from "../Assets/Images/profile.jpeg";
+// projects
+import smokelabPhoto from "../Assets/Images/Projects/smokelab.png";
+import cartelPhoto from "../Assets/Images/Projects/cartel.png";
+import reacPhoto from "../Assets/Images/Projects/reac.png";
+import rioPhoto from "../Assets/Images/Projects/rio.png";
+import sortingPhoto from "../Assets/Images/Projects/learn-sorting.png";
+import tomatPhoto from "../Assets/Images/Projects/tomat.jpeg";
+import persDataPhoto from "../Assets/Images/Projects/get-pers-data.png";
+import passGeneratorPhoto from "../Assets/Images/Projects/pass-generator.png";
+import portfolio from "../Assets/Images/Projects/portfolio.png";
 
 const lorem =
   "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit saepe voluptas officiis, doloribus cum totam dolor expedita minus ipsam voluptates, necessitatibus cupiditate! Id optio ab, voluptate a dolor dolore animi? Eum sunt, quaerat suscipit iusto iure fugit. Itaque dolorum aut perspiciatis asperiores voluptatem voluptates a culpa nostrum dolor? Laborum corporis at quo eveniet sunt aut nemo, ipsa iure ad autem? Neque quos libero alias, voluptatibus esse porro dignissimos maxime ";
@@ -10,14 +21,13 @@ const portfolioData: Portfolio = {
     title: "Hi there, my name is Max 👋",
     description:
       "I am passionate about coding self-taught full-stack web developer from Russia, based in Spain. Welcome to my personal website-portfolio!",
-    image: MyProfilePhoto,
+    image: myProfilePhoto,
   },
   projects: [
     {
       id: 1,
       title: "PriceTomat Bot",
-      image:
-        "https://mediacloud.kiplinger.com/image/private/s--x2_BoIgn--/v1604352227/Investing/stock-market-today-110220.jpg",
+      image: tomatPhoto,
       shortDescription:
         "Telegram bot which sends a message when price for selected assets meets target price set by user",
       description: lorem,
@@ -64,7 +74,7 @@ const portfolioData: Portfolio = {
     {
       id: 3,
       title: "Cartel Hookah",
-      image: "https://cartel-hookah.com/static/media/logo.de6858c6.png",
+      image: cartelPhoto,
       shortDescription: 'E-commerce web site for company "Cartel Hookah"',
       description: lorem,
       dateStarted: new Date("2021/05/05"),
@@ -87,7 +97,7 @@ const portfolioData: Portfolio = {
     {
       id: 4,
       title: "Smoke Laboratory",
-      image: "https://smokelaboratory.eu/static/img/favicons/logo.png",
+      image: smokelabPhoto,
       shortDescription: 'E-commerce web site for company "Smoke Laboratory"',
       description: lorem,
       dateStarted: new Date("2020/12/20"),
@@ -110,7 +120,7 @@ const portfolioData: Portfolio = {
     {
       id: 5,
       title: "Learn Sorting!",
-      image: "https://learn-sorting.web.app/favicon.ico",
+      image: sortingPhoto,
       shortDescription:
         "Visualization of the operation of some sorting algorithms. A project made in two evenings.",
       description: lorem,
@@ -128,7 +138,7 @@ const portfolioData: Portfolio = {
     {
       id: 6,
       title: '"Rio" Outdoor Children\'s Playground',
-      image: "https://rio-kld.ru/static/img/main/big_logo.jpg",
+      image: rioPhoto,
       shortDescription:
         'Landing page with simple animations for outdoor children\'s playground "Rio"',
       description: lorem,
@@ -145,7 +155,7 @@ const portfolioData: Portfolio = {
     {
       id: 7,
       title: "Reacenter",
-      image: "https://reac39.ru/static/img/logos/big-logo.png",
+      image: reacPhoto,
       shortDescription:
         "Website for the Children's Department of Neurology and Reflexology",
       description: lorem,
@@ -165,6 +175,57 @@ const portfolioData: Portfolio = {
       },
       link: "https://learn-sorting.web.app/",
       repository: "https://github.com/dominon12/SortVisualizer",
+      implementationTime: 0,
+    },
+    {
+      id: 8,
+      title: "GetPersData",
+      image: persDataPhoto,
+      shortDescription: "Web app which allows to steal personal data",
+      description: lorem,
+      dateStarted: new Date("2021/08/16"),
+      type: "Web app",
+      technologies: {
+        backend: [],
+        frontend: ["React", "TypeScript", "HTML", "SCSS"],
+        devops: [],
+      },
+      link: "https://get-pers-data.web.app/",
+      repository: "https://github.com/dominon12/GetPersData",
+      implementationTime: 0,
+    },
+    {
+      id: 9,
+      title: "WebPassGenerator",
+      image: passGeneratorPhoto,
+      shortDescription: "Generates password depending on selected options",
+      description: lorem,
+      dateStarted: new Date("2021/08/08"),
+      type: "Web app",
+      technologies: {
+        backend: [],
+        frontend: ["JavaScript", "HTML", "CSS"],
+        devops: [],
+      },
+      link: "https://dominon12.github.io/WebPassGenerator/",
+      repository: "https://github.com/dominon12/WebPassGenerator",
+      implementationTime: 0,
+    },
+    {
+      id: 10,
+      title: "Portfolio",
+      image: portfolio,
+      shortDescription: "This Web App",
+      description: lorem,
+      dateStarted: new Date("2021/09/17"),
+      type: "Web app",
+      technologies: {
+        backend: [],
+        frontend: ["React", "TypeScript", "HTML", "SCSS"],
+        devops: [],
+      },
+      link: "https://dominon12.web.app/",
+      repository: "https://github.com/dominon12/portfolio",
       implementationTime: 0,
     },
   ],
@@ -419,7 +480,7 @@ const portfolioData: Portfolio = {
       id: 1,
       name: "English",
       code: "gb",
-      level: "B2",
+      level: "Fluent",
       learningStory:
         "I learn english all my life. Can't say that I know grammar very well, but I can freely talk about any topic. I always search coding info in english, read technical documentation.",
     },
@@ -435,7 +496,7 @@ const portfolioData: Portfolio = {
       id: 3,
       name: "Polish",
       code: "pl",
-      level: "C1",
+      level: "Fluent",
       learningStory:
         "I was learning Polish for 1 year become coming to Poland for studying and then lived and studied there for 3 years. I have a lot of experience in speaking Polish because I was studying in this language in university and working on different jobs for about 1 year.",
     },
@@ -443,9 +504,36 @@ const portfolioData: Portfolio = {
       id: 4,
       name: "Spanish",
       code: "es",
-      level: "C1",
+      level: "Fluent",
       learningStory:
         'I started learning Spanish using mobile app called "Duolingo" and continued in school of spanish language in Valencia "Hispania". After about 1 year of studying I\'ve passed DELE B2 exam.',
+    },
+  ],
+  contactLinks: [
+    {
+      id: 1,
+      name: "Telegram",
+      url: "https://t.me/ScouttBot",
+    },
+    {
+      id: 2,
+      name: "Instagram",
+      url: "https://instagram.com/_____shika_____",
+    },
+    {
+      id: 3,
+      name: "Mail",
+      url: "mailto:youneedmax@gmail.com",
+    },
+    {
+      id: 4,
+      name: "GitHub",
+      url: "https://github.com/dominon12",
+    },
+    {
+      id: 5,
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/maksim-sobolev-351029215/",
     },
   ],
 };

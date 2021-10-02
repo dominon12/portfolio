@@ -4,7 +4,6 @@ import { IoAccessibility, IoLanguage } from "react-icons/io5";
 import { AiFillApi } from "react-icons/ai";
 import { MdWork } from "react-icons/md";
 import { FaProjectDiagram, FaDonate, FaDownload } from "react-icons/fa";
-import { BiCycling } from "react-icons/bi";
 import { TiMessageTyping } from "react-icons/ti";
 
 import "./SideBar.scss";
@@ -85,20 +84,12 @@ const SideBar: React.FC = () => {
       orderNumber: 5,
     },
     {
-      id: 7,
-      link: "/hobbies",
-      icon: BiCycling,
-      title: "Hobbies",
-      isActive: false,
-      orderNumber: 6,
-    },
-    {
       id: 8,
       link: "/donate",
       icon: FaDonate,
       title: "Donate",
       isActive: false,
-      orderNumber: 7,
+      orderNumber: 6,
     },
     {
       id: 5,
@@ -106,7 +97,7 @@ const SideBar: React.FC = () => {
       icon: TiMessageTyping,
       title: "Contact",
       isActive: false,
-      orderNumber: 8,
+      orderNumber: 7,
     },
     {
       id: 9,
@@ -114,7 +105,7 @@ const SideBar: React.FC = () => {
       icon: FaDownload,
       title: "Download",
       isActive: false,
-      orderNumber: 9,
+      orderNumber: 8,
     },
   ];
 

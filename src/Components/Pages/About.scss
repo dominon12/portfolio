@@ -1,8 +1,17 @@
 $first-media: 1234px;
 $second-media: 1048px;
 $third-media: 852px;
+$mobile-devices: 425px;
 
 .about {
+  &__container {
+    min-height: calc(100vh - 2rem);
+
+    @media (max-width: $mobile-devices) {
+      min-height: calc(100vh - 2rem - 4.5rem);
+    }
+  }
+
   &__title {
     @media (max-width: $third-media) {
       margin-bottom: 0.5rem;

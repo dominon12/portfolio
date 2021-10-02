@@ -1,0 +1,27 @@
+.divider {
+  margin: 4rem 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: var(--headline-color);
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--headline-color);
+    background-color: var(--doc-background-color);
+    padding: 0 1rem;
+  }
+}

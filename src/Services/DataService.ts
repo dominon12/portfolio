@@ -1,6 +1,7 @@
 import {
   About,
   CareerEvent,
+  ContactLink,
   Language,
   Project,
   SkillsGroup,
@@ -25,4 +26,8 @@ export function getExperience(): CareerEvent[] {
 
 export function getLanguages(): Language[] {
   return portfolioData.languages;
+}
+
+export function getContactLinks(): ContactLink[] {
+  return portfolioData.contactLinks;
 }

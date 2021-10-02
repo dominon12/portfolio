@@ -11,7 +11,10 @@
     border-radius: var(--default-border-radius);
 
     &:disabled {
+      transform: none;
+      box-shadow: none;
       background-color: var(--color-disabled);
+      cursor: not-allowed;
     }
   }
 

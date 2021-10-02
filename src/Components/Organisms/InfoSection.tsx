@@ -7,11 +7,14 @@ interface Props {
   right: ReactElement;
   leftContainerClassName?: string;
   rightContainerClassName?: string;
+  containerClassName?: string;
 }
 
 const InfoSection: React.FC<Props> = (props) => {
   return (
-    <div className="info">
+    <div
+      className={`info ${props.containerClassName && props.containerClassName}`}
+    >
       <div
         className={`info__left ${
           props.leftContainerClassName && props.leftContainerClassName

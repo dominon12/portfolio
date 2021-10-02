@@ -1,0 +1,22 @@
+.contact-link {
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.2rem;
+  border: 3px solid var(--color-details);
+  border-radius: var(--default-border-radius);
+  color: var(--headline-color);
+  background-color: var(--doc-background-color);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-details);
+  }
+}

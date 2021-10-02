@@ -25,6 +25,7 @@ const About: React.FC = () => {
 
   return (
     <InfoSection
+      containerClassName="about__container"
       left={
         <>
           <Title className="about__title">{aboutData?.title}</Title>
