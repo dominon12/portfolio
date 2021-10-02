@@ -11,6 +11,7 @@ export interface Portfolio {
   experience: CareerEvent[];
   languages: Language[];
   contactLinks: ContactLink[];
+  donationMethods: DonationMethod[];
 }
 
 export interface About {
@@ -24,7 +25,8 @@ export type ProjectType =
   | "Web app"
   | "REST API"
   | "E-commerce"
-  | "Landing";
+  | "Landing"
+  | "Library";
 
 export interface Project {
   id: number;
@@ -79,6 +81,17 @@ export interface ContactLink {
   id: number;
   name: string;
   url: string;
+}
+
+export type DonationMethodType = "btc" | "eth" | "tinkoff" | "buymeacoffee";
+
+export interface DonationMethod {
+  id: number;
+  type: DonationMethodType;
+  comment: string;
+  name: string;
+  linkUrl: string;
+  isLink?: boolean;
 }
 
 /*

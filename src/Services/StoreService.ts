@@ -11,7 +11,9 @@ import sortingPhoto from "../Assets/Images/Projects/learn-sorting.png";
 import tomatPhoto from "../Assets/Images/Projects/tomat.jpeg";
 import persDataPhoto from "../Assets/Images/Projects/get-pers-data.png";
 import passGeneratorPhoto from "../Assets/Images/Projects/pass-generator.png";
-import portfolio from "../Assets/Images/Projects/portfolio.png";
+import portfolioPhoto from "../Assets/Images/Projects/portfolio.png";
+import hmongoPhoto from "../Assets/Images/Projects/hmongo.png";
+import surveyAPIPhoto from "../Assets/Images/Projects/survey-api.png";
 
 const lorem =
   "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit saepe voluptas officiis, doloribus cum totam dolor expedita minus ipsam voluptates, necessitatibus cupiditate! Id optio ab, voluptate a dolor dolore animi? Eum sunt, quaerat suscipit iusto iure fugit. Itaque dolorum aut perspiciatis asperiores voluptatem voluptates a culpa nostrum dolor? Laborum corporis at quo eveniet sunt aut nemo, ipsa iure ad autem? Neque quos libero alias, voluptatibus esse porro dignissimos maxime ";
@@ -34,7 +36,7 @@ const portfolioData: Portfolio = {
       dateStarted: new Date("2020/07/13"),
       type: "Bot",
       technologies: {
-        backend: ["Python3", "PyTelegramBotAPI", "MongoDB", "REST API"],
+        backend: ["Python3", "PyTelegramBotAPI", "MongoDB"],
         frontend: [],
         devops: [],
       },
@@ -214,7 +216,7 @@ const portfolioData: Portfolio = {
     {
       id: 10,
       title: "Portfolio",
-      image: portfolio,
+      image: portfolioPhoto,
       shortDescription: "This Web App",
       description: lorem,
       dateStarted: new Date("2021/09/17"),
@@ -226,6 +228,40 @@ const portfolioData: Portfolio = {
       },
       link: "https://dominon12.web.app/",
       repository: "https://github.com/dominon12/portfolio",
+      implementationTime: 0,
+    },
+    {
+      id: 11,
+      title: "HMongo",
+      image: hmongoPhoto,
+      shortDescription:
+        "Library to easy work with NoSQL database MongoDB written in Python3",
+      description: lorem,
+      dateStarted: new Date("2020/06/12"),
+      type: "Library",
+      technologies: {
+        backend: ["Python3"],
+        frontend: [],
+        devops: [],
+      },
+      repository: "https://github.com/dominon12/HMongo",
+      implementationTime: 0,
+    },
+    {
+      id: 12,
+      title: "SurveyAPI",
+      image: surveyAPIPhoto,
+      shortDescription:
+        "REST API for creating and managing surveys of different types",
+      description: lorem,
+      dateStarted: new Date("2021/02/11"),
+      type: "REST API",
+      technologies: {
+        backend: ["Python3", "Django", "DRF"],
+        frontend: [],
+        devops: [],
+      },
+      repository: "https://github.com/dominon12/SurveyAPI",
       implementationTime: 0,
     },
   ],
@@ -320,11 +356,6 @@ const portfolioData: Portfolio = {
           id: 11,
           name: "Git",
           level: 3,
-        },
-        {
-          id: 12,
-          name: "VSCode",
-          level: 4,
         },
         {
           id: 13,
@@ -534,6 +565,38 @@ const portfolioData: Portfolio = {
       id: 5,
       name: "LinkedIn",
       url: "https://linkedin.com/in/maksim-sobolev-351029215/",
+    },
+  ],
+  donationMethods: [
+    {
+      id: 1,
+      type: "btc",
+      name: "Bitcoin",
+      comment: "Here's my bitcoin wallet address",
+      linkUrl: "1E3NzhUvkpcRLhgisfL7Mv4AVNn1KFNdN6",
+    },
+    {
+      id: 2,
+      type: "eth",
+      name: "Ethereum",
+      comment: "Here's my ethereum wallet address",
+      linkUrl: "0x781253123f5fc0B9795839B8C02383F1c7E4ADa0",
+    },
+    {
+      id: 3,
+      type: "tinkoff",
+      name: "Tinkoff",
+      comment: "Here you can donate me in rubbles",
+      linkUrl: "https://www.tinkoff.ru/cf/3QOy3SthG4o",
+      isLink: true,
+    },
+    {
+      id: 4,
+      type: "buymeacoffee",
+      name: "Buy me a coffee",
+      comment: "Here you can buy me a coffee",
+      linkUrl: "https://buymeacoffee.com/dominon12",
+      isLink: true,
     },
   ],
 };

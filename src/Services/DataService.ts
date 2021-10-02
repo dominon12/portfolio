@@ -2,6 +2,7 @@ import {
   About,
   CareerEvent,
   ContactLink,
+  DonationMethod,
   Language,
   Project,
   SkillsGroup,
@@ -30,4 +31,8 @@ export function getLanguages(): Language[] {
 
 export function getContactLinks(): ContactLink[] {
   return portfolioData.contactLinks;
+}
+
+export function getDonationMethods(): DonationMethod[] {
+  return portfolioData.donationMethods;
 }

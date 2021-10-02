@@ -1,11 +1,12 @@
 import React from "react";
+import DonationMethods from "../Organisms/DonationMethods";
 
-import './Donate.scss'
+import "./Donate.scss";
 
 interface Props {}
 
 const Donate: React.FC = (props: Props) => {
-  return <div>Donate</div>;
+  return <DonationMethods />;
 };
 
 export default Donate;

@@ -1,0 +1,17 @@
+$first-media: 1090px;
+$mobile-devices: 425px;
+
+.donation-methods {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(2, calc(100vh / 2 - 1.5rem));
+
+  @media (max-width: $first-media) {
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(4, calc(100vh / 2.5));
+  }
+  @media (max-width: $mobile-devices) {
+    grid-template-rows: repeat(4, calc(100vh / 3));
+  }
+}

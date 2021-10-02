@@ -1,0 +1,56 @@
+$mobile-devices: 425px;
+
+.donation-method {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: var(--default-border-radius);
+
+  &:hover,
+  &:focus {
+    opacity: 100%;
+
+    .donation-method__content {
+      opacity: 100;
+      transition: var(--transition-on);
+      border: 3px solid var(--color-details);
+    }
+  }
+
+  &__content {
+    opacity: 0;
+    transition: var(--transition-off);
+
+    height: 100%;
+    background-color: var(--card-background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__name {
+    margin: 0;
+  }
+
+  &__comment {
+    margin: 2rem 0;
+
+    @media (max-width: $mobile-devices) {
+      margin: 1rem 0;
+    }
+  }
+
+  &__link-container {
+    padding: 2rem 0;
+    width: 100%;
+    text-align: center;
+    overflow-x: scroll;
+    background-color: var(--color-details);
+  }
+
+  &__link {
+    padding: 0 1rem;
+    color: var(--button-text);
+  }
+}
