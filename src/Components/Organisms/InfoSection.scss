@@ -33,7 +33,7 @@ $mobile-devices: 425px;
     width: 40%;
 
     @media (max-width: $third-media) {
-      order: -1;
+      // order: -1;
       width: 45%;
     }
     @media (max-width: $fourth-media) {

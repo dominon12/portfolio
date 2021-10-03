@@ -10,6 +10,12 @@ $mobile-devices: 425px;
     @media (max-width: $mobile-devices) {
       min-height: calc(100vh - 2rem - 4.5rem);
     }
+
+    &_right {
+      @media (max-width: $third-media) {
+        order: -1;
+      }
+    }
   }
 
   &__title {

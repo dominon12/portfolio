@@ -6,6 +6,7 @@ $second-media: 554px;
   }
 
   &__title {
+    margin-top: 0;
   }
 
   &__illustration {
@@ -17,7 +18,7 @@ $second-media: 554px;
       display: none;
     }
   }
-  
+
   &__form-container {
     @media (max-width: $first-media) {
       text-align: left;

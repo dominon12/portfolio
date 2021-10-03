@@ -9,11 +9,7 @@ interface Props {
 
 const ContactLink: React.FC<Props> = (props) => {
   return (
-    <a
-      href={props.url}
-      rel="noopener"
-      className="contact-link hover-animation"
-    >
+    <a href={props.url} rel="noopener" className="contact-link hover-animation">
       {props.name}
     </a>
   );

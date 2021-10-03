@@ -17,7 +17,11 @@ export interface Portfolio {
 export interface About {
   title: string;
   description: string;
+  cvDescription: string;
   image: string;
+  firstName: string;
+  lastName: string;
+  jobTitle: string;
 }
 
 export type ProjectType =

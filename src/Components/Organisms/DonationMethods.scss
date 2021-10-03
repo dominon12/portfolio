@@ -4,7 +4,7 @@ $mobile-devices: 425px;
 .donation-methods {
   display: grid;
   gap: 1rem;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(2, calc(100vh / 2 - 1.5rem));
 
   @media (max-width: $first-media) {

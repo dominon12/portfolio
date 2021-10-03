@@ -44,6 +44,7 @@ const About: React.FC = () => {
           className="about__image"
         />
       }
+      rightContainerClassName="about__container_right"
     />
   );
 };

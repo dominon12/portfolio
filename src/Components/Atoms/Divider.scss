@@ -1,3 +1,5 @@
+$mobile-devices: 425px;
+
 .divider {
   margin: 4rem 0;
   position: relative;
@@ -14,6 +16,10 @@
     height: 3px;
     width: 100%;
     background-color: var(--headline-color);
+  }
+
+  @media (max-width: $mobile-devices) {
+    margin: 2rem 0;
   }
 
   &__title {

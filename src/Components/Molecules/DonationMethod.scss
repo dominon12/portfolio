@@ -7,19 +7,24 @@ $mobile-devices: 425px;
   border-radius: var(--default-border-radius);
 
   &:hover,
-  &:focus {
-    opacity: 100%;
-
+  &:focus,
+  &:active {
     .donation-method__content {
-      opacity: 100;
-      transition: var(--transition-on);
+      opacity: 1;
+      visibility: visible;
+      transition: opacity var(--transition-on);
       border: 3px solid var(--color-details);
+
+      @media (max-width: $mobile-devices) {
+        border-width: 2px;
+      }
     }
   }
 
   &__content {
     opacity: 0;
-    transition: var(--transition-off);
+    visibility: hidden;
+    transition: opacity var(--transition-off);
 
     height: 100%;
     background-color: var(--card-background-color);
