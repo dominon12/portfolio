@@ -37,7 +37,10 @@ const portfolioData: Portfolio = {
       image: tomatPhoto,
       shortDescription:
         "Telegram bot which sends a message when price for selected assets meets target price set by user",
-      description: lorem,
+      description: [
+        "In one of the fresh windy prussish mondays my best friend Vlad came to me and told about an idea of creating a software which would send a notification when selected price of the selected asset will meet the current one. I thought that it will be easy to implement as a telegram bot and the next day started working on it.",
+        "After about a month it was totally ready and we wanted to start monetizing it, but we had a lot of other stuff to do so we never did it.",
+      ],
       dateStarted: new Date("2020/07/13"),
       type: "Bot",
       technologies: {
@@ -53,7 +56,15 @@ const portfolioData: Portfolio = {
       title: "Pokyza Shop",
       image: "https://pokyzashop.com/assets/img/favicons/logo.png",
       shortDescription: "E-commerce web app for dropshipping project",
-      description: lorem,
+      description: [
+        "An e-commerce project I’ve been working on with the idea of monetising it using a drop shipping model.",
+        "I wanted it to differ from similar Shopify pages which provide only a few lines of description so I’ve implemented an ability to make products pages be very comprehensive and with different parts like hero section with a slogan, product’s card with possibility of selecting different product’s options (like color, size, etc.), description blocks with images, reviews, similar products and last seen products.",
+        "All design I’ve been doing by myself inspiring by different e-commerce websites.",
+        "This project wouldn’t exist if my friend Hamza wouldn’t came to me and offer me his partnership. Almost every part of the website we’ve been thinking together.",
+        "It has cool tracking page with a shipment progress bar, dashboard page with different plots and diagrams for admins showing shop’s statistics, possibility to subscribe to a newsletter, possibility of sorting and filtering products list and much more.",
+        "After setting up Facebook ads for the first 24 hours we’ve got a first order for $100 when me and Hamza just climbed on the top of a mountain near to Valencia.",
+        "Unfortunately we couldn’t continue with ads for some personal reasons so our progress is on hold and the backend is turned off, but I really look forward for this project to develop.",
+      ],
       dateStarted: new Date("2021/01/26"),
       type: "E-commerce",
       technologies: {
@@ -83,7 +94,7 @@ const portfolioData: Portfolio = {
       title: "Cartel Hookah",
       image: cartelPhoto,
       shortDescription: 'E-commerce web site for company "Cartel Hookah"',
-      description: lorem,
+      description: [lorem],
       dateStarted: new Date("2021/05/05"),
       type: "E-commerce",
       technologies: {
@@ -106,7 +117,11 @@ const portfolioData: Portfolio = {
       title: "Smoke Laboratory",
       image: smokelabPhoto,
       shortDescription: 'E-commerce web site for company "Smoke Laboratory"',
-      description: lorem,
+      description: [
+        "First website I’ve made for money.",
+        "The idea was to make an e-commerce website for a hookah store “Smoke Laboratory” in Gdańsk, Poland. It also was my first e-commerce project, I didn’t really know how to implement some things so I was googling a lot. In this project I didn’t use any front end framework. Only Django’s template system.",
+        "It took me 1 month to finish it and I was really happy with what I did. Now I see mistakes I’ve made, which thanks to this project I won’t ever repeat, like not using single responsibility rule, not dividing big parts of code in functions, not making reusable components.",
+      ],
       dateStarted: new Date("2020/12/20"),
       type: "E-commerce",
       technologies: {
@@ -130,7 +145,10 @@ const portfolioData: Portfolio = {
       image: sortingPhoto,
       shortDescription:
         "Visualization of the operation of some sorting algorithms. A project made in two evenings.",
-      description: lorem,
+      description: [
+        "When I was reading a book “Groke algorithms”, section about sorting algorithm catched my attention so I decided to make a website - cheat sheet for me and all other people with algorithms’ work visualization, description and python implementation, training my Angular and TypeScript skills.",
+        "It’s also can be downloaded to mobile or desktop as a PWA and work offline.",
+      ],
       dateStarted: new Date("2021/03/25"),
       type: "Web app",
       technologies: {
@@ -148,7 +166,9 @@ const portfolioData: Portfolio = {
       image: rioPhoto,
       shortDescription:
         'Landing page with simple animations for outdoor children\'s playground "Rio"',
-      description: lorem,
+      description: [
+        "Simple landing with different blocks’ presentation, animations, images carousel and contact form which sends an email to the user who filled it and to the admin.",
+      ],
       dateStarted: new Date("2020/12/04"),
       type: "Landing",
       technologies: {
@@ -165,7 +185,11 @@ const portfolioData: Portfolio = {
       image: reacPhoto,
       shortDescription:
         "Website for the Children's Department of Neurology and Reflexology",
-      description: lorem,
+      description: [
+        "Website I’ve made for a unique center for children rehabilitation with rare conditions.",
+        "Provides a cool possibility to add an info about doctors who work there with their schedule, education history, name and photo which are used in different website’s parts.",
+        "Also users can ask questions about different topics on which Reacenter’s doctors will respond shortly after receiving an email.",
+      ],
       dateStarted: new Date("2020/12/09"),
       type: "Web app",
       technologies: {
@@ -189,7 +213,15 @@ const portfolioData: Portfolio = {
       title: "GetPersData",
       image: persDataPhoto,
       shortDescription: "Web app which allows to steal personal data",
-      description: lorem,
+      description: [
+        "Built to practice my React skills. The idea is to get some person’s data that Web APIs can provide by sending him a link.",
+        "Data that you might get:",
+        "- IP Address\n- Width, height and screens’s orientation\n- Language\n- User agent\n- Geolocation\n- Frontal camera shot\n- Audio record of different length.",
+        "In first place you have to go the home page and select different options: email for notifications with personal data that was gotten, redirect url to which person will he redirected after clicking on the link, hide url to change “get-pers-data.web.app” to something like “bit.ly/jh7o”, try to get frontal camera screenshot, geolocation and audio record.",
+        "Three last options are not that util, because person stays more time on the website before being redirected to redirect url and also will se modals asking him for permissions. After clicking “generate link”, the link will be  generated.",
+        "Then you just have to send this link to person, which data you want to know.",
+        "Here I’ve built a system that can generate the form using data, acquired from an API. Form with custom validation and different colors for different states (valid, invalid, etc.). You can also show conditionally different fields if parent field is filled.",
+      ],
       dateStarted: new Date("2021/08/16"),
       type: "Web app",
       technologies: {
@@ -206,7 +238,9 @@ const portfolioData: Portfolio = {
       title: "WebPassGenerator",
       image: passGeneratorPhoto,
       shortDescription: "Generates password depending on selected options",
-      description: lorem,
+      description: [
+        "After finishing reading awesome https://learn.JavaScript.ru/ I wanted to use my new knowledge in coding some new project. Password generator vanilla JavaScript app idea was the best I was thinking about. ",
+      ],
       dateStarted: new Date("2021/08/08"),
       type: "Web app",
       technologies: {
@@ -223,7 +257,9 @@ const portfolioData: Portfolio = {
       title: "Portfolio",
       image: portfolioPhoto,
       shortDescription: "This Web App",
-      description: lorem,
+      description: [
+        "The main idea of this app is to make boring static portfolio/CV be interactive and more informative in order to get more chances to be noticed by HRs",
+      ],
       dateStarted: new Date("2021/09/17"),
       type: "Web app",
       technologies: {
@@ -241,7 +277,12 @@ const portfolioData: Portfolio = {
       image: hmongoPhoto,
       shortDescription:
         "Library to easy work with NoSQL database MongoDB written in Python3",
-      description: lorem,
+      description: [
+        "It’s all started when I realized that I know python3 on the level which allows me to code simple telegram bots with library PyTelegramBotAPI.",
+        "In that time I started asking myself how can I persist data that users provide? How will I store data related to users so it won’t lose every time I restart the bot? Idea came very quickly just after googling this topic - MongoDB.",
+        "I started trying working with it with the help of python3 library PyMongo and found out that it’s API wasn’t really good for resolving my everyday needs. So I started making universal functions - wrappers over PyMongo’s API.",
+        "After creating few bots I felt really tired after copy pasting file db.py with all this repeating functions over and over so I decided to make pip package in order to solve this problem and share my code with someone who might need it.",
+      ],
       dateStarted: new Date("2020/06/12"),
       type: "Library",
       technologies: {
@@ -258,7 +299,22 @@ const portfolioData: Portfolio = {
       image: surveyAPIPhoto,
       shortDescription:
         "REST API for creating and managing surveys of different types",
-      description: lorem,
+      description: [
+        "Test task that I’ve made for Russian company “Solution Factory” in order to access to their interview.",
+        "«The current test task has only a general description of the requirements, the specific details of the implementation are at the discretion of the developer.",
+        "Task: to design and develop an API for a user survey system.",
+        "Functionality for the system administrator:",
+        '- authorization in the system (registration is not required)\n- adding/changing/ deleting polls. Survey attributes: name, start date, end date, description. After creation, the "start date" field of the survey cannot be changed\n- add/edit/delete questions in the survey. Question Attributes: question text, question type (answer in text, answer with a choice of one option, answer with a choice of several options)',
+        "Functionality for system users:",
+        "- getting a list of active polls\n- passing the survey: surveys can be conducted anonymously, a numeric ID is transmitted to the API as a user ID, which stores the user's answers to questions; one user can participate in any number of surveys\n- receiving surveys completed by the user with details on the answers (what is selected) by the unique user ID",
+        "Use the following technologies: Django 2.2.10, Django REST framework.",
+        "The result of the task:\n- application source code in github (only on github, public repository)\n- instructions for deploying the application (in docker or locally)\n- API documentation»",
+        "After implementing it for the first time I thought that it works good, but has some problems that I don’t know how to solve.",
+        "After sending it to the HR, he wrote me that they have selected other candidate and didn’t say which errors did I commit.",
+        "After few month their HR wrote me again with a proposition to try to implement this project again. I accepted and started rewrote the whole application solving problems I couldn’t solve last time.",
+        "Unfortunately guys from that company didn’t think so, so they declined me again without saying what they don’t like.",
+        "In future I want to implement a front end app to complement the backend. ",
+      ],
       dateStarted: new Date("2021/02/11"),
       type: "REST API",
       technologies: {

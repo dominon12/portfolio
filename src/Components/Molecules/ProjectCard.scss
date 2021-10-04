@@ -124,8 +124,12 @@ $mobile-devices: 425px;
     margin-bottom: 0;
   }
 
+  &__description-container {
+  }
+
   &__full-description {
     line-height: 1.6;
+    white-space: pre-wrap;
   }
 
   &__description-list {
@@ -150,6 +154,5 @@ $mobile-devices: 425px;
 
   &__link {
     margin-right: 1rem;
-    margin-bottom: 1rem;
   }
 }

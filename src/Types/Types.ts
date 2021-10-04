@@ -37,7 +37,7 @@ export interface Project {
   title: string;
   image: string;
   shortDescription: string;
-  description: string;
+  description: string[];
   dateStarted: Date;
   type: ProjectType;
   technologies: ProjectTechnologies;

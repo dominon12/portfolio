@@ -8,7 +8,7 @@ interface Props {
   title: string;
   image: string;
   shortDescription: string;
-  description: string;
+  description: string[];
   dateStarted: Date;
   technologies: ProjectTechnologies;
   repository?: string;
@@ -23,7 +23,14 @@ const ProjectCard: React.FC<Props> = (props) => {
 
   const renderExpandedDescription = () => (
     <>
-      <p className="project-card__full-description">{props.description}</p>
+      <div className="project-card__description-container">
+        {props.description.map((descriptionUnit) => (
+          <p
+            className="project-card__full-description"
+            dangerouslySetInnerHTML={{ __html: descriptionUnit }}
+          ></p>
+        ))}
+      </div>
       <dl className="project-card__description-list">
         {props.technologies.backend.length > 0 && (
           <div className="project-card__description-list_item">
@@ -73,7 +80,9 @@ const ProjectCard: React.FC<Props> = (props) => {
 
   return (
     <article
-      className={`project-card hover-animation ${expandedClass()}`}
+      className={`project-card ${
+        !expanded && "hover-animation"
+      } ${expandedClass()}`}
       onClick={toggleExpanded}
     >
       <div className={`project-card__content ${expandedClass()}`}>
