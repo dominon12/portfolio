@@ -15,9 +15,9 @@ const Download: React.FC = () => {
         <>
           <Title className="download__title">Static CV</Title>
           <p className="download__description">
-            If you need a static pdf document of my CV, you can download it here
-            by clicking on the button below. It's being generated from the same
-            data source that this website uses.
+            If you need a static pdf document of my Curriculum Vitae, you can
+            download it here by clicking on the button below. It's being
+            generated from the same data source that this website uses.
           </p>
           <PDFDownloadLink document={<StaticCV />} fileName={"MaksimSobolevCV"}>
             <Button type="primary" onClick={() => {}}>

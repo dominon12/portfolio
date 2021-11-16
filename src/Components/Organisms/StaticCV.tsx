@@ -199,6 +199,10 @@ const StaticCV: React.FC = () => {
         borderBottom: 0.2,
         paddingBottom: 4,
       },
+      relevantSkill: {
+        backgroundColor: "#ff8e3c",
+        color: "white",
+      },
     });
 
     return (
@@ -211,7 +215,16 @@ const StaticCV: React.FC = () => {
               {skillGroup.skills
                 .sort((a, b) => b.level - a.level)
                 .map((skill) => (
-                  <View style={skillStyles.skill}>
+                  <View
+                    style={
+                      skill.isRelevant
+                        ? {
+                            ...skillStyles.skill,
+                            ...skillStyles.relevantSkill,
+                          }
+                        : skillStyles.skill
+                    }
+                  >
                     <Text style={styles.text}>{skill.name}</Text>
                     <Text style={styles.text}>{skill.level} / 5</Text>
                   </View>
