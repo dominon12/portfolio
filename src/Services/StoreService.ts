@@ -19,13 +19,13 @@ const portfolioData: Portfolio = {
   about: {
     title: "Hi there, my name is Max 👋",
     description:
-      "I am passionate about coding self-taught full-stack web developer from Russia, based in Spain. Welcome to my personal website-portfolio!",
+      "I am passionate about coding self-taught Frontend Web Developer from Russia, based in Spain. Welcome to my personal website-portfolio!",
     cvDescription:
-      "I am passionate about coding self-taught full-stack web developer from Russia, based in Spain.",
+      "I am passionate about coding self-taught Frontend Web Developer from Russia, based in Spain.",
     image: myProfilePhoto,
     firstName: "Maksim",
     lastName: "Sobolev",
-    jobTitle: "Full stack web developer",
+    jobTitle: "Frontend Web Developer",
   },
   projects: [
     {
