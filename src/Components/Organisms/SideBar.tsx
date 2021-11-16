@@ -5,13 +5,13 @@ import { AiFillApi } from "react-icons/ai";
 import { MdWork } from "react-icons/md";
 import { FaProjectDiagram, FaDonate, FaDownload } from "react-icons/fa";
 import { TiMessageTyping } from "react-icons/ti";
+import { useLocation } from "react-router";
 
 import "./SideBar.scss";
 import NavTab from "../Atoms/NavTab";
 import { Tab } from "../../Types/Types";
 import { SideBarContext } from "../../Contexts/SideBarContext";
 import ThemeSwitch from "../Atoms/ThemeSwitch";
-import { useLocation } from "react-router";
 
 const SideBar: React.FC = () => {
   const { pathname } = useLocation();

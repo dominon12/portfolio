@@ -72,3 +72,11 @@ p {
     transform: scale(0.99);
   }
 }
+
+$mobile-devices: 425px;
+
+.hide-on-mobile {
+  @media (max-width: $mobile-devices) {
+    display: none;
+  }
+}
