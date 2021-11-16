@@ -15,13 +15,27 @@ export interface Portfolio {
 }
 
 export interface About {
-  title: string;
-  description: string;
   cvDescription: string;
-  image: string;
   firstName: string;
   lastName: string;
   jobTitle: string;
+  profilePhoto: Image;
+  aboutUnits: AboutUnit[];
+}
+
+export interface AboutUnit {
+  id: number;
+  title: string;
+  description: string;
+  image: Image;
+  useBeginBtn?: boolean;
+}
+
+export interface Image {
+  src: string;
+  alt: string;
+  width: string;
+  height: string;
 }
 
 export type ProjectType =

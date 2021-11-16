@@ -6,7 +6,7 @@ import { scrollTo } from "../../Services/HelperService";
 
 const JumpingArrow: React.FC = () => {
   const scrollABitDown = () => {
-    scrollTo({ top: 200, left: 0, behavior: "smooth" });
+    scrollTo({ top: 800, left: 0, behavior: "smooth" });
   };
 
   return (

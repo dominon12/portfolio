@@ -1,7 +1,8 @@
 import { Portfolio } from "./../Types/Types";
 
 // about
-import myProfilePhoto from "../Assets/Images/profile.jpeg";
+import myProfilePhoto from "../Assets/Images/About/profile.jpeg";
+import reactGif from "../Assets/Images/About/react-logo.gif";
 // projects
 import smokelabPhoto from "../Assets/Images/Projects/smokelab.png";
 import cartelPhoto from "../Assets/Images/Projects/cartel.png";
@@ -17,15 +18,44 @@ import surveyAPIPhoto from "../Assets/Images/Projects/survey-api.png";
 
 const portfolioData: Portfolio = {
   about: {
-    title: "Hi there, my name is Max 👋",
-    description:
-      "I am passionate about coding self-taught Frontend Web Developer from Russia, based in Spain. Welcome to my personal website-portfolio!",
-    cvDescription:
-      "I am passionate about coding self-taught Frontend Web Developer from Russia, based in Spain.",
-    image: myProfilePhoto,
     firstName: "Maksim",
     lastName: "Sobolev",
     jobTitle: "Frontend Web Developer",
+    profilePhoto: {
+      src: myProfilePhoto,
+      alt: "My profile photo",
+      width: "500",
+      height: "500",
+    },
+    cvDescription:
+      "I am passionate about coding self-taught Frontend Web Developer from Russia, based in Spain.",
+    aboutUnits: [
+      {
+        id: 1,
+        title: "Hi there, my name is Max 👋",
+        description:
+          "I am passionate about coding self-taught Frontend Web Developer from Russia, based in Spain. Welcome to my personal website-portfolio!",
+        image: {
+          src: myProfilePhoto,
+          alt: "My profile photo",
+          width: "500",
+          height: "500",
+        },
+        useBeginBtn: true,
+      },
+      {
+        id: 2,
+        title: "What is my technology stack?",
+        description:
+          "On the way to becoming a software engineer, I managed to work with a lot of different technologies. At the moment I specialize in frontend development and my main stack is: React, Redux, TypeScript, HTML and SCSS.",
+        image: {
+          src: reactGif,
+          alt: "React logo",
+          width: "500",
+          height: "500",
+        },
+      },
+    ],
   },
   projects: [
     {

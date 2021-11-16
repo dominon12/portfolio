@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 
 import "./NotFound.scss";
-import NotFoundIllustration from "../../Assets/Images/404.png";
+import NotFoundIllustration from "../../Assets/Images/System/404.png";
 import InfoSection from "../Organisms/InfoSection";
 import Title from "../Atoms/Title";
 import Button from "../Atoms/Button";

@@ -88,7 +88,7 @@ const StaticCV: React.FC = () => {
           <Text style={styles.title}>{fullName}</Text>
           <Text style={[styles.subtitle, styles.link]}>{about.jobTitle}</Text>
         </View>
-        <Image src={about.image} style={headerStyles.profileImage} />
+        <Image src={about.profilePhoto.src} style={headerStyles.profileImage} />
       </View>
     );
   };

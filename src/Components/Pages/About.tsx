@@ -9,6 +9,7 @@ import { useHistory } from "react-router";
 import InfoSection from "../Organisms/InfoSection";
 import { SideBarContext } from "../../Contexts/SideBarContext";
 import JumpingArrow from "../Atoms/JumpingArrow";
+import { AboutUnit } from "../../Types/Types";
 
 const MOBILE_BEGINS_AFTER = 425;
 
@@ -24,32 +25,51 @@ const About: React.FC = () => {
     ? () => setVisible(true)
     : () => history.push("/projects");
 
-  return (
-    <div className="about">
-      <InfoSection
-        containerClassName="about__container"
-        left={
-          <>
-            <Title className="about__title">{aboutData?.title}</Title>
-            <p className="about__description">{aboutData?.description}</p>
-            <Button type="primary" onClick={handleBegin}>
-              Begin
-            </Button>
-          </>
-        }
-        right={
-          <Image
-            src={aboutData.image}
-            alt="My profile picture"
-            width="500"
-            height="500"
-            className="about__image"
-          />
-        }
-        rightContainerClassName="about__container_right"
+  const renderAboutUnit = (aboutUnit: AboutUnit, index: number) => {
+    const infoBlock = (
+      <>
+        <Title className="about__title">{aboutUnit.title}</Title>
+        <p className="about__description">{aboutUnit.description}</p>
+        {aboutUnit.useBeginBtn && (
+          <Button type="primary" onClick={handleBegin}>
+            Begin
+          </Button>
+        )}
+      </>
+    );
+    const imageBlock = (
+      <img
+        src={aboutUnit.image.src}
+        alt={aboutUnit.image.alt}
+        width={aboutUnit.image.width}
+        height={aboutUnit.image.height}
+        className="about__image"
       />
-      <JumpingArrow />
-    </div>
+    );
+    const evenIndex = index % 2 === 0;
+    const left = evenIndex ? infoBlock : imageBlock;
+    const right = evenIndex ? imageBlock : infoBlock;
+    const leftClassName = evenIndex ? "" : "about__container_info-block";
+    const rightClassName = evenIndex ? "about__container_info-block" : "";
+
+    return (
+      <React.Fragment key={aboutUnit.id}>
+        <InfoSection
+          containerClassName={`about__container ${
+            index === 0 ? "has-jumping-arrow" : ""
+          }`}
+          left={left}
+          right={right}
+          leftContainerClassName={leftClassName}
+          rightContainerClassName={rightClassName}
+        />
+        {index === 0 && <JumpingArrow />}
+      </React.Fragment>
+    );
+  };
+
+  return (
+    <div className="about">{aboutData.aboutUnits.map(renderAboutUnit)}</div>
   );
 };
 

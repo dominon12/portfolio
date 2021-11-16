@@ -15,25 +15,28 @@ $mobile-devices: 425px;
     justify-content: center;
   }
 
-  &__left {
+  &__left,
+  &__right {
     width: 40%;
 
     @media (max-width: $third-media) {
-      width: 55%;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+    }
+  }
+
+  &__left {
+    @media (max-width: $third-media) {
+      width: 55%;
     }
     @media (max-width: $fourth-media) {
       width: 75%;
     }
   }
   &__right {
-    width: 40%;
-
     @media (max-width: $third-media) {
-      // order: -1;
       width: 45%;
     }
     @media (max-width: $fourth-media) {

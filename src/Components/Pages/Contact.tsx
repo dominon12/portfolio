@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./Contact.scss";
-import contactIllustration from "../../Assets/Images/contact.png";
+import contactIllustration from "../../Assets/Images/System/contact.png";
 import InfoSection from "../Organisms/InfoSection";
 import Title from "../Atoms/Title";
 import Image from "../Atoms/Image";
