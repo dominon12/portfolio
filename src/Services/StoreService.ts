@@ -15,9 +15,6 @@ import portfolioPhoto from "../Assets/Images/Projects/portfolio.png";
 import hmongoPhoto from "../Assets/Images/Projects/hmongo.png";
 import surveyAPIPhoto from "../Assets/Images/Projects/survey-api.png";
 
-const lorem =
-  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit saepe voluptas officiis, doloribus cum totam dolor expedita minus ipsam voluptates, necessitatibus cupiditate! Id optio ab, voluptate a dolor dolore animi? Eum sunt, quaerat suscipit iusto iure fugit. Itaque dolorum aut perspiciatis asperiores voluptatem voluptates a culpa nostrum dolor? Laborum corporis at quo eveniet sunt aut nemo, ipsa iure ad autem? Neque quos libero alias, voluptatibus esse porro dignissimos maxime ";
-
 const portfolioData: Portfolio = {
   about: {
     title: "Hi there, my name is Max 👋",
@@ -94,7 +91,15 @@ const portfolioData: Portfolio = {
       title: "Cartel Hookah",
       image: cartelPhoto,
       shortDescription: 'E-commerce web site for company "Cartel Hookah"',
-      description: [lorem],
+      description: [
+        "Another e-commerce website I’ve built for money. Both back-end and front-end.",
+        "Thanks to Django’s admin panel admins can manage all the website’s content.",
+        "The cool thing about product’s model is that admins can add product’s characteristics which in future are used to filter those products on products list page.",
+        "Users can save items they like to favorite items list by clicking on the heart icon which is being persisted in redux’s state. If user has added items to the list of favorite items and then logs in, this list is being saved to the backend’s database.",
+        "Checkout page has a system that depending on selected company and country calculates the shipping cost. This system is managed from the admin panel where admins can define which fields user has to fill when selecting different companies. The client application renders a form conditionally using data obtained from the REST API.",
+        "After client has made an order, he can track it on order’s page which includes all the info about the order together with order’s status scale. Every time when order’s status changes, client gets notified by email.",
+        "This website supports 3 languages.",
+      ],
       dateStarted: new Date("2021/05/05"),
       type: "E-commerce",
       technologies: {
@@ -144,9 +149,9 @@ const portfolioData: Portfolio = {
       title: "Learn Sorting!",
       image: sortingPhoto,
       shortDescription:
-        "Visualization of the operation of some sorting algorithms. A project made in two evenings.",
+        "Visualization of the operation of some sorting algorithms.",
       description: [
-        "When I was reading a book “Groke algorithms”, section about sorting algorithm catched my attention so I decided to make a website - cheat sheet for me and all other people with algorithms’ work visualization, description and python implementation, training my Angular and TypeScript skills.",
+        "When I was reading a book “Grokking algorithms”, section about sorting algorithm caught my attention so I decided to make a website - cheat sheet for me and all other people with algorithms’ work visualization, description and python implementation, training my Angular and TypeScript skills.",
         "It’s also can be downloaded to mobile or desktop as a PWA and work offline.",
       ],
       dateStarted: new Date("2021/03/25"),
