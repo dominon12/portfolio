@@ -105,6 +105,15 @@ $first-media: 1024px;
     padding: 1rem;
     color: var(--headline-color);
 
+    &.relevant {
+      &::after {
+        content: "*";
+        color: var(--color-details);
+        margin-left: 0.5rem;
+        font-size: 1.4rem;
+      }
+    }
+
     @media (max-width: $first-media) {
       padding-left: 0;
     }

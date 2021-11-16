@@ -435,7 +435,7 @@ const portfolioData: Portfolio = {
         {
           id: 11,
           name: "Git",
-          level: 3,
+          level: 4,
           isRelevant: true,
         },
         {
