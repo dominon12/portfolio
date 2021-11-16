@@ -1,0 +1,23 @@
+.jumping-arrow {
+  &__icon {
+    display: block;
+    margin: 0 auto;
+    font-size: 2rem;
+    cursor: pointer;
+    animation: jumpingAnimation 2s linear 0s infinite;
+  }
+}
+
+@keyframes jumpingAnimation {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(1rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

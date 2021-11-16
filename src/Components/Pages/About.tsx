@@ -8,6 +8,7 @@ import { getAbout } from "../../Services/DataService";
 import { useHistory } from "react-router";
 import InfoSection from "../Organisms/InfoSection";
 import { SideBarContext } from "../../Contexts/SideBarContext";
+import JumpingArrow from "../Atoms/JumpingArrow";
 
 const MOBILE_BEGINS_AFTER = 425;
 
@@ -24,28 +25,31 @@ const About: React.FC = () => {
     : () => history.push("/projects");
 
   return (
-    <InfoSection
-      containerClassName="about__container"
-      left={
-        <>
-          <Title className="about__title">{aboutData?.title}</Title>
-          <p className="about__description">{aboutData?.description}</p>
-          <Button type="primary" onClick={handleBegin}>
-            Begin
-          </Button>
-        </>
-      }
-      right={
-        <Image
-          src={aboutData.image}
-          alt="My profile picture"
-          width="500"
-          height="500"
-          className="about__image"
-        />
-      }
-      rightContainerClassName="about__container_right"
-    />
+    <div className="about">
+      <InfoSection
+        containerClassName="about__container"
+        left={
+          <>
+            <Title className="about__title">{aboutData?.title}</Title>
+            <p className="about__description">{aboutData?.description}</p>
+            <Button type="primary" onClick={handleBegin}>
+              Begin
+            </Button>
+          </>
+        }
+        right={
+          <Image
+            src={aboutData.image}
+            alt="My profile picture"
+            width="500"
+            height="500"
+            className="about__image"
+          />
+        }
+        rightContainerClassName="about__container_right"
+      />
+      <JumpingArrow />
+    </div>
   );
 };
 

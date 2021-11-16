@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { withRouter, useLocation } from "react-router-dom";
 
-import { scrollToTop } from "../../Services/HelperService";
+import { scrollTo } from "../../Services/HelperService";
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
 
-  useEffect(() => scrollToTop(), [pathname]);
+  useEffect(() => scrollTo({ top: 0, left: 0 }), [pathname]);
 
   return null;
 };

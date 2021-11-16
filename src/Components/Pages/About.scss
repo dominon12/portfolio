@@ -5,10 +5,10 @@ $mobile-devices: 425px;
 
 .about {
   &__container {
-    min-height: calc(100vh - 2rem);
+    min-height: calc(100vh - 4rem);
 
     @media (max-width: $mobile-devices) {
-      min-height: calc(100vh - 2rem - 4.5rem);
+      min-height: calc(100vh - 4rem - 4.5rem);
     }
 
     &_right {
