@@ -28,7 +28,15 @@ export interface AboutUnit {
   title: string;
   description: string;
   image: Image;
-  useBeginBtn?: boolean;
+  button?: IButton
+}
+
+export type ButtonType = "primary" | "mini"
+
+export interface IButton {
+  text: string;
+  type: ButtonType;
+  link: string;
 }
 
 export interface Image {

@@ -43,7 +43,11 @@ const portfolioData: Portfolio = {
           width: "500",
           height: "500",
         },
-        useBeginBtn: true,
+        button: {
+          text: "Begin",
+          type: "primary",
+          link: "specialCase",
+        },
       },
       {
         id: 2,
@@ -55,6 +59,11 @@ const portfolioData: Portfolio = {
           alt: "React logo",
           width: "500",
           height: "500",
+        },
+        button: {
+          text: "Skills",
+          type: "primary",
+          link: "/skills",
         },
       },
     ],

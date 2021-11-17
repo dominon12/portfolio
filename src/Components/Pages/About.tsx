@@ -30,9 +30,16 @@ const About: React.FC = () => {
       <>
         <Title className="about__title">{aboutUnit.title}</Title>
         <p className="about__description">{aboutUnit.description}</p>
-        {aboutUnit.useBeginBtn && (
-          <Button type="primary" onClick={handleBegin}>
-            Begin
+        {aboutUnit.button && (
+          <Button
+            type={aboutUnit.button.type}
+            onClick={() =>
+              aboutUnit.button?.link === "specialCase"
+                ? handleBegin()
+                : history.push(aboutUnit.button?.link ?? "/")
+            }
+          >
+            {aboutUnit.button.text}
           </Button>
         )}
       </>

@@ -1,9 +1,10 @@
 import React from "react";
 
 import "./Button.scss";
+import { ButtonType } from "../../Types/Types";
 
 interface Props {
-  type: "primary" | "mini";
+  type: ButtonType;
   onClick: () => void;
   disabled?: boolean;
 }
