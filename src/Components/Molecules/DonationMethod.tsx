@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./DonationMethod.scss";
-import { DonationMethodType, Image } from "../../Types/Types";
+import { DonationMethodType, IImage } from "../../Types/Types";
 import Subtitle from "../Atoms/Subtitle";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   type: DonationMethodType;
   linkUrl: string;
   comment: string;
-  image: Image;
+  image: IImage;
   isLink?: boolean;
 }
 

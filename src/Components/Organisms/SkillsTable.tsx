@@ -3,7 +3,7 @@ import { AiOutlineFileDone } from "react-icons/ai";
 
 import "./SkillsTable.scss";
 import Subtitle from "../Atoms/Subtitle";
-import { SkillsGroup as ISkillsGroup } from "../../Types/Types";
+import { ISkillsGroup } from "../../Types/Types";
 
 const progressLevelNames = [
   "Beginner",

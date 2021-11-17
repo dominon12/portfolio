@@ -3,17 +3,17 @@ import React from "react";
 import "./ProjectsNav.scss";
 import Title from "../Atoms/Title";
 import Select from "../Molecules/Select";
-import { SelectValue, SelectValuesGroup } from "../../Types/Types";
+import { ISelectValue, ISelectValuesGroup } from "../../Types/Types";
 
 interface Props {
   // filter
   filterByValue: string;
   setFilterByValue: React.Dispatch<React.SetStateAction<string>>;
-  filterValues: SelectValuesGroup[];
+  filterValues: ISelectValuesGroup[];
   // sort
   sortByValue: string;
   setSortByValue: React.Dispatch<React.SetStateAction<string>>;
-  sortValues: SelectValue[];
+  sortValues: ISelectValue[];
 }
 
 const ProjectsNav: React.FC<Props> = (props) => {

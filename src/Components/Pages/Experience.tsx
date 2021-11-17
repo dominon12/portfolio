@@ -4,9 +4,7 @@ import ExperienceLiana from "../Organisms/ExperienceLiana";
 
 import "./Experience.scss";
 
-interface Props {}
-
-const Experience: React.FC = (props: Props) => {
+const Experience: React.FC = () => {
   return (
     <div className="experience">
       <Title className="experience__title">Experience</Title>

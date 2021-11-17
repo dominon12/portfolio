@@ -2,15 +2,15 @@ import React, { useState } from "react";
 
 import "./ProjectCard.scss";
 import BrickLink from "../Atoms/BrickLink";
-import { Image, ProjectTechnologies } from "../../Types/Types";
+import { IImage, IProjectTechnologies } from "../../Types/Types";
 
 interface Props {
   title: string;
-  image: Image;
+  image: IImage;
   shortDescription: string;
   description: string[];
   dateStarted: Date;
-  technologies: ProjectTechnologies;
+  technologies: IProjectTechnologies;
   repository?: string;
   link?: string;
 }

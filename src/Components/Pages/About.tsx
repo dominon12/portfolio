@@ -9,7 +9,7 @@ import { useHistory } from "react-router";
 import InfoSection from "../Organisms/InfoSection";
 import { SideBarContext } from "../../Contexts/SideBarContext";
 import JumpingArrow from "../Atoms/JumpingArrow";
-import { AboutUnit } from "../../Types/Types";
+import { IAboutUnit } from "../../Types/Types";
 
 const MOBILE_BEGINS_AFTER = 425;
 
@@ -25,7 +25,7 @@ const About: React.FC = () => {
     ? () => setVisible(true)
     : () => history.push("/projects");
 
-  const renderAboutUnit = (aboutUnit: AboutUnit, index: number) => {
+  const renderAboutUnit = (aboutUnit: IAboutUnit, index: number) => {
     const infoBlock = (
       <>
         <Title className="about__title">{aboutUnit.title}</Title>

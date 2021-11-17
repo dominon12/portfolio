@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 
 import ProjectsNav from "../Organisms/ProjectsNav";
 import { getProjects } from "../../Services/DataService";
-import { Project, SelectValue, SelectValuesGroup } from "../../Types/Types";
+import { IProject, ISelectValue, ISelectValuesGroup } from "../../Types/Types";
 import ProjectsGrid from "../Organisms/ProjectsGrid";
 
-function getFilterValues(projects: Project[]): SelectValuesGroup[] {
+function getFilterValues(projects: IProject[]): ISelectValuesGroup[] {
   let projectTypes = new Set<string>(),
     frontend = new Set<string>(),
     backend = new Set<string>(),
     devops = new Set<string>();
 
-  projects.forEach((project: Project) => {
+  projects.forEach((project: IProject) => {
     project.technologies.backend.forEach(backend.add, backend);
     project.technologies.frontend.forEach(frontend.add, frontend);
     project.technologies.devops.forEach(devops.add, devops);
@@ -23,7 +23,7 @@ function getFilterValues(projects: Project[]): SelectValuesGroup[] {
   const stringSetToSelectValuesGroup = (
     stringArray: Set<string>,
     groupName: string
-  ): SelectValuesGroup => ({
+  ): ISelectValuesGroup => ({
     groupName,
     id: randomId(),
     values: Array.from(stringArray)
@@ -35,7 +35,7 @@ function getFilterValues(projects: Project[]): SelectValuesGroup[] {
       })),
   });
 
-  const filterValues: SelectValuesGroup[] = [
+  const filterValues: ISelectValuesGroup[] = [
     stringSetToSelectValuesGroup(backend, "Back-end"),
     stringSetToSelectValuesGroup(frontend, "Front-end"),
     stringSetToSelectValuesGroup(devops, "DevOps"),
@@ -46,9 +46,9 @@ function getFilterValues(projects: Project[]): SelectValuesGroup[] {
 }
 
 function filterProjects(
-  projects: Project[],
+  projects: IProject[],
   filterBy: string,
-  setProjects: React.Dispatch<React.SetStateAction<Project[]>>
+  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>
 ) {
   if (!filterBy) {
     setProjects(projects);
@@ -65,9 +65,9 @@ function filterProjects(
 }
 
 function sortProjects(
-  projects: Project[],
+  projects: IProject[],
   sortBy: string,
-  setProjects: React.Dispatch<React.SetStateAction<Project[]>>
+  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>
 ) {
   if (!sortBy) {
     sortProjects(projects, "-dateStarted", setProjects);
@@ -82,13 +82,13 @@ function sortProjects(
 }
 
 const Projects: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>(getProjects());
+  const [projects, setProjects] = useState<IProject[]>(getProjects());
 
   const [filterBy, setFilterBy] = useState("");
-  const [filterValues, setFilterValues] = useState<SelectValuesGroup[]>([]);
+  const [filterValues, setFilterValues] = useState<ISelectValuesGroup[]>([]);
   const [sortBy, setSortBy] = useState("");
 
-  const sortValues: SelectValue[] = [
+  const sortValues: ISelectValue[] = [
     {
       id: 2,
       value: "-dateStarted",

@@ -4,9 +4,7 @@ import "./ExperienceLiana.scss";
 import { getExperience } from "../../Services/DataService";
 import CareerEvent from "../Molecules/CareerEvent";
 
-interface Props {}
-
-const ExperienceLiana: React.FC<Props> = (props) => {
+const ExperienceLiana: React.FC = () => {
   const careerEvents = getExperience();
 
   return (

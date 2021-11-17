@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Select.scss";
 import FormError from "../Atoms/FormError";
-import { SelectValue, SelectValuesGroup } from "../../Types/Types";
+import { ISelectValue, ISelectValuesGroup } from "../../Types/Types";
 import { validateField } from "../../Services/FormService";
 import FormLabel from "../Atoms/FormLabel";
 import FormFieldContainer from "../Atoms/FormFieldContainer";
@@ -10,7 +10,7 @@ import FormFieldContainer from "../Atoms/FormFieldContainer";
 interface Props {
   label: string;
   value: string | number;
-  values: SelectValue[] | SelectValuesGroup[];
+  values: ISelectValue[] | ISelectValuesGroup[];
   handleChange: React.Dispatch<React.SetStateAction<string>>;
   defaultValue?: string | number;
   required?: boolean;
@@ -54,7 +54,7 @@ const Select: React.FC<Props> = ({
     }
   };
 
-  const isSelectValuesGroup = (object: any): object is SelectValuesGroup =>
+  const isSelectValuesGroup = (object: any): object is ISelectValuesGroup =>
     "groupName" in object;
 
   const renderSelectOptions = (selectValues: any) => {
@@ -62,17 +62,17 @@ const Select: React.FC<Props> = ({
       // SelectValuesGroup
       return selectValues
         .sort(
-          (a: SelectValuesGroup, b: SelectValuesGroup) =>
+          (a: ISelectValuesGroup, b: ISelectValuesGroup) =>
             a.values.length - b.values.length
         )
-        .map((value: SelectValuesGroup) => (
+        .map((value: ISelectValuesGroup) => (
           <optgroup key={value.id} label={value.groupName}>
             {renderSelectOptions(value.values)}
           </optgroup>
         ));
     } else {
       // SelectValue
-      return selectValues.map((value: SelectValue) => (
+      return selectValues.map((value: ISelectValue) => (
         <option key={value.id} value={value.value}>
           {value.displayValue}
         </option>

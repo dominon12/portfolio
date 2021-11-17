@@ -1,4 +1,4 @@
-import { Portfolio } from "./../Types/Types";
+import { IPortfolio } from "./../Types/Types";
 
 // about
 import myProfilePhoto from "../Assets/Images/About/profile.jpeg";
@@ -23,7 +23,7 @@ import ethImage from "../Assets/Images/DonatinoMethods/eth.svg";
 import tinkoffImage from "../Assets/Images/DonatinoMethods/tinkoff.png";
 import buyMeCoffeeImage from "../Assets/Images/DonatinoMethods/buy-me-a-coffee.svg";
 
-const portfolioData: Portfolio = {
+const portfolioData: IPortfolio = {
   about: {
     firstName: "Maksim",
     lastName: "Sobolev",

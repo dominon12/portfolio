@@ -4,9 +4,7 @@ import "./DonationMethods.scss";
 import { getDonationMethods } from "../../Services/DataService";
 import DonationMethod from "../Molecules/DonationMethod";
 
-interface Props {}
-
-const DonationMethods: React.FC<Props> = (props) => {
+const DonationMethods: React.FC = () => {
   const donationMethods = getDonationMethods();
 
   return (

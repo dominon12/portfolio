@@ -2,11 +2,11 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import "./NavTab.scss";
-import { Tab } from "../../Types/Types";
+import { ITab } from "../../Types/Types";
 import Tooltip from "./Tooltip";
 
 interface Props {
-  tabData: Tab;
+  tabData: ITab;
 }
 
 const NavTab: React.FC<Props> = (props) => {

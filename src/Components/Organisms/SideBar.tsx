@@ -9,7 +9,7 @@ import { useLocation } from "react-router";
 
 import "./SideBar.scss";
 import NavTab from "../Atoms/NavTab";
-import { Tab } from "../../Types/Types";
+import { ITab } from "../../Types/Types";
 import { SideBarContext } from "../../Contexts/SideBarContext";
 import ThemeSwitch from "../Atoms/ThemeSwitch";
 
@@ -42,7 +42,7 @@ const SideBar: React.FC = () => {
     setVisible(false);
   }, [pathname]);
 
-  const TABS: Tab[] = [
+  const TABS: ITab[] = [
     {
       id: 1,
       link: "/about",
