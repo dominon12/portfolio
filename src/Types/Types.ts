@@ -4,34 +4,34 @@ import { IconType } from "react-icons";
 PORTFOLIO
 */
 
-export interface Portfolio {
-  about: About;
-  projects: Project[];
-  skills: SkillsGroup[];
-  experience: CareerEvent[];
-  languages: Language[];
-  contactLinks: ContactLink[];
-  donationMethods: DonationMethod[];
+export interface IPortfolio {
+  about: IAbout;
+  projects: IProject[];
+  skills: ISkillsGroup[];
+  experience: ICareerEvent[];
+  languages: ILanguage[];
+  contactLinks: IContactLink[];
+  donationMethods: IDonationMethod[];
 }
 
-export interface About {
+export interface IAbout {
   cvDescription: string;
   firstName: string;
   lastName: string;
   jobTitle: string;
-  profilePhoto: Image;
-  aboutUnits: AboutUnit[];
+  profilePhoto: IImage;
+  aboutUnits: IAboutUnit[];
 }
 
-export interface AboutUnit {
+export interface IAboutUnit {
   id: number;
   title: string;
   description: string;
-  image: Image;
-  button?: IButton
+  image: IImage;
+  button?: IButton;
 }
 
-export type ButtonType = "primary" | "mini"
+export type ButtonType = "primary" | "mini";
 
 export interface IButton {
   text: string;
@@ -39,7 +39,7 @@ export interface IButton {
   link: string;
 }
 
-export interface Image {
+export interface IImage {
   src: string;
   alt: string;
   width: string;
@@ -54,40 +54,40 @@ export type ProjectType =
   | "Landing"
   | "Library";
 
-export interface Project {
+export interface IProject {
   id: number;
   title: string;
-  image: Image;
+  image: IImage;
   shortDescription: string;
   description: string[];
   dateStarted: Date;
   type: ProjectType;
-  technologies: ProjectTechnologies;
+  technologies: IProjectTechnologies;
   implementationTime: number;
   repository?: string;
   link?: string;
 }
 
-export interface ProjectTechnologies {
+export interface IProjectTechnologies {
   backend: string[];
   frontend: string[];
   devops: string[];
 }
 
-export interface SkillsGroup {
+export interface ISkillsGroup {
   id: number;
   name: string;
-  skills: Skill[];
+  skills: ISkill[];
 }
 
-export interface Skill {
+export interface ISkill {
   id: number;
   name: string;
   level: 1 | 2 | 3 | 4 | 5;
   isRelevant: boolean;
 }
 
-export interface CareerEvent {
+export interface ICareerEvent {
   id: number;
   title: string;
   description: string;
@@ -96,7 +96,7 @@ export interface CareerEvent {
   isRelevant: boolean;
 }
 
-export interface Language {
+export interface ILanguage {
   id: number;
   name: string;
   code: string;
@@ -104,7 +104,7 @@ export interface Language {
   learningStory: string;
 }
 
-export interface ContactLink {
+export interface IContactLink {
   id: number;
   name: string;
   url: string;
@@ -112,13 +112,13 @@ export interface ContactLink {
 
 export type DonationMethodType = "btc" | "eth" | "tinkoff" | "buymeacoffee";
 
-export interface DonationMethod {
+export interface IDonationMethod {
   id: number;
   type: DonationMethodType;
   comment: string;
   name: string;
   linkUrl: string;
-  image: Image;
+  image: IImage;
   isLink?: boolean;
 }
 
@@ -126,7 +126,7 @@ export interface DonationMethod {
 OTHER
 */
 
-export interface Tab {
+export interface ITab {
   id: number;
   link: string;
   icon: IconType;
@@ -135,14 +135,14 @@ export interface Tab {
   orderNumber: number;
 }
 
-export interface SelectValue {
+export interface ISelectValue {
   id: number;
   value: string | number;
   displayValue: string;
 }
 
-export interface SelectValuesGroup {
+export interface ISelectValuesGroup {
   id: number;
   groupName: string;
-  values: SelectValue[];
+  values: ISelectValue[];
 }
