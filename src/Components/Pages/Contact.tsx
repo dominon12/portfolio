@@ -1,10 +1,9 @@
 import React from "react";
+import { TiMessageTyping } from "react-icons/ti";
 
 import "./Contact.scss";
-import contactIllustration from "../../Assets/Images/System/contact.png";
 import InfoSection from "../Organisms/InfoSection";
 import Title from "../Atoms/Title";
-import Image from "../Atoms/Image";
 import ContactForm from "../Organisms/ContactForm";
 import LinksColumn from "../Organisms/LinksColumn";
 import Divider from "../Atoms/Divider";
@@ -14,15 +13,7 @@ const Contact: React.FC = () => {
     <div className="contact">
       <InfoSection
         containerClassName="contact__form-section"
-        right={
-          <Image
-            className="contact__illustration"
-            src={contactIllustration}
-            alt="Get in contact"
-            width="500"
-            height="500"
-          />
-        }
+        right={<TiMessageTyping className="contact__icon" />}
         left={
           <>
             <Title className="contact__title">Contact me</Title>

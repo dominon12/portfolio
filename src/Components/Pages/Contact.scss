@@ -9,10 +9,11 @@ $second-media: 554px;
     margin-top: 0;
   }
 
-  &__illustration {
-    width: 100%;
-    height: 50%;
-    object-fit: contain;
+  &__icon {
+    color: #fff;
+    font-size: 20rem;
+    display: block;
+    margin: 0 auto;
 
     @media (max-width: $first-media) {
       display: none;
