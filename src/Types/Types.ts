@@ -118,6 +118,7 @@ export interface DonationMethod {
   comment: string;
   name: string;
   linkUrl: string;
+  image: Image;
   isLink?: boolean;
 }
 

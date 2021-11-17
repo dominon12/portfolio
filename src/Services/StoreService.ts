@@ -17,6 +17,11 @@ import portfolioPhoto from "../Assets/Images/Projects/portfolio.png";
 import hmongoPhoto from "../Assets/Images/Projects/hmongo.png";
 import surveyAPIPhoto from "../Assets/Images/Projects/survey-api.png";
 import pokyzaPhoto from "../Assets/Images/Projects/pokyza.png";
+// donation methods
+import btcImage from "../Assets/Images/DonatinoMethods/btc.png";
+import ethImage from "../Assets/Images/DonatinoMethods/eth.svg";
+import tinkoffImage from "../Assets/Images/DonatinoMethods/tinkoff.png";
+import buyMeCoffeeImage from "../Assets/Images/DonatinoMethods/buy-me-a-coffee.svg";
 
 const portfolioData: Portfolio = {
   about: {
@@ -804,6 +809,12 @@ const portfolioData: Portfolio = {
       name: "Bitcoin",
       comment: "Here's my bitcoin wallet address",
       linkUrl: "1E3NzhUvkpcRLhgisfL7Mv4AVNn1KFNdN6",
+      image: {
+        src: btcImage,
+        alt: "Bitcoin Icon",
+        width: "500",
+        height: "500",
+      },
     },
     {
       id: 2,
@@ -811,6 +822,12 @@ const portfolioData: Portfolio = {
       name: "Ethereum",
       comment: "Here's my ethereum wallet address",
       linkUrl: "0x781253123f5fc0B9795839B8C02383F1c7E4ADa0",
+      image: {
+        src: ethImage,
+        alt: "Ethereum Icon",
+        width: "500",
+        height: "500",
+      },
     },
     {
       id: 3,
@@ -819,6 +836,12 @@ const portfolioData: Portfolio = {
       comment: "Here you can donate me in rubbles",
       linkUrl: "https://www.tinkoff.ru/cf/3QOy3SthG4o",
       isLink: true,
+      image: {
+        src: tinkoffImage,
+        alt: "Tinkoff Logo",
+        width: "500",
+        height: "500",
+      },
     },
     {
       id: 4,
@@ -827,6 +850,12 @@ const portfolioData: Portfolio = {
       comment: "Here you can buy me a coffee",
       linkUrl: "https://buymeacoffee.com/dominon12",
       isLink: true,
+      image: {
+        src: buyMeCoffeeImage,
+        alt: "Buy Me a Coffee Logo",
+        width: "500",
+        height: "500",
+      },
     },
   ],
 };

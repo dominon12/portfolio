@@ -17,6 +17,7 @@ const DonationMethods: React.FC<Props> = (props) => {
           name={donationMethod.name}
           type={donationMethod.type}
           comment={donationMethod.comment}
+          image={donationMethod.image}
           linkUrl={donationMethod.linkUrl}
           isLink={donationMethod.isLink}
         />
