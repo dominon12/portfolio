@@ -58,6 +58,11 @@ p {
   color: var(--paragraph-color);
 }
 
+::selection {
+  background-color: var(--color-details);
+  color: var(--button-text);
+}
+
 .hover-animation {
   transition: var(--transition-off);
 
