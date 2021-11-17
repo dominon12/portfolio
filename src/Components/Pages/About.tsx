@@ -37,15 +37,7 @@ const About: React.FC = () => {
         )}
       </>
     );
-    const imageBlock = (
-      <img
-        src={aboutUnit.image.src}
-        alt={aboutUnit.image.alt}
-        width={aboutUnit.image.width}
-        height={aboutUnit.image.height}
-        className="about__image"
-      />
-    );
+    const imageBlock = <img {...aboutUnit.image} className="about__image" />;
     const evenIndex = index % 2 === 0;
     const left = evenIndex ? infoBlock : imageBlock;
     const right = evenIndex ? imageBlock : infoBlock;

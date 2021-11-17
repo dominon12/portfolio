@@ -63,7 +63,12 @@ const portfolioData: Portfolio = {
     {
       id: 1,
       title: "PriceTomat Bot",
-      image: tomatPhoto,
+      image: {
+        src: tomatPhoto,
+        alt: "PriceTomat Bot interface",
+        width: "200",
+        height: "250",
+      },
       shortDescription:
         "Telegram bot which sends a message when price for selected assets meets target price set by user",
       description: [
@@ -83,7 +88,12 @@ const portfolioData: Portfolio = {
     {
       id: 2,
       title: "Pokyza Shop",
-      image: pokyzaPhoto,
+      image: {
+        src: pokyzaPhoto,
+        alt: "Pokyza Shop Checkout Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription: "E-commerce web app for dropshipping project",
       description: [
         "An e-commerce project I’ve been working on with the idea of monetising it using a drop shipping model.",
@@ -121,7 +131,12 @@ const portfolioData: Portfolio = {
     {
       id: 3,
       title: "Cartel Hookah",
-      image: cartelPhoto,
+      image: {
+        src: cartelPhoto,
+        alt: "Cartel Hookah Home Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription: 'E-commerce web site for company "Cartel Hookah"',
       description: [
         "Another e-commerce website I’ve built for money. Both back-end and front-end.",
@@ -152,7 +167,12 @@ const portfolioData: Portfolio = {
     {
       id: 4,
       title: "Smoke Laboratory",
-      image: smokelabPhoto,
+      image: {
+        src: smokelabPhoto,
+        alt: "Smoke Laboratory Home Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription: 'E-commerce web site for company "Smoke Laboratory"',
       description: [
         "First website I’ve made for money.",
@@ -180,7 +200,12 @@ const portfolioData: Portfolio = {
     {
       id: 5,
       title: "Learn Sorting!",
-      image: sortingPhoto,
+      image: {
+        src: sortingPhoto,
+        alt: "Learn Sorting App's Interface",
+        width: "200",
+        height: "250",
+      },
       shortDescription:
         "Visualization of the operation of some sorting algorithms.",
       description: [
@@ -201,7 +226,12 @@ const portfolioData: Portfolio = {
     {
       id: 6,
       title: '"Rio" Outdoor Children\'s Playground',
-      image: rioPhoto,
+      image: {
+        src: rioPhoto,
+        alt: "Rio Website's Main Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription:
         'Landing page with simple animations for outdoor children\'s playground "Rio"',
       description: [
@@ -220,7 +250,12 @@ const portfolioData: Portfolio = {
     {
       id: 7,
       title: "Reacenter",
-      image: reacPhoto,
+      image: {
+        src: reacPhoto,
+        alt: "Reacenter Website's Q&A Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription:
         "Website for the Children's Department of Neurology and Reflexology",
       description: [
@@ -249,7 +284,12 @@ const portfolioData: Portfolio = {
     {
       id: 8,
       title: "GetPersData",
-      image: persDataPhoto,
+      image: {
+        src: persDataPhoto,
+        alt: "Link Builder Page of GetPersData App",
+        width: "200",
+        height: "250",
+      },
       shortDescription: "Web app which allows to steal personal data",
       description: [
         "Built to practice my React skills. The idea is to get some person’s data that Web APIs can provide by sending him a link.",
@@ -274,7 +314,12 @@ const portfolioData: Portfolio = {
     {
       id: 9,
       title: "WebPassGenerator",
-      image: passGeneratorPhoto,
+      image: {
+        src: passGeneratorPhoto,
+        alt: "WebPassGenerator Main Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription: "Generates password depending on selected options",
       description: [
         "After finishing reading awesome https://learn.JavaScript.ru/ I wanted to use my new knowledge in coding some new project. Password generator vanilla JavaScript app idea was the best I was thinking about. ",
@@ -293,7 +338,12 @@ const portfolioData: Portfolio = {
     {
       id: 10,
       title: "Portfolio",
-      image: portfolioPhoto,
+      image: {
+        src: portfolioPhoto,
+        alt: "Portfolio Website's Projects Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription: "This Web App",
       description: [
         "The main idea of this app is to make boring static portfolio/CV be interactive and more informative in order to get more chances to be noticed by HRs",
@@ -312,7 +362,12 @@ const portfolioData: Portfolio = {
     {
       id: 11,
       title: "HMongo",
-      image: hmongoPhoto,
+      image: {
+        src: hmongoPhoto,
+        alt: "HMongo Library GitHub Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription:
         "Library to easy work with NoSQL database MongoDB written in Python3",
       description: [
@@ -334,7 +389,12 @@ const portfolioData: Portfolio = {
     {
       id: 12,
       title: "SurveyAPI",
-      image: surveyAPIPhoto,
+      image: {
+        src: surveyAPIPhoto,
+        alt: "SurveyAPI GitHub Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription:
         "REST API for creating and managing surveys of different types",
       description: [
@@ -366,7 +426,12 @@ const portfolioData: Portfolio = {
     {
       id: 13,
       title: "Smoke Laboratory (New)",
-      image: smokelabNewPhoto,
+      image: {
+        src: smokelabNewPhoto,
+        alt: "SmokeLaboratory Home Page",
+        width: "200",
+        height: "250",
+      },
       shortDescription:
         'Updated e-commerce web site for company "Smoke Laboratory"',
       description: [

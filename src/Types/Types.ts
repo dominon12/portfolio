@@ -49,7 +49,7 @@ export type ProjectType =
 export interface Project {
   id: number;
   title: string;
-  image: string;
+  image: Image;
   shortDescription: string;
   description: string[];
   dateStarted: Date;
