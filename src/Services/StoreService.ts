@@ -5,6 +5,7 @@ import myProfilePhoto from "../Assets/Images/About/profile.jpeg";
 import reactGif from "../Assets/Images/About/react-logo.gif";
 // projects
 import smokelabPhoto from "../Assets/Images/Projects/smokelab.png";
+import smokelabNewPhoto from "../Assets/Images/Projects/smokelab-new.png";
 import cartelPhoto from "../Assets/Images/Projects/cartel.png";
 import reacPhoto from "../Assets/Images/Projects/reac.png";
 import rioPhoto from "../Assets/Images/Projects/rio.png";
@@ -15,6 +16,7 @@ import passGeneratorPhoto from "../Assets/Images/Projects/pass-generator.png";
 import portfolioPhoto from "../Assets/Images/Projects/portfolio.png";
 import hmongoPhoto from "../Assets/Images/Projects/hmongo.png";
 import surveyAPIPhoto from "../Assets/Images/Projects/survey-api.png";
+import pokyzaPhoto from "../Assets/Images/Projects/pokyza.png";
 
 const portfolioData: Portfolio = {
   about: {
@@ -81,7 +83,7 @@ const portfolioData: Portfolio = {
     {
       id: 2,
       title: "Pokyza Shop",
-      image: "https://pokyzashop.com/assets/img/favicons/logo.png",
+      image: pokyzaPhoto,
       shortDescription: "E-commerce web app for dropshipping project",
       description: [
         "An e-commerce project I’ve been working on with the idea of monetising it using a drop shipping model.",
@@ -155,7 +157,8 @@ const portfolioData: Portfolio = {
       description: [
         "First website I’ve made for money.",
         "The idea was to make an e-commerce website for a hookah store “Smoke Laboratory” in Gdańsk, Poland. It also was my first e-commerce project, I didn’t really know how to implement some things so I was googling a lot. In this project I didn’t use any front end framework. Only Django’s template system.",
-        "It took me 1 month to finish it and I was really happy with what I did. Now I see mistakes I’ve made, which thanks to this project I won’t ever repeat, like not using single responsibility rule, not dividing big parts of code in functions, not making reusable components.",
+        "It took me 1 month to finish it and I was really happy with what I did. Now I see mistakes I’ve made, which thanks to this project I won’t ever repeat, like not using single responsibility principle, not dividing big parts of code in functions, not making reusable components.",
+        "Recently I totally rewrote this project solving old problems so under old domain there is a new website.",
       ],
       dateStarted: new Date("2020/12/20"),
       type: "E-commerce",
@@ -353,11 +356,50 @@ const portfolioData: Portfolio = {
       dateStarted: new Date("2021/02/11"),
       type: "REST API",
       technologies: {
-        backend: ["Python3", "Django", "DRF"],
+        backend: ["Python3", "Django", "Django Rest Framework"],
         frontend: [],
         devops: [],
       },
       repository: "https://github.com/dominon12/SurveyAPI",
+      implementationTime: 0,
+    },
+    {
+      id: 13,
+      title: "Smoke Laboratory (New)",
+      image: smokelabNewPhoto,
+      shortDescription:
+        'Updated e-commerce web site for company "Smoke Laboratory"',
+      description: [
+        "Updated version of my first e-commerce website.",
+        "Old version working on Django had bugs and architecture problems so the owner asked me to make something so it would work better.",
+        "I decided to split it into 2 applications: React front-end app and DRF back-end app.",
+        "It took me 4 weeks working for about 4 hours per day to fully finish it and add some new features like: filtering, sorting, searching products, new system to calculate delivery price and system for registration on events.",
+        "Thanks to migrating to React, the website started working much faster, smoother and became more interactive. Also thanks to dividing parts of application into components, in future it will be much much easier to make changes.",
+        "Working with this project helped me to learn some new things like: error boundaries, building custom hooks, writing end-to-end tests with cypress, etc.",
+        "So far I'm very happy with the result. I consider this website the best and most complicated one from my other projects.",
+      ],
+      dateStarted: new Date("2021/10/11"),
+      type: "E-commerce",
+      technologies: {
+        backend: [
+          "Python3",
+          "Django",
+          "Django Rest Framework",
+          "PostgreSQL",
+          "Celery",
+          "RabbitMQ",
+        ],
+        frontend: ["React", "TypeScript", "HTML", "SCSS"],
+        devops: [
+          "Debian 10",
+          "supervisord",
+          "pgbouncer",
+          "Nginx",
+          "gunicorn",
+          "firebase",
+        ],
+      },
+      link: "https://smokelaboratory.eu/",
       implementationTime: 0,
     },
   ],
