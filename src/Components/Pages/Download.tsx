@@ -1,5 +1,6 @@
 import React from "react";
 import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
+import { Helmet } from "react-helmet";
 
 import "./Download.scss";
 import Title from "../Atoms/Title";
@@ -9,31 +10,43 @@ import Button from "../Atoms/Button";
 
 const Download: React.FC = () => {
   return (
-    <InfoSection
-      containerClassName="download__container"
-      left={
-        <>
-          <Title className="download__title">Static CV</Title>
-          <p className="download__description">
-            If you need a static pdf document of my Curriculum Vitae, you can
-            download it here by clicking on the button below. It's being
-            generated from the same data source that this website uses.
-          </p>
-          <PDFDownloadLink document={<StaticCV />} fileName={"MaksimSobolevCV"}>
-            <Button type="primary" onClick={() => {}}>
-              Download
-            </Button>
-          </PDFDownloadLink>
-        </>
-      }
-      leftContainerClassName="download__container_left"
-      right={
-        <PDFViewer className="download__preview">
-          <StaticCV />
-        </PDFViewer>
-      }
-      rightContainerClassName="download__container_right"
-    />
+    <>
+      <Helmet>
+        <title>Download | Dominon12</title>
+        <meta
+          name="description"
+          content="Need a static version of this website? Just click the download button and you will get it."
+        />
+      </Helmet>
+      <InfoSection
+        containerClassName="download__container"
+        left={
+          <>
+            <Title className="download__title">Static CV</Title>
+            <p className="download__description">
+              If you need a static pdf document of my Curriculum Vitae, you can
+              download it here by clicking on the button below. It's being
+              generated from the same data source that this website uses.
+            </p>
+            <PDFDownloadLink
+              document={<StaticCV />}
+              fileName={"MaksimSobolevCV"}
+            >
+              <Button type="primary" onClick={() => {}}>
+                Download
+              </Button>
+            </PDFDownloadLink>
+          </>
+        }
+        leftContainerClassName="download__container_left"
+        right={
+          <PDFViewer className="download__preview">
+            <StaticCV />
+          </PDFViewer>
+        }
+        rightContainerClassName="download__container_right"
+      />
+    </>
   );
 };
 

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 
 import "./About.scss";
 import Title from "../Atoms/Title";
-import Image from "../Atoms/Image";
 import Button from "../Atoms/Button";
 import { getAbout } from "../../Services/DataService";
 import { useHistory } from "react-router";
@@ -68,7 +68,16 @@ const About: React.FC = () => {
   };
 
   return (
-    <div className="about">{aboutData.aboutUnits.map(renderAboutUnit)}</div>
+    <>
+      <Helmet>
+        <title>About | Dominon12</title>
+        <meta
+          name="description"
+          content="Welcome to my personal website portfolio! On the about page you can read some information about me as a person and as a developer."
+        />
+      </Helmet>
+      <div className="about">{aboutData.aboutUnits.map(renderAboutUnit)}</div>
+    </>
   );
 };
 

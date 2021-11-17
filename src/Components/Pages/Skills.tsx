@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 import "./Skills.scss";
 import Title from "../Atoms/Title";
@@ -14,10 +15,16 @@ const Skills: React.FC = () => {
     ));
 
   return (
-    <div className="skills">
-      <Title className="skills__title">My skills</Title>
-      <div className="skills__wrapper">{renderSkills()}</div>
-    </div>
+    <>
+      <Helmet>
+        <title>Skills | Dominon12</title>
+        <meta name="description" content="A table with my skills" />
+      </Helmet>
+      <div className="skills">
+        <Title className="skills__title">My skills</Title>
+        <div className="skills__wrapper">{renderSkills()}</div>
+      </div>
+    </>
   );
 };
 

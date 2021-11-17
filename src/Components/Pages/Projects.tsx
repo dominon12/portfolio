@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 import ProjectsNav from "../Organisms/ProjectsNav";
 import { getProjects } from "../../Services/DataService";
@@ -144,17 +145,26 @@ const Projects: React.FC = () => {
   useEffect(() => handleSortValuesChange(), [sortBy]);
 
   return (
-    <div className="projects">
-      <ProjectsNav
-        filterByValue={filterBy}
-        setFilterByValue={setFilterBy}
-        filterValues={filterValues}
-        sortByValue={sortBy}
-        setSortByValue={setSortBy}
-        sortValues={sortValues}
-      />
-      <ProjectsGrid projects={projects} />
-    </div>
+    <>
+      <Helmet>
+        <title>Projects | Dominon12</title>
+        <meta
+          name="description"
+          content="A list of almost all the projects and case studies I've done"
+        />
+      </Helmet>
+      <div className="projects">
+        <ProjectsNav
+          filterByValue={filterBy}
+          setFilterByValue={setFilterBy}
+          filterValues={filterValues}
+          sortByValue={sortBy}
+          setSortByValue={setSortBy}
+          sortValues={sortValues}
+        />
+        <ProjectsGrid projects={projects} />
+      </div>
+    </>
   );
 };
 
