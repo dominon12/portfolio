@@ -11,7 +11,7 @@ interface Props {
 const ProjectsGrid: React.FC<Props> = (props) => {
   return (
     <div className="projects-grid">
-      {props.projects.length ? (
+      {props.projects.length > 0 ? (
         props.projects.map((project: IProject) => (
           <ProjectCard
             key={project.id}

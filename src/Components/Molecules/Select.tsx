@@ -11,7 +11,7 @@ interface Props {
   label: string;
   value: string | number;
   values: ISelectValue[] | ISelectValuesGroup[];
-  handleChange: React.Dispatch<React.SetStateAction<string>>;
+  handleChange: any;
   defaultValue?: string | number;
   required?: boolean;
 }
