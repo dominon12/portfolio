@@ -26,6 +26,12 @@ $mobile-devices: 425px;
     }
   }
 
+  &__jumping-arrow {
+    @media (max-width: $mobile-devices) {
+      margin-bottom: 2rem;
+    }
+  }
+
   &__title {
     @media (max-width: $third-media) {
       margin-bottom: 0.5rem;

@@ -63,7 +63,7 @@ const About: React.FC = () => {
           leftContainerClassName={leftClassName}
           rightContainerClassName={rightClassName}
         />
-        {index === 0 && <JumpingArrow />}
+        {index === 0 && <JumpingArrow className="about__jumping-arrow" />}
       </React.Fragment>
     );
   };
