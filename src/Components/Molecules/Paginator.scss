@@ -1,0 +1,33 @@
+.paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+
+  &__control {
+    cursor: pointer;
+  }
+
+  &__switches-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1rem;
+  }
+
+  &__page-switch {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+
+    &.active {
+      width: 25px;
+      height: 25px;
+      border: 1px solid var(--color-details);
+    }
+    &.inactive {
+      border: 1px solid var(--color-disabled);
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { IProject, ISelectValue, ISelectValuesGroup } from "../Types/Types";
 import { getRandomId } from "./HelperService";
+import Paginator from "./Paginator";
 
 const stringSetToSelectValuesGroup = (
   stringArray: Set<string>,
@@ -67,7 +68,7 @@ export function getSortValues(): ISelectValue[] {
 
 export function filterProjects(
   projects: IProject[],
-  filterBy: string
+  filterBy: string | null
 ): IProject[] {
   if (filterBy) {
     const filteredProjects = projects.filter(
@@ -88,11 +89,16 @@ export function sortProjects(projects: IProject[], sortBy: string): IProject[] {
 
     if (isDesc) sortBy = sortBy.slice(1, sortBy.length);
 
-    const sortedProjects = projects.sort((a: any, b: any) =>
+    projects = projects.sort((a: any, b: any) =>
       isDesc ? b[sortBy] - a[sortBy] : a[sortBy] - b[sortBy]
     );
-    
-    return sortedProjects;
+
+    return projects;
   }
   return projects;
+}
+
+export function paginate<T>(arr: T[], page: number, pageSize: number): T[] {
+  const paginator = new Paginator(arr, pageSize);
+  return paginator.getPage(page);
 }

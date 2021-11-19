@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 
 import ProjectsNav from "../Organisms/ProjectsNav";
-import { getProjects } from "../../Services/DataService";
-import { IProject } from "../../Types/Types";
 import ProjectsGrid from "../Organisms/ProjectsGrid";
+import Paginator from "../Molecules/Paginator";
+import useProjects from "../../Hooks/useProjects";
 
 const Projects: React.FC = () => {
-  const [projects, setProjects] = useState<IProject[]>(getProjects());
+  const { projects, pageProjects } = useProjects();
 
   return (
     <>
@@ -19,8 +19,11 @@ const Projects: React.FC = () => {
         />
       </Helmet>
       <div className="projects">
-        <ProjectsNav projects={projects} setProjects={setProjects} />
-        <ProjectsGrid projects={projects} />
+        <ProjectsNav />
+        <div className="projects__grid">
+          <ProjectsGrid projects={pageProjects} />
+          <Paginator items={projects} pageItems={pageProjects} />
+        </div>
       </div>
     </>
   );
