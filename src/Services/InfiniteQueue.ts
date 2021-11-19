@@ -31,12 +31,10 @@ class InfiniteQueue {
 
   private initializeQueueValues(queueSize: number) {
     // initializes queue attribute with numbers from 1 to queueSize
-    console.log("init");
     for (let i = 0; i < queueSize; i++) {
       this._queue.push(i + 1);
     }
-    console.log({ _queue: this._queue });
   }
 }
 
-export default InfiniteQueue
+export default InfiniteQueue;
