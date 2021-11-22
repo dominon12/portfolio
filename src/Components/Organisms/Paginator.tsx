@@ -203,9 +203,9 @@ const Paginator: React.FC<Props> = (props) => {
 
   const switchPage = () => {
     const nextPage = infiniteQueue.firstElement.toString();
-    getParams.set(pageKey, nextPage);
-    updateUrlWithGetParams(history, pathname, getParams);
     setTimeout(() => {
+      getParams.set(pageKey, nextPage);
+      updateUrlWithGetParams(history, pathname, getParams);
       scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }, transitionTime);
   };
