@@ -47,22 +47,19 @@ $first-media: 1024px;
       &:hover,
       &:focus {
         transition: var(--transition-on);
-        background-color: var(--card-background-color);
-
-        @media (max-width: $first-media) {
-          background: none;
-        }
 
         &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -1rem;
+          z-index: -1;
+          width: calc(100% + 2rem);
+          background-color: var(--card-background-color);
+          height: 80px;
+
           @media (max-width: $first-media) {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -1rem;
-            z-index: -1;
-            height: 100%;
-            width: calc(100% + 2rem);
-            background-color: var(--card-background-color);
+            height: 57px;
           }
         }
       }
