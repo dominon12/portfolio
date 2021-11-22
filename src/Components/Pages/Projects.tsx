@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 import ProjectsNav from "../Organisms/ProjectsNav";
 import ProjectsGrid from "../Organisms/ProjectsGrid";
-import Paginator from "../Molecules/Paginator";
+import Paginator from "../Organisms/Paginator";
 import useProjects from "../../Hooks/useProjects";
 
 const Projects: React.FC = () => {

@@ -1,8 +1,34 @@
+$first-media: 1108px;
+$second-media: 554px;
+
 .paginator {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 2rem 0;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  position: relative;
+
+  @media (max-width: $first-media) {
+    justify-content: space-between;
+  }
+  @media (max-width: $second-media) {
+    flex-direction: column;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+
+    @media (max-width: $first-media) {
+      position: static;
+      transform: translateX(0);
+    }
+  }
 
   &__control {
     cursor: pointer;
@@ -56,6 +82,12 @@
 
     &.right-disabled {
       transform: translateX(4rem);
+    }
+  }
+
+  &__page-size-select {
+    @media (max-width: $second-media) {
+      margin-top: 0.5rem;
     }
   }
 }

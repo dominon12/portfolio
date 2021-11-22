@@ -1,5 +1,6 @@
 import { IProject, ISelectValue, ISelectValuesGroup } from "../Types/Types";
-import { getRandomId } from "./HelperService";
+import { filterByKey, pageKey } from "./GetParamKeys";
+import { getRandomId, updateUrlWithGetParams } from "./HelperService";
 import Paginator from "./Paginator";
 
 const stringSetToSelectValuesGroup = (
@@ -101,4 +102,16 @@ export function sortProjects(projects: IProject[], sortBy: string): IProject[] {
 export function paginate<T>(arr: T[], page: number, pageSize: number): T[] {
   const paginator = new Paginator(arr, pageSize);
   return paginator.getPage(page);
+}
+
+export function handleChangeGetParams(
+  paramName: string,
+  value: string,
+  getParams: URLSearchParams,
+  pathname: string,
+  history: any
+) {
+  !value ? getParams.delete(paramName) : getParams.set(paramName, value);
+  if (paramName === filterByKey) getParams.set(pageKey, "1");
+  updateUrlWithGetParams(history, pathname, getParams);
 }
