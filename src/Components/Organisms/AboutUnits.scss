@@ -3,7 +3,7 @@ $second-media: 1048px;
 $third-media: 852px;
 $mobile-devices: 425px;
 
-.about {
+.about-units {
   &__container {
     min-height: calc(100vh - 2rem);
 
@@ -28,7 +28,8 @@ $mobile-devices: 425px;
 
   &__jumping-arrow {
     @media (max-width: $mobile-devices) {
-      margin-bottom: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
   }
 
