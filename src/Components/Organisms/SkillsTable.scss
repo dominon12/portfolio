@@ -42,24 +42,34 @@ $first-media: 1024px;
   &__body {
     tr {
       position: relative;
-      transition: var(--transition-off);
 
       &:hover,
       &:focus {
-        transition: var(--transition-on);
+        background-color: var(--card-background-color);
 
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -1rem;
-          z-index: -1;
-          width: calc(100% + 2rem);
-          background-color: var(--card-background-color);
-          height: 80px;
+        .skills-table__skill-name {
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -1rem;
+            height: 100%;
+            width: 1rem;
+            background-color: var(--card-background-color);
+          }
+        }
 
-          @media (max-width: $first-media) {
-            height: 57px;
+        td {
+          &:last-child {
+            &::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              right: -1rem;
+              height: 100%;
+              width: 1rem;
+              background-color: var(--card-background-color);
+            }
           }
         }
       }
