@@ -1,4 +1,5 @@
 $first-media: 1024px;
+$second-media: 534px;
 
 .skills-table {
   &__title {
@@ -6,11 +7,14 @@ $first-media: 1024px;
   }
 
   &__table {
-    width: 100%;
+    width: calc(100% + 2rem);
     border-collapse: collapse;
+    margin: 0 -1rem;
   }
 
   &__caption {
+    margin-left: 1rem;
+
     @media (max-width: $first-media) {
       margin-bottom: 2rem;
     }
@@ -36,42 +40,26 @@ $first-media: 1024px;
           }
         }
       }
+
+      &:last-child {
+        .skills-table__scale-name {
+          @media (max-width: $second-media) {
+            left: -1rem;
+          }
+        }
+      }
     }
   }
 
   &__body {
     tr {
       position: relative;
+      transition: var(--transition-off);
 
       &:hover,
       &:focus {
+        transition: var(--transition-on);
         background-color: var(--card-background-color);
-
-        .skills-table__skill-name {
-          &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -1rem;
-            height: 100%;
-            width: 1rem;
-            background-color: var(--card-background-color);
-          }
-        }
-
-        td {
-          &:last-child {
-            &::after {
-              content: "";
-              position: absolute;
-              top: 0;
-              right: -1rem;
-              height: 100%;
-              width: 1rem;
-              background-color: var(--card-background-color);
-            }
-          }
-        }
       }
     }
 
@@ -110,6 +98,7 @@ $first-media: 1024px;
     font-weight: 700;
     width: 60%;
     padding: 1rem;
+    margin-left: 1rem;
     color: var(--headline-color);
 
     &.relevant {
@@ -128,6 +117,15 @@ $first-media: 1024px;
 
   &__skill-level-cell {
     border-left: 1px solid var(--color-details);
+
+    &:last-child {
+      padding-left: 1rem;
+
+      @media (max-width: $first-media) {
+        padding-left: 0;
+        padding-right: 1rem;
+      }
+    }
 
     @media (max-width: $first-media) {
       border-left: none;
