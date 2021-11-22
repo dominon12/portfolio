@@ -5,13 +5,15 @@ import "./ProjectsNav.scss";
 import Title from "../Atoms/Title";
 import Select from "../Molecules/Select";
 import useGetParams from "../../Hooks/useGetParams";
-import { getFilterValues, getSortValues } from "../../Services/ProjectsService";
+import {
+  getFilterValues,
+  getSortValues,
+  handleChangeGetParams,
+} from "../../Services/ProjectsService";
 import { getProjects } from "../../Services/DataService";
-import { updateUrlWithGetParams } from "../../Services/HelperService";
+import { filterByKey, sortByKey } from "../../Services/GetParamKeys";
 
-interface Props {}
-
-const ProjectsNav: React.FC<Props> = (props) => {
+const ProjectsNav: React.FC = () => {
   const history = useHistory();
   const { pathname } = useLocation();
   const getParams = useGetParams();
@@ -20,21 +22,17 @@ const ProjectsNav: React.FC<Props> = (props) => {
   const sortValues = getSortValues();
   const filterValues = getFilterValues(allProjects);
 
-  const sortByKey = "sortBy";
-  const filterByKey = "filterBy";
-  const pageKey = "page";
-
-  const handleChangeGetParams = (paramName: string, value: string) => {
-    !value ? getParams.delete(paramName) : getParams.set(paramName, value);
-    if (paramName === filterByKey) getParams.set(pageKey, "1");
-    updateUrlWithGetParams(history, pathname, getParams);
-  };
-
   const applyDefaultSorting = () => {
     const sortBy = getParams.get(sortByKey) ?? "";
     if (!sortBy) {
       const defaultSortByParam = "-dateStarted";
-      handleChangeGetParams(sortByKey, defaultSortByParam);
+      handleChangeGetParams(
+        sortByKey,
+        defaultSortByParam,
+        getParams,
+        pathname,
+        history
+      );
     }
   };
 
@@ -49,7 +47,13 @@ const ProjectsNav: React.FC<Props> = (props) => {
         value={getParams.get(filterByKey) ?? ""}
         values={filterValues}
         handleChange={(value: string) =>
-          handleChangeGetParams(filterByKey, value)
+          handleChangeGetParams(
+            filterByKey,
+            value,
+            getParams,
+            pathname,
+            history
+          )
         }
       />
       <Title className="projects-nav__title">Projects</Title>
@@ -58,7 +62,7 @@ const ProjectsNav: React.FC<Props> = (props) => {
         value={getParams.get(sortByKey) ?? ""}
         values={sortValues}
         handleChange={(value: string) =>
-          handleChangeGetParams(sortByKey, value)
+          handleChangeGetParams(sortByKey, value, getParams, pathname, history)
         }
       />
     </nav>

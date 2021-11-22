@@ -7,6 +7,9 @@ import useGetParams from "../../Hooks/useGetParams";
 import useInfiniteQueue from "../../Hooks/useInfiniteQueue";
 import { scrollTo, updateUrlWithGetParams } from "../../Services/HelperService";
 import Tooltip from "../Atoms/Tooltip";
+import Select from "../Molecules/Select";
+import { handleChangeGetParams } from "../../Services/ProjectsService";
+import { pageKey, pageSizeKey } from "../../Services/GetParamKeys";
 
 enum Direction {
   Right = "right",
@@ -23,17 +26,11 @@ const Paginator: React.FC<Props> = (props) => {
   const { pathname } = useLocation();
   const getParams = useGetParams();
 
-  // get params keys
-  const pageKey = "page";
-  const pageSizeKey = "pageSize";
-  const disablePaginationKey = "disablePagination";
-
   const pageSize = parseInt(getParams.get(pageSizeKey) ?? "6");
   const pagesNum = Math.ceil(props.items.length / pageSize);
 
   const disablePagination =
-    !!getParams.get(disablePaginationKey) ||
-    props.items.length === props.pageItems.length;
+    props.items.length === props.pageItems.length || pageSize <= 0;
 
   const infiniteQueue = useInfiniteQueue(pagesNum);
 
@@ -219,32 +216,58 @@ const Paginator: React.FC<Props> = (props) => {
     switchPage();
   };
 
-  return !disablePagination ? (
+  return (
     <div className="paginator">
-      <Tooltip content="Previous" position="left">
-        <BiLeftArrow
-          className="paginator__control"
-          onClick={() => handleSwitchPage(Direction.Right)}
-        />
-      </Tooltip>
+      {!disablePagination && (
+        <div className="paginator__controls">
+          <Tooltip content="Previous" position="left">
+            <BiLeftArrow
+              className="paginator__control"
+              onClick={() => handleSwitchPage(Direction.Right)}
+            />
+          </Tooltip>
 
-      <div ref={switchesContainer} className="paginator__switches-container">
-        <div className="paginator__page-switch left-disabled"></div>
-        <div className="paginator__page-switch left"></div>
-        <div className="paginator__page-switch central"></div>
-        <div className="paginator__page-switch right"></div>
-        <div className="paginator__page-switch right-disabled"></div>
+          <div
+            ref={switchesContainer}
+            className="paginator__switches-container"
+          >
+            <div className="paginator__page-switch left-disabled"></div>
+            <div className="paginator__page-switch left"></div>
+            <div className="paginator__page-switch central"></div>
+            <div className="paginator__page-switch right"></div>
+            <div className="paginator__page-switch right-disabled"></div>
+          </div>
+
+          <Tooltip content="Next" position="right">
+            <BiRightArrow
+              className="paginator__control"
+              onClick={() => handleSwitchPage(Direction.Left)}
+            />
+          </Tooltip>
+        </div>
+      )}
+      <div className="paginator__page-size-select">
+        <Select
+          label="Page size"
+          value={pageSize}
+          values={[
+            { id: 1, value: "6", displayValue: "6" },
+            { id: 2, value: "12", displayValue: "12" },
+            { id: 3, value: "24", displayValue: "24" },
+            { id: 4, value: "-1", displayValue: "Show All" },
+          ]}
+          handleChange={(value: string) =>
+            handleChangeGetParams(
+              pageSizeKey,
+              value,
+              getParams,
+              pathname,
+              history
+            )
+          }
+        />
       </div>
-
-      <Tooltip content="Next" position="right">
-        <BiRightArrow
-          className="paginator__control"
-          onClick={() => handleSwitchPage(Direction.Left)}
-        />
-      </Tooltip>
     </div>
-  ) : (
-    <></>
   );
 };
 
