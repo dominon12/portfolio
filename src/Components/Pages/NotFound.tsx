@@ -7,7 +7,6 @@ import NotFoundIllustration from "../../Assets/Images/System/404.png";
 import InfoSection from "../Templates/InfoSection";
 import Title from "../Atoms/Title";
 import Button from "../Atoms/Button";
-import Image from "../Atoms/Image";
 
 const NotFound: React.FC = () => {
   const history = useHistory();
@@ -22,6 +21,7 @@ const NotFound: React.FC = () => {
         />
       </Helmet>
       <InfoSection
+        containerClassName="not-found"
         left={
           <>
             <Title className="not-found__title">It's Empty Here</Title>
@@ -35,7 +35,7 @@ const NotFound: React.FC = () => {
         }
         right={
           <>
-            <Image
+            <img
               className="not-found__illustration"
               src={NotFoundIllustration}
               alt="Not found illustration"
