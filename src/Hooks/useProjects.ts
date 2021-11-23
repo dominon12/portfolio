@@ -8,10 +8,15 @@ import {
 } from "../Services/ProjectsService";
 import { IProject } from "./../Types/Types";
 
-function useProjects() {
+interface Props {
+  loadingDelay?: number;
+}
+
+function useProjects(props: Props) {
   const allProjects = getProjects();
   const [projects, setProjects] = useState<IProject[]>([]);
   const [pageProjects, setPageProjects] = useState<IProject[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // sorting
   const sortByKey = "sortBy";
@@ -53,10 +58,19 @@ function useProjects() {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     processProducts();
+
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, props.loadingDelay ?? 0);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [window.location.search]);
 
-  return { projects, pageProjects };
+  return { projects, pageProjects, isLoading };
 }
 
 export default useProjects;

@@ -3,7 +3,7 @@ import { TiMessageTyping } from "react-icons/ti";
 import { Helmet } from "react-helmet";
 
 import "./Contact.scss";
-import InfoSection from "../Organisms/InfoSection";
+import InfoSection from "../Templates/InfoSection";
 import Title from "../Atoms/Title";
 import ContactForm from "../Organisms/ContactForm";
 import LinksColumn from "../Organisms/LinksColumn";

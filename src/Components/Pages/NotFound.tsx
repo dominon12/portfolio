@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 import "./NotFound.scss";
 import NotFoundIllustration from "../../Assets/Images/System/404.png";
-import InfoSection from "../Organisms/InfoSection";
+import InfoSection from "../Templates/InfoSection";
 import Title from "../Atoms/Title";
 import Button from "../Atoms/Button";
 import Image from "../Atoms/Image";

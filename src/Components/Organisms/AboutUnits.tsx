@@ -7,7 +7,7 @@ import { IAboutUnit } from "../../Types/Types";
 import Button from "../Atoms/Button";
 import JumpingArrow from "../Atoms/JumpingArrow";
 import Title from "../Atoms/Title";
-import InfoSection from "./InfoSection";
+import InfoSection from "../Templates/InfoSection";
 
 const MOBILE_BEGINS_AFTER = 425;
 

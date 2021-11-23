@@ -3,21 +3,21 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 // components
-import SideBar from "../Organisms/SideBar";
-import Header from "../Organisms/Header";
+import SideBar from "./Organisms/SideBar";
+import Header from "./Organisms/Header";
 // pages
-import About from "../Pages/About";
-import Skills from "../Pages/Skills";
-import Experience from "../Pages/Experience";
-import Projects from "../Pages/Projects";
-import Contact from "../Pages/Contact";
-import Languages from "../Pages/Languages";
-import Donate from "../Pages/Donate";
-import Download from "../Pages/Download";
-import NotFound from "../Pages/NotFound";
+import About from "./Pages/About";
+import Skills from "./Pages/Skills";
+import Experience from "./Pages/Experience";
+import Projects from "./Pages/Projects";
+import Contact from "./Pages/Contact";
+import Languages from "./Pages/Languages";
+import Donate from "./Pages/Donate";
+import Download from "./Pages/Download";
+import NotFound from "./Pages/NotFound";
 // services
-import HomeRedirect from "../Services/HomeRedirect";
-import ScrollToTop from "../Services/ScrollToTop";
+import HomeRedirect from "./Services/HomeRedirect";
+import ScrollToTop from "./Services/ScrollToTop";
 
 const App: React.FC = () => {
   return (

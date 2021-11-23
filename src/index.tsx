@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 
 import "./index.scss";
-import App from "./Components/Templates/App";
+import App from "./Components/App";
 import SideBarProvider from "./Contexts/SideBarContext";
 import ThemeProvider from "./Contexts/ThemeContext";
 

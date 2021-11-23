@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import "./Download.scss";
 import Title from "../Atoms/Title";
 import StaticCV from "../Organisms/StaticCV";
-import InfoSection from "../Organisms/InfoSection";
+import InfoSection from "../Templates/InfoSection";
 import Button from "../Atoms/Button";
 
 const Download: React.FC = () => {

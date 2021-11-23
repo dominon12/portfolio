@@ -27,7 +27,7 @@ const portfolioData: IPortfolio = {
   about: {
     firstName: "Maksim",
     lastName: "Sobolev",
-    jobTitle: "Frontend Web Developer",
+    jobTitle: "Front-End Engineer",
     profilePhoto: {
       src: myProfilePhoto,
       alt: "My profile photo",
@@ -35,13 +35,13 @@ const portfolioData: IPortfolio = {
       height: "500",
     },
     cvDescription:
-      "I am passionate about coding self-taught Frontend Web Developer from Russia, based in Spain.",
+      "I am passionate about coding self-taught Front-End Engineer from Russia, based in Spain.",
     aboutUnits: [
       {
         id: 1,
         title: "Hi there, my name is Max 👋",
         description:
-          "I am passionate about coding self-taught Frontend Web Developer from Russia, based in Spain. Welcome to my personal website-portfolio!",
+          "I am passionate about coding self-taught Front-End Engineer from Russia, based in Spain. Welcome to my personal website-portfolio!",
         image: {
           src: myProfilePhoto,
           alt: "My profile photo",
