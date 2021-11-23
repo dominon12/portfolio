@@ -2,6 +2,7 @@ $first-media: 1234px;
 $second-media: 1048px;
 $third-media: 852px;
 $mobile-devices: 425px;
+$fifth-media: 405px;
 
 .about-units {
   &__container {
@@ -30,6 +31,9 @@ $mobile-devices: 425px;
     @media (max-width: $mobile-devices) {
       margin-top: 2rem;
       margin-bottom: 1rem;
+    }
+    @media (max-width: $fifth-media) {
+      margin-bottom: 3rem;
     }
   }
 
