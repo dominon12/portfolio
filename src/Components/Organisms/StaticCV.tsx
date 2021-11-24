@@ -11,7 +11,7 @@ import {
 
 import {
   getAbout,
-  getContactLinks,
+  getContactMethods,
   getExperience,
   getLanguages,
   getSkills,
@@ -62,7 +62,7 @@ const StaticCV: React.FC = () => {
   const experience = getExperience().filter(
     (careerEvent) => careerEvent.isRelevant
   );
-  const contactLinks = getContactLinks();
+  const contactMethods = getContactMethods();
   const skills = getSkills();
 
   const fullName = `${about.firstName} ${about.lastName}`;
@@ -114,9 +114,9 @@ const StaticCV: React.FC = () => {
           Contact me {String.fromCharCode(8986)}
         </Text>
         <View style={contactStyles.linksContainer}>
-          {contactLinks.map((link) => (
-            <Link src={link.url} style={styles.link}>
-              {link.name}
+          {contactMethods.map((contactMethod) => (
+            <Link src={contactMethod.url} style={styles.link}>
+              {contactMethod.name}
             </Link>
           ))}
         </View>

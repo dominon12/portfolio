@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./Button.scss";
-import { ButtonType } from "../../Types/Types";
+import { ButtonType } from "../../Types/SystemTypes";
 
 interface Props {
   type: ButtonType;

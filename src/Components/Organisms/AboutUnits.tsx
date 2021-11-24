@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 
 import "./AboutUnits.scss";
 import { SideBarContext } from "../../Contexts/SideBarContext";
-import { IAboutUnit } from "../../Types/Types";
+import { IAboutUnit } from "../../Types/PortfolioDataTypes";
 import Button from "../Atoms/Button";
 import JumpingArrow from "../Atoms/JumpingArrow";
 import Title from "../Atoms/Title";

@@ -6,7 +6,7 @@ import {
   paginate,
   sortProjects,
 } from "../Services/ProjectsService";
-import { IProject } from "./../Types/Types";
+import { IProject } from "../Types/PortfolioDataTypes";
 
 interface Props {
   loadingDelay?: number;

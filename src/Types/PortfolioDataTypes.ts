@@ -1,19 +1,32 @@
-import { IconType } from "react-icons";
+/**
+ * Contains interfaces and types to
+ * represent parts of portfolio
+ */
 
-/*
-PORTFOLIO
-*/
+import { IButton, IImage } from "./SystemTypes";
 
+/**
+ * Representation of portfolio object
+ *
+ * @export
+ * @interface IPortfolio
+ */
 export interface IPortfolio {
   about: IAbout;
   projects: IProject[];
   skills: ISkillsGroup[];
   experience: ICareerEvent[];
   languages: ILanguage[];
-  contactLinks: IContactLink[];
+  contactMethods: IContactMethod[];
   donationMethods: IDonationMethod[];
 }
 
+/**
+ * Representation of portfolio's about section
+ *
+ * @export
+ * @interface IAbout
+ */
 export interface IAbout {
   cvDescription: string;
   firstName: string;
@@ -23,6 +36,12 @@ export interface IAbout {
   aboutUnits: IAboutUnit[];
 }
 
+/**
+ * Representation of portfolio's about units
+ *
+ * @export
+ * @interface IAboutUnit
+ */
 export interface IAboutUnit {
   id: number;
   title: string;
@@ -31,21 +50,9 @@ export interface IAboutUnit {
   button?: IButton;
 }
 
-export type ButtonType = "primary" | "mini";
-
-export interface IButton {
-  text: string;
-  type: ButtonType;
-  link: string;
-}
-
-export interface IImage {
-  src: string;
-  alt: string;
-  width: string;
-  height: string;
-}
-
+/**
+ * Possible project types
+ */
 export type ProjectType =
   | "Bot"
   | "Web app"
@@ -54,6 +61,12 @@ export type ProjectType =
   | "Landing"
   | "Library";
 
+/**
+ * Project representation
+ *
+ * @export
+ * @interface IProject
+ */
 export interface IProject {
   id: number;
   title: string;
@@ -68,18 +81,37 @@ export interface IProject {
   link?: string;
 }
 
+/**
+ * Representation of technologies used
+ * to creat a project
+ *
+ * @export
+ * @interface IProjectTechnologies
+ */
 export interface IProjectTechnologies {
   backend: string[];
   frontend: string[];
   devops: string[];
 }
 
+/**
+ * Skills group representation
+ *
+ * @export
+ * @interface ISkillsGroup
+ */
 export interface ISkillsGroup {
   id: number;
   name: string;
   skills: ISkill[];
 }
 
+/**
+ * Skill representation
+ *
+ * @export
+ * @interface ISkill
+ */
 export interface ISkill {
   id: number;
   name: string;
@@ -87,6 +119,12 @@ export interface ISkill {
   isRelevant: boolean;
 }
 
+/**
+ * Career event representation
+ *
+ * @export
+ * @interface ICareerEvent
+ */
 export interface ICareerEvent {
   id: number;
   title: string;
@@ -96,6 +134,12 @@ export interface ICareerEvent {
   isRelevant: boolean;
 }
 
+/**
+ * Language representation
+ *
+ * @export
+ * @interface ILanguage
+ */
 export interface ILanguage {
   id: number;
   name: string;
@@ -104,14 +148,29 @@ export interface ILanguage {
   learningStory: string;
 }
 
-export interface IContactLink {
+/**
+ * Contact method representation
+ *
+ * @export
+ * @interface IContactMethod
+ */
+export interface IContactMethod {
   id: number;
   name: string;
   url: string;
 }
 
+/**
+ * possible donation types
+ */
 export type DonationMethodType = "btc" | "eth" | "tinkoff" | "buymeacoffee";
 
+/**
+ * Donation method representation
+ *
+ * @export
+ * @interface IDonationMethod
+ */
 export interface IDonationMethod {
   id: number;
   type: DonationMethodType;
@@ -120,29 +179,4 @@ export interface IDonationMethod {
   linkUrl: string;
   image: IImage;
   isLink?: boolean;
-}
-
-/*
-OTHER
-*/
-
-export interface ITab {
-  id: number;
-  link: string;
-  icon: IconType;
-  title: string;
-  isActive: boolean;
-  orderNumber: number;
-}
-
-export interface ISelectValue {
-  id: number;
-  value: string | number;
-  displayValue: string;
-}
-
-export interface ISelectValuesGroup {
-  id: number;
-  groupName: string;
-  values: ISelectValue[];
 }

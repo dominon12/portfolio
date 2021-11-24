@@ -1,12 +1,17 @@
+/**
+ * Contains functions for accessing to different
+ * portfolio's data endpoints.
+ */
+
 import {
   IAbout,
   ICareerEvent,
-  IContactLink,
+  IContactMethod,
   IDonationMethod,
   ILanguage,
   IProject,
   ISkillsGroup,
-} from "./../Types/Types";
+} from "../Types/PortfolioDataTypes";
 import portfolioData from "./StoreService";
 
 export function getAbout(): IAbout {
@@ -29,8 +34,8 @@ export function getLanguages(): ILanguage[] {
   return portfolioData.languages;
 }
 
-export function getContactLinks(): IContactLink[] {
-  return portfolioData.contactLinks;
+export function getContactMethods(): IContactMethod[] {
+  return portfolioData.contactMethods;
 }
 
 export function getDonationMethods(): IDonationMethod[] {

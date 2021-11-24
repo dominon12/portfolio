@@ -1,3 +1,17 @@
+/**
+ * Module contains functions to work with forms
+ */
+
+/**
+ * Validates a form field's value based on passed 'options' param
+ * 
+ * @param formValue value of the form field
+ * @param valid indicates wether the field is valid
+ * @param errMessage value of a previous error message produced by this function
+ * @param setValid set state action for 'valid' param
+ * @param setErrMessage set state action for 'errMessage' param
+ * @param options validation options
+ */
 export const validateField = (
   formValue: string,
   valid: boolean,

@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 
 import "./ErrorTemplate.scss";
-import { IImage } from "../../Types/Types";
+import { IImage } from "../../Types/SystemTypes";
 import Title from "../Atoms/Title";
 import InfoSection from "./InfoSection";
 

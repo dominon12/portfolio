@@ -1,9 +1,20 @@
+/**
+ * Provides helper - functions to work
+ * with telegram bot api
+ */
+
 import { ErrorInfo } from "react";
 import {
   TELEGRAM_ADMIN_CHAT_ID,
   TELEGRAM_BOT_TOKEN,
 } from "./CredentialsService";
 
+/**
+ * Sends a message to telegram bot's admin
+ *
+ * @param {string} message message to send
+ * @return {*}  {Promise<boolean>} indicated whether the message has been successfully sent
+ */
 async function sendMessage(message: string): Promise<boolean> {
   let success = true;
 
@@ -19,6 +30,16 @@ async function sendMessage(message: string): Promise<boolean> {
   return success;
 }
 
+/**
+ * Sends a message to telegram bot's admin using a
+ * template, representing a new contact request
+ *
+ * @export
+ * @param {string} name name of the person
+ * @param {string} email email of the person
+ * @param {string} [comment] comment of the person
+ * @return {*}  {Promise<boolean>} indicated whether the message has been successfully sent
+ */
 export async function sendContactRequestMessage(
   name: string,
   email: string,
@@ -30,11 +51,29 @@ export async function sendContactRequestMessage(
   return await sendMessage(message);
 }
 
+/**
+ * Sends a message with feedback from
+ * user about an error which he encountered
+ *
+ * @export
+ * @param {string} comment comment about the error
+ * @return {*}  {Promise<boolean>} indicated whether the message has been successfully sent
+ */
 export async function submitErrorFeedback(comment: string): Promise<boolean> {
   const message = `<b>New Error Feedback</b>%0A%0A${comment}`;
   return await sendMessage(message);
 }
 
+/**
+ * Sends a message to telegram bot's admin which
+ * info about the error which has happened and details
+ * about the user which has encountered the error
+ *
+ * @export
+ * @param {Error} error Error object instance
+ * @param {ErrorInfo} errorInfo ErrorInfo object instance
+ * @return {*}  {Promise<boolean>} indicated whether the message has been successfully sent
+ */
 export async function reportError(
   error: Error,
   errorInfo: ErrorInfo

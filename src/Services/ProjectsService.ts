@@ -1,8 +1,21 @@
-import { IProject, ISelectValue, ISelectValuesGroup } from "../Types/Types";
+/**
+ * Contains helper - functions for working
+ * which IProject[]
+ */
+
+import { IProject} from "../Types/PortfolioDataTypes";
+import { ISelectValue, ISelectValuesGroup } from "../Types/SystemTypes";
 import { filterByKey, pageKey } from "./GetParamKeys";
 import { getRandomId, updateUrlWithGetParams } from "./HelperService";
 import Paginator from "./Paginator";
 
+/**
+ * Converts a Set of strings to ISelectValuesGroup
+ *
+ * @param {Set<string>} stringArray set of strings
+ * @param {string} groupName name of the group
+ * @return {*}  {ISelectValuesGroup}
+ */
 const stringSetToSelectValuesGroup = (
   stringArray: Set<string>,
   groupName: string
@@ -18,6 +31,16 @@ const stringSetToSelectValuesGroup = (
     })),
 });
 
+/**
+ * Extracts values from projects'
+ * frontend, backend, devops and type attributes
+ * and converts them to an array of ISelectValuesGroup
+ * to use it with Select component
+ *
+ * @export
+ * @param {IProject[]} projects array of projects
+ * @return {*}  {ISelectValuesGroup[]}
+ */
 export function getFilterValues(projects: IProject[]): ISelectValuesGroup[] {
   let projectTypes = new Set<string>(),
     frontend = new Set<string>(),
@@ -41,6 +64,14 @@ export function getFilterValues(projects: IProject[]): ISelectValuesGroup[] {
   return filterValues;
 }
 
+/**
+ * Returns an array of ISelectValue which
+ * will be used with Select component
+ * to sort array of projects
+ *
+ * @export
+ * @return {*}  {ISelectValue[]}
+ */
 export function getSortValues(): ISelectValue[] {
   const sortValues: ISelectValue[] = [
     {
@@ -67,6 +98,16 @@ export function getSortValues(): ISelectValue[] {
   return sortValues;
 }
 
+/**
+ * Filters an array of projects based on
+ * 'filterBy' param value presence in
+ * type, backend, devops or frontend project's array attributes
+ *
+ * @export
+ * @param {IProject[]} projects array of projects to filter
+ * @param {(string | null)} filterBy value to find in type, backend, devops or frontend project's array attributes
+ * @return {*}  {IProject[]} filtered array of projects
+ */
 export function filterProjects(
   projects: IProject[],
   filterBy: string | null
@@ -84,6 +125,16 @@ export function filterProjects(
   return projects;
 }
 
+/**
+ * Sorts passed array of projects based
+ * on 'sortBy' param which represents an attribute
+ * of IProject object
+ *
+ * @export
+ * @param {IProject[]} projects array of projects to sort
+ * @param {string} sortBy attribute to use for sorting
+ * @return {*}  {IProject[]} sorted array of projects
+ */
 export function sortProjects(projects: IProject[], sortBy: string): IProject[] {
   if (sortBy) {
     const isDesc = sortBy.startsWith("-");
@@ -99,11 +150,33 @@ export function sortProjects(projects: IProject[], sortBy: string): IProject[] {
   return projects;
 }
 
+/**
+ * Paginates an array using Paginator class
+ *
+ * @export
+ * @template T
+ * @param {T[]} arr array to paginate
+ * @param {number} page number of the page to return
+ * @param {number} pageSize number of elements on the page
+ * @return {*}  {T[]} requested page
+ */
 export function paginate<T>(arr: T[], page: number, pageSize: number): T[] {
   const paginator = new Paginator(arr, pageSize);
   return paginator.getPage(page);
 }
 
+/**
+ * Mutates url search params based on passed
+ * parameters and updates current url with
+ * new search params
+ *
+ * @export
+ * @param {string} paramName key to url search params object
+ * @param {string} value value to set
+ * @param {URLSearchParams} getParams instance of URLSearchParams
+ * @param {string} pathname url pathname
+ * @param {*} history react history object
+ */
 export function handleChangeGetParams(
   paramName: string,
   value: string,

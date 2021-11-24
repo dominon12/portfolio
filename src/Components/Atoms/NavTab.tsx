@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import "./NavTab.scss";
-import { ITab } from "../../Types/Types";
+import { ITab } from "../../Types/SystemTypes";
 import Tooltip from "./Tooltip";
 
 interface Props {

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import "./ProjectCard.scss";
 import BrickLink from "../Atoms/BrickLink";
-import { IImage, IProjectTechnologies } from "../../Types/Types";
+import {  IProjectTechnologies } from "../../Types/PortfolioDataTypes";
+import { IImage } from "../../Types/SystemTypes";
 
 interface Props {
   title: string;

@@ -2,7 +2,7 @@ import React from "react";
 
 import "./ProjectsGrid.scss";
 import ProjectCard from "../Molecules/ProjectCard";
-import { IProject } from "../../Types/Types";
+import { IProject } from "../../Types/PortfolioDataTypes";
 
 interface Props {
   projects: IProject[];

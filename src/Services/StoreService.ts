@@ -1,4 +1,9 @@
-import { IPortfolio } from "./../Types/Types";
+/**
+ * Stores all the data which is used
+ * to render web app's pages' content
+ */
+
+import { IPortfolio } from "../Types/PortfolioDataTypes";
 
 // about
 import myProfilePhoto from "../Assets/Images/About/profile.jpeg";
@@ -775,7 +780,7 @@ const portfolioData: IPortfolio = {
         'I started learning Spanish using mobile app called "Duolingo" and continued in school of spanish language in Valencia "Hispania". After about 1 year of studying I\'ve passed DELE B2 exam.',
     },
   ],
-  contactLinks: [
+  contactMethods: [
     {
       id: 1,
       name: "Telegram",

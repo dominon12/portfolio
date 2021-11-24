@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Select.scss";
 import FormError from "../Atoms/FormError";
-import { ISelectValue, ISelectValuesGroup } from "../../Types/Types";
+import { ISelectValue, ISelectValuesGroup } from "../../Types/SystemTypes";
 import { validateField } from "../../Services/FormService";
 import FormLabel from "../Atoms/FormLabel";
 import FormFieldContainer from "../Atoms/FormFieldContainer";

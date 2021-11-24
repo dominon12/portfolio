@@ -9,7 +9,7 @@ import { useLocation } from "react-router";
 
 import "./SideBar.scss";
 import NavTab from "../Atoms/NavTab";
-import { ITab } from "../../Types/Types";
+import { ITab } from "../../Types/SystemTypes";
 import { SideBarContext } from "../../Contexts/SideBarContext";
 import ThemeSwitch from "../Atoms/ThemeSwitch";
 

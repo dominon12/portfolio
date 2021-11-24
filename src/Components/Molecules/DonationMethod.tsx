@@ -1,7 +1,8 @@
 import React from "react";
 
 import "./DonationMethod.scss";
-import { DonationMethodType, IImage } from "../../Types/Types";
+import { DonationMethodType } from "../../Types/PortfolioDataTypes";
+import { IImage } from "../../Types/SystemTypes";
 import Subtitle from "../Atoms/Subtitle";
 
 interface Props {
