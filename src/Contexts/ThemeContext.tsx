@@ -1,10 +1,22 @@
 import React, { createContext, useEffect, useState } from "react";
 
+/**
+ * Represents theme modes
+ *
+ * @export
+ * @enum {string}
+ */
 export enum Mode {
   Light = "light",
   Dark = "dark",
 }
 
+/**
+ * Theme context state representatino
+ *
+ * @export
+ * @interface ThemeContextState
+ */
 export interface ThemeContextState {
   mode: Mode;
   setMode: (mode: Mode) => void;
@@ -18,6 +30,15 @@ const contextDefaultValues: ThemeContextState = {
 export const ThemeContext =
   createContext<ThemeContextState>(contextDefaultValues);
 
+/**
+ * Provides api to get and set theme mode
+ *
+ * @param {*} props
+ * @return {*} {{
+ *    mode: Mode; - actual mode
+ *    setMode: React.Dispatch<React.SetStateAction<Mode>>; - function to set mode
+ * }}
+ */
 const ThemeProvider: React.FC = (props) => {
   const localStorageKey = "mode";
 
