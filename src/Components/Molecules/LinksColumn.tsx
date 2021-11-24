@@ -1,15 +1,20 @@
 import React from "react";
 
 import "./LinksColumn.scss";
-import ContactLink from "../Molecules/ContactLink";
+import ContactLink from "./ContactLink";
 import { getContactMethods } from "../../Services/DataService";
 
-const LinksColumn: React.FC = () => {
-  const contactMethod = getContactMethods();
+/**
+ * Renders a column of links with contact information
+ *
+ * @return {*}  {JSX.Element}
+ */
+const LinksColumn: React.FC = (): JSX.Element => {
+  const contactMethods = getContactMethods();
 
   return (
     <div className="links-column">
-      {contactMethod
+      {contactMethods
         .filter(
           (contactMethod) =>
             !document.referrer.includes(contactMethod.name.toLowerCase())

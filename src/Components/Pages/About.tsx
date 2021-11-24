@@ -4,7 +4,13 @@ import { Helmet } from "react-helmet";
 import { getAbout } from "../../Services/DataService";
 import AboutUnits from "../Organisms/AboutUnits";
 
-const About: React.FC = () => {
+/**
+ * About page with sections which represent 
+ * about units
+ *
+ * @return {*}  {JSX.Element}
+ */
+const About: React.FC = (): JSX.Element => {
   const aboutData = getAbout();
 
   return (

@@ -16,11 +16,26 @@ interface Props {
   regexp?: RegExp;
 }
 
-const Input: React.FC<Props> = (props) => {
+/**
+ * Input form field element with validation
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Input: React.FC<Props> = (props): JSX.Element => {
   const [touched, setTouched] = useState(false);
   const [valid, setValid] = useState(true);
   const [errMessage, setErrMessage] = useState<string | null>(null);
 
+  /**
+   * Proxy function for set state action.
+   *
+   * Validates value and sets 'valid' value
+   *
+   * After first invocation, sets 'touched' value to true
+   * in order to indicate that the field was touched
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} e - field's onChange event
+   */
   const handleInputValueChangesFlow = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -29,7 +44,9 @@ const Input: React.FC<Props> = (props) => {
       setTouched(true);
       instantTouched = true;
     }
+
     props.handleChange && props.handleChange(e.target.value);
+
     props.required &&
       instantTouched &&
       validateField(

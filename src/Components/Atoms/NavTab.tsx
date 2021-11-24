@@ -9,9 +9,27 @@ interface Props {
   tabData: ITab;
 }
 
-const NavTab: React.FC<Props> = (props) => {
+/**
+ * Renders a rectangular element with
+ * an icon inside.
+ * 
+ * On mobile devices, shows tab's title
+ * to the right.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const NavTab: React.FC<Props> = (props): JSX.Element => {
   const { pathname } = useLocation();
 
+  /**
+   * Checks whether current pathname is equal
+   * to tab's link value.
+   * 
+   * If yes, returns true. 
+   * If no, returns false.
+   *
+   * @param {string} tabLink
+   */
   const isTabActive = (tabLink: string) => pathname === tabLink;
 
   return (

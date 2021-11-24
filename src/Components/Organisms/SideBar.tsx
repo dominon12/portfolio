@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useRef } from "react";
+import { useLocation } from "react-router";
 // icons
 import { IoAccessibility, IoLanguage } from "react-icons/io5";
 import { AiFillApi } from "react-icons/ai";
 import { MdWork } from "react-icons/md";
 import { FaProjectDiagram, FaDonate, FaDownload } from "react-icons/fa";
 import { TiMessageTyping } from "react-icons/ti";
-import { useLocation } from "react-router";
 
 import "./SideBar.scss";
 import NavTab from "../Atoms/NavTab";
@@ -13,12 +13,23 @@ import { ITab } from "../../Types/SystemTypes";
 import { SideBarContext } from "../../Contexts/SideBarContext";
 import ThemeSwitch from "../Atoms/ThemeSwitch";
 
-const SideBar: React.FC = () => {
+/**
+ * Renders a side bar and handles logic
+ * of hiding it if user clicked outside of it or 
+ * outside of header or navigated to another page
+ *
+ * @return {*}  {JSX.Element}
+ */
+const SideBar: React.FC = (): JSX.Element => {
   const { pathname } = useLocation();
   const { visible, setVisible } = useContext(SideBarContext);
 
   const asideRef = useRef<any>(null);
 
+  /**
+   * Hides side bar if user clicked outside of
+   * the navbar or header
+   */
   useEffect(() => {
     const headerElement = document.getElementById("header");
 
@@ -38,6 +49,9 @@ const SideBar: React.FC = () => {
     };
   }, [asideRef]);
 
+  /**
+   * Hides side bar on url changes
+   */
   useEffect(() => {
     setVisible(false);
   }, [pathname]);

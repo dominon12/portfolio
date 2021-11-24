@@ -13,7 +13,14 @@ import {
 import { getProjects } from "../../Services/DataService";
 import { filterByKey, sortByKey } from "../../Services/GetParamKeys";
 
-const ProjectsNav: React.FC = () => {
+/**
+ * Renders a nav bar with select elements
+ * which provide an ability to select sorting
+ * and filtering options
+ *
+ * @return {*}  {JSX.Element}
+ */
+const ProjectsNav: React.FC = (): JSX.Element => {
   const history = useHistory();
   const { pathname } = useLocation();
   const getParams = useGetParams();
@@ -22,6 +29,10 @@ const ProjectsNav: React.FC = () => {
   const sortValues = getSortValues();
   const filterValues = getFilterValues(allProjects);
 
+  /**
+   * Sets url search param 'sortBy' to '-dateStarted'
+   * if there is no already applied one
+   */
   const applyDefaultSorting = () => {
     const sortBy = getParams.get(sortByKey) ?? "";
     if (!sortBy) {
@@ -36,6 +47,14 @@ const ProjectsNav: React.FC = () => {
     }
   };
 
+  /**
+   * Invokes 'applyDefaultSorting' function 
+   * after component did mount in order to 
+   * sort projects by 'dateStarted' attribute.
+   * 
+   * The idea of this action is to show to a user
+   * a list of projects sorted from new to old
+   */
   useEffect(() => {
     applyDefaultSorting();
   }, []);

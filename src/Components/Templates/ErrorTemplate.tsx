@@ -14,6 +14,10 @@ interface Props {
   seoDescription: string;
 }
 
+/**
+ * Page template to display an error with 
+ * title, description and additional content
+ */
 const ErrorTemplate: React.FC<Props> = (props) => {
   return (
     <>

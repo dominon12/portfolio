@@ -7,12 +7,16 @@ import Textarea from "../Molecules/Textarea";
 import Loading from "../Molecules/Loading";
 import Subtitle from "../Atoms/Subtitle";
 import { sendContactRequestMessage } from "../../Services/TelegramBotService";
+import { emailRegexp, nameRegexp } from "../../Services/FormService";
 
-const emailRegexp =
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const nameRegexp = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
-
-const ContactForm: React.FC = () => {
+/**
+ * Interactive contact form which shows loading
+ * animation and text feedback instead of form
+ * after form submission and a form before those actions
+ *
+ * @return {*} {JSX.Element}
+ */
+const ContactForm: React.FC = (): JSX.Element => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
@@ -22,7 +26,16 @@ const ContactForm: React.FC = () => {
   const [isRequestSent, setIsRequestSent] = useState(false);
   const [isErrorHappened, setIsErrorHappened] = useState(false);
 
-  function validateForm() {
+  /**
+   * Checks whether 'email' and 'name' values
+   * correspond to corresponding regular expressions
+   * and sets 'isValid' to true in case of passed tests.
+   *
+   * If on of the tests will fail, sets 'isValid' to false
+   *
+   * @return {*}  {void}
+   */
+  function validateForm(): void {
     if (!emailRegexp.test(email)) {
       setIsValid(false);
       return;
@@ -34,8 +47,19 @@ const ContactForm: React.FC = () => {
     setIsValid(true);
   }
 
+  /**
+   * Invokes 'validateForm' function on
+   * every 'email' and 'name' values change
+   */
   useEffect(() => validateForm(), [email, name]);
 
+  /**
+   * If the form is valid, sends form's data
+   * using telegram bot service.
+   *
+   * In the other case sets 'isErrorHappened' to true
+   * so the component will show an error message.
+   */
   const handleFormSubmit = async () => {
     if (isValid) {
       setIsLoading(true);
@@ -45,7 +69,10 @@ const ContactForm: React.FC = () => {
     }
   };
 
-  const cleanForm = () => {
+  /**
+   * Recovers default state values
+   */
+  const cleanForm = (): void => {
     setName("");
     setEmail("");
     setComment("");
@@ -53,7 +80,13 @@ const ContactForm: React.FC = () => {
     setIsErrorHappened(false);
   };
 
-  const requestSent = () => (
+  /**
+   * Returns an element with info
+   * that the form has been successfully submitted
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const requestSent = (): JSX.Element => (
     <div className="contact-form__status">
       <Subtitle className="contact-form__status_title">
         Your contact request has been successfully sent ✅
@@ -64,7 +97,13 @@ const ContactForm: React.FC = () => {
     </div>
   );
 
-  const errorHappened = () => (
+  /**
+   * Returns an element which indicates
+   * failed form submission
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const errorHappened = (): JSX.Element => (
     <div className="contact-form__status">
       <Subtitle className="contact-form__status_title">
         An error occurred.
@@ -75,7 +114,12 @@ const ContactForm: React.FC = () => {
     </div>
   );
 
-  const form = () => (
+  /**
+   * Renders contact form with a submit button
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const form = (): JSX.Element => (
     <>
       <form className="contact-form__form">
         <Input

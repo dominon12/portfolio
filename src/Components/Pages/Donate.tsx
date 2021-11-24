@@ -3,7 +3,12 @@ import { Helmet } from "react-helmet";
 
 import DonationMethods from "../Organisms/DonationMethods";
 
-const Donate: React.FC = () => {
+/**
+ * Donate page with a list of donation methods
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Donate: React.FC = (): JSX.Element => {
   return (
     <>
       <Helmet>

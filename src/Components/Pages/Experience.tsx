@@ -5,7 +5,13 @@ import "./Experience.scss";
 import ExperienceLiana from "../Organisms/ExperienceLiana";
 import Title from "../Atoms/Title";
 
-const Experience: React.FC = () => {
+/**
+ * Renders a page with career events 
+ * represented as some sort of a liana
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Experience: React.FC = (): JSX.Element => {
   return (
     <>
       <Helmet>

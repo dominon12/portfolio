@@ -11,6 +11,14 @@ interface State {
   hasError: boolean;
 }
 
+/**
+ * If come of it's children components didn't handle an error,
+ * shows a 'RuntimeError' component and reports an error
+ * via telegram bot service
+ *
+ * @class ErrorBoundary
+ * @extends {Component<Props, State>}
+ */
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,

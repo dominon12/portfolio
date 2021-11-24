@@ -4,7 +4,14 @@ import "./Header.scss";
 import Burger from "../Atoms/Burger";
 import ThemeSwitch from "../Atoms/ThemeSwitch";
 
-const Header: React.FC = () => {
+/**
+ * Renders a header element with burger
+ * to open a side bar and a theme switch icon
+ * to change the theme
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Header: React.FC = (): JSX.Element => {
   return (
     <header className="header" id="header">
       <Burger />

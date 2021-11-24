@@ -17,7 +17,12 @@ import {
   getSkills,
 } from "../../Services/DataService";
 
-const StaticCV: React.FC = () => {
+/**
+ * Renders a static pdf document - CV
+ *
+ * @return {*}  {JSX.Element}
+ */
+const StaticCV: React.FC = (): JSX.Element => {
   const styles = StyleSheet.create({
     page: {
       padding: "16px",
@@ -67,7 +72,12 @@ const StaticCV: React.FC = () => {
 
   const fullName = `${about.firstName} ${about.lastName}`;
 
-  const header = () => {
+  /**
+   * Renders header
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const header = (): JSX.Element => {
     const headerStyles = StyleSheet.create({
       header: {
         flexDirection: "row",
@@ -93,14 +103,24 @@ const StaticCV: React.FC = () => {
     );
   };
 
-  const aboutSection = () => (
+  /**
+   * Renders about section
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const aboutSection = (): JSX.Element => (
     <View style={styles.section}>
       <Text style={styles.subtitle}>About</Text>
       <Text style={styles.text}>{about.cvDescription}</Text>
     </View>
   );
 
-  const contactSection = () => {
+  /**
+   * Renders a section with contact info
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const contactSection = (): JSX.Element => {
     const contactStyles = StyleSheet.create({
       linksContainer: {
         flexDirection: "row",
@@ -124,7 +144,13 @@ const StaticCV: React.FC = () => {
     );
   };
 
-  const languagesSection = () => {
+  /**
+   * Renders section with info
+   * about languages
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const languagesSection = (): JSX.Element => {
     const languagesStyles = StyleSheet.create({
       container: {
         flexDirection: "row",
@@ -151,7 +177,13 @@ const StaticCV: React.FC = () => {
     );
   };
 
-  const experienceSection = () => {
+  /**
+   * Renders a section with info
+   * about an experience
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const experienceSection = (): JSX.Element => {
     const experienceStyles = StyleSheet.create({
       listItem: {
         marginBottom: 16,
@@ -184,7 +216,13 @@ const StaticCV: React.FC = () => {
     );
   };
 
-  const skillsSection = () => {
+  /**
+   * Renders a section with a table
+   * of skills
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const skillsSection = (): JSX.Element => {
     const skillStyles = StyleSheet.create({
       group: {
         marginBottom: 6,
@@ -236,7 +274,12 @@ const StaticCV: React.FC = () => {
     );
   };
 
-  const projectsSection = () => (
+  /**
+   * Renders a section with info about projects
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const projectsSection = (): JSX.Element => (
     <View style={styles.section}>
       <Text style={styles.subtitle}>Projects</Text>
       <Text style={styles.text}>
@@ -251,7 +294,12 @@ const StaticCV: React.FC = () => {
     </View>
   );
 
-  const body = () => {
+  /**
+   * Combines CV section's and renders them
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const body = (): JSX.Element => {
     const bodyStyles = StyleSheet.create({
       container: {
         flexDirection: "row",

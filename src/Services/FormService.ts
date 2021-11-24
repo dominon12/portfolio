@@ -4,7 +4,7 @@
 
 /**
  * Validates a form field's value based on passed 'options' param
- * 
+ *
  * @param formValue value of the form field
  * @param valid indicates wether the field is valid
  * @param errMessage value of a previous error message produced by this function
@@ -42,3 +42,7 @@ export const validateField = (
     if (errMessage) setErrMessage(null);
   }
 };
+
+export const emailRegexp =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+export const nameRegexp = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;

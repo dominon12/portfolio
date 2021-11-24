@@ -8,12 +8,22 @@ import Textarea from "../Molecules/Textarea";
 import ErrorTemplate from "../Templates/ErrorTemplate";
 import LoadingTemplate from "../Templates/LoadingTemplate";
 
-const RuntimeError = () => {
+/**
+ * Page with info about an error and
+ * a form to send a feedback about this error
+ *
+ * @return {*}  {JSX.Element}
+ */
+const RuntimeError = (): JSX.Element => {
   const [comment, setComment] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [onSubmitText, setOnSubmitText] = useState("");
 
+
+  /**
+   * Handles form submit flow
+   */
   const reportErrorFeedback = async () => {
     setSubmitted(true);
     setIsLoading(true);

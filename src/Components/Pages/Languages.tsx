@@ -5,7 +5,12 @@ import "./Languages.scss";
 import Title from "../Atoms/Title";
 import LanguagesGrid from "../Organisms/LanguagesGrid";
 
-const Languages: React.FC = () => {
+/**
+ * Page with a list of languages
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Languages: React.FC = (): JSX.Element => {
   return (
     <>
       <Helmet>

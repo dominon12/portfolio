@@ -15,11 +15,26 @@ interface Props {
   regexp?: RegExp;
 }
 
-const Textarea: React.FC<Props> = (props) => {
+/**
+ * Textarea form field with validation
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Textarea: React.FC<Props> = (props): JSX.Element => {
   const [touched, setTouched] = useState(false);
   const [valid, setValid] = useState(true);
   const [errMessage, setErrMessage] = useState<string | null>(null);
 
+  /**
+   * Proxy function for set state action.
+   *
+   * Validates value and sets 'valid' value
+   *
+   * After first invocation, sets 'touched' value to true
+   * in order to indicate that the field was touched
+   *
+   * @param {React.ChangeEvent<HTMLTextAreaElement>} e - field's onChange event
+   */
   const handleTextareaValueChangesFlow = (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
@@ -28,7 +43,9 @@ const Textarea: React.FC<Props> = (props) => {
       setTouched(true);
       instantTouched = true;
     }
+
     props.handleChange && props.handleChange(e.target.value);
+
     props.required &&
       instantTouched &&
       validateField(

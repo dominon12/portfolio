@@ -15,17 +15,38 @@ interface Props {
   aboutUnits: IAboutUnit[];
 }
 
-const AboutUnits: React.FC<Props> = ({ aboutUnits }) => {
+/**
+ * Renders a list of about units using InfoSection template
+ *
+ * @return {*}  {JSX.Element}
+ */
+const AboutUnits: React.FC<Props> = ({ aboutUnits }): JSX.Element => {
   const history = useHistory();
 
   const { setVisible } = useContext(SideBarContext);
 
   const isMobile = document.body.offsetWidth <= MOBILE_BEGINS_AFTER;
 
+  /**
+   * Opens side bar on mobile devices (<= 425px)
+   * or redirects to the Projects page in other cases
+   */
   const handleBegin = isMobile
     ? () => setVisible(true)
     : () => history.push("/projects");
 
+  /**
+   * Renders an InfoBlocks covered in React.Fragment with a key.
+   *
+   * If passed index param is even, places AboutUnit's
+   * image on the right side and data on the left side and vice versa.
+   *
+   * In case of the first element, also renders a JumpingArrow component
+   *
+   * @param {IAboutUnit} aboutUnit data source
+   * @param {number} index index of the about unit
+   * @return {*} JSX.Element
+   */
   const renderAboutUnit = (aboutUnit: IAboutUnit, index: number) => {
     const infoBlock = (
       <>
@@ -52,8 +73,12 @@ const AboutUnits: React.FC<Props> = ({ aboutUnits }) => {
     const indexIsEven = index % 2 === 0;
     const left = indexIsEven ? infoBlock : imageBlock;
     const right = indexIsEven ? imageBlock : infoBlock;
-    const leftClassName = indexIsEven ? "" : "about-units__container_info-block";
-    const rightClassName = indexIsEven ? "about-units__container_info-block" : "";
+    const leftClassName = indexIsEven
+      ? ""
+      : "about-units__container_info-block";
+    const rightClassName = indexIsEven
+      ? "about-units__container_info-block"
+      : "";
 
     return (
       <React.Fragment key={aboutUnit.id}>

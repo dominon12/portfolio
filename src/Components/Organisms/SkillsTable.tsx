@@ -17,7 +17,13 @@ interface Props {
   skillsGroup: ISkillsGroup;
 }
 
-const SkillsTable: React.FC<Props> = (props) => {
+/**
+ * Renders a table filled with skills
+ * and a level of knowing of this skills
+ *
+ * @return {*}  {JSX.Element}
+ */
+const SkillsTable: React.FC<Props> = (props): JSX.Element => {
   return (
     <div className="skills-table">
       <table className="skills-table__table">

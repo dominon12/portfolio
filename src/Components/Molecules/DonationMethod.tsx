@@ -14,7 +14,12 @@ interface Props {
   isLink?: boolean;
 }
 
-const DonationMethod: React.FC<Props> = (props) => {
+/**
+ * A card with info about a donation method
+ *
+ * @return {*}  {JSX.Element}
+ */
+const DonationMethod: React.FC<Props> = (props): JSX.Element => {
   return (
     <article
       className="donation-method hover-animation"

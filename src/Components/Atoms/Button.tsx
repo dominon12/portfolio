@@ -9,7 +9,12 @@ interface Props {
   disabled?: boolean;
 }
 
-const Button: React.FC<Props> = (props) => {
+/**
+ * Styled button.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Button: React.FC<Props> = (props): JSX.Element => {
   return (
     <button
       className={`button hover-animation ${props.type}`}

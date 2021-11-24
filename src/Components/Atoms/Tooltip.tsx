@@ -11,16 +11,33 @@ interface Props {
   hideOnMobile?: boolean;
 }
 
-const Tooltip: React.FC<Props> = (props) => {
+/**
+ * Wrapper component which show a tooltip
+ * with some text on hover.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Tooltip: React.FC<Props> = (props): JSX.Element => {
   let timeout: any = null;
   const [active, setActive] = useState(false);
 
+  /**
+   * Sets 'active' state variable to true
+   * after some delay.
+   * 
+   * If no 'showDelay' prop was provided,
+   * delay will be set to 100ms.
+   */
   const show = () => {
     timeout = setTimeout(() => {
       setActive(true);
     }, props.showDelay || 100);
   };
 
+  /**
+   * Clears timeout and sets
+   * 'active' state variable to false.
+   */
   const hide = () => {
     clearTimeout(timeout);
     setActive(false);

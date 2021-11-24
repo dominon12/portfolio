@@ -6,7 +6,14 @@ import "./ThemeSwitch.scss";
 import { Mode, ThemeContext } from "../../Contexts/ThemeContext";
 import Tooltip from "./Tooltip";
 
-const ThemeSwitch: React.FC = () => {
+/**
+ * Icon which represents current theme mode.
+ * 
+ * On click changes theme mode.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const ThemeSwitch: React.FC = (): JSX.Element=> {
   const { mode, setMode } = useContext(ThemeContext);
 
   return (

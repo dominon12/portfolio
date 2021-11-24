@@ -7,7 +7,7 @@ import useGetParams from "../../Hooks/useGetParams";
 import useInfiniteQueue from "../../Hooks/useInfiniteQueue";
 import { scrollTo, updateUrlWithGetParams } from "../../Services/HelperService";
 import Tooltip from "../Atoms/Tooltip";
-import Select from "../Molecules/Select";
+import Select from "./Select";
 import { handleChangeGetParams } from "../../Services/ProjectsService";
 import { pageKey, pageSizeKey } from "../../Services/GetParamKeys";
 
@@ -21,7 +21,14 @@ interface Props {
   pageItems: any[];
 }
 
-const Paginator: React.FC<Props> = (props) => {
+/**
+ * Renders interface which allows to switch 
+ * between pages with beautiful animation 
+ * and to select a page size.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Paginator: React.FC<Props> = (props): JSX.Element => {
   const history = useHistory();
   const { pathname } = useLocation();
   const getParams = useGetParams();
@@ -39,6 +46,16 @@ const Paginator: React.FC<Props> = (props) => {
   const transitionTime = 500;
   const transitionTimeString = `${transitionTime}ms`;
 
+  /**
+   * Changes classNames of passed
+   * elements in order to make 
+   * animation work
+   *
+   * @param {HTMLDivElement} left 
+   * @param {HTMLDivElement} central
+   * @param {HTMLDivElement} right
+   * @param {HTMLDivElement} rightDisabled
+   */
   const handleMoveLeft = (
     left: HTMLDivElement,
     central: HTMLDivElement,
@@ -63,6 +80,18 @@ const Paginator: React.FC<Props> = (props) => {
     rightDisabled.classList.add("right");
   };
 
+  /**
+   * Recovers default class names
+   * of passed elements and sets 
+   * transition to 0 in order to 
+   * be able to play animation again without 
+   * changing elements' order
+   *
+   * @param {HTMLDivElement} left
+   * @param {HTMLDivElement} central
+   * @param {HTMLDivElement} right
+   * @param {HTMLDivElement} rightDisabled
+   */
   const applyDefaultSwitchesStylesLeft = (
     left: HTMLDivElement,
     central: HTMLDivElement,
@@ -87,6 +116,16 @@ const Paginator: React.FC<Props> = (props) => {
     rightDisabled.classList.add("right-disabled");
   };
 
+  /**
+   * Changes classNames of passed
+   * elements in order to make 
+   * animation work
+   *
+   * @param {HTMLDivElement} leftDisabled
+   * @param {HTMLDivElement} left
+   * @param {HTMLDivElement} central
+   * @param {HTMLDivElement} right
+   */
   const handleMoveRight = (
     leftDisabled: HTMLDivElement,
     left: HTMLDivElement,
@@ -111,6 +150,18 @@ const Paginator: React.FC<Props> = (props) => {
     right.classList.add("right-disabled");
   };
 
+  /**
+   * Recovers default class names
+   * of passed elements and sets 
+   * transition to 0 in order to 
+   * be able to play animation again without 
+   * changing elements' order
+   *
+   * @param {HTMLDivElement} leftDisabled
+   * @param {HTMLDivElement} left
+   * @param {HTMLDivElement} central
+   * @param {HTMLDivElement} right
+   */
   const applyDefaultSwitchesStylesRight = (
     leftDisabled: HTMLDivElement,
     left: HTMLDivElement,
@@ -136,6 +187,11 @@ const Paginator: React.FC<Props> = (props) => {
     right.classList.add("right");
   };
 
+  /**
+   * Animates switches elements
+   *
+   * @param {Direction} direction
+   */
   const handleAnimation = (direction: Direction) => {
     const container = switchesContainer.current;
     if (container) {
@@ -188,6 +244,12 @@ const Paginator: React.FC<Props> = (props) => {
     }
   };
 
+  /**
+   * Invokes needed InfiniteQueue methods
+   * to be up-to-date with url search param 'page'
+   *
+   * @param {Direction} direction
+   */
   const moveQueue = (direction: Direction) => {
     switch (direction) {
       case Direction.Left:
@@ -201,6 +263,14 @@ const Paginator: React.FC<Props> = (props) => {
     }
   };
 
+  /**
+   * Gets next page value and sets it to url 
+   * search params, updates url and scrolls to top
+   * with 'transitionTime' delay.
+   * 
+   * Delay is needed to show transition animation 
+   * to user
+   */
   const switchPage = () => {
     const nextPage = infiniteQueue.firstElement.toString();
     setTimeout(() => {
@@ -210,6 +280,11 @@ const Paginator: React.FC<Props> = (props) => {
     }, transitionTime);
   };
 
+  /**
+   * Handles page switching flow
+   *
+   * @param {Direction} direction
+   */
   const handleSwitchPage = (direction: Direction) => {
     moveQueue(direction);
     handleAnimation(direction);

@@ -6,9 +6,19 @@ import Title from "../Atoms/Title";
 import SkillsTable from "../Organisms/SkillsTable";
 import { getSkills } from "../../Services/DataService";
 
-const Skills: React.FC = () => {
+/**
+ * Page with a several tables showing
+ * skills and those skills' levels
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Skills: React.FC = (): JSX.Element => {
   const skills = getSkills();
 
+  /**
+   * Converts list of skills to SkillsTable[]
+   * @returns SkillsTable[]
+   */
   const renderSkills = () =>
     skills.map((skillsGroup) => (
       <SkillsTable key={skillsGroup.id} skillsGroup={skillsGroup} />

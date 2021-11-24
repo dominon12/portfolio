@@ -5,7 +5,12 @@ import NotFoundIllustration from "../../Assets/Images/System/404.png";
 import Button from "../Atoms/Button";
 import ErrorTemplate from "../Templates/ErrorTemplate";
 
-const NotFound: React.FC = () => {
+/**
+ * Not found page
+ *
+ * @return {*}  {JSX.Element}
+ */
+const NotFound: React.FC = (): JSX.Element => {
   const history = useHistory();
 
   return (

@@ -8,7 +8,13 @@ import StaticCV from "../Organisms/StaticCV";
 import InfoSection from "../Templates/InfoSection";
 import Button from "../Atoms/Button";
 
-const Download: React.FC = () => {
+/**
+ * Page where a user can preview 
+ * and download generated static CV 
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Download: React.FC = (): JSX.Element => {
   return (
     <>
       <Helmet>

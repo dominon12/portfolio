@@ -4,7 +4,12 @@ import "./DonationMethods.scss";
 import { getDonationMethods } from "../../Services/DataService";
 import DonationMethod from "../Molecules/DonationMethod";
 
-const DonationMethods: React.FC = () => {
+/**
+ * Renders a list/grid of donation methods
+ *
+ * @return {*}  {JSX.Element}
+ */
+const DonationMethods: React.FC = (): JSX.Element => {
   const donationMethods = getDonationMethods();
 
   return (

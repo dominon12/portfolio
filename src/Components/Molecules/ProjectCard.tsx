@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./ProjectCard.scss";
 import BrickLink from "../Atoms/BrickLink";
-import {  IProjectTechnologies } from "../../Types/PortfolioDataTypes";
+import { IProjectTechnologies } from "../../Types/PortfolioDataTypes";
 import { IImage } from "../../Types/SystemTypes";
 
 interface Props {
@@ -16,13 +16,38 @@ interface Props {
   link?: string;
 }
 
-const ProjectCard: React.FC<Props> = (props) => {
+/**
+ * Returns a card-like element with passed
+ * project's data.
+ *
+ * If user clicks on the card, it's being expanded to
+ * the whole container's width.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const ProjectCard: React.FC<Props> = (props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
+  /**
+   * Toggles 'expanded' state variable
+   */
   const toggleExpanded = () => setExpanded((prev) => !prev);
-  const expandedClass = () => (expanded ? "expanded" : "normal");
 
-  const renderExpandedDescription = () => (
+  /**
+   * Decides whether it should return 'expanded'
+   * or 'normal' class based on 'expanded' state
+   * variable.
+   *
+   * @return {*}  {string} - result class name
+   */
+  const expandedClass = (): string => (expanded ? "expanded" : "normal");
+
+  /**
+   * Renders content of an expanded card element
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const renderExpandedDescription = (): JSX.Element => (
     <>
       <div className="project-card__description-container">
         {props.description.map((descriptionUnit) => (
@@ -55,6 +80,11 @@ const ProjectCard: React.FC<Props> = (props) => {
     </>
   );
 
+  /**
+   * Renders links to projects' page
+   * or to project's source code if
+   * the project has one. 
+   */
   const renderLinks = () =>
     (props.link || props.repository) && (
       <div className="project-card__links">

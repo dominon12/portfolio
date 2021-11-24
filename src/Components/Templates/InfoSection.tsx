@@ -10,6 +10,9 @@ interface Props {
   containerClassName?: string;
 }
 
+/**
+ * Wide section template
+ */
 const InfoSection: React.FC<Props> = (props) => {
   return (
     <div

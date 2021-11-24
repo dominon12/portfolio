@@ -4,11 +4,19 @@ import { Helmet } from "react-helmet";
 import "./Projects.scss";
 import ProjectsNav from "../Organisms/ProjectsNav";
 import ProjectsGrid from "../Organisms/ProjectsGrid";
-import Paginator from "../Organisms/Paginator";
+import Paginator from "../Molecules/Paginator";
 import useProjects from "../../Hooks/useProjects";
 import LoadingTemplate from "../Templates/LoadingTemplate";
 
-const Projects: React.FC = () => {
+
+/**
+ * Page with a list of projects, navigation bar
+ * with ability to select sorting and filtering options 
+ * and a pagination menu
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Projects: React.FC = (): JSX.Element => {
   const { projects, pageProjects, isLoading } = useProjects({
     loadingDelay: 1000,
   });

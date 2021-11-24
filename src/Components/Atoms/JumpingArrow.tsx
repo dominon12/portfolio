@@ -8,7 +8,18 @@ interface Props {
   className?: string;
 }
 
-const JumpingArrow: React.FC<Props> = ({ className }) => {
+/**
+ * Arrow icon which moves from top
+ * to down infinitely.
+ *
+ * On click, scrolls container a little bit down.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const JumpingArrow: React.FC<Props> = ({ className }): JSX.Element => {
+  /**
+   * Scrolls container a little bit down.
+   */
   const scrollABitDown = () => {
     scrollTo({ top: 800, left: 0, behavior: "smooth" });
   };

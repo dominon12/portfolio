@@ -12,7 +12,13 @@ interface Props {
   isRelevant: boolean;
 }
 
-const CareerEvent: React.FC<Props> = (props) => {
+/**
+ * 'Liana's' leave which represent 
+ * a career event.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const CareerEvent: React.FC<Props> = (props): JSX.Element => {
   return (
     <div className={`career-event ${!props.isRelevant && "irrelevant"}`}>
       <div className="career-event__content">
