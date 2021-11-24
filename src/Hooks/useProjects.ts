@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import { getProjects } from "../Services/DataService";
 import {
+  filterByKey,
+  pageKey,
+  pageSizeKey,
+  sortByKey,
+} from "../Services/GetParamKeys";
+import {
   filterProjects,
   paginate,
   sortProjects,
@@ -12,21 +18,32 @@ interface Props {
   loadingDelay?: number;
 }
 
-function useProjects(props: Props) {
+/**
+ * Encapsulates logic of sorting, filtering
+ * and paginating of an array of projects
+ *
+ * @param {Props} props
+ * @return {*}  {{
+ *   projects: IProject[]; - projects after sorting and filtering
+ *   pageProjects: IProject[]; - projects after pagination
+ *   isLoading: boolean; - indicates whether projects are still loading
+ * }}
+ */
+function useProjects(props: Props): {
+  projects: IProject[];
+  pageProjects: IProject[];
+  isLoading: boolean;
+} {
   const allProjects = getProjects();
   const [projects, setProjects] = useState<IProject[]>([]);
   const [pageProjects, setPageProjects] = useState<IProject[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // sorting
-  const sortByKey = "sortBy";
-  // filtering
-  const filterByKey = "filterBy";
-  // pagination
-  const pageKye = "page";
-  const pageSizeKey = "pageSize";
-  const disablePaginationKey = "disablePagination";
-
+  /**
+   * Filters, sorts and paginates all projects.
+   * After filtering and sorting, sets 'project' variable.
+   * After paginating, sets 'pageProjects' variable.
+   */
   const processProducts = () => {
     const getParams = new URLSearchParams(window.location.search);
     let nextProjects = [...allProjects];
@@ -44,11 +61,9 @@ function useProjects(props: Props) {
     // paginate
     const pageSize = parseInt(getParams.get(pageSizeKey) ?? "6");
     const pagesNum = Math.ceil(nextProjects.length / pageSize);
-    const page = parseInt(getParams.get(pageKye) ?? "1");
+    const page = parseInt(getParams.get(pageKey) ?? "1");
     const disablePagination =
-      !!getParams.get(disablePaginationKey) ||
-      pagesNum === 1 ||
-      page > pagesNum;
+      pagesNum === 1 || page > pagesNum || pageSize <= 0;
 
     if (!disablePagination) {
       nextProjects = paginate(nextProjects, page, pageSize);
@@ -57,6 +72,10 @@ function useProjects(props: Props) {
     setPageProjects(nextProjects);
   };
 
+  /**
+   * Invokes operations with projects
+   * on url search params change
+   */
   useEffect(() => {
     setIsLoading(true);
     processProducts();
