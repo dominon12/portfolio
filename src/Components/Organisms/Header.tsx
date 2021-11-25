@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 import "./Header.scss";
 import Burger from "../Atoms/Burger";
 import ThemeSwitch from "../Atoms/ThemeSwitch";
+import useScrollPosition from "../../Hooks/useScrollPosition";
 
 /**
  * Renders a header element with burger
@@ -12,8 +13,31 @@ import ThemeSwitch from "../Atoms/ThemeSwitch";
  * @return {*}  {JSX.Element}
  */
 const Header: React.FC = (): JSX.Element => {
+  const headerRef = useRef<any>(null);
+  const [visible, setVisible] = useState(true);
+
+  /**
+   * IF user scrolled to bottom more than
+   * the header's height, hide the header.
+   *
+   * If user started scrolling up, show it.
+   */
+  useScrollPosition((scrollPosition) => {
+    const headerHeight = headerRef.current.offsetHeight;
+
+    const scrolledDownMoreThanHeaderHeight =
+      scrollPosition.current.y > headerHeight;
+
+    if (scrolledDownMoreThanHeaderHeight) setVisible(false);
+    if (scrollPosition.directionY === "up") setVisible(true);
+  });
+
   return (
-    <header className="header" id="header">
+    <header
+      ref={headerRef}
+      className={`header ${visible ? "visible" : "hidden"}`}
+      id="header"
+    >
       <Burger />
       <ThemeSwitch />
     </header>

@@ -2,6 +2,20 @@ $mobile-devices: 425px;
 
 .header {
   display: none;
+  transition: transform var(--transition-off);
+
+  &.hidden,
+  &.visible {
+    transition: transform var(--transition-on);
+  }
+
+  &.hidden {
+    transform: translateY(-70px + 2px); // header height minus border height
+  }
+
+  .visible {
+    transform: translateY(0);
+  }
 
   @media (max-width: $mobile-devices) {
     display: flex;
