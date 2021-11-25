@@ -6,7 +6,10 @@ import { IProjectTechnologies } from "../../Types/PortfolioDataTypes";
 import { IImage } from "../../Types/SystemTypes";
 import useGetParams from "../../Hooks/useGetParams";
 import { projectIdKey } from "../../Services/GetParamKeys";
-import { updateUrlWithGetParams } from "../../Services/HelperService";
+import {
+  setMainContainerScroll,
+  updateUrlWithGetParams,
+} from "../../Services/HelperService";
 import { useHistory, useLocation } from "react-router";
 
 interface Props {
@@ -39,15 +42,18 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
 
   /**
    * Sets 'projectId' url search param to the
-   * 'id' prop if it's not set
-   * and removes it in the other case. 
+   * 'id' prop if it's not set and removes 
+   * it in the other case. Disables or enables
+   * scroll in the main container.
    * After that updates url.
    */
   const toggleExpanded = () => {
     if (expanded) {
       getParams.delete(projectIdKey);
+      setMainContainerScroll("auto");
     } else {
       getParams.set(projectIdKey, props.id.toString());
+      setMainContainerScroll("hidden");
     }
     updateUrlWithGetParams(history, pathname, getParams);
   };
@@ -69,8 +75,9 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
   const renderExpandedDescription = (): JSX.Element => (
     <>
       <div className="project-card__description-container">
-        {props.description.map((descriptionUnit) => (
+        {props.description.map((descriptionUnit, index) => (
           <p
+            key={index}
             className="project-card__full-description"
             dangerouslySetInnerHTML={{ __html: descriptionUnit }}
           ></p>

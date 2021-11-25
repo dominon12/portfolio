@@ -3,9 +3,9 @@
  */
 
 /**
- * Checks whether current device's width 
+ * Checks whether current device's width
  * is smaller of equal to 425 (is mobile device)
- * 
+ *
  * @returns boolean value which indicates
  *          whether the current device is mobile
  */
@@ -14,11 +14,11 @@ export function isMobile(): boolean {
 }
 
 /**
- * Scrolls window or 'scrollContainer' depending on 
+ * Scrolls window or 'scrollContainer' depending on
  * device's width. That's necessary because when
- * the screen size is bigger than 425 pixels, container 
+ * the screen size is bigger than 425 pixels, container
  * which has to be scrolled is not the window.
- * 
+ *
  * @param scrollOptions scroll settings for scrollTo method
  */
 export function scrollTo(scrollOptions: ScrollToOptions) {
@@ -29,7 +29,7 @@ export function scrollTo(scrollOptions: ScrollToOptions) {
 
 /**
  * Generates a pseudo random number
- * 
+ *
  * @returns random number from 0 to 1'000'000
  */
 export function getRandomId() {
@@ -38,7 +38,7 @@ export function getRandomId() {
 
 /**
  * Updates current url with search params
- * 
+ *
  * @param history react history object
  * @param pathname url pathname
  * @param getParams url search params object
@@ -49,4 +49,21 @@ export function updateUrlWithGetParams(
   getParams: URLSearchParams
 ) {
   history.push(`${pathname}?${getParams.toString()}`);
+}
+
+/**
+ * Disables or enables possibility of scrolling
+ * of the current main container.
+ *
+ * @export
+ * @param {("hidden" | "auto")} value - desired behaviour
+ */
+export function setMainContainerScroll(value: "hidden" | "auto") {
+  let container = isMobile()
+    ? document.body
+    : document.getElementById("scrollContainer");
+
+  if (container) {
+    container.style.overflowY = value;
+  }
 }
