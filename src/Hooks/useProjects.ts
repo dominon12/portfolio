@@ -5,6 +5,7 @@ import {
   filterByKey,
   pageKey,
   pageSizeKey,
+  projectIdKey,
   sortByKey,
 } from "../Services/GetParamKeys";
 import {
@@ -13,6 +14,7 @@ import {
   sortProjects,
 } from "../Services/ProjectsService";
 import { IProject } from "../Types/PortfolioDataTypes";
+import usePrevious from "./usePrevious";
 
 interface Props {
   loadingDelay?: number;
@@ -34,6 +36,9 @@ function useProjects(props: Props): {
   pageProjects: IProject[];
   isLoading: boolean;
 } {
+  const search = window.location.search;
+  const prevSearch = usePrevious(search);
+
   const allProjects = getProjects();
   const [projects, setProjects] = useState<IProject[]>([]);
   const [pageProjects, setPageProjects] = useState<IProject[]>([]);
@@ -74,20 +79,26 @@ function useProjects(props: Props): {
 
   /**
    * Invokes operations with projects
-   * on url search params change
+   * on url search params change.
    */
   useEffect(() => {
-    setIsLoading(true);
-    processProducts();
+    const shouldProcessProjects =
+      (!search.includes(projectIdKey) && !prevSearch?.includes(projectIdKey)) ||
+      (search.includes(projectIdKey) && !prevSearch);
 
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, props.loadingDelay ?? 0);
+    if (shouldProcessProjects) {
+      setIsLoading(true);
+      processProducts();
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [window.location.search]);
+      const timeout = setTimeout(() => {
+        setIsLoading(false);
+      }, props.loadingDelay ?? 0);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [search]);
 
   return { projects, pageProjects, isLoading };
 }

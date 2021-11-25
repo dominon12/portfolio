@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./ProjectCard.scss";
 import BrickLink from "../Atoms/BrickLink";
 import { IProjectTechnologies } from "../../Types/PortfolioDataTypes";
 import { IImage } from "../../Types/SystemTypes";
+import useGetParams from "../../Hooks/useGetParams";
+import { projectIdKey } from "../../Services/GetParamKeys";
+import { updateUrlWithGetParams } from "../../Services/HelperService";
+import { useHistory, useLocation } from "react-router";
 
 interface Props {
+  id: number;
   title: string;
   image: IImage;
   shortDescription: string;
@@ -26,12 +31,26 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const ProjectCard: React.FC<Props> = (props): JSX.Element => {
-  const [expanded, setExpanded] = useState(false);
+  const history = useHistory();
+  const getParams = useGetParams();
+  const { pathname } = useLocation();
+
+  const expanded = parseInt(getParams.get(projectIdKey) ?? "0") === props.id;
 
   /**
-   * Toggles 'expanded' state variable
+   * Sets 'projectId' url search param to the
+   * 'id' prop if it's not set
+   * and removes it in the other case. 
+   * After that updates url.
    */
-  const toggleExpanded = () => setExpanded((prev) => !prev);
+  const toggleExpanded = () => {
+    if (expanded) {
+      getParams.delete(projectIdKey);
+    } else {
+      getParams.set(projectIdKey, props.id.toString());
+    }
+    updateUrlWithGetParams(history, pathname, getParams);
+  };
 
   /**
    * Decides whether it should return 'expanded'

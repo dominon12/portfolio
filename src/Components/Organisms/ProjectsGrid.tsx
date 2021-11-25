@@ -19,6 +19,7 @@ const ProjectsGrid: React.FC<Props> = (props): JSX.Element => {
       {props.projects.map((project: IProject) => (
         <ProjectCard
           key={project.id}
+          id={project.id}
           title={project.title}
           image={project.image}
           shortDescription={project.shortDescription}
