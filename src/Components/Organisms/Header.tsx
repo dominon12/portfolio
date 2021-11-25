@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import "./Header.scss";
 import Burger from "../Atoms/Burger";
 import ThemeSwitch from "../Atoms/ThemeSwitch";
 import useScrollPosition from "../../Hooks/useScrollPosition";
+import { SideBarContext } from "../../Contexts/SideBarContext";
 
 /**
  * Renders a header element with burger
@@ -15,6 +16,7 @@ import useScrollPosition from "../../Hooks/useScrollPosition";
 const Header: React.FC = (): JSX.Element => {
   const headerRef = useRef<any>(null);
   const [visible, setVisible] = useState(true);
+  const { setVisible: setSideBarVisible } = useContext(SideBarContext);
 
   /**
    * IF user scrolled to bottom more than
@@ -28,7 +30,11 @@ const Header: React.FC = (): JSX.Element => {
     const scrolledDownMoreThanHeaderHeight =
       scrollPosition.current.y > headerHeight;
 
-    if (scrolledDownMoreThanHeaderHeight) setVisible(false);
+    if (scrolledDownMoreThanHeaderHeight) {
+      setVisible(false);
+      setSideBarVisible(false);
+    }
+
     if (scrollPosition.directionY === "up") setVisible(true);
   });
 
