@@ -17,7 +17,7 @@
 }
 
 body {
-  transition: var(--transition-on);
+  transition: background-color var(--transition-on), color var(--transition-on);
 
   &.light {
     // light theme
@@ -64,17 +64,18 @@ p {
 }
 
 .hover-animation {
-  transition: var(--transition-off);
+  transition: box-shadow var(--transition-off), transform var(--transition-off);
 
   &:focus,
   &:hover {
     box-shadow: 0 5px 15px var(--card-background-color);
     transform: translateY(-5px);
-    transition: var(--transition-on);
+    transition: box-shadow var(--transition-on), transform var(--transition-on);
   }
 
   &:active {
     transform: scale(0.99);
+    transition: transform var(--transition-on);
   }
 }
 

@@ -36,7 +36,6 @@ $mobile-devices: 425px;
   }
 
   &.expanded {
-    transition: 0;
     box-shadow: none;
     transform: none;
     position: fixed;

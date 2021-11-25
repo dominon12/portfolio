@@ -83,7 +83,7 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
   /**
    * Renders links to projects' page
    * or to project's source code if
-   * the project has one. 
+   * the project has one.
    */
   const renderLinks = () =>
     (props.link || props.repository) && (
@@ -111,9 +111,7 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
 
   return (
     <article
-      className={`project-card ${
-        !expanded && "hover-animation"
-      } ${expandedClass()}`}
+      className={`project-card hover-animation ${expandedClass()}`}
       onClick={toggleExpanded}
     >
       <div className={`project-card__content ${expandedClass()}`}>
