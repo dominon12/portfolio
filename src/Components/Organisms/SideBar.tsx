@@ -15,7 +15,7 @@ import ThemeSwitch from "../Atoms/ThemeSwitch";
 
 /**
  * Renders a side bar and handles logic
- * of hiding it if user clicked outside of it or 
+ * of hiding it if user clicked outside of it or
  * outside of header or navigated to another page
  *
  * @return {*}  {JSX.Element}
@@ -129,6 +129,7 @@ const SideBar: React.FC = (): JSX.Element => {
       className={`aside ${visible ? "active" : "inactive"}`}
     >
       <div className="aside__content">
+        <NavTab>~ Menu ~</NavTab>
         {TABS.sort((a, b) => a.orderNumber - b.orderNumber).map((tab) => (
           <NavTab key={tab.id} tabData={tab} />
         ))}

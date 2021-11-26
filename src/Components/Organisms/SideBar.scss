@@ -8,20 +8,20 @@ $mobile-devices: 425px;
   height: 100vh;
 
   @media (max-width: $mobile-devices) {
-    overflow-y: scroll;
-    height: calc(100vh - 4rem);
+    overflow-y: auto;
+    height: 100vh;
     position: fixed;
     z-index: 100;
     border-right: none;
     background-color: var(--card-background-color);
     align-items: flex-start;
-    transform: translate(-100%, 4rem);
+    transform: translateX(-100%);
     transition: var(--transition-off);
     border-right: 2px solid var(--color-details);
 
     &.active {
       transition: var(--transition-on);
-      transform: translate(0, 4rem);
+      transform: translateX(0);
     }
   }
 
