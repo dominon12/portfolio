@@ -45,13 +45,12 @@ $mobile-devices: 425px;
     left: 4rem;
     width: calc(100% - 6rem);
     height: calc(100vh - 2rem);
-    overflow-y: scroll;
+    overflow-y: auto;
 
     @media (max-width: $mobile-devices) {
-      top: 4rem;
       left: 0;
       width: calc(100% - 2rem);
-      height: calc(100vh - 6rem);
+      height: calc(100% - 2rem);
     }
   }
 

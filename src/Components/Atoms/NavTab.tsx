@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MdRestaurantMenu } from "react-icons/md";
 
 import "./NavTab.scss";
 import { ITab } from "../../Types/SystemTypes";
@@ -13,8 +12,8 @@ interface Props {
 /**
  * Renders a rectangular element with
  * an icon inside if 'tabData' prop was provided.
- * 
- * If 'tabData' prop wasn't passed, 
+ *
+ * If 'tabData' prop wasn't passed,
  * shows a stub with a children inside.
  *
  * On mobile devices, shows tab's title
