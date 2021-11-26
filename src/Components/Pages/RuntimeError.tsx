@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import NotFoundIllustration from "../../Assets/Images/System/404.png";
+import {
+  SnackBarContext,
+  SnackBarMessageColor,
+} from "../../Contexts/SnackBarContext";
 import { submitErrorFeedback } from "../../Services/TelegramBotService";
 import Button from "../Atoms/Button";
-import Subtitle from "../Atoms/Subtitle";
 import Textarea from "../Molecules/Textarea";
 import ErrorTemplate from "../Templates/ErrorTemplate";
-import LoadingTemplate from "../Templates/LoadingTemplate";
 
 /**
  * Page with info about an error and
@@ -15,28 +17,34 @@ import LoadingTemplate from "../Templates/LoadingTemplate";
  * @return {*}  {JSX.Element}
  */
 const RuntimeError = (): JSX.Element => {
+  const { sendMessage } = useContext(SnackBarContext);
+
   const [comment, setComment] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [onSubmitText, setOnSubmitText] = useState("");
-
 
   /**
-   * Handles form submit flow
+   * Handles form submission flow
    */
   const reportErrorFeedback = async () => {
-    setSubmitted(true);
     setIsLoading(true);
 
     const success = await submitErrorFeedback(comment);
 
-    if (success) {
-      setOnSubmitText("Thank you for feedback!");
-    } else {
-      setOnSubmitText("Something went wrong :(");
-    }
-
     setTimeout(() => {
+      if (success) {
+        sendMessage("Thank you for feedback! Thanks to you I will fix this error faster!", {
+          color: SnackBarMessageColor.SUCCESS,
+        });
+      } else {
+        sendMessage(
+          "Something went wrong :( Please try again later or contact me via the Contact page",
+          {
+            color: SnackBarMessageColor.DANGER,
+            delay: 5000,
+          }
+        );
+      }
+      setComment("");
       setIsLoading(false);
     }, 1000);
   };
@@ -51,26 +59,23 @@ const RuntimeError = (): JSX.Element => {
         width: "500",
         height: "500",
       }}
-      seoTitle="404 Not Found | Dominon12"
+      seoTitle="Runtime Error | Dominon12"
       seoDescription="This app has crashed"
     >
-      {!submitted && (
-        <>
-          <Textarea
-            value={comment}
-            placeholder="What happened?"
-            label="Feedback"
-            handleChange={setComment}
-          />
-          <Button type="primary" onClick={reportErrorFeedback}>
-            Submit
-          </Button>
-        </>
-      )}
-      
-      <LoadingTemplate isLoading={isLoading}>
-        <Subtitle>{onSubmitText}</Subtitle>
-      </LoadingTemplate>
+      <Textarea
+        value={comment}
+        placeholder="What happened?"
+        label="Feedback"
+        handleChange={setComment}
+        disabled={isLoading}
+      />
+      <Button
+        type="primary"
+        onClick={reportErrorFeedback}
+        isLoading={isLoading}
+      >
+        Submit
+      </Button>
     </ErrorTemplate>
   );
 };

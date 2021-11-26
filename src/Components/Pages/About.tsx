@@ -5,7 +5,7 @@ import { getAbout } from "../../Services/DataService";
 import AboutUnits from "../Organisms/AboutUnits";
 
 /**
- * About page with sections which represent 
+ * About page with sections which represent
  * about units
  *
  * @return {*}  {JSX.Element}
