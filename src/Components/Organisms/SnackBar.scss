@@ -1,0 +1,22 @@
+$defaultMargin: 1rem;
+
+.snackbar {
+  position: absolute;
+
+  &.top {
+    top: $defaultMargin;
+  }
+  &.bottom {
+    bottom: $defaultMargin;
+  }
+  &.left {
+    left: $defaultMargin;
+  }
+  &.right {
+    right: $defaultMargin;
+  }
+  &.center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

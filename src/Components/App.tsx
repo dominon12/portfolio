@@ -5,6 +5,7 @@ import "./App.scss";
 // components
 import SideBar from "./Organisms/SideBar";
 import Header from "./Organisms/Header";
+import SnackBar from "./Organisms/SnackBar";
 // pages
 import About from "./Pages/About";
 import Skills from "./Pages/Skills";
@@ -45,6 +46,8 @@ const App: React.FC = () => {
             </Switch>
           </ErrorBoundary>
         </section>
+
+        <SnackBar anchorOrigin={{ horizontal: "right", vertical: "bottom" }} />
       </main>
     </Router>
   );

@@ -6,7 +6,10 @@
 
 :root {
   // system colors
-  --color-danger: red;
+  --color-info: #61dbfb; // react blue
+  --color-success: #42b883; // vue green
+  --color-warning: #ff3d00; // svetle orange
+  --color-danger: #dd0531; // angular red
   // fonts
   --font-family: "Montserrat", sans-serif;
   // animations

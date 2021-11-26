@@ -16,17 +16,19 @@ interface Props {
 const InfoSection: React.FC<Props> = (props) => {
   return (
     <div
-      className={`info ${props.containerClassName && props.containerClassName}`}
+      className={`info-section ${
+        props.containerClassName && props.containerClassName
+      }`}
     >
       <div
-        className={`info__left ${
+        className={`info-section__left ${
           props.leftContainerClassName && props.leftContainerClassName
         }`}
       >
         {props.left}
       </div>
       <div
-        className={`info__right ${
+        className={`info-section__right ${
           props.rightContainerClassName && props.rightContainerClassName
         }`}
       >
