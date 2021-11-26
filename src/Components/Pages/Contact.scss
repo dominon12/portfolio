@@ -10,7 +10,7 @@ $second-media: 554px;
   }
 
   &__icon {
-    color: #fff;
+    color: var(--headline-color);
     font-size: 20rem;
     display: block;
     margin: 0 auto;

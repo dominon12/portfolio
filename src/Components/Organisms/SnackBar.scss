@@ -1,7 +1,7 @@
 $defaultMargin: 1rem;
 
 .snackbar {
-  position: absolute;
+  position: fixed;
 
   &.top {
     top: $defaultMargin;

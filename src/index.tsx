@@ -10,7 +10,7 @@ import SnackBarProvider from "./Contexts/SnackBarContext";
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={<h1>Loading...</h1>}>
-      <SnackBarProvider>
+      <SnackBarProvider defaultDelay={3500}>
         <SideBarProvider>
           <ThemeProvider>
             <App />

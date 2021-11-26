@@ -17,11 +17,12 @@
 }
 
 .snackbar-message {
-  padding: 1rem;
+  padding: 0.7rem;
   margin: 1rem 0;
   border-radius: var(--default-border-radius);
   color: #fff;
   max-width: 300px;
+  line-height: 1.6;
 
   &:first-child {
     margin-top: 0;
