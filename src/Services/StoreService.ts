@@ -8,6 +8,7 @@ import { IPortfolio } from "../Types/PortfolioDataTypes";
 // about
 import myProfilePhoto from "../Assets/Images/About/profile.jpeg";
 import reactGif from "../Assets/Images/About/react-logo.gif";
+import uglyJsCode from "../Assets/Images/About/ugly-js-code.png";
 // projects
 import smokelabPhoto from "../Assets/Images/Projects/smokelab.png";
 import smokelabNewPhoto from "../Assets/Images/Projects/smokelab-new.png";
@@ -76,6 +77,40 @@ const portfolioData: IPortfolio = {
           link: "/skills",
         },
       },
+      {
+        id: 3,
+        title: "And what about experience?",
+        description:
+          "The number of production projects that I have done has already exceeded 6. My clients are satisfied and so am I. By clicking the button below you can get more info about those projects.",
+        image: {
+          src: uglyJsCode,
+          alt: "Uglified and minified js code",
+          width: "500",
+          height: "500",
+        },
+        button: {
+          text: "Projects",
+          type: "primary",
+          link: "/projects",
+        },
+      },
+      // {
+      //   id: 4,
+      //   title: "Why programming?",
+      //   description:
+      //     "All my life I wanted to be a software engineer but I was thinking that it's too hard until I tried.",
+      //   image: {
+      //     src: uglyJsCode,
+      //     alt: "Uglified and minified js code",
+      //     width: "500",
+      //     height: "500",
+      //   },
+      //   button: {
+      //     text: "Projects",
+      //     type: "primary",
+      //     link: "/projects",
+      //   },
+      // },
     ],
   },
   projects: [

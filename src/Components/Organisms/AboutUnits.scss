@@ -8,6 +8,10 @@ $fifth-media: 405px;
   &__container {
     min-height: calc(100vh - 2rem);
 
+    @media (max-width: $third-media) {
+      margin-bottom: 2rem;
+    }
+
     @media (max-width: $mobile-devices) {
       min-height: calc(100vh - 2rem - 4.5rem);
     }
