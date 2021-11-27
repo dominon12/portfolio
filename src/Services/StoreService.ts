@@ -91,7 +91,7 @@ const portfolioData: IPortfolio = {
       shortDescription:
         "Telegram bot which sends a message when price for selected assets meets target price set by user",
       description: [
-        "In one of the fresh windy prussish mondays my best friend Vlad came to me and told about an idea of creating a software which would send a notification when selected price of the selected asset will meet the current one. I thought that it will be easy to implement as a telegram bot and the next day started working on it.",
+        "In one of the fresh windy prussish mondays my best friend Vlad came to me and told about an idea of creating a software which would send a notification when selected price of the selected asset will meet the current one. I thought that it will be easy to implement as a telegram bot and ont the next day started working.",
         "After about a month it was totally ready and we wanted to start monetizing it, but we had a lot of other stuff to do so we never did it.",
       ],
       dateStarted: new Date("2020/07/13"),
@@ -102,7 +102,7 @@ const portfolioData: IPortfolio = {
         devops: [],
       },
       link: "https://t.me/PriceTomatBot",
-      implementationTime: 0,
+      implementationTime: 60,
     },
     {
       id: 2,
@@ -115,13 +115,13 @@ const portfolioData: IPortfolio = {
       },
       shortDescription: "E-commerce web app for dropshipping project",
       description: [
-        "An e-commerce project I’ve been working on with the idea of monetising it using a drop shipping model.",
-        "I wanted it to differ from similar Shopify pages which provide only a few lines of description so I’ve implemented an ability to make products pages be very comprehensive and with different parts like hero section with a slogan, product’s card with possibility of selecting different product’s options (like color, size, etc.), description blocks with images, reviews, similar products and last seen products.",
-        "All design I’ve been doing by myself inspiring by different e-commerce websites.",
+        "An e-commerce project I’ve been working on with the idea of monetizing it using a drop shipping business model.",
+        "I wanted it to differ from very popular Shopify pages which provide only a few lines of description, so I’ve implemented a feature to make products pages be very comprehensive and with different parts like hero section with a bright slogan, product’s card with possibility of selecting different options (like color, size, etc.), description sections with images, reviews, similar products and last seen products.",
+        "I created the entire design myself, drawing inspiration from e-commerce websites I considered cool.",
         "This project wouldn’t exist if my friend Hamza wouldn’t came to me and offer me his partnership. Almost every part of the website we’ve been thinking together.",
         "It has cool tracking page with a shipment progress bar, dashboard page with different plots and diagrams for admins showing shop’s statistics, possibility to subscribe to a newsletter, possibility of sorting and filtering products list and much more.",
-        "After setting up Facebook ads for the first 24 hours we’ve got a first order for $100 when me and Hamza just climbed on the top of a mountain near to Valencia.",
-        "Unfortunately we couldn’t continue with ads for some personal reasons so our progress is on hold and the backend is turned off, but I really look forward for this project to develop.",
+        "After setting up Facebook ads for the first 24 hours we’ve received a first order for $100 when me and Hamza just climbed on the top of a mountain near to Valencia.",
+        "Unfortunately I couldn’t continue for some personal reasons, so Hamza is trying to do his best alone.",
       ],
       dateStarted: new Date("2021/01/26"),
       type: "E-commerce",
@@ -145,7 +145,7 @@ const portfolioData: IPortfolio = {
         ],
       },
       link: "https://pokyzashop.com",
-      implementationTime: 0,
+      implementationTime: 90,
     },
     {
       id: 3,
@@ -160,10 +160,10 @@ const portfolioData: IPortfolio = {
       description: [
         "Another e-commerce website I’ve built for money. Both back-end and front-end.",
         "Thanks to Django’s admin panel admins can manage all the website’s content.",
-        "The cool thing about product’s model is that admins can add product’s characteristics which in future are used to filter those products on products list page.",
-        "Users can save items they like to favorite items list by clicking on the heart icon which is being persisted in redux’s state. If user has added items to the list of favorite items and then logs in, this list is being saved to the backend’s database.",
-        "Checkout page has a system that depending on selected company and country calculates the shipping cost. This system is managed from the admin panel where admins can define which fields user has to fill when selecting different companies. The client application renders a form conditionally using data obtained from the REST API.",
-        "After client has made an order, he can track it on order’s page which includes all the info about the order together with order’s status scale. Every time when order’s status changes, client gets notified by email.",
+        "The cool thing about product’s model is that admins can add product’s characteristics which in future are being used to filter those products on the catalog page.",
+        "Users can save items they like to favorite items list by clicking on the heart icon. Favourite items list is being persisted in redux’s state. If user has added items to the list of favorite items and then logs in, this list is being saved to the backend database.",
+        "Checkout page has a system that depending on selected company and country calculates the shipping cost. This system is managed from the admin panel where admins can define which fields user has to fill when selecting different delivery companies. The client application renders a form conditionally using data obtained from the REST API.",
+        "After client has made an order, he can track it on the order page which includes all the info about the order together with order’s status scale. Every time when the status of the order changes, client gets notified via email.",
         "This website supports 3 languages.",
       ],
       dateStarted: new Date("2021/05/05"),
@@ -181,7 +181,7 @@ const portfolioData: IPortfolio = {
         devops: ["Debian 10", "supervisord", "pgbouncer", "Nginx", "gunicorn"],
       },
       link: "https://cartel-hookah.com/",
-      implementationTime: 0,
+      implementationTime: 100,
     },
     {
       id: 4,
@@ -195,7 +195,8 @@ const portfolioData: IPortfolio = {
       shortDescription: 'E-commerce web site for company "Smoke Laboratory"',
       description: [
         "First website I’ve made for money.",
-        "The idea was to make an e-commerce website for a hookah store “Smoke Laboratory” in Gdańsk, Poland. It also was my first e-commerce project, I didn’t really know how to implement some things so I was googling a lot. In this project I didn’t use any front end framework. Only Django’s template system.",
+        "The idea was to make an e-commerce website for a hookah store “Smoke Laboratory” in Gdańsk, Poland. It also was my first e-commerce project, I didn’t really know how to implement some things so I was googling a lot.",
+        "In this project I didn’t use any front end framework. Only Django’s template system.",
         "It took me 1 month to finish it and I was really happy with what I did. Now I see mistakes I’ve made, which thanks to this project I won’t ever repeat, like not using single responsibility principle, not dividing big parts of code in functions, not making reusable components.",
         "Recently I totally rewrote this project solving old problems so under old domain there is a new website.",
       ],
@@ -214,7 +215,7 @@ const portfolioData: IPortfolio = {
         devops: ["Debian 10", "supervisord", "pgbouncer", "Nginx", "gunicorn"],
       },
       link: "https://smokelaboratory.eu/",
-      implementationTime: 0,
+      implementationTime: 120,
     },
     {
       id: 5,
@@ -229,7 +230,7 @@ const portfolioData: IPortfolio = {
         "Visualization of the operation of some sorting algorithms.",
       description: [
         "When I was reading a book “Grokking algorithms”, section about sorting algorithm caught my attention so I decided to make a website - cheat sheet for me and all other people with algorithms’ work visualization, description and python implementation, training my Angular and TypeScript skills.",
-        "It’s also can be downloaded to mobile or desktop as a PWA and work offline.",
+        "It can also be downloaded to mobile or desktop as a PWA and work offline.",
       ],
       dateStarted: new Date("2021/03/25"),
       type: "Web app",
@@ -240,7 +241,7 @@ const portfolioData: IPortfolio = {
       },
       link: "https://learn-sorting.web.app/",
       repository: "https://github.com/dominon12/SortVisualizer",
-      implementationTime: 0,
+      implementationTime: 12,
     },
     {
       id: 6,
@@ -254,7 +255,7 @@ const portfolioData: IPortfolio = {
       shortDescription:
         'Landing page with simple animations for outdoor children\'s playground "Rio"',
       description: [
-        "Simple landing with different blocks’ presentation, animations, images carousel and contact form which sends an email to the user who filled it and to the admin.",
+        "Simple landing page with different blocks, animations, images carousel and contact form which sends an email to the user who filled it and to the admin.",
       ],
       dateStarted: new Date("2020/12/04"),
       type: "Landing",
@@ -264,7 +265,7 @@ const portfolioData: IPortfolio = {
         devops: ["Debian 10", "supervisord", "memcached", "Nginx", "gunicorn"],
       },
       link: "https://learn-sorting.web.app/",
-      implementationTime: 0,
+      implementationTime: 10,
     },
     {
       id: 7,
@@ -278,7 +279,7 @@ const portfolioData: IPortfolio = {
       shortDescription:
         "Website for the Children's Department of Neurology and Reflexology",
       description: [
-        "Website I’ve made for a unique center for children rehabilitation with rare conditions.",
+        "Website I’ve made for a unique children rehabilitation medical center in Kaliningrad, Russia.",
         "Provides a cool possibility to add an info about doctors who work there with their schedule, education history, name and photo which are used in different website’s parts.",
         "Also users can ask questions about different topics on which Reacenter’s doctors will respond shortly after receiving an email.",
       ],
@@ -298,7 +299,7 @@ const portfolioData: IPortfolio = {
       },
       link: "https://learn-sorting.web.app/",
       repository: "https://github.com/dominon12/SortVisualizer",
-      implementationTime: 0,
+      implementationTime: 25,
     },
     {
       id: 8,
@@ -311,13 +312,13 @@ const portfolioData: IPortfolio = {
       },
       shortDescription: "Web app which allows to steal personal data",
       description: [
-        "Built to practice my React skills. The idea is to get some person’s data that Web APIs can provide by sending him a link.",
+        "Built to practice my React skills. The idea was to get all the data possible that Web APIs can provide by sending a link any person.",
         "Data that you might get:",
         "- IP Address\n- Width, height and screens’s orientation\n- Language\n- User agent\n- Geolocation\n- Frontal camera shot\n- Audio record of different length.",
-        "In first place you have to go the home page and select different options: email for notifications with personal data that was gotten, redirect url to which person will he redirected after clicking on the link, hide url to change “get-pers-data.web.app” to something like “bit.ly/jh7o”, try to get frontal camera screenshot, geolocation and audio record.",
-        "Three last options are not that util, because person stays more time on the website before being redirected to redirect url and also will se modals asking him for permissions. After clicking “generate link”, the link will be  generated.",
-        "Then you just have to send this link to person, which data you want to know.",
-        "Here I’ve built a system that can generate the form using data, acquired from an API. Form with custom validation and different colors for different states (valid, invalid, etc.). You can also show conditionally different fields if parent field is filled.",
+        "In first place you have to go to the home page and select options you want: email for notifications with personal data that was received, redirect url to which person will be redirected after clicking on the link, hide url option to change “get-pers-data.web.app” to something like “bit.ly/jh7o”, try to get frontal camera screenshot, geolocation and audio record options.",
+        "Three last options are not that util, because person stays more time on the website before being redirected to redirect url and also will se modal windows asking him for permissions.",
+        "After clicking on the “begin” button, the link will be  generated. Then you just have to send this link to a person, which personal data you would like to get.",
+        "Here I’ve built a system that can generate the form using data, acquired from an API. Form with custom validation and different colors for different states (valid, invalid, etc.). You can also conditionally show different fields if parent field is filled.",
       ],
       dateStarted: new Date("2021/08/16"),
       type: "Web app",
@@ -328,7 +329,7 @@ const portfolioData: IPortfolio = {
       },
       link: "https://get-pers-data.web.app/",
       repository: "https://github.com/dominon12/GetPersData",
-      implementationTime: 0,
+      implementationTime: 8,
     },
     {
       id: 9,
@@ -341,7 +342,7 @@ const portfolioData: IPortfolio = {
       },
       shortDescription: "Generates password depending on selected options",
       description: [
-        "After finishing reading awesome https://learn.JavaScript.ru/ I wanted to use my new knowledge in coding some new project. Password generator vanilla JavaScript app idea was the best I was thinking about. ",
+        "After finishing reading awesome https://learn.JavaScript.ru/ I wanted to use my new coding knowledge in some new project. Password generator vanilla JavaScript app idea was the best one I was thinking about.",
       ],
       dateStarted: new Date("2021/08/08"),
       type: "Web app",
@@ -352,7 +353,7 @@ const portfolioData: IPortfolio = {
       },
       link: "https://dominon12.github.io/WebPassGenerator/",
       repository: "https://github.com/dominon12/WebPassGenerator",
-      implementationTime: 0,
+      implementationTime: 4,
     },
     {
       id: 10,
@@ -365,7 +366,25 @@ const portfolioData: IPortfolio = {
       },
       shortDescription: "This Web App",
       description: [
-        "The main idea of this app is to make boring static portfolio/CV be interactive and more informative in order to get more chances to be noticed by HRs",
+        "The main idea of this app is to make boring static portfolio/CV be interactive and more informative in order to get more chances to be noticed by HRs.",
+        "This website consists of 8 parts:",
+        "- About",
+        "A page with some text and images which serves to introduce myself.",
+        "- Projects",
+        "Here you will find a list of almost all projects and case studies I've done. You can sort, filter and paginate them. When you click on some project, it's being expanded to the whole container's size.",
+        "When the project is expanded, you can read project's description, share project's link by clicking on the 'share' icon and navigate to project's page or a github page.",
+        "- Skills",
+        "Skills I have, divided by groups with a skill level indication. Skills that I consider relevant has a star symbol near to the skill name.",
+        "- Experience",
+        "Some events from my life, presented as a some sort of a 'liana'. Events that I consider relevant are being represented as a circle, another ones as a brick.",
+        "- Languages",
+        "A section with a list of languages I speak and stories about learning them.",
+        "- Donate",
+        "A page where you can donate me!",
+        "- Contact",
+        "On this page you can contact me by filling a form or by clicking links on my social networks.",
+        "- Download",
+        "If for some reason you need my static CV pdf document, you can download it by clicking on the 'Download' button.",
       ],
       dateStarted: new Date("2021/09/17"),
       type: "Web app",
@@ -376,7 +395,7 @@ const portfolioData: IPortfolio = {
       },
       link: "https://dominon12.web.app/",
       repository: "https://github.com/dominon12/portfolio",
-      implementationTime: 0,
+      implementationTime: 60,
     },
     {
       id: 11,
@@ -390,10 +409,10 @@ const portfolioData: IPortfolio = {
       shortDescription:
         "Library to easy work with NoSQL database MongoDB written in Python3",
       description: [
-        "It’s all started when I realized that I know python3 on the level which allows me to code simple telegram bots with library PyTelegramBotAPI.",
-        "In that time I started asking myself how can I persist data that users provide? How will I store data related to users so it won’t lose every time I restart the bot? Idea came very quickly just after googling this topic - MongoDB.",
-        "I started trying working with it with the help of python3 library PyMongo and found out that it’s API wasn’t really good for resolving my everyday needs. So I started making universal functions - wrappers over PyMongo’s API.",
-        "After creating few bots I felt really tired after copy pasting file db.py with all this repeating functions over and over so I decided to make pip package in order to solve this problem and share my code with someone who might need it.",
+        "It’s all started when I realized that I know python3 on the level which allows me to code simple telegram bots with PyTelegramBotAPI library.",
+        "In that time I started asking myself how can I persist data that users provide? How will I store data related to users so it won’t be lost every time I restart the bot? Idea came very quickly just after googling this topic - MongoDB.",
+        "I started trying to work with it with the help of python3 library PyMongo and found out that it’s API wasn’t really good for resolving my everyday needs. So I started making universal functions - wrappers over PyMongo’s API.",
+        "After creating few bots I felt really tired after copy pasting db.py file with all this repeating functions over and over so I decided to make a pip package in order to solve this problem and share my code with someone who might need it.",
       ],
       dateStarted: new Date("2020/06/12"),
       type: "Library",
@@ -403,7 +422,7 @@ const portfolioData: IPortfolio = {
         devops: [],
       },
       repository: "https://github.com/dominon12/HMongo",
-      implementationTime: 0,
+      implementationTime: 1,
     },
     {
       id: 12,
@@ -421,15 +440,15 @@ const portfolioData: IPortfolio = {
         "«The current test task has only a general description of the requirements, the specific details of the implementation are at the discretion of the developer.",
         "Task: to design and develop an API for a user survey system.",
         "Functionality for the system administrator:",
-        '- authorization in the system (registration is not required)\n- adding/changing/ deleting polls. Survey attributes: name, start date, end date, description. After creation, the "start date" field of the survey cannot be changed\n- add/edit/delete questions in the survey. Question Attributes: question text, question type (answer in text, answer with a choice of one option, answer with a choice of several options)',
+        '- authorization in the system (registration is not required);\n- adding/changing/deleting polls. Survey attributes: name, start date, end date, description. After creation, the "start date" field of the survey cannot be changed;\n- add/edit/delete questions in the survey. Question Attributes: question text, question type (answer in text, answer with a choice of one option, answer with a choice of several options).',
         "Functionality for system users:",
-        "- getting a list of active polls\n- passing the survey: surveys can be conducted anonymously, a numeric ID is transmitted to the API as a user ID, which stores the user's answers to questions; one user can participate in any number of surveys\n- receiving surveys completed by the user with details on the answers (what is selected) by the unique user ID",
+        "- getting a list of active polls;\n- passing the survey: surveys can be conducted anonymously, a numeric ID is transmitted to the API as a user ID, which stores the user's answers to questions. One user can participate in any number of surveys;\n- receiving surveys completed by the user with details on the answers (what is selected) by the unique user ID.",
         "Use the following technologies: Django 2.2.10, Django REST framework.",
-        "The result of the task:\n- application source code in github (only on github, public repository)\n- instructions for deploying the application (in docker or locally)\n- API documentation»",
+        "The result of the task:\n- application source code in github (only on github, public repository);\n- instructions for deploying the application (in docker or locally);\n- API documentation.»",
         "After implementing it for the first time I thought that it works good, but has some problems that I don’t know how to solve.",
-        "After sending it to the HR, he wrote me that they have selected other candidate and didn’t say which errors did I commit.",
-        "After few month their HR wrote me again with a proposition to try to implement this project again. I accepted and started rewrote the whole application solving problems I couldn’t solve last time.",
-        "Unfortunately guys from that company didn’t think so, so they declined me again without saying what they don’t like.",
+        "After sending it to the HR, he wrote me that they have selected another candidate and didn’t say which errors did I commit.",
+        "After few month their HR wrote me again with a proposition to try to implement this project again. I accepted and started rewriting the whole application solving problems I couldn’t solve last time.",
+        "Unfortunately guys from that company didn’t think that I managed to implement this task correctly, so they declined me again without saying which errors did I commit.",
         "In future I want to implement a front end app to complement the backend. ",
       ],
       dateStarted: new Date("2021/02/11"),
@@ -440,7 +459,7 @@ const portfolioData: IPortfolio = {
         devops: [],
       },
       repository: "https://github.com/dominon12/SurveyAPI",
-      implementationTime: 0,
+      implementationTime: 7,
     },
     {
       id: 13,
@@ -484,7 +503,7 @@ const portfolioData: IPortfolio = {
         ],
       },
       link: "https://smokelaboratory.eu/",
-      implementationTime: 0,
+      implementationTime: 80,
     },
   ],
   skills: [
@@ -635,8 +654,8 @@ const portfolioData: IPortfolio = {
     },
     {
       id: 2,
-      title: "Obtained driver's license",
-      description: "Passed all the stages in one try",
+      title: "Driver's license",
+      description: "Passed all the exams in one try",
       place: "Kaliningrad, Russia",
       date: new Date("2018/07/15"),
       isRelevant: false,
@@ -671,7 +690,7 @@ const portfolioData: IPortfolio = {
       id: 6,
       title: "Food truck",
       description:
-        'Second business. In collaboration with a contact zoo "Ara park". Sold 1 year later.',
+        'Second business. In collaboration with a zoo "Ara Park". Sold 1 year later.',
       place: "Kaliningrad, Russia",
       date: new Date("2019/09/10"),
       isRelevant: false,
@@ -753,7 +772,7 @@ const portfolioData: IPortfolio = {
       code: "gb",
       level: "Fluent",
       learningStory:
-        "I learn english all my life. Can't say that I know grammar very well, but I can freely talk about any topic. I always search coding info in english, read technical documentation.",
+        "I learn english all my life so I can freely talk about any topic. I always search coding info and read technical documentation in english.",
     },
     {
       id: 2,
@@ -761,7 +780,7 @@ const portfolioData: IPortfolio = {
       code: "ru",
       level: "Native",
       learningStory:
-        "I'm russian native speaker with all the ensuing consequences",
+        "I'm russian native speaker with all the ensuing consequences.",
     },
     {
       id: 3,
@@ -769,7 +788,7 @@ const portfolioData: IPortfolio = {
       code: "pl",
       level: "Fluent",
       learningStory:
-        "I was learning Polish for 1 year become coming to Poland for studying and then lived and studied there for 3 years. I have a lot of experience in speaking Polish because I was studying in this language in university and working on different jobs for about 1 year.",
+        "I was learning Polish for 1 year before coming to Poland for studying and then lived and studied there for 3 years. I have a lot of experience in speaking Polish because I was studying in this language in university and working on different jobs for about a year.",
     },
     {
       id: 4,
@@ -777,7 +796,7 @@ const portfolioData: IPortfolio = {
       code: "es",
       level: "Fluent",
       learningStory:
-        'I started learning Spanish using mobile app called "Duolingo" and continued in school of spanish language in Valencia "Hispania". After about 1 year of studying I\'ve passed DELE B2 exam.',
+        'I started learning Spanish using a mobile app "Duolingo" and continued in school of spanish language in Valencia "Hispania". After about 1 year of studying I\'ve passed DELE B2 exam. After finishing the my course, school gave a C1 certificate. Nowadays I live in Spain and use Spanish every day.',
     },
   ],
   contactMethods: [
