@@ -20,6 +20,7 @@ import NotFound from "./Pages/NotFound";
 import HomeRedirect from "./Services/HomeRedirect";
 import ScrollToTop from "./Services/ScrollToTop";
 import ErrorBoundary from "./Services/ErrorBoundary";
+import ShareModal from "./Modals/ShareModal";
 
 const App: React.FC = () => {
   return (
@@ -47,6 +48,7 @@ const App: React.FC = () => {
           </ErrorBoundary>
         </section>
 
+        <ShareModal />
         <SnackBar anchorOrigin={{ horizontal: "right", vertical: "bottom" }} />
       </main>
     </Router>
