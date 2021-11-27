@@ -8,12 +8,12 @@ import Tooltip from "./Tooltip";
 
 /**
  * Icon which represents current theme mode.
- * 
+ *
  * On click changes theme mode.
  *
  * @return {*}  {JSX.Element}
  */
-const ThemeSwitch: React.FC = (): JSX.Element=> {
+const ThemeSwitch: React.FC = (): JSX.Element => {
   const { mode, setMode } = useContext(ThemeContext);
 
   return (

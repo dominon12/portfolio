@@ -84,6 +84,17 @@ p {
   }
 }
 
+.hover-highlight {
+  transition: color var(--transition-off);
+  color: var(--paragraph-color);
+
+  &:focus,
+  &:hover {
+    transition: color var(--transition-on);
+    color: var(--headline-color);
+  }
+}
+
 $mobile-devices: 425px;
 
 .hide-on-mobile {

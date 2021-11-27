@@ -59,7 +59,7 @@ const Modal: React.FC<Props> = ({
         <div className="modal__content_inner">
           {!quitImpossible && (
             <IoMdClose
-              className="modal__close"
+              className="modal__close hover-highlight"
               onClick={() => setVisible(false)}
             />
           )}

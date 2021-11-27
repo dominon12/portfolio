@@ -22,8 +22,8 @@ interface Props {
 }
 
 /**
- * Renders interface which allows to switch 
- * between pages with beautiful animation 
+ * Renders interface which allows to switch
+ * between pages with beautiful animation
  * and to select a page size.
  *
  * @return {*}  {JSX.Element}
@@ -48,10 +48,10 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
 
   /**
    * Changes classNames of passed
-   * elements in order to make 
+   * elements in order to make
    * animation work
    *
-   * @param {HTMLDivElement} left 
+   * @param {HTMLDivElement} left
    * @param {HTMLDivElement} central
    * @param {HTMLDivElement} right
    * @param {HTMLDivElement} rightDisabled
@@ -82,9 +82,9 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
 
   /**
    * Recovers default class names
-   * of passed elements and sets 
-   * transition to 0 in order to 
-   * be able to play animation again without 
+   * of passed elements and sets
+   * transition to 0 in order to
+   * be able to play animation again without
    * changing elements' order
    *
    * @param {HTMLDivElement} left
@@ -118,7 +118,7 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
 
   /**
    * Changes classNames of passed
-   * elements in order to make 
+   * elements in order to make
    * animation work
    *
    * @param {HTMLDivElement} leftDisabled
@@ -152,9 +152,9 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
 
   /**
    * Recovers default class names
-   * of passed elements and sets 
-   * transition to 0 in order to 
-   * be able to play animation again without 
+   * of passed elements and sets
+   * transition to 0 in order to
+   * be able to play animation again without
    * changing elements' order
    *
    * @param {HTMLDivElement} leftDisabled
@@ -264,11 +264,11 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
   };
 
   /**
-   * Gets next page value and sets it to url 
+   * Gets next page value and sets it to url
    * search params, updates url and scrolls to top
    * with 'transitionTime' delay.
-   * 
-   * Delay is needed to show transition animation 
+   *
+   * Delay is needed to show transition animation
    * to user
    */
   const switchPage = () => {
@@ -297,7 +297,7 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
         <div className="paginator__controls">
           <Tooltip content="Previous" position="left">
             <BiLeftArrow
-              className="paginator__control"
+              className="paginator__control hover-highlight"
               onClick={() => handleSwitchPage(Direction.Right)}
             />
           </Tooltip>
@@ -315,7 +315,7 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
 
           <Tooltip content="Next" position="right">
             <BiRightArrow
-              className="paginator__control"
+              className="paginator__control hover-highlight"
               onClick={() => handleSwitchPage(Direction.Left)}
             />
           </Tooltip>

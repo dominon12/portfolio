@@ -109,11 +109,11 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
           {props.dateStarted.toDateString()}
         </span>
         <FiShare2
-          className="project-card-expanded__header_icon"
+          className="project-card-expanded__header_icon hover-highlight"
           onClick={() => setVisible(true)}
         />
         <ImCross
-          className="project-card-expanded__header_icon"
+          className="project-card-expanded__header_icon hover-highlight"
           onClick={() => setExpanded(false)}
         />
       </div>
@@ -202,7 +202,7 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
             <BrickLink
               key={link.id}
               href={link.href}
-              className="project-card-expanded-link"
+              className="project-card-expanded__link"
               rel="noopener"
             >
               {link.name}

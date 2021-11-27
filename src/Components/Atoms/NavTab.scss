@@ -4,7 +4,7 @@ $mobile-devices: 425px;
   padding: 1rem;
   display: block;
   text-decoration: none;
-  transition: var(--transition-off);
+  transition: background-color var(--transition-off);
 
   &.stub {
     display: none;
@@ -20,20 +20,27 @@ $mobile-devices: 425px;
 
   &:hover,
   &:focus {
-    transition: var(--transition-on);
+    transition: background-color var(--transition-on);
     background-color: var(--card-background-color);
 
-    .nav-tab__icon {
+    .nav-tab__icon,
+    .nav-tab__title {
       color: var(--headline-color);
+      transition: color var(--transition-on);
+    }
+
+    @media (max-width: $mobile-devices) {
+      background-color: var(--doc-background-color);
     }
   }
 
   &.active {
-    transition: var(--transition-on);
+    transition: background-color var(--transition-on);
     background-color: var(--color-details);
 
     .nav-tab__icon,
     .nav-tab__title {
+      transition: color var(--transition-on);
       color: var(--button-text);
     }
   }
@@ -42,6 +49,11 @@ $mobile-devices: 425px;
     display: flex;
     align-items: center;
     width: calc(100% - 2rem);
+  }
+
+  &__icon,
+  &__title {
+    transition: color var(--transition-off);
   }
 
   &__icon {

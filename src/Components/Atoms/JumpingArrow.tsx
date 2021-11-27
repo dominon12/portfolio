@@ -25,7 +25,9 @@ const JumpingArrow: React.FC<Props> = ({ className }): JSX.Element => {
   };
 
   return (
-    <div className={`jumping-arrow ${className ? className : ""}`}>
+    <div
+      className={`jumping-arrow hover-highlight ${className ? className : ""}`}
+    >
       <IoIosArrowDown
         className="jumping-arrow__icon"
         onClick={scrollABitDown}
