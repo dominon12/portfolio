@@ -15,6 +15,7 @@ import Modal from "../Templates/Modal";
 import { ShareModalContext } from "../../Contexts/ShareModalContext";
 import { IconType } from "react-icons";
 import { Helmet } from "react-helmet";
+import CopyMenu from "../Molecules/CopyMenu";
 
 /**
  * Share option representation.
@@ -104,6 +105,9 @@ const ShareModal: React.FC = (): JSX.Element => {
       </Helmet>
       <Modal visible={visible} setVisible={setVisible}>
         <Subtitle className="share-modal__title">Share</Subtitle>
+        <div className="share-modal__copy-menu">
+          <CopyMenu data={shareUrl} />
+        </div>
         <div className="share-modal__share-options">
           {SHARE_OPTIONS.map((shareOption) => (
             <a

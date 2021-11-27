@@ -3,8 +3,13 @@ $first-media: 772px;
 .share-modal {
   &__title {
     text-align: center;
-    margin-top: 0;
+    margin: 0;
   }
+
+  &__copy-menu {
+    margin: 1.5rem 0;
+  }
+
   &__share-options {
     display: flex;
     align-items: center;
@@ -14,6 +19,7 @@ $first-media: 772px;
       flex-direction: column;
     }
   }
+
   &__link {
     color: var(--card-background-color);
     text-decoration: none;

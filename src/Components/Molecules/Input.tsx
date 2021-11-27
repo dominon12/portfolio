@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 
 import FormFieldContainer from "../Atoms/FormFieldContainer";
 import FormLabel from "../Atoms/FormLabel";
@@ -18,10 +18,11 @@ interface Props {
 
 /**
  * Input form field element with validation
+ * and ref forwarding support.
  *
  * @return {*}  {JSX.Element}
  */
-const Input: React.FC<Props> = (props): JSX.Element => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref): JSX.Element => {
   const [touched, setTouched] = useState(false);
   const [valid, setValid] = useState(true);
   const [errMessage, setErrMessage] = useState<string | null>(null);
@@ -66,6 +67,7 @@ const Input: React.FC<Props> = (props): JSX.Element => {
       )}
 
       <input
+        ref={ref}
         className={`form-field ${
           touched ? (valid ? "valid" : "invalid") : "untouched"
         }`}
@@ -79,6 +81,6 @@ const Input: React.FC<Props> = (props): JSX.Element => {
       {touched && !valid && errMessage && <FormError>{errMessage}</FormError>}
     </FormFieldContainer>
   );
-};
+});
 
 export default Input;
