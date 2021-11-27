@@ -5,7 +5,7 @@ import "./Modal.scss";
 
 interface Props {
   visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setVisible: (nextVisible: boolean) => void;
   quitImpossible?: boolean;
 }
 

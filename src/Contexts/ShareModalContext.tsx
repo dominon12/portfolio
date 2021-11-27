@@ -1,8 +1,8 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 export interface ShareModalContextState {
   visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setVisible: (nextVisible: boolean) => void;
 }
 
 const contextDefaultValues: ShareModalContextState = {
@@ -20,17 +20,48 @@ export const ShareModalContext =
  * @param {*} props
  * @return {*} {{
  *    visible: boolean; - state
- *    setVisible: React.Dispatch<React.SetStateAction<boolean>>; - set state action
+ *    setVisible: (nextVisible: boolean) => void; - set state action
  * }}
  */
 const ShareModalProvider: React.FC = (props) => {
   const [visible, setVisible] = useState<boolean>(contextDefaultValues.visible);
 
+  let timeout: any;
+
+  /**
+   * Sets 'visible' state variable.
+   * If 'nextVisible' param is false,
+   * adds 'leave' css class to the modal
+   * and to the modal content elements to
+   * play leave animation.
+   *
+   * @param {boolean} nextVisible
+   */
+  const handleSetVisible = (nextVisible: boolean) => {
+    if (!nextVisible) {
+      const modalElement = document.querySelector(".modal");
+      if (modalElement) {
+        modalElement.classList.add("leave");
+        modalElement.children[0].classList.add("leave");
+      }
+
+      timeout = setTimeout(() => setVisible(false), 200);
+    } else {
+      setVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      timeout && clearTimeout(timeout);
+    };
+  }, []);
+
   return (
     <ShareModalContext.Provider
       value={{
         visible,
-        setVisible,
+        setVisible: handleSetVisible,
       }}
     >
       {props.children}
