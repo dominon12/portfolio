@@ -26,10 +26,15 @@ interface IScrollPosition {
  */
 function useScrollPosition(
   effect: (props: IScrollPosition) => void,
-  container?: Element | Window | null
+  containerGetter?: () => Element | typeof window | null
 ): null {
   const [scrollPosition, setScrollPosition] = useState<ICoords>({ x: 0, y: 0 });
   const prevScrollPosition = useRef(scrollPosition);
+
+  const getScrollContainer = () => {
+    if (containerGetter) return containerGetter();
+    return window;
+  };
 
   /**
    * Returns current scroll position.
@@ -37,9 +42,10 @@ function useScrollPosition(
    * @return {*}  {ICoords}
    */
   const getScrollPosition = (): ICoords => {
+    const container = getScrollContainer();
     let coords;
 
-    if (container === window || !container) {
+    if (!container) {
       coords = {
         x: window.scrollX,
         y: window.scrollY,
@@ -85,6 +91,7 @@ function useScrollPosition(
    * removes it in returned callback.
    */
   useEffect(() => {
+    const container = getScrollContainer();
     const scrollContainer = container || window;
 
     if (scrollContainer) {

@@ -34,7 +34,7 @@ function useAppearanceInViewport(
         elementRef.current.classList.add(className);
       }
     }
-  }, getScrollContainer());
+  }, getScrollContainer);
 
   return elementRef;
 }

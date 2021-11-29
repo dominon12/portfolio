@@ -37,6 +37,7 @@ const Contact: React.FC = (): JSX.Element => {
             </>
           }
           leftContainerClassName="contact__form-container"
+          disableAnimation
         />
 
         <Divider>Or</Divider>

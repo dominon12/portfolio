@@ -9,6 +9,7 @@ interface Props {
   leftContainerClassName?: string;
   rightContainerClassName?: string;
   containerClassName?: string;
+  disableAnimation?: boolean;
 }
 
 /**
@@ -20,7 +21,9 @@ const InfoSection: React.FC<Props> = (props) => {
   return (
     <div
       ref={sectionRef}
-      className={`info-section ${props.containerClassName || ""}`}
+      className={`info-section ${props.containerClassName || ""} ${
+        props.disableAnimation ? "disable-animation" : ""
+      }`}
     >
       <div
         className={`info-section__left ${props.leftContainerClassName || ""}`}

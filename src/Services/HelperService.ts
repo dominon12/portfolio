@@ -30,7 +30,8 @@ export function getScrollContainer():
   | Element
   | (Window & typeof globalThis)
   | null {
-  return isMobile() ? window : document.querySelector("#scrollContainer");
+  if (isMobile()) return window;
+  return document.querySelector("#scrollContainer");
 }
 
 /**
