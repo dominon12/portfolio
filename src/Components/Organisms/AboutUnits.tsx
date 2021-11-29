@@ -8,6 +8,7 @@ import Button from "../Atoms/Button";
 import JumpingArrow from "../Atoms/JumpingArrow";
 import Title from "../Atoms/Title";
 import InfoSection from "../Templates/InfoSection";
+import GithubCalendar from "../Molecules/GithubCalendar";
 
 const MOBILE_BEGINS_AFTER = 425;
 
@@ -42,6 +43,7 @@ const AboutUnits: React.FC<Props> = ({ aboutUnits }): JSX.Element => {
    * image on the right side and data on the left side and vice versa.
    *
    * In case of the first element, also renders a JumpingArrow component
+   * and a GithubCalendar.
    *
    * @param {IAboutUnit} aboutUnit data source
    * @param {number} index index of the about unit
@@ -80,18 +82,23 @@ const AboutUnits: React.FC<Props> = ({ aboutUnits }): JSX.Element => {
       ? "about-units__container_info-block"
       : "";
 
+    const isFirstElement = index === 0;
+
     return (
       <React.Fragment key={aboutUnit.id}>
         <InfoSection
-          containerClassName={`about-units__container ${
-            index === 0 ? "has-jumping-arrow" : ""
-          }`}
+          containerClassName="about-units__container"
           left={left}
           right={right}
           leftContainerClassName={leftClassName}
           rightContainerClassName={rightClassName}
         />
-        {index === 0 && <JumpingArrow className="about-units__jumping-arrow" />}
+        {isFirstElement && (
+          <>
+            <JumpingArrow className="about-units__jumping-arrow" />
+            <GithubCalendar username="dominon12" />
+          </>
+        )}
       </React.Fragment>
     );
   };

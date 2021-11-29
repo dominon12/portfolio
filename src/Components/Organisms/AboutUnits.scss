@@ -8,20 +8,14 @@ $fifth-media: 405px;
   &__container {
     min-height: calc(100vh - 2rem);
 
-    @media (max-width: $third-media) {
-      margin-bottom: 2rem;
+    :not(:first-child) {
+      @media (max-width: $third-media) {
+        margin-bottom: 2rem;
+      }
     }
 
     @media (max-width: $mobile-devices) {
       min-height: calc(100vh - 2rem - 4.5rem);
-    }
-
-    &.has-jumping-arrow {
-      min-height: calc(100vh - 4rem);
-
-      @media (max-width: $mobile-devices) {
-        min-height: calc(100vh - 4rem - 4.5rem);
-      }
     }
 
     &_info-block {
@@ -32,12 +26,23 @@ $fifth-media: 405px;
   }
 
   &__jumping-arrow {
-    @media (max-width: $mobile-devices) {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+    margin-top: -2rem;
+
+    @media (max-height: 700px) {
+      display: none;
     }
-    @media (max-width: $fifth-media) {
-      margin-bottom: 3rem;
+  }
+
+  .github-calendar {
+    margin: 0 -1rem;
+    margin-top: 6rem;
+
+    @media (max-width: $third-media) {
+      margin-bottom: 2rem;
+    }
+    @media (max-width: $mobile-devices) {
+      margin-top: 5rem;
+      margin-bottom: 4rem;
     }
   }
 

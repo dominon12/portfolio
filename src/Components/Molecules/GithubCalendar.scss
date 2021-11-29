@@ -1,0 +1,41 @@
+$first-media: 668px;
+
+.github-calendar {
+  padding: 2rem;
+  background-color: var(--card-background-color);
+
+  @media (max-width: $first-media) {
+    padding: 1rem;
+  }
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__calendar {
+    .float-left {
+      display: none;
+    }
+
+    .contrib-column {
+      border-bottom: 1px solid #ddd;
+
+      @media (max-width: $first-media) {
+        display: none;
+      }
+    }
+
+    .float-right.color-fg-muted {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+
+      @media (max-width: $first-media) {
+        margin-bottom: 0;
+      }
+    }
+
+    .contrib-number {
+      color: var(--headline-color);
+    }
+  }
+}

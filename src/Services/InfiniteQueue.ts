@@ -1,7 +1,7 @@
 /**
- * Data structure which 
- * - moves last item to the beginning if 'moveLeft' method is called
- * - moves first item to the end if 'moveRight' method is called
+ * Data structure where
+ * - the first in queue becomes the last  'moveRight()'
+ * - the last in queue becomes the first 'moveLeft()'
  * 
  * @class InfiniteQueue
  */
