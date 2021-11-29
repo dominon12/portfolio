@@ -8,6 +8,7 @@ import Title from "../Atoms/Title";
 import ContactForm from "../Organisms/ContactForm";
 import LinksColumn from "../Molecules/LinksColumn";
 import Divider from "../Atoms/Divider";
+import { getAbout } from "../../Services/DataService";
 
 /**
  * Contact page with a contact form
@@ -16,10 +17,12 @@ import Divider from "../Atoms/Divider";
  * @return {*}  {JSX.Element}
  */
 const Contact: React.FC = (): JSX.Element => {
+  const { nickname } = getAbout();
+
   return (
     <>
       <Helmet>
-        <title>Contact | Dominon12</title>
+        <title>Contact | {nickname}</title>
         <meta
           name="description"
           content="Contact me by filling the form or by clicking one of the contact links below the contact form."

@@ -7,18 +7,21 @@ import Title from "../Atoms/Title";
 import StaticCV from "../Organisms/StaticCV";
 import InfoSection from "../Templates/InfoSection";
 import Button from "../Atoms/Button";
+import { getAbout } from "../../Services/DataService";
 
 /**
- * Page where a user can preview 
- * and download generated static CV 
+ * Page where a user can preview
+ * and download generated static CV
  *
  * @return {*}  {JSX.Element}
  */
 const Download: React.FC = (): JSX.Element => {
+  const { nickname } = getAbout();
+
   return (
     <>
       <Helmet>
-        <title>Download | Dominon12</title>
+        <title>Download | {nickname}</title>
         <meta
           name="description"
           content="Need a static version of this website? Just click the download button and you will get it."

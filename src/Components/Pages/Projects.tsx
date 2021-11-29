@@ -7,16 +7,18 @@ import ProjectsGrid from "../Organisms/ProjectsGrid";
 import Paginator from "../Molecules/Paginator";
 import useProjects from "../../Hooks/useProjects";
 import LoadingTemplate from "../Templates/LoadingTemplate";
-
+import { getAbout } from "../../Services/DataService";
 
 /**
  * Page with a list of projects, navigation bar
- * with ability to select sorting and filtering options 
+ * with ability to select sorting and filtering options
  * and a pagination menu
  *
  * @return {*}  {JSX.Element}
  */
 const Projects: React.FC = (): JSX.Element => {
+  const { nickname } = getAbout();
+
   const { projects, pageProjects, isLoading } = useProjects({
     loadingDelay: 1000,
   });
@@ -24,7 +26,7 @@ const Projects: React.FC = (): JSX.Element => {
   return (
     <>
       <Helmet>
-        <title>Projects | Dominon12</title>
+        <title>Projects | {nickname}</title>
         <meta
           name="description"
           content="A list of almost all the projects and case studies I've done"

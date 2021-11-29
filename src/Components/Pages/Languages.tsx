@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import "./Languages.scss";
 import Title from "../Atoms/Title";
 import LanguagesGrid from "../Organisms/LanguagesGrid";
+import { getAbout } from "../../Services/DataService";
 
 /**
  * Page with a list of languages
@@ -11,10 +12,12 @@ import LanguagesGrid from "../Organisms/LanguagesGrid";
  * @return {*}  {JSX.Element}
  */
 const Languages: React.FC = (): JSX.Element => {
+  const { nickname } = getAbout();
+
   return (
     <>
       <Helmet>
-        <title>Languages | Dominon12</title>
+        <title>Languages | {nickname}</title>
         <meta
           name="description"
           content="Languages I speak and history about learning them."

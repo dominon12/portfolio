@@ -59,7 +59,7 @@ const RuntimeError = (): JSX.Element => {
         width: "500",
         height: "500",
       }}
-      seoTitle="Runtime Error | Dominon12"
+      seoTitle="Runtime Error"
       seoDescription="This app has crashed"
     >
       <Textarea

@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import "./Skills.scss";
 import Title from "../Atoms/Title";
 import SkillsTable from "../Organisms/SkillsTable";
-import { getSkills } from "../../Services/DataService";
+import { getAbout, getSkills } from "../../Services/DataService";
 
 /**
  * Page with a several tables showing
@@ -13,6 +13,7 @@ import { getSkills } from "../../Services/DataService";
  * @return {*}  {JSX.Element}
  */
 const Skills: React.FC = (): JSX.Element => {
+  const { nickname } = getAbout();
   const skills = getSkills();
 
   /**
@@ -27,7 +28,7 @@ const Skills: React.FC = (): JSX.Element => {
   return (
     <>
       <Helmet>
-        <title>Skills | Dominon12</title>
+        <title>Skills | {nickname}</title>
         <meta name="description" content="A table with my skills" />
       </Helmet>
       <div className="skills">

@@ -23,7 +23,7 @@ const NotFound: React.FC = (): JSX.Element => {
         width: "500",
         height: "500",
       }}
-      seoTitle="404 Not Found | Dominon12"
+      seoTitle="404 Not Found"
       seoDescription="Looks like the page can't be found. Maybe it was moved or renamed."
     >
       <Button type="primary" onClick={() => history.push("/about")}>

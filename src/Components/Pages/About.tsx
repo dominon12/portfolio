@@ -16,7 +16,7 @@ const About: React.FC = (): JSX.Element => {
   return (
     <>
       <Helmet>
-        <title>About | Dominon12</title>
+        <title>About | {aboutData.nickname}</title>
         <meta
           name="description"
           content="Welcome to my personal website portfolio! On the about page you can read some information about me as a person and as a developer."

@@ -32,6 +32,7 @@ export interface IAbout {
   firstName: string;
   lastName: string;
   jobTitle: string;
+  nickname: string;
   profilePhoto: IImage;
   aboutUnits: IAboutUnit[];
 }

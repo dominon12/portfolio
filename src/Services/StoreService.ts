@@ -34,6 +34,7 @@ const portfolioData: IPortfolio = {
     firstName: "Maksim",
     lastName: "Sobolev",
     jobTitle: "Front-End Engineer",
+    nickname: "Dominon12",
     profilePhoto: {
       src: myProfilePhoto,
       alt: "My profile photo",

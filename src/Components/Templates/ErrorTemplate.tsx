@@ -5,6 +5,7 @@ import "./ErrorTemplate.scss";
 import { IImage } from "../../Types/SystemTypes";
 import Title from "../Atoms/Title";
 import InfoSection from "./InfoSection";
+import { getAbout } from "../../Services/DataService";
 
 interface Props {
   title: string;
@@ -15,14 +16,18 @@ interface Props {
 }
 
 /**
- * Page template to display an error with 
+ * Page template to display an error with
  * title, description and additional content
  */
 const ErrorTemplate: React.FC<Props> = (props) => {
+  const { nickname } = getAbout();
+
   return (
     <>
       <Helmet>
-        <title>{props.seoTitle}</title>
+        <title>
+          {props.seoTitle} | {nickname}
+        </title>
         <meta name="description" content={props.seoDescription} />
       </Helmet>
       <InfoSection
