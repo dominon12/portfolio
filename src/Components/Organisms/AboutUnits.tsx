@@ -96,7 +96,9 @@ const AboutUnits: React.FC<Props> = ({ aboutUnits }): JSX.Element => {
         {isFirstElement && (
           <>
             <JumpingArrow className="about-units__jumping-arrow" />
-            <GithubCalendar username="dominon12" />
+            <div className="about-units__github-calendar">
+              <GithubCalendar username="dominon12" />
+            </div>
           </>
         )}
       </React.Fragment>
