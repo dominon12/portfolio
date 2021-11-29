@@ -33,7 +33,7 @@ function useScrollPosition(
 
   const getScrollContainer = () => {
     if (containerGetter) return containerGetter();
-    return window;
+    return null;
   };
 
   /**

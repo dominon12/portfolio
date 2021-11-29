@@ -61,7 +61,7 @@ $mobile-devices: 425px;
 
 .project-card-expanded {
   position: fixed;
-  z-index: 10;
+  z-index: 200;
   top: 0;
   left: 4rem;
   width: calc(100% - 6rem);
