@@ -11,7 +11,8 @@ import { getScrollContainer } from "../Services/HelperService";
  * @return {*}  {React.MutableRefObject<any>} - element ref
  */
 function useAppearanceInViewport(
-  className: string
+  className: string,
+  offsetDeviation?: number
 ): React.MutableRefObject<any> {
   const elementRef = useRef<any>(null);
 
@@ -26,7 +27,7 @@ function useAppearanceInViewport(
       const elementBottom = distanceToTop + elementRef.current.offsetHeight;
 
       const shouldApplyAnimation =
-        elementBottom <= screenHeight &&
+        elementBottom - (offsetDeviation ?? 0) <= screenHeight &&
         !elementRef.current.classList.contains(className);
 
       if (shouldApplyAnimation) {

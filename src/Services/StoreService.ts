@@ -548,7 +548,7 @@ const portfolioData: IPortfolio = {
       skills: [
         {
           id: 1,
-          name: "JavaScript",
+          name: "JavaScript ES6+",
           level: 4,
           isRelevant: true,
         },
@@ -663,6 +663,12 @@ const portfolioData: IPortfolio = {
         {
           id: 18,
           name: "MongoDB",
+          level: 3,
+          isRelevant: true,
+        },
+        {
+          id: 19,
+          name: "Adobe Photoshop",
           level: 3,
           isRelevant: true,
         },

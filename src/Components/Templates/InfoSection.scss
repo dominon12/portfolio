@@ -9,6 +9,15 @@ $mobile-devices: 425px;
   align-items: center;
   justify-content: space-evenly;
 
+  &.fade-in {
+    .info-section__left,
+    .info-section__right {
+      transition: var(--transition-on);
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
   @media (max-width: $third-media) {
     flex-direction: column;
     align-items: center;
@@ -18,6 +27,7 @@ $mobile-devices: 425px;
   &__left,
   &__right {
     width: 40%;
+    transition: var(--transition-off);
 
     @media (max-width: $third-media) {
       display: flex;
@@ -31,5 +41,15 @@ $mobile-devices: 425px;
     @media (max-width: $fourth-media) {
       width: 75%;
     }
+  }
+
+  &__left {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  &__right {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }
