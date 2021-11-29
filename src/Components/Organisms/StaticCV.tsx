@@ -135,7 +135,11 @@ const StaticCV: React.FC = (): JSX.Element => {
         </Text>
         <View style={contactStyles.linksContainer}>
           {contactMethods.map((contactMethod) => (
-            <Link src={contactMethod.url} style={styles.link}>
+            <Link
+              key={contactMethod.id}
+              src={contactMethod.url}
+              style={styles.link}
+            >
               {contactMethod.name}
             </Link>
           ))}
@@ -163,7 +167,7 @@ const StaticCV: React.FC = (): JSX.Element => {
       <View style={styles.section}>
         <Text style={styles.subtitle}>Languages</Text>
         {languages.map((lang) => (
-          <View style={languagesStyles.container}>
+          <View key={lang.id} style={languagesStyles.container}>
             <Image
               src={`https://flagcdn.com/16x12/${lang.code}.png`}
               style={languagesStyles.image}
@@ -201,7 +205,7 @@ const StaticCV: React.FC = (): JSX.Element => {
         {experience
           .sort((a, b) => b.date.getTime() - a.date.getTime())
           .map((careerEvent) => (
-            <View style={experienceStyles.listItem}>
+            <View key={careerEvent.id} style={experienceStyles.listItem}>
               <View style={experienceStyles.header}>
                 <Text style={styles.subHeading}>• {careerEvent.title}</Text>
                 <Text style={styles.text}>
@@ -247,13 +251,14 @@ const StaticCV: React.FC = (): JSX.Element => {
       <View style={styles.section}>
         <Text style={styles.subtitle}>Skills</Text>
         {skills.map((skillGroup) => (
-          <View style={skillStyles.group}>
+          <View key={skillGroup.id} style={skillStyles.group}>
             <Text style={styles.subHeading}>{skillGroup.name}</Text>
             <View style={skillStyles.table}>
               {skillGroup.skills
                 .sort((a, b) => b.level - a.level)
                 .map((skill) => (
                   <View
+                    key={skill.id}
                     style={
                       skill.isRelevant
                         ? {
