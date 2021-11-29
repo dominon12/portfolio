@@ -21,6 +21,7 @@ import HomeRedirect from "./Services/HomeRedirect";
 import ScrollToTop from "./Services/ScrollToTop";
 import ErrorBoundary from "./Services/ErrorBoundary";
 import ShareModal from "./Modals/ShareModal";
+import Footer from "./Organisms/Footer";
 
 const App: React.FC = () => {
   return (
@@ -31,22 +32,24 @@ const App: React.FC = () => {
         <Header />
         <SideBar />
 
-        <section className="content-wrapper" id="scrollContainer">
-          {/* <ErrorBoundary> */}
-          <Switch>
-            <Route path="/" component={HomeRedirect} exact />
-            <Route path="/about" component={About} exact />
-            <Route path="/skills" component={Skills} exact />
-            <Route path="/experience" component={Experience} exact />
-            <Route path="/projects" component={Projects} exact />
-            <Route path="/contact" component={Contact} exact />
-            <Route path="/languages" component={Languages} exact />
-            <Route path="/donate" component={Donate} exact />
-            <Route path="/download" component={Download} exact />
-            <Route path="*" component={NotFound} />
-          </Switch>
-          {/* </ErrorBoundary> */}
-        </section>
+        <div className="content-wrapper" id="scrollContainer">
+          <ErrorBoundary>
+              <Switch>
+                <Route path="/" component={HomeRedirect} exact />
+                <Route path="/about" component={About} exact />
+                <Route path="/skills" component={Skills} exact />
+                <Route path="/experience" component={Experience} exact />
+                <Route path="/projects" component={Projects} exact />
+                <Route path="/contact" component={Contact} exact />
+                <Route path="/languages" component={Languages} exact />
+                <Route path="/donate" component={Donate} exact />
+                <Route path="/download" component={Download} exact />
+                <Route path="*" component={NotFound} />
+              </Switch>
+          </ErrorBoundary>
+
+          <Footer />
+        </div>
 
         <ShareModal />
         <SnackBar anchorOrigin={{ horizontal: "right", vertical: "bottom" }} />
