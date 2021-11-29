@@ -11,7 +11,8 @@ $mobile-devices: 425px;
 .content-wrapper {
   padding: 1rem;
   flex: 1;
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
   height: calc(100vh - 2rem);
 
   @media (max-width: $mobile-devices) {

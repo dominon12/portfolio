@@ -3,6 +3,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsFillCalendarFill } from "react-icons/bs";
 
 import "./CareerEvent.scss";
+import useAppearanceInViewport from "../../Hooks/useAppearanceInViewport";
 
 interface Props {
   title: string;
@@ -13,14 +14,19 @@ interface Props {
 }
 
 /**
- * 'Liana's' leave which represent 
+ * 'Liana's' leaf which represents
  * a career event.
  *
  * @return {*}  {JSX.Element}
  */
 const CareerEvent: React.FC<Props> = (props): JSX.Element => {
+  const leafRef = useAppearanceInViewport("fade-in");
+
   return (
-    <div className={`career-event ${!props.isRelevant && "irrelevant"}`}>
+    <div
+      ref={leafRef}
+      className={`career-event ${!props.isRelevant && "irrelevant"}`}
+    >
       <div className="career-event__content">
         <h3 className="career-event__title">{props.title}</h3>
         <p className="career-event__description">{props.description}</p>

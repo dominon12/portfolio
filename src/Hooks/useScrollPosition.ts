@@ -21,16 +21,38 @@ interface IScrollPosition {
  * directions.
  *
  * @param {(props: IScrollPosition) => void} effect - Effect to run on scroll position changes
+ * @param {Element} [container] - Container to track. Default - window
  * @return {*}  {null}
  */
-function useScrollPosition(effect: (props: IScrollPosition) => void): null {
+function useScrollPosition(
+  effect: (props: IScrollPosition) => void,
+  container?: Element | Window | null
+): null {
   const [scrollPosition, setScrollPosition] = useState<ICoords>({ x: 0, y: 0 });
   const prevScrollPosition = useRef(scrollPosition);
 
-  const getScrollPosition = (): ICoords => ({
-    x: window.scrollX,
-    y: window.scrollY,
-  });
+  /**
+   * Returns current scroll position.
+   *
+   * @return {*}  {ICoords}
+   */
+  const getScrollPosition = (): ICoords => {
+    let coords;
+
+    if (container === window || !container) {
+      coords = {
+        x: window.scrollX,
+        y: window.scrollY,
+      };
+    } else {
+      coords = {
+        x: (container as Element).scrollLeft,
+        y: (container as Element).scrollTop,
+      };
+    }
+
+    return coords;
+  };
 
   /**
    * Updates state variables with the
@@ -63,8 +85,14 @@ function useScrollPosition(effect: (props: IScrollPosition) => void): null {
    * removes it in returned callback.
    */
   useEffect(() => {
-    window.addEventListener("scroll", scrollListener);
-    return () => window.removeEventListener("scroll", scrollListener);
+    const scrollContainer = container || window;
+
+    if (scrollContainer) {
+      scrollListener();
+      scrollContainer.addEventListener("scroll", scrollListener);
+      return () =>
+        scrollContainer.removeEventListener("scroll", scrollListener);
+    }
   }, []);
 
   return null;

@@ -7,24 +7,40 @@
  * is smaller of equal to 425 (is mobile device)
  *
  * @returns boolean value which indicates
- *          whether the current device is mobile
+ *          whether the current device is a mobile
  */
 export function isMobile(): boolean {
   return document.body.offsetWidth <= 425;
 }
 
 /**
- * Scrolls window or 'scrollContainer' depending on
- * device's width. That's necessary because when
+ * Returns window or 'scrollContainer'
+ * based on device's width.
+ *
+ * That's necessary because when
  * the screen size is bigger than 425 pixels, container
  * which has to be scrolled is not the window.
+ *
+ * @export
+ * @return {*}  {(Element
+ *   | (Window & typeof globalThis)
+ *   | null)}
+ */
+export function getScrollContainer():
+  | Element
+  | (Window & typeof globalThis)
+  | null {
+  return isMobile() ? window : document.querySelector("#scrollContainer");
+}
+
+/**
+ * Scrolls a scroll container based
+ * on passed settings.
  *
  * @param scrollOptions scroll settings for scrollTo method
  */
 export function scrollTo(scrollOptions: ScrollToOptions) {
-  isMobile()
-    ? window.scrollTo(scrollOptions)
-    : document.getElementById("scrollContainer")?.scrollTo(scrollOptions);
+  getScrollContainer()?.scrollTo(scrollOptions);
 }
 
 /**

@@ -6,7 +6,7 @@ import CareerEvent from "../Molecules/CareerEvent";
 
 /**
  * Renders some sort of a liana with
- * leaves representing career events in
+ * leafs representing career events in
  * chronological order
  *
  * @return {*}  {JSX.Element}
