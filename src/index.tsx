@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import "./index.scss";
@@ -10,17 +10,15 @@ import ShareModalProvider from "./Contexts/ShareModalContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<h1>Loading...</h1>}>
-      <SnackBarProvider defaultDelay={3500}>
-        <SideBarProvider>
-          <ShareModalProvider>
-            <ThemeProvider>
-              <App />
-            </ThemeProvider>
-          </ShareModalProvider>
-        </SideBarProvider>
-      </SnackBarProvider>
-    </Suspense>
+    <SnackBarProvider defaultDelay={3500}>
+      <SideBarProvider>
+        <ShareModalProvider>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </ShareModalProvider>
+      </SideBarProvider>
+    </SnackBarProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
