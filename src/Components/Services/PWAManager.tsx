@@ -53,6 +53,7 @@ const PWAManager: React.FC = () => {
   useEffect(() => {
     if (showReload) {
       sendMessage("A new version is available!", {
+        delay: 10000,
         action: {
           callback: installNewVersion,
           text: "INSTALL",

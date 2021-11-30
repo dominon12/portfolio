@@ -29,6 +29,10 @@
   justify-content: center;
   border-left: 6px solid #000;
 
+  @media (max-width: 350px) {
+    max-width: 300px;
+  }
+
   &.info {
     border-color: var(--color-info);
   }
