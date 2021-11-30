@@ -17,34 +17,48 @@
 }
 
 .snackbar-message {
-  padding: 0.7rem;
   margin: 1rem 0;
   border-radius: var(--default-border-radius);
-  color: #fff;
-  max-width: 300px;
+  color: var(---paragraph-color);
+  background-color: var(--doc-background-color);
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  max-width: 350px;
   line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 6px solid #000;
+
+  &.info {
+    border-color: var(--color-info);
+  }
+
+  &.success {
+    border-color: var(--color-success);
+  }
+
+  &.warning {
+    border-color: var(--color-warning);
+  }
+
+  &.danger {
+    border-color: var(--color-danger);
+  }
+
+  &__body {
+    padding: 10px;
+  }
+
+  &__action {
+    padding-left: 10px;
+    padding-right: 20px;
+    cursor: pointer;
+  }
 
   &:first-child {
     margin-top: 0;
   }
   &:last-child {
     margin-bottom: 0;
-  }
-
-  &.info {
-    background-color: var(--color-info);
-    color: #000;
-  }
-
-  &.success {
-    background-color: var(--color-success);
-  }
-
-  &.warning {
-    background-color: var(--color-warning);
-  }
-
-  &.danger {
-    background-color: var(--color-danger);
   }
 }

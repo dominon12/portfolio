@@ -16,6 +16,17 @@ export enum SnackBarMessageColor {
 }
 
 /**
+ * Message action representation.
+ *
+ * @export
+ * @interface ISnackBarMessageAction
+ */
+export interface ISnackBarMessageAction {
+  text: string;
+  callback: () => void;
+}
+
+/**
  * Snackbar message representation
  *
  * @interface ISnackBarMessage
@@ -25,6 +36,7 @@ interface ISnackBarMessage {
   text: string;
   color: SnackBarMessageColor;
   delay: number;
+  action?: ISnackBarMessageAction;
 }
 
 /**
@@ -36,6 +48,7 @@ interface ISnackBarMessage {
 interface ISnackBarOptions {
   color?: SnackBarMessageColor;
   delay?: number;
+  action?: ISnackBarMessageAction;
 }
 
 /**
@@ -70,9 +83,9 @@ enum SnackbarActionType {
 /**
  * Reducer action representation
  *
- * @interface ISnackbarAction
+ * @interface ISnackBarAction
  */
-interface ISnackbarAction {
+interface ISnackBarAction {
   type: SnackbarActionType;
   payload: any;
 }
@@ -82,9 +95,9 @@ interface ISnackbarAction {
  * for the snackbar reducer
  *
  * @param {ISnackBarMessage} message - message to display
- * @return {*}  {ISnackbarAction}
+ * @return {*}  {ISnackBarAction}
  */
-const addMessage = (message: ISnackBarMessage): ISnackbarAction => ({
+const addMessage = (message: ISnackBarMessage): ISnackBarAction => ({
   type: SnackbarActionType.ADD_MESSAGE,
   payload: message,
 });
@@ -94,9 +107,9 @@ const addMessage = (message: ISnackBarMessage): ISnackbarAction => ({
  * for the snackbar reducer
  *
  * @param {number} messageId
- * @return {*}  {ISnackbarAction}
+ * @return {*}  {ISnackBarAction}
  */
-const removeMessage = (messageId: number): ISnackbarAction => ({
+const removeMessage = (messageId: number): ISnackBarAction => ({
   type: SnackbarActionType.REMOVE_MESSAGE,
   payload: messageId,
 });
@@ -105,12 +118,12 @@ const removeMessage = (messageId: number): ISnackbarAction => ({
  * Controls messages state
  *
  * @param {ISnackBarMessage[]} state - current state
- * @param {ISnackbarAction} action - action to execute
+ * @param {ISnackBarAction} action - action to execute
  * @return {*}  {ISnackBarMessage[]} - state after action executing
  */
 function snackbarReducer(
   state: ISnackBarMessage[],
-  action: ISnackbarAction
+  action: ISnackBarAction
 ): ISnackBarMessage[] {
   switch (action.type) {
     case SnackbarActionType.ADD_MESSAGE:
@@ -143,9 +156,10 @@ const SnackBarProvider: React.FC<Props> = (props) => {
   const sendMessage = (text: string, options?: ISnackBarOptions) => {
     const delay = options?.delay ?? props.defaultDelay ?? 2000;
 
-    const newMessage = {
+    const newMessage: ISnackBarMessage = {
       id: getRandomId(),
       color: options?.color ?? SnackBarMessageColor.INFO,
+      action: options?.action,
       delay,
       text,
     };

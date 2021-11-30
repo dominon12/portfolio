@@ -1,11 +1,15 @@
 import React from "react";
 
 import "./SnackBarMessage.scss";
-import { SnackBarMessageColor } from "../../Contexts/SnackBarContext";
+import {
+  ISnackBarMessageAction,
+  SnackBarMessageColor,
+} from "../../Contexts/SnackBarContext";
 
 interface Props {
   color: SnackBarMessageColor;
   delay: number;
+  action?: ISnackBarMessageAction;
 }
 
 /**
@@ -24,7 +28,15 @@ const SnackBarMessage: React.FC<Props> = (props): JSX.Element => {
         }ms 1`,
       }}
     >
-      {props.children}
+      <div className="snackbar-message__body">{props.children}</div>
+      {props.action && (
+        <div
+          className="snackbar-message__action hover-highlight"
+          onClick={props.action.callback}
+        >
+          {props.action.text}
+        </div>
+      )}
     </div>
   );
 };

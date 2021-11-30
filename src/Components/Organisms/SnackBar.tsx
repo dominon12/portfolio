@@ -40,6 +40,7 @@ const SnackBar: React.FC<Props> = ({ anchorOrigin }): JSX.Element => {
           key={message.id}
           color={message.color}
           delay={message.delay}
+          action={message.action}
         >
           {message.text}
         </SnackBarMessage>
