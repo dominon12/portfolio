@@ -1,38 +1,43 @@
+/**
+ * Contains functions for accessing to different
+ * portfolio's data endpoints.
+ */
+
 import {
-  About,
-  CareerEvent,
-  ContactLink,
-  DonationMethod,
-  Language,
-  Project,
-  SkillsGroup,
-} from "./../Types/Types";
+  IAbout,
+  ICareerEvent,
+  IContactMethod,
+  IDonationMethod,
+  ILanguage,
+  IProject,
+  ISkillsGroup,
+} from "../Types/PortfolioDataTypes";
 import portfolioData from "./StoreService";
 
-export function getAbout(): About {
+export function getAbout(): IAbout {
   return portfolioData.about;
 }
 
-export function getProjects(): Project[] {
+export function getProjects(): IProject[] {
   return portfolioData.projects;
 }
 
-export function getSkills(): SkillsGroup[] {
+export function getSkills(): ISkillsGroup[] {
   return portfolioData.skills;
 }
 
-export function getExperience(): CareerEvent[] {
+export function getExperience(): ICareerEvent[] {
   return portfolioData.experience;
 }
 
-export function getLanguages(): Language[] {
+export function getLanguages(): ILanguage[] {
   return portfolioData.languages;
 }
 
-export function getContactLinks(): ContactLink[] {
-  return portfolioData.contactLinks;
+export function getContactMethods(): IContactMethod[] {
+  return portfolioData.contactMethods;
 }
 
-export function getDonationMethods(): DonationMethod[] {
+export function getDonationMethods(): IDonationMethod[] {
   return portfolioData.donationMethods;
 }

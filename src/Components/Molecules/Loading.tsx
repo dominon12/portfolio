@@ -5,7 +5,12 @@ import "./Loading.scss";
 
 const LOADERS = Object.values(reactSpinners);
 
-const Loading: React.FC = () => {
+/**
+ * Renders random loader
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Loading: React.FC = (): JSX.Element => {
   const RandomLoader: any = LOADERS[Math.floor(Math.random() * LOADERS.length)];
   const colorDetails = getComputedStyle(document.body).getPropertyValue(
     "--color-details"

@@ -6,7 +6,10 @@
 
 :root {
   // system colors
-  --color-danger: red;
+  --color-info: #61dbfb; // react blue
+  --color-success: #42b883; // vue green
+  --color-warning: #ff3d00; // svetle orange
+  --color-danger: #dd0531; // angular red
   // fonts
   --font-family: "Montserrat", sans-serif;
   // animations
@@ -17,7 +20,7 @@
 }
 
 body {
-  transition: var(--transition-on);
+  transition: background-color var(--transition-on), color var(--transition-on);
 
   &.light {
     // light theme
@@ -28,6 +31,7 @@ body {
     --button-text: #fffffe;
     --color-details: #ff8e3c;
     --color-disabled: rgba(255, 142, 60, 0.5);
+    --card-disabled-color: #cbcdd3;
   }
 
   &.dark {
@@ -39,6 +43,7 @@ body {
     --button-text: #fffffe;
     --color-details: #7f5af0;
     --color-disabled: rgba(127, 90, 240, 0.3);
+    --card-disabled-color: #2a2a2e;
   }
 
   background-color: var(--doc-background-color);
@@ -58,17 +63,42 @@ p {
   color: var(--paragraph-color);
 }
 
+::selection {
+  background-color: var(--color-details);
+  color: var(--button-text);
+}
+
 .hover-animation {
-  transition: var(--transition-off);
+  transition: box-shadow var(--transition-off), transform var(--transition-off);
 
   &:focus,
   &:hover {
     box-shadow: 0 5px 15px var(--card-background-color);
     transform: translateY(-5px);
-    transition: var(--transition-on);
+    transition: box-shadow var(--transition-on), transform var(--transition-on);
   }
 
   &:active {
     transform: scale(0.99);
+    transition: transform var(--transition-on);
+  }
+}
+
+.hover-highlight {
+  transition: color var(--transition-off);
+  color: var(--paragraph-color);
+
+  &:focus,
+  &:hover {
+    transition: color var(--transition-on);
+    color: var(--headline-color);
+  }
+}
+
+$mobile-devices: 425px;
+
+.hide-on-mobile {
+  @media (max-width: $mobile-devices) {
+    display: none;
   }
 }

@@ -1,160 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Helmet } from "react-helmet";
 
+import "./Projects.scss";
 import ProjectsNav from "../Organisms/ProjectsNav";
-import { getProjects } from "../../Services/DataService";
-import { Project, SelectValue, SelectValuesGroup } from "../../Types/Types";
 import ProjectsGrid from "../Organisms/ProjectsGrid";
+import Paginator from "../Molecules/Paginator";
+import useProjects from "../../Hooks/useProjects";
+import LoadingTemplate from "../Templates/LoadingTemplate";
+import { getAbout } from "../../Services/DataService";
 
-function getFilterValues(projects: Project[]): SelectValuesGroup[] {
-  let projectTypes = new Set<string>(),
-    frontend = new Set<string>(),
-    backend = new Set<string>(),
-    devops = new Set<string>();
+/**
+ * Page with a list of projects, navigation bar
+ * with ability to select sorting and filtering options
+ * and a pagination menu
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Projects: React.FC = (): JSX.Element => {
+  const { nickname } = getAbout();
 
-  projects.forEach((project: Project) => {
-    project.technologies.backend.forEach(backend.add, backend);
-    project.technologies.frontend.forEach(frontend.add, frontend);
-    project.technologies.devops.forEach(devops.add, devops);
-    projectTypes.add(project.type);
+  const { projects, pageProjects, isLoading } = useProjects({
+    loadingDelay: 1000,
   });
-
-  const randomId = () => Math.floor(Math.random() * 1_000_000);
-
-  const stringSetToSelectValuesGroup = (
-    stringArray: Set<string>,
-    groupName: string
-  ): SelectValuesGroup => ({
-    groupName,
-    id: randomId(),
-    values: Array.from(stringArray)
-      .sort()
-      .map((string) => ({
-        id: randomId(),
-        value: string,
-        displayValue: string,
-      })),
-  });
-
-  const filterValues: SelectValuesGroup[] = [
-    stringSetToSelectValuesGroup(backend, "Back-end"),
-    stringSetToSelectValuesGroup(frontend, "Front-end"),
-    stringSetToSelectValuesGroup(devops, "DevOps"),
-    stringSetToSelectValuesGroup(projectTypes, "Type"),
-  ];
-
-  return filterValues;
-}
-
-function filterProjects(
-  projects: Project[],
-  filterBy: string,
-  setProjects: React.Dispatch<React.SetStateAction<Project[]>>
-) {
-  if (!filterBy) {
-    setProjects(projects);
-  } else {
-    const filteredProjects = projects.filter(
-      (project) =>
-        project.type === filterBy ||
-        project.technologies.backend.includes(filterBy) ||
-        project.technologies.frontend.includes(filterBy) ||
-        project.technologies.devops.includes(filterBy)
-    );
-    setProjects(filteredProjects);
-  }
-}
-
-function sortProjects(
-  projects: Project[],
-  sortBy: string,
-  setProjects: React.Dispatch<React.SetStateAction<Project[]>>
-) {
-  if (!sortBy) {
-    sortProjects(projects, "-dateStarted", setProjects);
-  } else {
-    const isDesc = sortBy.startsWith("-");
-    if (isDesc) sortBy = sortBy.slice(1, sortBy.length);
-    const sortedProjects = projects.sort((a: any, b: any) =>
-      isDesc ? b[sortBy] - a[sortBy] : a[sortBy] - b[sortBy]
-    );
-    setProjects(sortedProjects);
-  }
-}
-
-const Projects: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>(getProjects());
-
-  const [filterBy, setFilterBy] = useState("");
-  const [filterValues, setFilterValues] = useState<SelectValuesGroup[]>([]);
-  const [sortBy, setSortBy] = useState("");
-
-  const sortValues: SelectValue[] = [
-    {
-      id: 2,
-      value: "-dateStarted",
-      displayValue: "Date, new to old",
-    },
-    {
-      id: 1,
-      value: "dateStarted",
-      displayValue: "Date, old to new",
-    },
-    {
-      id: 3,
-      value: "implementationTime",
-      displayValue: "Implementation time, low to high",
-    },
-    {
-      id: 4,
-      value: "-implementationTime",
-      displayValue: "Implementation time, high to low",
-    },
-  ];
-
-  const initializeFilterValues = () => {
-    if (projects.length) {
-      setFilterValues(getFilterValues(projects));
-    }
-  };
-
-  const applyDefaultSorting = () => {
-    if (projects.length) {
-      sortProjects([...projects], "-dateStarted", setProjects);
-    }
-  };
-
-  const handleFilterValuesChange = () => {
-    if (projects.length) {
-      const allProjects = getProjects();
-      filterProjects(allProjects, filterBy, setProjects);
-    }
-  };
-
-  const handleSortValuesChange = () => {
-    if (projects.length) {
-      sortProjects([...projects], sortBy, setProjects);
-    }
-  };
-
-  useEffect(() => {
-    initializeFilterValues();
-    applyDefaultSorting();
-  }, []);
-  useEffect(() => handleFilterValuesChange(), [filterBy]);
-  useEffect(() => handleSortValuesChange(), [sortBy]);
 
   return (
-    <div className="projects">
-      <ProjectsNav
-        filterByValue={filterBy}
-        setFilterByValue={setFilterBy}
-        filterValues={filterValues}
-        sortByValue={sortBy}
-        setSortByValue={setSortBy}
-        sortValues={sortValues}
-      />
-      <ProjectsGrid projects={projects} />
-    </div>
+    <>
+      <Helmet>
+        <title>Projects | {nickname}</title>
+        <meta
+          name="description"
+          content="A list of almost all the projects and case studies I've done"
+        />
+      </Helmet>
+
+      <div className="projects">
+        <ProjectsNav />
+
+        <div className="projects__body">
+          <LoadingTemplate isLoading={isLoading}>
+            <ProjectsGrid projects={pageProjects} />
+          </LoadingTemplate>
+
+          <Paginator items={projects} pageItems={pageProjects} />
+        </div>
+      </div>
+    </>
   );
 };
 

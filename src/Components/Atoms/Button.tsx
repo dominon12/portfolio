@@ -1,21 +1,33 @@
 import React from "react";
+import { SyncLoader } from "react-spinners";
 
 import "./Button.scss";
+import { ButtonType } from "../../Types/SystemTypes";
 
 interface Props {
-  type: "primary" | "mini";
+  type: ButtonType;
   onClick: () => void;
   disabled?: boolean;
+  isLoading?: boolean;
 }
 
-const Button: React.FC<Props> = (props) => {
+/**
+ * Styled button.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Button: React.FC<Props> = (props): JSX.Element => {
   return (
     <button
       className={`button hover-animation ${props.type}`}
       onClick={props.onClick}
-      disabled={props.disabled}
+      disabled={props.disabled || props.isLoading}
     >
-      {props.children}
+      {props.isLoading ? (
+        <SyncLoader color="white" size="10" />
+      ) : (
+        props.children
+      )}
     </button>
   );
 };

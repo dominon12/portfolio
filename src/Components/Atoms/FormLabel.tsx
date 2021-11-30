@@ -6,7 +6,15 @@ interface Props {
   required?: boolean;
 }
 
-const FormLabel: React.FC<Props> = (props) => {
+/**
+ * Form field label.
+ * 
+ * Renders red '*' if 'required' prop
+ * is set to true.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const FormLabel: React.FC<Props> = (props): JSX.Element => {
   return (
     <label className={`form-label ${props.required && "required"}`}>
       {props.children}

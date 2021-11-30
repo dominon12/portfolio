@@ -3,8 +3,17 @@
   text-decoration: none;
   cursor: pointer;
 
+  &:hover,
+  &:focus {
+    .theme-switch__icon {
+      transition: color var(--transition-on);
+      color: var(--headline-color);
+    }
+  }
+
   &__icon {
     font-size: 2rem;
     color: var(--paragraph-color);
+    transition: color var(--transition-off);
   }
 }

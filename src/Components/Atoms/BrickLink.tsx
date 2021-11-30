@@ -8,7 +8,12 @@ interface Props {
   rel?: string;
 }
 
-const BrickLink: React.FC<Props> = (props) => {
+/**
+ * Link which looks like a brick.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const BrickLink: React.FC<Props> = (props): JSX.Element => {
   return (
     <a
       href={props.href}

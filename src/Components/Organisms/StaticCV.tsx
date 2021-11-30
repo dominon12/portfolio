@@ -11,13 +11,18 @@ import {
 
 import {
   getAbout,
-  getContactLinks,
+  getContactMethods,
   getExperience,
   getLanguages,
   getSkills,
 } from "../../Services/DataService";
 
-const StaticCV: React.FC = () => {
+/**
+ * Renders a static pdf document - CV
+ *
+ * @return {*}  {JSX.Element}
+ */
+const StaticCV: React.FC = (): JSX.Element => {
   const styles = StyleSheet.create({
     page: {
       padding: "16px",
@@ -62,12 +67,17 @@ const StaticCV: React.FC = () => {
   const experience = getExperience().filter(
     (careerEvent) => careerEvent.isRelevant
   );
-  const contactLinks = getContactLinks();
+  const contactMethods = getContactMethods();
   const skills = getSkills();
 
   const fullName = `${about.firstName} ${about.lastName}`;
 
-  const header = () => {
+  /**
+   * Renders header
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const header = (): JSX.Element => {
     const headerStyles = StyleSheet.create({
       header: {
         flexDirection: "row",
@@ -88,19 +98,29 @@ const StaticCV: React.FC = () => {
           <Text style={styles.title}>{fullName}</Text>
           <Text style={[styles.subtitle, styles.link]}>{about.jobTitle}</Text>
         </View>
-        <Image src={about.image} style={headerStyles.profileImage} />
+        <Image src={about.profilePhoto.src} style={headerStyles.profileImage} />
       </View>
     );
   };
 
-  const aboutSection = () => (
+  /**
+   * Renders about section
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const aboutSection = (): JSX.Element => (
     <View style={styles.section}>
       <Text style={styles.subtitle}>About</Text>
       <Text style={styles.text}>{about.cvDescription}</Text>
     </View>
   );
 
-  const contactSection = () => {
+  /**
+   * Renders a section with contact info
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const contactSection = (): JSX.Element => {
     const contactStyles = StyleSheet.create({
       linksContainer: {
         flexDirection: "row",
@@ -114,9 +134,13 @@ const StaticCV: React.FC = () => {
           Contact me {String.fromCharCode(8986)}
         </Text>
         <View style={contactStyles.linksContainer}>
-          {contactLinks.map((link) => (
-            <Link src={link.url} style={styles.link}>
-              {link.name}
+          {contactMethods.map((contactMethod) => (
+            <Link
+              key={contactMethod.id}
+              src={contactMethod.url}
+              style={styles.link}
+            >
+              {contactMethod.name}
             </Link>
           ))}
         </View>
@@ -124,7 +148,13 @@ const StaticCV: React.FC = () => {
     );
   };
 
-  const languagesSection = () => {
+  /**
+   * Renders section with info
+   * about languages
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const languagesSection = (): JSX.Element => {
     const languagesStyles = StyleSheet.create({
       container: {
         flexDirection: "row",
@@ -137,7 +167,7 @@ const StaticCV: React.FC = () => {
       <View style={styles.section}>
         <Text style={styles.subtitle}>Languages</Text>
         {languages.map((lang) => (
-          <View style={languagesStyles.container}>
+          <View key={lang.id} style={languagesStyles.container}>
             <Image
               src={`https://flagcdn.com/16x12/${lang.code}.png`}
               style={languagesStyles.image}
@@ -151,7 +181,13 @@ const StaticCV: React.FC = () => {
     );
   };
 
-  const experienceSection = () => {
+  /**
+   * Renders a section with info
+   * about an experience
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const experienceSection = (): JSX.Element => {
     const experienceStyles = StyleSheet.create({
       listItem: {
         marginBottom: 16,
@@ -169,7 +205,7 @@ const StaticCV: React.FC = () => {
         {experience
           .sort((a, b) => b.date.getTime() - a.date.getTime())
           .map((careerEvent) => (
-            <View style={experienceStyles.listItem}>
+            <View key={careerEvent.id} style={experienceStyles.listItem}>
               <View style={experienceStyles.header}>
                 <Text style={styles.subHeading}>• {careerEvent.title}</Text>
                 <Text style={styles.text}>
@@ -184,7 +220,13 @@ const StaticCV: React.FC = () => {
     );
   };
 
-  const skillsSection = () => {
+  /**
+   * Renders a section with a table
+   * of skills
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const skillsSection = (): JSX.Element => {
     const skillStyles = StyleSheet.create({
       group: {
         marginBottom: 6,
@@ -199,19 +241,33 @@ const StaticCV: React.FC = () => {
         borderBottom: 0.2,
         paddingBottom: 4,
       },
+      relevantSkill: {
+        backgroundColor: "#ff8e3c",
+        color: "white",
+      },
     });
 
     return (
       <View style={styles.section}>
         <Text style={styles.subtitle}>Skills</Text>
         {skills.map((skillGroup) => (
-          <View style={skillStyles.group}>
+          <View key={skillGroup.id} style={skillStyles.group}>
             <Text style={styles.subHeading}>{skillGroup.name}</Text>
             <View style={skillStyles.table}>
               {skillGroup.skills
                 .sort((a, b) => b.level - a.level)
                 .map((skill) => (
-                  <View style={skillStyles.skill}>
+                  <View
+                    key={skill.id}
+                    style={
+                      skill.isRelevant
+                        ? {
+                            ...skillStyles.skill,
+                            ...skillStyles.relevantSkill,
+                          }
+                        : skillStyles.skill
+                    }
+                  >
                     <Text style={styles.text}>{skill.name}</Text>
                     <Text style={styles.text}>{skill.level} / 5</Text>
                   </View>
@@ -223,7 +279,12 @@ const StaticCV: React.FC = () => {
     );
   };
 
-  const projectsSection = () => (
+  /**
+   * Renders a section with info about projects
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const projectsSection = (): JSX.Element => (
     <View style={styles.section}>
       <Text style={styles.subtitle}>Projects</Text>
       <Text style={styles.text}>
@@ -238,7 +299,12 @@ const StaticCV: React.FC = () => {
     </View>
   );
 
-  const body = () => {
+  /**
+   * Combines CV section's and renders them
+   *
+   * @return {*}  {JSX.Element}
+   */
+  const body = (): JSX.Element => {
     const bodyStyles = StyleSheet.create({
       container: {
         flexDirection: "row",

@@ -2,32 +2,34 @@ import React from "react";
 
 import "./ProjectsGrid.scss";
 import ProjectCard from "../Molecules/ProjectCard";
-import { Project } from "../../Types/Types";
+import { IProject } from "../../Types/PortfolioDataTypes";
 
 interface Props {
-  projects: Project[];
+  projects: IProject[];
 }
 
-const ProjectsGrid: React.FC<Props> = (props) => {
+/**
+ * Renders a grid of projects
+ *
+ * @return {*}  {JSX.Element}
+ */
+const ProjectsGrid: React.FC<Props> = (props): JSX.Element => {
   return (
     <div className="projects-grid">
-      {props.projects.length ? (
-        props.projects.map((project: Project) => (
-          <ProjectCard
-            key={project.id}
-            title={project.title}
-            image={project.image}
-            shortDescription={project.shortDescription}
-            dateStarted={project.dateStarted}
-            technologies={project.technologies}
-            description={project.description}
-            repository={project.repository}
-            link={project.link}
-          />
-        ))
-      ) : (
-        <h1>Loading...</h1>
-      )}
+      {props.projects.map((project: IProject) => (
+        <ProjectCard
+          key={project.id}
+          id={project.id}
+          title={project.title}
+          image={project.image}
+          shortDescription={project.shortDescription}
+          dateStarted={project.dateStarted}
+          technologies={project.technologies}
+          description={project.description}
+          repository={project.repository}
+          link={project.link}
+        />
+      ))}
     </div>
   );
 };

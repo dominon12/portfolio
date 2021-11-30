@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
+import { useLocation } from "react-router";
 // icons
 import { IoAccessibility, IoLanguage } from "react-icons/io5";
 import { AiFillApi } from "react-icons/ai";
@@ -8,17 +9,27 @@ import { TiMessageTyping } from "react-icons/ti";
 
 import "./SideBar.scss";
 import NavTab from "../Atoms/NavTab";
-import { Tab } from "../../Types/Types";
+import { ITab } from "../../Types/SystemTypes";
 import { SideBarContext } from "../../Contexts/SideBarContext";
 import ThemeSwitch from "../Atoms/ThemeSwitch";
-import { useLocation } from "react-router";
 
-const SideBar: React.FC = () => {
+/**
+ * Renders a side bar and handles logic
+ * of hiding it if user clicked outside of it or
+ * outside of header or navigated to another page
+ *
+ * @return {*}  {JSX.Element}
+ */
+const SideBar: React.FC = (): JSX.Element => {
   const { pathname } = useLocation();
   const { visible, setVisible } = useContext(SideBarContext);
 
   const asideRef = useRef<any>(null);
 
+  /**
+   * Hides side bar if user clicked outside of
+   * the navbar or header
+   */
   useEffect(() => {
     const headerElement = document.getElementById("header");
 
@@ -38,11 +49,14 @@ const SideBar: React.FC = () => {
     };
   }, [asideRef]);
 
+  /**
+   * Hides side bar on url changes
+   */
   useEffect(() => {
     setVisible(false);
   }, [pathname]);
 
-  const TABS: Tab[] = [
+  const TABS: ITab[] = [
     {
       id: 1,
       link: "/about",
@@ -115,6 +129,7 @@ const SideBar: React.FC = () => {
       className={`aside ${visible ? "active" : "inactive"}`}
     >
       <div className="aside__content">
+        <NavTab>~ Menu ~</NavTab>
         {TABS.sort((a, b) => a.orderNumber - b.orderNumber).map((tab) => (
           <NavTab key={tab.id} tabData={tab} />
         ))}

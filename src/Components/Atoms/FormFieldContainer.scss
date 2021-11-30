@@ -20,13 +20,17 @@
     border-color: var(--color-details);
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     border-color: var(--color-details);
   }
 
   &:not(:focus):not(:placeholder-shown).valid {
     // apply styles when (!focused && valid)
     border-color: var(--color-details);
+  }
+
+  &:disabled {
+    background-color: var(--card-disabled-color);
   }
 
   &.invalid {

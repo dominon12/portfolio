@@ -1,41 +1,35 @@
 import React from "react";
 import { useHistory } from "react-router";
 
-import "./NotFound.scss";
-import NotFoundIllustration from "../../Assets/Images/404.png";
-import InfoSection from "../Organisms/InfoSection";
-import Title from "../Atoms/Title";
+import NotFoundIllustration from "../../Assets/Images/System/404.png";
 import Button from "../Atoms/Button";
-import Image from "../Atoms/Image";
+import ErrorTemplate from "../Templates/ErrorTemplate";
 
-const NotFound: React.FC = () => {
+/**
+ * Not found page
+ *
+ * @return {*}  {JSX.Element}
+ */
+const NotFound: React.FC = (): JSX.Element => {
   const history = useHistory();
 
   return (
-    <InfoSection
-      left={
-        <>
-          <Title className="not-found__title">It's Empty Here</Title>
-          <p className="not-found__description">
-            Looks like the page can't be found. Maybe it was moved or renamed.
-          </p>
-          <Button type="primary" onClick={() => history.push("/about")}>
-            Homepage
-          </Button>
-        </>
-      }
-      right={
-        <>
-          <Image
-            className="not-found__illustration"
-            src={NotFoundIllustration}
-            alt="Not found illustration"
-            height="500"
-            width="500"
-          />
-        </>
-      }
-    />
+    <ErrorTemplate
+      title="It's Empty Here"
+      description="Looks like the page can't be found. Maybe it was moved or renamed."
+      image={{
+        src: NotFoundIllustration,
+        alt: "Not found illustration",
+        width: "500",
+        height: "500",
+      }}
+      seoTitle="404 Not Found"
+      seoDescription="Looks like the page can't be found. Maybe it was moved or renamed."
+    >
+      <Button type="primary" onClick={() => history.push("/about")}>
+        Homepage
+      </Button>
+    </ErrorTemplate>
   );
 };
 

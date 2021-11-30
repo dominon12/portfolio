@@ -4,9 +4,14 @@ import "./ExperienceLiana.scss";
 import { getExperience } from "../../Services/DataService";
 import CareerEvent from "../Molecules/CareerEvent";
 
-interface Props {}
-
-const ExperienceLiana: React.FC<Props> = (props) => {
+/**
+ * Renders some sort of a liana with
+ * leafs representing career events in
+ * chronological order
+ *
+ * @return {*}  {JSX.Element}
+ */
+const ExperienceLiana: React.FC = (): JSX.Element => {
   const careerEvents = getExperience();
 
   return (

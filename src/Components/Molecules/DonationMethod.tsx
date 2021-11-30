@@ -1,7 +1,8 @@
 import React from "react";
 
 import "./DonationMethod.scss";
-import { DonationMethodType } from "../../Types/Types";
+import { DonationMethodType } from "../../Types/PortfolioDataTypes";
+import { IImage } from "../../Types/SystemTypes";
 import Subtitle from "../Atoms/Subtitle";
 
 interface Props {
@@ -9,23 +10,20 @@ interface Props {
   type: DonationMethodType;
   linkUrl: string;
   comment: string;
+  image: IImage;
   isLink?: boolean;
 }
 
-const typesImages = {
-  btc: "https://www.coinopsy.com/media/img/quality_logo/bitcoin-btc.png",
-  eth: "https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg",
-  tinkoff:
-    "https://schoolofthefuture.ru/wp-content/uploads/2019/10/tinkoff-bank-general-logo-.png",
-  buymeacoffee:
-    "https://uploads-ssl.webflow.com/5d6ebc7749e1415363684547/5d6ebc7749e1413246684553_coffee-cup.svg",
-};
-
-const DonationMethod: React.FC<Props> = (props) => {
+/**
+ * A card with info about a donation method
+ *
+ * @return {*}  {JSX.Element}
+ */
+const DonationMethod: React.FC<Props> = (props): JSX.Element => {
   return (
     <article
       className="donation-method hover-animation"
-      style={{ backgroundImage: `url('${typesImages[props.type]}')` }}
+      style={{ backgroundImage: `url('${props.image.src}')` }}
     >
       <div className="donation-method__content">
         <Subtitle className="donation-method__name">{props.name}</Subtitle>

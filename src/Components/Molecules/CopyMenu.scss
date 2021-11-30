@@ -1,0 +1,22 @@
+$first-media: 400px;
+
+.copy-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .form-field-container {
+    margin-bottom: 0;
+    width: 70%;
+
+    @media (max-width: $first-media) {
+      width: 100%;
+    }
+  }
+
+  &__icon {
+    margin-left: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}

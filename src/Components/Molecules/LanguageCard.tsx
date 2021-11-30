@@ -10,7 +10,12 @@ interface Props {
   learningStory: string;
 }
 
-const LanguageCard: React.FC<Props> = (props) => {
+/**
+ * Renders a card with info about a language
+ *
+ * @return {*}  {JSX.Element}
+ */
+const LanguageCard: React.FC<Props> = (props): JSX.Element => {
   return (
     <article
       className="language-card hover-animation"

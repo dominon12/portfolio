@@ -4,9 +4,12 @@ import "./LanguagesGrid.scss";
 import LanguageCard from "../Molecules/LanguageCard";
 import { getLanguages } from "../../Services/DataService";
 
-interface Props {}
-
-const LanguagesGrid: React.FC<Props> = (props) => {
+/**
+ * Renders a grid of languages
+ *
+ * @return {*}  {JSX.Element}
+ */
+const LanguagesGrid: React.FC = (): JSX.Element => {
   const languages = getLanguages();
 
   return (

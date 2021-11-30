@@ -1,11 +1,21 @@
 import React, { useContext } from "react";
-import { SideBarContext } from "../../Contexts/SideBarContext";
 
 import "./Burger.scss";
+import { SideBarContext } from "../../Contexts/SideBarContext";
 
-const Burger: React.FC = () => {
+/**
+ * 'Burger' element.
+ *
+ * Toggles sidebar visibility on click.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Burger: React.FC = (): JSX.Element => {
   const { visible, setVisible } = useContext(SideBarContext);
 
+  /**
+   * Toggles sidebar visibility.
+   */
   const toggleVisible = () => setVisible((prev) => !prev);
 
   return (

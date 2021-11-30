@@ -2,19 +2,52 @@ $first-media: 1234px;
 $second-media: 1048px;
 $third-media: 852px;
 $mobile-devices: 425px;
+$fifth-media: 405px;
 
-.about {
+.about-units {
   &__container {
     min-height: calc(100vh - 2rem);
+
+    :not(:first-child) {
+      @media (max-width: $third-media) {
+        margin-bottom: 2rem;
+      }
+    }
 
     @media (max-width: $mobile-devices) {
       min-height: calc(100vh - 2rem - 4.5rem);
     }
 
-    &_right {
+    &_info-block {
       @media (max-width: $third-media) {
         order: -1;
       }
+    }
+  }
+
+  &__jumping-arrow {
+    margin-top: -2rem;
+
+    @media (max-height: 700px) {
+      display: none;
+    }
+  }
+
+  &__github-calendar {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media (max-width: $third-media) {
+      height: 60vh;
+    }
+    @media (max-width: $mobile-devices) {
+      margin-top: -2rem;
+    }
+
+    .github-calendar {
+      margin: 0 -1rem;
     }
   }
 

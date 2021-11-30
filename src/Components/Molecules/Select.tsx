@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Select.scss";
 import FormError from "../Atoms/FormError";
-import { SelectValue, SelectValuesGroup } from "../../Types/Types";
+import { ISelectValue, ISelectValuesGroup } from "../../Types/SystemTypes";
 import { validateField } from "../../Services/FormService";
 import FormLabel from "../Atoms/FormLabel";
 import FormFieldContainer from "../Atoms/FormFieldContainer";
@@ -10,23 +10,40 @@ import FormFieldContainer from "../Atoms/FormFieldContainer";
 interface Props {
   label: string;
   value: string | number;
-  values: SelectValue[] | SelectValuesGroup[];
-  handleChange: React.Dispatch<React.SetStateAction<string>>;
+  values: ISelectValue[] | ISelectValuesGroup[];
+  handleChange: any;
   defaultValue?: string | number;
   required?: boolean;
 }
 
+/**
+ * Select form fields with validation
+ * and possibility to render either normal options
+ * list of options list with option groups
+ *
+ * @return {*}  {JSX.Element}
+ */
 const Select: React.FC<Props> = ({
   label,
   value,
   values,
   required,
   handleChange,
-}) => {
+}): JSX.Element => {
   const [touched, setTouched] = useState(false);
   const [valid, setValid] = useState(true);
   const [errMessage, setErrMessage] = useState<string | null>(null);
 
+  /**
+   * Proxy function for set state action.
+   *
+   * Validates value and sets 'valid' value
+   *
+   * After first invocation, sets 'touched' value to true
+   * in order to indicate that the field was touched
+   *
+   * @param {React.ChangeEvent<HTMLSelectElement>} e - select onChange event
+   */
   const handleSelectValueChangesFlow = (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -54,30 +71,53 @@ const Select: React.FC<Props> = ({
     }
   };
 
-  const isSelectValuesGroup = (object: any): object is SelectValuesGroup =>
-    "groupName" in object;
+  /**
+   * Returns true if passed object is
+   * of ISelectValuesGroup type. In other
+   * cases returns false
+   *
+   * @param {(ISelectValue | ISelectValuesGroup)} object - object to check
+   * @return {*}  {boolean}
+   */
+  const isSelectValuesGroup = (
+    object: ISelectValue | ISelectValuesGroup
+  ): object is ISelectValuesGroup => "groupName" in object;
 
-  const renderSelectOptions = (selectValues: any) => {
+  /**
+   * Renders select options based on the type
+   * of passed 'selectValues' param.
+   *
+   * If it's of ISelectValue type, it will return
+   * a list of 'option' elements.
+   *
+   * If it's of ISelectValuesGroup type, it will return
+   * a list of 'optgroup' elements with 'option' elements
+   * inside.
+   *
+   * @param {(ISelectValue | ISelectValuesGroup)} selectValues
+   * @return {*}  {JSX.Element}
+   */
+  const renderSelectOptions = (selectValues: any): JSX.Element => {
     if (isSelectValuesGroup(selectValues[0])) {
       // SelectValuesGroup
       return selectValues
         .sort(
-          (a: SelectValuesGroup, b: SelectValuesGroup) =>
+          (a: ISelectValuesGroup, b: ISelectValuesGroup) =>
             a.values.length - b.values.length
         )
-        .map((value: SelectValuesGroup) => (
+        .map((value: ISelectValuesGroup) => (
           <optgroup key={value.id} label={value.groupName}>
             {renderSelectOptions(value.values)}
           </optgroup>
         ));
-    } else {
-      // SelectValue
-      return selectValues.map((value: SelectValue) => (
-        <option key={value.id} value={value.value}>
-          {value.displayValue}
-        </option>
-      ));
     }
+
+    // SelectValue
+    return selectValues.map((value: ISelectValue) => (
+      <option key={value.id} value={value.value}>
+        {value.displayValue}
+      </option>
+    ));
   };
 
   return (

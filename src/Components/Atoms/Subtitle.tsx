@@ -6,7 +6,12 @@ interface Props {
   className?: string;
 }
 
-const Subtitle: React.FC<Props> = (props) => {
+/**
+ * Subtitle
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Subtitle: React.FC<Props> = (props): JSX.Element => {
   return (
     <h2 className={`subtitle ${props.className ?? ""}`}>{props.children}</h2>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 
 import FormFieldContainer from "../Atoms/FormFieldContainer";
 import FormLabel from "../Atoms/FormLabel";
@@ -16,11 +16,27 @@ interface Props {
   regexp?: RegExp;
 }
 
-const Input: React.FC<Props> = (props) => {
+/**
+ * Input form field element with validation
+ * and ref forwarding support.
+ *
+ * @return {*}  {JSX.Element}
+ */
+const Input = forwardRef<HTMLInputElement, Props>((props, ref): JSX.Element => {
   const [touched, setTouched] = useState(false);
   const [valid, setValid] = useState(true);
   const [errMessage, setErrMessage] = useState<string | null>(null);
 
+  /**
+   * Proxy function for set state action.
+   *
+   * Validates value and sets 'valid' value
+   *
+   * After first invocation, sets 'touched' value to true
+   * in order to indicate that the field was touched
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} e - field's onChange event
+   */
   const handleInputValueChangesFlow = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -29,7 +45,9 @@ const Input: React.FC<Props> = (props) => {
       setTouched(true);
       instantTouched = true;
     }
+
     props.handleChange && props.handleChange(e.target.value);
+
     props.required &&
       instantTouched &&
       validateField(
@@ -49,6 +67,7 @@ const Input: React.FC<Props> = (props) => {
       )}
 
       <input
+        ref={ref}
         className={`form-field ${
           touched ? (valid ? "valid" : "invalid") : "untouched"
         }`}
@@ -62,6 +81,6 @@ const Input: React.FC<Props> = (props) => {
       {touched && !valid && errMessage && <FormError>{errMessage}</FormError>}
     </FormFieldContainer>
   );
-};
+});
 
 export default Input;
