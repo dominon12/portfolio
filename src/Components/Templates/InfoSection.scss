@@ -12,7 +12,7 @@ $mobile-devices: 425px;
   &.fade-in {
     .info-section__left,
     .info-section__right {
-      transition: var(--transition-on);
+      transition: calc(var(--transition-off) * 3);
       transform: translate(0, 0);
       opacity: 1;
     }

@@ -13,6 +13,7 @@ import HomeRedirect from "./Services/HomeRedirect";
 import ScrollToTop from "./Services/ScrollToTop";
 import ErrorBoundary from "./Services/ErrorBoundary";
 import ShareModal from "./Modals/ShareModal";
+// import UpdateManager from "./Services/UpdateManager";
 // pages
 const About = lazy(() => import("./Pages/About"));
 const Skills = lazy(() => import("./Pages/Skills"));
@@ -28,6 +29,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
+      {/* <UpdateManager /> */}
 
       <main className="main">
         <Header />

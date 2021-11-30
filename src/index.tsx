@@ -7,7 +7,7 @@ import SideBarProvider from "./Contexts/SideBarContext";
 import ThemeProvider from "./Contexts/ThemeContext";
 import SnackBarProvider from "./Contexts/SnackBarContext";
 import ShareModalProvider from "./Contexts/ShareModalContext";
-import * as serviceWorker from "./serviceWorker";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,4 +24,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-serviceWorker.register();
+serviceWorkerRegistration.register();
