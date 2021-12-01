@@ -61,7 +61,11 @@ const SkillsTable: React.FC<Props> = (props): JSX.Element => {
                 {progressLevelNames.map((_, index) => (
                   <td key={index} className="skills-table__skill-level-cell">
                     {skill.level > index && (
-                      <div className="skills-table__filled-cell">
+                      <div
+                        className={`skills-table__filled-cell level-${
+                          index + 1
+                        }`}
+                      >
                         <AiOutlineFileDone className="skills-table__filled-cell_icon" />
                       </div>
                     )}

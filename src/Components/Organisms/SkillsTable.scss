@@ -137,10 +137,42 @@ $second-media: 534px;
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    transform: scale(0);
+    animation: appear 300ms linear 0s 1 normal forwards;
+
+    &.level-2 {
+      animation-delay: 300ms;
+    }
+    &.level-3 {
+      animation-delay: calc(300ms * 2);
+    }
+    &.level-4 {
+      animation-delay: calc(300ms * 3);
+    }
+    &.level-5 {
+      animation-delay: calc(300ms * 4);
+    }
 
     @media (max-width: $first-media) {
-      padding: 0.5rem;
+      transform: scale(1);
+      animation: grow-right 300ms linear 0s 1 normal forwards,
+        padding-on 0s steps(1) 0s 1 normal forwards;
+      padding: 0;
       background-color: var(--color-details);
+      box-sizing: border-box;
+
+      &.level-2 {
+        animation-delay: 300ms;
+      }
+      &.level-3 {
+        animation-delay: calc(300ms * 2);
+      }
+      &.level-4 {
+        animation-delay: calc(300ms * 3);
+      }
+      &.level-5 {
+        animation-delay: calc(300ms * 4);
+      }
     }
 
     &_icon {
@@ -150,5 +182,33 @@ $second-media: 534px;
         display: none;
       }
     }
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes grow-right {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
+
+@keyframes padding-on {
+  0% {
+    padding: 0;
+  }
+  100% {
+    padding: 0.5rem;
   }
 }
