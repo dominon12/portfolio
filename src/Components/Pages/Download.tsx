@@ -40,6 +40,7 @@ const Download: React.FC = (): JSX.Element => {
             <PDFDownloadLink
               document={<StaticCV />}
               fileName={"MaksimSobolevCV"}
+              className="download__link"
             >
               <Button type="primary" onClick={() => {}}>
                 Download
