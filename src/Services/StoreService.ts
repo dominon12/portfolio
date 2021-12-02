@@ -561,13 +561,13 @@ const portfolioData: IPortfolio = {
         },
         {
           id: 3,
-          name: "HTML",
+          name: "HTML5",
           level: 5,
           isRelevant: true,
         },
         {
           id: 4,
-          name: "CSS",
+          name: "CSS3",
           level: 5,
           isRelevant: true,
         },
@@ -838,7 +838,7 @@ const portfolioData: IPortfolio = {
       code: "es",
       level: "Fluent",
       learningStory:
-        'I started learning Spanish using a mobile app "Duolingo" and continued in school of spanish language in Valencia "Hispania". After about 1 year of studying I\'ve passed DELE B2 exam. After finishing the my course, school gave a C1 certificate. Nowadays I live in Spain and use Spanish every day.',
+        'I started learning Spanish using a mobile app "Duolingo" and continued in school of spanish language in Valencia "Hispania". After about 1 year of studying I\'ve passed DELE B2 exam. After finishing my course, school gave me a C1 certificate. Nowadays I live in Spain and use Spanish every day.',
     },
   ],
   contactMethods: [

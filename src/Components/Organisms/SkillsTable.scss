@@ -122,8 +122,8 @@ $second-media: 534px;
       padding-left: 1rem;
 
       @media (max-width: $first-media) {
-        padding-left: 0;
-        padding-right: 1rem;
+        padding-left: 1px;
+        padding-right: 0.5rem;
       }
     }
 
