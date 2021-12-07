@@ -48,10 +48,10 @@ const ProjectsNav: React.FC = (): JSX.Element => {
   };
 
   /**
-   * Invokes 'applyDefaultSorting' function 
-   * after component did mount in order to 
+   * Invokes 'applyDefaultSorting' function
+   * after component did mount in order to
    * sort projects by 'dateStarted' attribute.
-   * 
+   *
    * The idea of this action is to show to a user
    * a list of projects sorted from new to old
    */
