@@ -6,7 +6,6 @@ import "./App.scss";
 import SideBar from "./Organisms/SideBar";
 import Header from "./Organisms/Header";
 import Footer from "./Organisms/Footer";
-import SnackBar from "./Organisms/SnackBar";
 import Loading from "./Molecules/Loading";
 // services
 import HomeRedirect from "./Services/HomeRedirect";
@@ -55,9 +54,6 @@ const App: React.FC = () => {
 
           <Footer />
         </div>
-
-        <ShareModal />
-        <SnackBar anchorOrigin={{ horizontal: "right", vertical: "bottom" }} />
       </main>
     </Router>
   );
