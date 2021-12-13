@@ -3,7 +3,7 @@
  * which IProject[]
  */
 
-import { IProject} from "../Types/PortfolioDataTypes";
+import { IProject } from "../Types/PortfolioDataTypes";
 import { ISelectValue, ISelectValuesGroup } from "../Types/SystemTypes";
 import { filterByKey, pageKey } from "./GetParamKeys";
 import { getRandomId, updateUrlWithGetParams } from "./HelperService";
@@ -140,8 +140,8 @@ export function sortProjects(projects: IProject[], sortBy: string): IProject[] {
     const isDesc = sortBy.startsWith("-");
 
     if (isDesc) sortBy = sortBy.slice(1, sortBy.length);
-
-    projects = projects.sort((a: any, b: any) =>
+    const projectsCopy = [...projects];
+    projects = projectsCopy.sort((a: any, b: any) =>
       isDesc ? b[sortBy] - a[sortBy] : a[sortBy] - b[sortBy]
     );
 
