@@ -1,4 +1,6 @@
 import React, { createContext, useReducer } from "react";
+
+import SnackBar from "../Components/Organisms/SnackBar";
 import { getRandomId } from "../Services/HelperService";
 
 /**
@@ -179,6 +181,8 @@ const SnackBarProvider: React.FC<Props> = (props) => {
       }}
     >
       {props.children}
+
+      <SnackBar anchorOrigin={{ horizontal: "right", vertical: "bottom" }} />
     </SnackBarContext.Provider>
   );
 };
