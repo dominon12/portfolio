@@ -13,6 +13,7 @@ class Paginator<T> {
    * @memberof Paginator
    */
   private arr: T[][];
+  private pageSize: number;
 
   /**
    * Creates an instance of Paginator
@@ -23,6 +24,7 @@ class Paginator<T> {
    * @memberof Paginator
    */
   constructor(arr: T[], size: number) {
+    this.pageSize = size;
     this.arr = this.chunkify(arr, size);
   }
 
@@ -37,6 +39,29 @@ class Paginator<T> {
     const pageIndex = pageNum - 1;
     const requestedPage = this.arr[pageIndex];
     return requestedPage;
+  }
+
+  /**
+   * Get accessor for
+   * the first page.
+   *
+   * @readonly
+   * @memberof Paginator
+   */
+  public get firstPage() {
+    return this.getPage(1);
+  }
+
+  /**
+   * Get accessor for
+   * the last page.
+   *
+   * @readonly
+   * @memberof Paginator
+   */
+  public get lastPage() {
+    const lastPageIndex = this.arr.length;
+    return this.getPage(lastPageIndex);
   }
 
   /**
