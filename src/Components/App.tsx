@@ -1,7 +1,10 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
 
 import "./App.scss";
+// history
+import { history } from "../Redux/Store";
 // components
 import SideBar from "./Organisms/SideBar";
 import Header from "./Organisms/Header";
@@ -25,7 +28,7 @@ const NotFound = lazy(() => import("./Pages/NotFound"));
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <ConnectedRouter history={history}>
       <ScrollToTop />
       <PWAManager />
 
@@ -54,7 +57,7 @@ const App: React.FC = () => {
           <Footer />
         </div>
       </main>
-    </Router>
+    </ConnectedRouter>
   );
 };
 
