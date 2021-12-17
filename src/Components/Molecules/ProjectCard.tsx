@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useHistory, useLocation } from "react-router";
 import { FiShare2 } from "react-icons/fi";
 import { ImCross } from "react-icons/im";
+import FocusTrap from "focus-trap-react";
 
 import "./ProjectCard.scss";
 import BrickLink from "../Atoms/BrickLink";
@@ -9,10 +10,7 @@ import { IProjectTechnologies } from "../../Types/PortfolioDataTypes";
 import { IImage } from "../../Types/SystemTypes";
 import useGetParams from "../../Hooks/useGetParams";
 import { projectIdKey } from "../../Services/GetParamKeys";
-import {
-  setMainContainerScroll,
-  updateUrlWithGetParams,
-} from "../../Services/HelperService";
+import { updateUrlWithGetParams } from "../../Services/HelperService";
 import { ShareModalContext } from "../../Contexts/ShareModalContext";
 
 interface Props {
@@ -59,10 +57,8 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
   const setExpanded = (nextExpanded: boolean) => {
     if (nextExpanded && !expanded) {
       getParams.set(projectIdKey, props.id.toString());
-      setMainContainerScroll("hidden");
     } else if (!nextExpanded && expanded) {
       getParams.delete(projectIdKey);
-      setMainContainerScroll("auto");
     }
     updateUrlWithGetParams(history, pathname, getParams);
   };
@@ -71,6 +67,8 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
     // small card
     return (
       <article
+        tabIndex={0}
+        aria-label={props.title}
         className="project-card hover-animation"
         onClick={() => setExpanded(true)}
       >
@@ -109,10 +107,14 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
           {props.dateStarted.toDateString()}
         </span>
         <FiShare2
+          tabIndex={0}
+          aria-label="Share project"
           className="project-card-expanded__header_icon hover-highlight"
           onClick={() => setVisible(true)}
         />
         <ImCross
+          tabIndex={0}
+          aria-label="Close project"
           className="project-card-expanded__header_icon hover-highlight"
           onClick={() => setExpanded(false)}
         />
@@ -215,16 +217,18 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
   return (
     // expanded card
     <article className="project-card-expanded">
-      <div className="project-card-expanded__content">
-        <div className="project-card-expanded__img-container">
-          <img className="project-card-expanded__img" {...props.image} />
+      <FocusTrap>
+        <div className="project-card-expanded__content">
+          <div className="project-card-expanded__img-container">
+            <img className="project-card-expanded__img" {...props.image} />
+          </div>
+          <div className="project-card-expanded__text-content">
+            {renderProjectHeader()}
+            {renderExpandedDescription()}
+            {renderLinks()}
+          </div>
         </div>
-        <div className="project-card-expanded__text-content">
-          {renderProjectHeader()}
-          {renderExpandedDescription()}
-          {renderLinks()}
-        </div>
-      </div>
+      </FocusTrap>
     </article>
   );
 };

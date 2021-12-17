@@ -51,6 +51,7 @@ const SkillsTable: React.FC<Props> = (props): JSX.Element => {
               <tr key={skill.id}>
                 <td>
                   <div
+                    tabIndex={0}
                     className={`skills-table__skill-name ${
                       skill.isRelevant ? "relevant" : "irrelevant"
                     }`}

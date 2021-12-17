@@ -6,6 +6,7 @@ import FormError from "../Atoms/FormError";
 import { validateField } from "../../Services/FormService";
 
 interface Props {
+  id: string;
   value: string;
   placeholder?: string;
   label?: string;
@@ -63,11 +64,14 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref): JSX.Element => {
   return (
     <FormFieldContainer>
       {props.label && (
-        <FormLabel required={props.required}>{props.label}</FormLabel>
+        <FormLabel formFieldId={props.id} required={props.required}>
+          {props.label}
+        </FormLabel>
       )}
 
       <input
         ref={ref}
+        id={props.id}
         className={`form-field ${
           touched ? (valid ? "valid" : "invalid") : "untouched"
         }`}

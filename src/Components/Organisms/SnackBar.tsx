@@ -31,6 +31,7 @@ const SnackBar: React.FC<Props> = ({ anchorOrigin }): JSX.Element => {
 
   return (
     <div
+      role="alert"
       className={`snackbar ${anchorOrigin?.horizontal ?? "right"} ${
         anchorOrigin?.vertical ?? "bottom"
       }`}

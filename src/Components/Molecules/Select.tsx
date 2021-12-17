@@ -8,6 +8,7 @@ import FormLabel from "../Atoms/FormLabel";
 import FormFieldContainer from "../Atoms/FormFieldContainer";
 
 interface Props {
+  id: string;
   label: string;
   value: string | number;
   values: ISelectValue[] | ISelectValuesGroup[];
@@ -24,6 +25,7 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const Select: React.FC<Props> = ({
+  id,
   label,
   value,
   values,
@@ -122,9 +124,14 @@ const Select: React.FC<Props> = ({
 
   return (
     <FormFieldContainer>
-      {label && <FormLabel required={required}>{label}</FormLabel>}
+      {label && (
+        <FormLabel formFieldId={id} required={required}>
+          {label}
+        </FormLabel>
+      )}
 
       <select
+        id={id}
         value={value}
         onChange={handleSelectValueChangesFlow}
         className={`form-field select ${

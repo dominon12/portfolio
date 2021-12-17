@@ -22,12 +22,16 @@ interface Props {
 const DonationMethod: React.FC<Props> = (props): JSX.Element => {
   return (
     <article
+      tabIndex={0}
+      title={`Donate in ${props.name}`}
       className="donation-method hover-animation"
       style={{ backgroundImage: `url('${props.image.src}')` }}
     >
       <div className="donation-method__content">
         <Subtitle className="donation-method__name">{props.name}</Subtitle>
-        <p className="donation-method__comment">{props.comment}</p>
+        <p tabIndex={0} className="donation-method__comment">
+          {props.comment}
+        </p>
         <div className="donation-method__link-container">
           {props.isLink ? (
             <a

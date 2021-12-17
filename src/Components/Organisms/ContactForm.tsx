@@ -13,7 +13,7 @@ import {
 
 /**
  * Interactive contact form which shows loading
- * animation and sends snackbar message feedback 
+ * animation and sends snackbar message feedback
  * after form submission.
  *
  * @return {*} {JSX.Element}
@@ -97,6 +97,7 @@ const ContactForm: React.FC = (): JSX.Element => {
     <div className="contact-form">
       <form className="contact-form__form">
         <Input
+          id="contact-form-name"
           value={name}
           handleChange={setName}
           label="Your name"
@@ -106,15 +107,18 @@ const ContactForm: React.FC = (): JSX.Element => {
           required
         />
         <Input
+          id="contact-form-email"
           value={email}
           handleChange={setEmail}
           label="Email"
           placeholder="Email"
           regexp={emailRegexp}
           disabled={isLoading}
+          type="email"
           required
         />
         <Textarea
+          id="contact-form-comment"
           value={comment}
           handleChange={setComment}
           label="Comment"

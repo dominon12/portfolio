@@ -68,19 +68,3 @@ export function updateUrlWithGetParams(
   history.push(`${pathname}?${getParams.toString()}`);
 }
 
-/**
- * Disables or enables possibility of scrolling
- * of the current main container.
- *
- * @export
- * @param {("hidden" | "auto")} value - desired behaviour
- */
-export function setMainContainerScroll(value: "hidden" | "auto") {
-  let container = isMobile()
-    ? document.body
-    : document.getElementById("scrollContainer");
-
-  if (container) {
-    container.style.overflowY = value;
-  }
-}

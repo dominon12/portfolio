@@ -32,9 +32,12 @@ const RuntimeError = (): JSX.Element => {
 
     setTimeout(() => {
       if (success) {
-        sendMessage("Thank you for feedback! Thanks to you I will fix this error faster!", {
-          color: SnackBarMessageColor.SUCCESS,
-        });
+        sendMessage(
+          "Thank you for feedback! Thanks to you I will fix this error faster!",
+          {
+            color: SnackBarMessageColor.SUCCESS,
+          }
+        );
       } else {
         sendMessage(
           "Something went wrong :( Please try again later or contact me via the Contact page",
@@ -63,6 +66,7 @@ const RuntimeError = (): JSX.Element => {
       seoDescription="This app has crashed"
     >
       <Textarea
+        id="error-comment"
         value={comment}
         placeholder="What happened?"
         label="Feedback"
