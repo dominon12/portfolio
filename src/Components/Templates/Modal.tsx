@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { IoMdClose } from "react-icons/io";
+import FocusTrap from "focus-trap-react";
 
 import "./Modal.scss";
 
@@ -54,18 +55,21 @@ const Modal: React.FC<Props> = ({
   }, [modalRef]);
 
   return visible ? (
-    <div className="modal">
+    <div role="dialog" aria-modal="true" className="modal">
       <div ref={modalRef} className="modal__content">
-        <div className="modal__content_inner">
-          {!quitImpossible && (
-            <IoMdClose
-              className="modal__close hover-highlight"
-              onClick={() => setVisible(false)}
-            />
-          )}
-
-          {children}
-        </div>
+        <FocusTrap>
+          <div className="modal__content_inner">
+            {!quitImpossible && (
+              <IoMdClose
+                tabIndex={0}
+                aria-label="Close"
+                className="modal__close hover-highlight"
+                onClick={() => setVisible(false)}
+              />
+            )}
+            {children}
+          </div>
+        </FocusTrap>
       </div>
     </div>
   ) : (

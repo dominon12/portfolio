@@ -126,6 +126,8 @@ const SideBar: React.FC = (): JSX.Element => {
   return (
     <aside
       ref={asideRef}
+      role="tablist"
+      aria-hidden={!visible}
       className={`aside ${visible ? "active" : "inactive"}`}
     >
       <div className="aside__content">

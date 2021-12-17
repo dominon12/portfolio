@@ -62,6 +62,7 @@ const ProjectsNav: React.FC = (): JSX.Element => {
   return (
     <nav className="projects-nav">
       <Select
+        id="filter-projects-select"
         label="Filter"
         value={getParams.get(filterByKey) ?? ""}
         values={filterValues}
@@ -77,6 +78,7 @@ const ProjectsNav: React.FC = (): JSX.Element => {
       />
       <Title className="projects-nav__title">Projects</Title>
       <Select
+        id="sort-projects-select"
         label="Sort"
         value={getParams.get(sortByKey) ?? ""}
         values={sortValues}

@@ -60,6 +60,7 @@ $mobile-devices: 425px;
 }
 
 .project-card-expanded {
+  overscroll-behavior-y: contain;
   position: fixed;
   z-index: 200;
   top: 0;

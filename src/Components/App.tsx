@@ -11,7 +11,6 @@ import Loading from "./Molecules/Loading";
 import HomeRedirect from "./Services/HomeRedirect";
 import ScrollToTop from "./Services/ScrollToTop";
 import ErrorBoundary from "./Services/ErrorBoundary";
-import ShareModal from "./Modals/ShareModal";
 import PWAManager from "./Services/PWAManager";
 // pages
 const About = lazy(() => import("./Pages/About"));
@@ -34,7 +33,7 @@ const App: React.FC = () => {
         <Header />
         <SideBar />
 
-        <div className="content-wrapper" id="scrollContainer">
+        <div role="main" className="content-wrapper" id="scrollContainer">
           <Suspense fallback={<Loading />}>
             <ErrorBoundary>
               <Switch>
