@@ -11,18 +11,16 @@ import ShareModalProvider from "./Contexts/ShareModalContext";
 import store from "./Redux/Store";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <SnackBarProvider defaultDelay={3500}>
-        <SideBarProvider>
-          <ShareModalProvider>
-            <ThemeProvider>
-              <App />
-            </ThemeProvider>
-          </ShareModalProvider>
-        </SideBarProvider>
-      </SnackBarProvider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <SnackBarProvider defaultDelay={3500}>
+      <SideBarProvider>
+        <ShareModalProvider>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </ShareModalProvider>
+      </SideBarProvider>
+    </SnackBarProvider>
+  </Provider>,
   document.getElementById("root")
 );

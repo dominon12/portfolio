@@ -1,24 +1,9 @@
-import { call, all } from "redux-saga/effects";
+import { all, AllEffect, ForkEffect, spawn } from "redux-saga/effects";
 
-import loadBasicData from "./About/Sagas";
+import aboutSagaWatcher from "./About/Sagas";
 
-function* rootSaga() {
-  //   const sagas = [loadBasicData];
-
-  //   const retrySagas = yield sagas.map((saga) =>
-  //     spawn(function* () {
-  //       while (true) {
-  //         try {
-  //           yield call(saga);
-  //           break;
-  //         } catch (err) {
-  //           console.error(err);
-  //         }
-  //       }
-  //     })
-  //   );
-
-  yield all([call(loadBasicData)]);
+function* rootSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
+  yield all([spawn(aboutSagaWatcher)]);
 }
 
 export default rootSaga;

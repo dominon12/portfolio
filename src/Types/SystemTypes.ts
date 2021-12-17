@@ -55,6 +55,7 @@ export interface IButton {
   type: ButtonType;
   link: string;
 }
+// TODO remove ButtonType
 
 /**
  * Image representation

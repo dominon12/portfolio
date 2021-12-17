@@ -3,17 +3,17 @@ import { useHistory } from "react-router";
 
 import "./AboutUnits.scss";
 import { SideBarContext } from "../../Contexts/SideBarContext";
-import { IAboutUnit } from "../../Types/PortfolioDataTypes";
 import Button from "../Atoms/Button";
 import JumpingArrow from "../Atoms/JumpingArrow";
 import Title from "../Atoms/Title";
 import InfoSection from "../Templates/InfoSection";
 import GithubCalendar from "../Molecules/GithubCalendar";
+import { AboutUnit } from "../../Types/ApiTypes";
 
 const MOBILE_BEGINS_AFTER = 425;
 
 interface Props {
-  aboutUnits: IAboutUnit[];
+  aboutUnits: AboutUnit[];
 }
 
 /**
@@ -49,16 +49,16 @@ const AboutUnits: React.FC<Props> = ({ aboutUnits }): JSX.Element => {
    * @param {number} index index of the about unit
    * @return {*} JSX.Element
    */
-  const renderAboutUnit = (aboutUnit: IAboutUnit, index: number) => {
+  const renderAboutUnit = (aboutUnit: AboutUnit, index: number) => {
     const infoBlock = (
       <>
         <Title className="about-units__title">{aboutUnit.title}</Title>
         <p className="about-units__description">{aboutUnit.description}</p>
         {aboutUnit.button && (
           <Button
-            type={aboutUnit.button.type}
+            type="primary"
             onClick={() =>
-              aboutUnit.button?.link === "specialCase"
+              aboutUnit.button.link === "specialCase"
                 ? handleBegin()
                 : history.push(aboutUnit.button?.link ?? "/")
             }
@@ -85,7 +85,7 @@ const AboutUnits: React.FC<Props> = ({ aboutUnits }): JSX.Element => {
     const isFirstElement = index === 0;
 
     return (
-      <React.Fragment key={aboutUnit.id}>
+      <React.Fragment key={aboutUnit.pk}>
         <InfoSection
           containerClassName="about-units__container"
           left={left}

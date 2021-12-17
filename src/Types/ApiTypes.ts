@@ -1,4 +1,4 @@
-import { IImage } from "./SystemTypes";
+import { IButton, IImage } from "./SystemTypes";
 
 export interface Profile {
   firstName: string;
@@ -7,9 +7,13 @@ export interface Profile {
   nickname: string;
   cvDescription: string;
   photo: IImage;
+  aboutUnits: AboutUnit[];
 }
 
-export interface ApiResponse<T> {
-  status: number;
-  data: T;
+export interface AboutUnit {
+  pk: number;
+  title: string;
+  description: string;
+  image: IImage;
+  button: IButton;
 }

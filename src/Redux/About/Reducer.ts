@@ -1,21 +1,21 @@
-import { Profile } from './../../Types/ApiTypes';
-import { AnyAction } from "redux";
+import { InitialState } from "../Types";
+import { AboutUnit } from "./../../Types/ApiTypes";
+import { AboutAction, AboutActionTypes } from "./Types";
 
-import * as types from "./Types";
-
-const INITIAL_STATE: {
-    profile: Profile | null,
-    aboutUnits: any[]
-} = {
-  profile: null,
-  aboutUnits: [],
+const INITIAL_STATE: InitialState<AboutUnit[]> = {
+  data: null,
+  pending: false,
+  error: null,
 };
 
-// TODO change AnyAction to normal type definition
-function aboutReducer(state = INITIAL_STATE, action: AnyAction) {
+function aboutReducer(state = INITIAL_STATE, action: AboutAction) {
   switch (action.type) {
-    case types.ADD_PROFILE_DATA:
-      return { ...state, profile: action.payload };
+    case AboutActionTypes.ABOUT_FETCHING:
+      return { ...state, pending: true };
+    case AboutActionTypes.ABOUT_SUCCESS:
+      return { pending: false, error: null, data: action.payload };
+    case AboutActionTypes.ABOUT_FAILURE:
+      return { pending: false, error: action.payload, data: null };
     default:
       return state;
   }
