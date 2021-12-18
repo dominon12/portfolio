@@ -77,3 +77,9 @@ export interface DonationMethod {
   link: string;
   isLink?: boolean;
 }
+
+export interface ContactMethod {
+  pk: number;
+  name: string;
+  link: string;
+}

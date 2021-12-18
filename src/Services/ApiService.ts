@@ -7,6 +7,7 @@ export const URLS = {
   career: baseURL + "career/",
   languages: baseURL + "languages/",
   donations: baseURL + "donations/",
+  contact: baseURL + "contact/",
 };
 
 export async function performGET<T>(url: string, search?: string): Promise<T> {
