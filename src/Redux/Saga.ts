@@ -10,6 +10,7 @@ import {
 } from "redux-saga/effects";
 
 import aboutSagaWatcher from "./About/Sagas";
+import loadCareerEvents from "./Career/Sagas";
 import projectsSagaWatcher from "./Projects/Sagas";
 import loadTechnologies from "./Technologies/Sagas";
 
@@ -21,10 +22,13 @@ function* routerWatcher(): Generator<TakeEffect | ForkEffect, void, undefined> {
     switch (location.pathname) {
       case "/projects":
         yield fork(projectsSagaWatcher, location);
-        yield fork(loadTechnologies)
+        yield fork(loadTechnologies);
         break;
       case "/skills":
-        yield fork(loadTechnologies)
+        yield fork(loadTechnologies);
+        break;
+      case "/experience":
+        yield fork(loadCareerEvents);
         break;
     }
   }

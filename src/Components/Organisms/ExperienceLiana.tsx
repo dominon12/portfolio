@@ -1,8 +1,12 @@
 import React from "react";
 
 import "./ExperienceLiana.scss";
-import { getExperience } from "../../Services/DataService";
 import CareerEvent from "../Molecules/CareerEvent";
+import { CareerEvent as ICareerEvent } from "../../Types/ApiTypes";
+
+interface Props {
+  careerEvents: ICareerEvent[];
+}
 
 /**
  * Renders some sort of a liana with
@@ -11,23 +15,19 @@ import CareerEvent from "../Molecules/CareerEvent";
  *
  * @return {*}  {JSX.Element}
  */
-const ExperienceLiana: React.FC = (): JSX.Element => {
-  const careerEvents = getExperience();
-
+const ExperienceLiana: React.FC<Props> = (props): JSX.Element => {
   return (
     <div className="experience-liana">
-      {careerEvents
-        .sort((a, b) => b.date.getTime() - a.date.getTime())
-        .map((careerEvent) => (
-          <CareerEvent
-            key={careerEvent.id}
-            title={careerEvent.title}
-            description={careerEvent.description}
-            place={careerEvent.place}
-            date={careerEvent.date}
-            isRelevant={careerEvent.isRelevant}
-          />
-        ))}
+      {props.careerEvents.map((careerEvent) => (
+        <CareerEvent
+          key={careerEvent.pk}
+          title={careerEvent.title}
+          description={careerEvent.description}
+          place={careerEvent.place}
+          date={new Date(careerEvent.date)}
+          isRelevant={careerEvent.isRelevant}
+        />
+      ))}
     </div>
   );
 };

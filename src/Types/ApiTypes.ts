@@ -51,3 +51,12 @@ export interface TechGroup {
   name: string;
   skills: Technology[];
 }
+
+export interface CareerEvent {
+  pk: number;
+  title: string;
+  description: string;
+  date: string;
+  place: string;
+  isRelevant: boolean;
+}

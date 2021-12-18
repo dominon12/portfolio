@@ -4,6 +4,7 @@ import { connectRouter } from "connected-react-router";
 import aboutReducer from "./About/Reducer";
 import projectsReducer from "./Projects/Reducer";
 import technologiesReducer from "./Technologies/Reducer";
+import careerReducer from './Career/Reducer'
 
 const createRootReducer = (history: any) =>
   combineReducers({
@@ -11,6 +12,7 @@ const createRootReducer = (history: any) =>
     about: aboutReducer,
     projects: projectsReducer,
     technologies: technologiesReducer,
+    career: careerReducer
   });
 
 export default createRootReducer;

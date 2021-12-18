@@ -4,6 +4,7 @@ export const URLS = {
   about: baseURL + "about/",
   projects: baseURL + "projects/",
   technologies: baseURL + "skills/",
+  career: baseURL + "career/"
 };
 
 export async function performGET<T>(url: string, search?: string): Promise<T> {
