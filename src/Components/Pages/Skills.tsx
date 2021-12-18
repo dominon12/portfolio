@@ -5,6 +5,10 @@ import "./Skills.scss";
 import Title from "../Atoms/Title";
 import SkillsTable from "../Organisms/SkillsTable";
 import { getAbout, getSkills } from "../../Services/DataService";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/Types";
+import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
+import { TechGroup } from "../../Types/ApiTypes";
 
 /**
  * Page with a several tables showing
@@ -13,27 +17,32 @@ import { getAbout, getSkills } from "../../Services/DataService";
  * @return {*}  {JSX.Element}
  */
 const Skills: React.FC = (): JSX.Element => {
-  const { nickname } = getAbout();
-  const skills = getSkills();
-
-  /**
-   * Converts list of skills to SkillsTable[]
-   * @returns SkillsTable[]
-   */
-  const renderSkills = () =>
-    skills.map((skillsGroup) => (
-      <SkillsTable key={skillsGroup.id} skillsGroup={skillsGroup} />
-    ));
+  const profile = useSelector((state: RootState) => state.about.data);
+  const {
+    data: skills,
+    pending,
+    error,
+  } = useSelector((state: RootState) => state.technologies);
 
   return (
     <>
       <Helmet>
-        <title>Skills | {nickname}</title>
+        <title>Skills | {profile?.nickname ?? ""}</title>
         <meta name="description" content="A table with my skills" />
       </Helmet>
       <div className="skills">
         <Title className="skills__title">My skills</Title>
-        <div className="skills__wrapper">{renderSkills()}</div>
+        <ApiResponseTemplate
+          render={() => (
+            <div className="skills__wrapper">
+              {(skills as TechGroup[]).map((skill) => (
+                <SkillsTable key={skill.pk} skillsGroup={skill} />
+              ))}
+            </div>
+          )}
+          pending={pending}
+          error={error}
+        />
       </div>
     </>
   );
