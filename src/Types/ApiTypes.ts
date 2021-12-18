@@ -60,3 +60,11 @@ export interface CareerEvent {
   place: string;
   isRelevant: boolean;
 }
+
+export interface Language {
+  pk: number;
+  name: string;
+  code: string;
+  level: string;
+  learningHistory: string;
+}

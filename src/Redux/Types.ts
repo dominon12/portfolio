@@ -1,5 +1,6 @@
 import {
   CareerEvent,
+  Language,
   PaginatedProjects,
   Profile,
   TechGroup,
@@ -16,4 +17,5 @@ export interface RootState {
   projects: InitialState<PaginatedProjects>;
   technologies: InitialState<TechGroup[]>;
   career: InitialState<CareerEvent[]>;
+  languages: InitialState<Language[]>;
 }

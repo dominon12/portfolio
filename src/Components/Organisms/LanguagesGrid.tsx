@@ -2,25 +2,27 @@ import React from "react";
 
 import "./LanguagesGrid.scss";
 import LanguageCard from "../Molecules/LanguageCard";
-import { getLanguages } from "../../Services/DataService";
+import { Language } from "../../Types/ApiTypes";
+
+interface Props {
+  languages: Language[];
+}
 
 /**
  * Renders a grid of languages
  *
  * @return {*}  {JSX.Element}
  */
-const LanguagesGrid: React.FC = (): JSX.Element => {
-  const languages = getLanguages();
-
+const LanguagesGrid: React.FC<Props> = (props): JSX.Element => {
   return (
     <div className="languages-grid">
-      {languages.map((lang) => (
+      {props.languages.map((lang) => (
         <LanguageCard
-          key={lang.id}
+          key={lang.pk}
           name={lang.name}
           code={lang.code}
           level={lang.level}
-          learningStory={lang.learningStory}
+          learningHistory={lang.learningHistory}
         />
       ))}
     </div>
