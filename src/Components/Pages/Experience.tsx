@@ -5,9 +5,10 @@ import { useSelector } from "react-redux";
 import "./Experience.scss";
 import ExperienceLiana from "../Organisms/ExperienceLiana";
 import Title from "../Atoms/Title";
-import { RootState } from "../../Redux/Types";
 import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
 import { CareerEvent } from "../../Types/ApiTypes";
+import { selectProfile } from "../../Redux/About/Selectors";
+import { selectCareerEvents } from "../../Redux/Career/Selectors";
 
 /**
  * Renders a page with career events
@@ -16,17 +17,13 @@ import { CareerEvent } from "../../Types/ApiTypes";
  * @return {*}  {JSX.Element}
  */
 const Experience: React.FC = (): JSX.Element => {
-  const profile = useSelector((state: RootState) => state.about.data);
-  const {
-    data: careerEvents,
-    pending,
-    error,
-  } = useSelector((state: RootState) => state.career);
+  const profile = useSelector(selectProfile);
+  const careerEvents = useSelector(selectCareerEvents);
 
   return (
     <>
       <Helmet>
-        <title>Experience | {profile?.nickname ?? ""}</title>
+        <title>Experience | {profile.data?.nickname ?? ""}</title>
         <meta
           name="description"
           content="Take a look at events in my professional life. Beautiful liana - tree will help you with that!"
@@ -36,10 +33,12 @@ const Experience: React.FC = (): JSX.Element => {
         <Title className="experience__title">Experience</Title>
         <ApiResponseTemplate
           render={() => (
-            <ExperienceLiana careerEvents={careerEvents as CareerEvent[]} />
+            <ExperienceLiana
+              careerEvents={careerEvents.data as CareerEvent[]}
+            />
           )}
-          pending={pending}
-          error={error}
+          pending={careerEvents.pending}
+          error={careerEvents.error}
         />
       </div>
     </>

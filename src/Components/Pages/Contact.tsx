@@ -9,7 +9,7 @@ import Title from "../Atoms/Title";
 import ContactForm from "../Organisms/ContactForm";
 import LinksColumn from "../Molecules/LinksColumn";
 import Divider from "../Atoms/Divider";
-import { RootState } from "../../Redux/Types";
+import { selectProfile } from "../../Redux/About/Selectors";
 
 /**
  * Contact page with a contact form
@@ -18,12 +18,12 @@ import { RootState } from "../../Redux/Types";
  * @return {*}  {JSX.Element}
  */
 const Contact: React.FC = (): JSX.Element => {
-  const profile = useSelector((state: RootState) => state.about.data);
+  const profile = useSelector(selectProfile);
 
   return (
     <>
       <Helmet>
-        <title>Contact | {profile?.nickname ?? ""}</title>
+        <title>Contact | {profile.data?.nickname ?? ""}</title>
         <meta
           name="description"
           content="Contact me by filling the form or by clicking one of the contact links below the contact form."

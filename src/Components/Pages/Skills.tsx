@@ -5,9 +5,10 @@ import { useSelector } from "react-redux";
 import "./Skills.scss";
 import Title from "../Atoms/Title";
 import SkillsTable from "../Organisms/SkillsTable";
-import { RootState } from "../../Redux/Types";
 import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
 import { TechGroup } from "../../Types/ApiTypes";
+import { selectTechnologies } from "../../Redux/Technologies/Selectors";
+import { selectProfile } from "../../Redux/About/Selectors";
 
 /**
  * Page with a several tables showing
@@ -16,17 +17,13 @@ import { TechGroup } from "../../Types/ApiTypes";
  * @return {*}  {JSX.Element}
  */
 const Skills: React.FC = (): JSX.Element => {
-  const profile = useSelector((state: RootState) => state.about.data);
-  const {
-    data: skills,
-    pending,
-    error,
-  } = useSelector((state: RootState) => state.technologies);
+  const profile = useSelector(selectProfile);
+  const technologies = useSelector(selectTechnologies);
 
   return (
     <>
       <Helmet>
-        <title>Skills | {profile?.nickname ?? ""}</title>
+        <title>Skills | {profile.data?.nickname ?? ""}</title>
         <meta name="description" content="A table with my skills" />
       </Helmet>
       <div className="skills">
@@ -34,13 +31,13 @@ const Skills: React.FC = (): JSX.Element => {
         <ApiResponseTemplate
           render={() => (
             <div className="skills__wrapper">
-              {(skills as TechGroup[]).map((skill) => (
+              {(technologies.data as TechGroup[]).map((skill) => (
                 <SkillsTable key={skill.pk} skillsGroup={skill} />
               ))}
             </div>
           )}
-          pending={pending}
-          error={error}
+          pending={technologies.pending}
+          error={technologies.error}
         />
       </div>
     </>

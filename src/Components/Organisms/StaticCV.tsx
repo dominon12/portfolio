@@ -17,7 +17,7 @@ import {
 } from "../../Types/ApiTypes";
 
 interface Props {
-  about: Profile;
+  profile: Profile;
   languages: Language[];
   careerEvents: CareerEvent[];
   contactMethods: ContactMethod[];
@@ -30,7 +30,7 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const StaticCV: React.FC<Props> = ({
-  about,
+  profile,
   languages,
   careerEvents,
   contactMethods,
@@ -75,7 +75,7 @@ const StaticCV: React.FC<Props> = ({
     },
   });
 
-  const fullName = `${about.firstName} ${about.lastName}`;
+  const fullName = `${profile.firstName} ${profile.lastName}`;
 
   /**
    * Renders header
@@ -101,22 +101,22 @@ const StaticCV: React.FC<Props> = ({
       <View style={headerStyles.header}>
         <View>
           <Text style={styles.title}>{fullName}</Text>
-          <Text style={[styles.subtitle, styles.link]}>{about.jobTitle}</Text>
+          <Text style={[styles.subtitle, styles.link]}>{profile.jobTitle}</Text>
         </View>
-        <Image src={about.photo.src} style={headerStyles.profileImage} />
+        <Image src={profile.photo.src} style={headerStyles.profileImage} />
       </View>
     );
   };
 
   /**
-   * Renders about section
+   * Renders profile section
    *
    * @return {*}  {JSX.Element}
    */
-  const aboutSection = (): JSX.Element => (
+  const profileSection = (): JSX.Element => (
     <View style={styles.section}>
-      <Text style={styles.subtitle}>About</Text>
-      <Text style={styles.text}>{about.cvDescription}</Text>
+      <Text style={styles.subtitle}>profile</Text>
+      <Text style={styles.text}>{profile.cvDescription}</Text>
     </View>
   );
 
@@ -155,7 +155,7 @@ const StaticCV: React.FC<Props> = ({
 
   /**
    * Renders section with info
-   * about languages
+   * profile languages
    *
    * @return {*}  {JSX.Element}
    */
@@ -188,7 +188,7 @@ const StaticCV: React.FC<Props> = ({
 
   /**
    * Renders a section with info
-   * about an experience
+   * profile an experience
    *
    * @return {*}  {JSX.Element}
    */
@@ -283,7 +283,7 @@ const StaticCV: React.FC<Props> = ({
   };
 
   /**
-   * Renders a section with info about projects
+   * Renders a section with info profile projects
    *
    * @return {*}  {JSX.Element}
    */
@@ -326,7 +326,7 @@ const StaticCV: React.FC<Props> = ({
     return (
       <View style={bodyStyles.container}>
         <View style={bodyStyles.leftPart}>
-          {aboutSection()}
+          {profileSection()}
           {languagesSection()}
           {skillsSection()}
         </View>

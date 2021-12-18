@@ -6,8 +6,9 @@ import "./Projects.scss";
 import ProjectsNav from "../Organisms/ProjectsNav";
 import ProjectsGrid from "../Organisms/ProjectsGrid";
 import Paginator from "../Molecules/Paginator";
-import { RootState } from "../../Redux/Types";
 import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
+import { selectProfile } from "../../Redux/About/Selectors";
+import { selectProjects } from "../../Redux/Projects/Selectors";
 
 /**
  * Page with a list of projects, navigation bar
@@ -17,17 +18,13 @@ import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
  * @return {*}  {JSX.Element}
  */
 const Projects: React.FC = (): JSX.Element => {
-  const profile = useSelector((state: RootState) => state.about.data);
-  const {
-    data: projectsData,
-    pending,
-    error,
-  } = useSelector((state: RootState) => state.projects);
+  const profile = useSelector(selectProfile);
+  const projects = useSelector(selectProjects);
 
   return (
     <>
       <Helmet>
-        <title>Projects | {profile?.nickname ?? ""}</title>
+        <title>Projects | {profile.data?.nickname ?? ""}</title>
         <meta
           name="description"
           content="A list of almost all the projects and case studies I've done"
@@ -39,15 +36,15 @@ const Projects: React.FC = (): JSX.Element => {
 
         <div className="projects__body">
           <ApiResponseTemplate
-            render={() => <ProjectsGrid projects={projectsData?.results} />}
-            pending={pending}
-            error={error}
+            render={() => <ProjectsGrid projects={projects.data?.results} />}
+            pending={projects.pending}
+            error={projects.error}
           />
 
           <Paginator
-            itemsCount={projectsData?.count ?? 0}
-            pageItemsCount={projectsData?.results?.length ?? 0}
-            totalPages={projectsData?.totalPages ?? -1}
+            itemsCount={projects.data?.count ?? 0}
+            pageItemsCount={projects.data?.results?.length ?? 0}
+            totalPages={projects.data?.totalPages ?? -1}
           />
         </div>
       </div>

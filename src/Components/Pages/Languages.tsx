@@ -5,9 +5,10 @@ import { useSelector } from "react-redux";
 import "./Languages.scss";
 import Title from "../Atoms/Title";
 import LanguagesGrid from "../Organisms/LanguagesGrid";
-import { RootState } from "../../Redux/Types";
 import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
 import { Language } from "../../Types/ApiTypes";
+import { selectLanguages } from "../../Redux/Languages/Selectors";
+import { selectProfile } from "../../Redux/About/Selectors";
 
 /**
  * Page with a list of languages
@@ -15,17 +16,13 @@ import { Language } from "../../Types/ApiTypes";
  * @return {*}  {JSX.Element}
  */
 const Languages: React.FC = (): JSX.Element => {
-  const profile = useSelector((state: RootState) => state.about.data);
-  const {
-    data: languages,
-    pending,
-    error,
-  } = useSelector((state: RootState) => state.languages);
+  const profile = useSelector(selectProfile);
+  const languages = useSelector(selectLanguages);
 
   return (
     <>
       <Helmet>
-        <title>Languages | {profile?.nickname ?? ""}</title>
+        <title>Languages | {profile.data?.nickname ?? ""}</title>
         <meta
           name="description"
           content="Languages I speak and history about learning them."
@@ -34,9 +31,11 @@ const Languages: React.FC = (): JSX.Element => {
       <div className="languages">
         <Title className="languages__title">Languages I speak</Title>
         <ApiResponseTemplate
-          render={() => <LanguagesGrid languages={languages as Language[]} />}
-          pending={pending}
-          error={error}
+          render={() => (
+            <LanguagesGrid languages={languages.data as Language[]} />
+          )}
+          pending={languages.pending}
+          error={languages.error}
         />
       </div>
     </>

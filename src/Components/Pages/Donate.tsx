@@ -2,10 +2,11 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 
-import { RootState } from "../../Redux/Types";
 import { DonationMethod } from "../../Types/ApiTypes";
 import DonationMethods from "../Organisms/DonationMethods";
 import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
+import { selectProfile } from "../../Redux/About/Selectors";
+import { selectDonationMethods } from "../../Redux/Donations/Selectors";
 
 /**
  * Donate page with a list of donation methods
@@ -13,17 +14,13 @@ import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
  * @return {*}  {JSX.Element}
  */
 const Donate: React.FC = (): JSX.Element => {
-  const profile = useSelector((state: RootState) => state.about.data);
-  const {
-    data: donationMethods,
-    pending,
-    error,
-  } = useSelector((state: RootState) => state.donations);
+  const profile = useSelector(selectProfile);
+  const donationMethods = useSelector(selectDonationMethods);
 
   return (
     <>
       <Helmet>
-        <title>Donate | {profile?.nickname ?? ""}</title>
+        <title>Donate | {profile.data?.nickname ?? ""}</title>
         <meta
           name="description"
           content="If you like what I'm doing and want to support me, here you can donate me using different methods."
@@ -32,11 +29,11 @@ const Donate: React.FC = (): JSX.Element => {
       <ApiResponseTemplate
         render={() => (
           <DonationMethods
-            donationMethods={donationMethods as DonationMethod[]}
+            donationMethods={donationMethods.data as DonationMethod[]}
           />
         )}
-        pending={pending}
-        error={error}
+        pending={donationMethods.pending}
+        error={donationMethods.error}
       />
     </>
   );

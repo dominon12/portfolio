@@ -8,7 +8,6 @@ import Title from "../Atoms/Title";
 import StaticCV from "../Organisms/StaticCV";
 import InfoSection from "../Templates/InfoSection";
 import Button from "../Atoms/Button";
-import { RootState } from "../../Redux/Types";
 import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
 import {
   CareerEvent,
@@ -17,6 +16,11 @@ import {
   Profile,
   TechGroup,
 } from "../../Types/ApiTypes";
+import { selectProfile } from "../../Redux/About/Selectors";
+import { selectLanguages } from "../../Redux/Languages/Selectors";
+import { selectCareerEvents } from "../../Redux/Career/Selectors";
+import { selectContactMethods } from "../../Redux/Contact/Selectors";
+import { selectTechnologies } from "../../Redux/Technologies/Selectors";
 
 /**
  * Page where a user can preview
@@ -25,25 +29,21 @@ import {
  * @return {*}  {JSX.Element}
  */
 const Download: React.FC = (): JSX.Element => {
-  const { about, languages, career, contact, technologies } = useSelector(
-    (state: RootState) => ({
-      about: state.about,
-      languages: state.languages,
-      career: state.career,
-      contact: state.contact,
-      technologies: state.technologies,
-    })
-  );
+  const profile = useSelector(selectProfile);
+  const languages = useSelector(selectLanguages);
+  const careerEvents = useSelector(selectCareerEvents);
+  const contactMethods = useSelector(selectContactMethods);
+  const technologies = useSelector(selectTechnologies);
 
   return (
     <ApiResponseTemplate
       render={() => {
         const staticCv = (
           <StaticCV
-            about={about.data as Profile}
+            profile={profile.data as Profile}
             languages={languages.data as Language[]}
-            careerEvents={career.data as CareerEvent[]}
-            contactMethods={contact.data as ContactMethod[]}
+            careerEvents={careerEvents.data as CareerEvent[]}
+            contactMethods={contactMethods.data as ContactMethod[]}
             technologies={technologies.data as TechGroup[]}
           />
         );
@@ -51,7 +51,7 @@ const Download: React.FC = (): JSX.Element => {
         return (
           <>
             <Helmet>
-              <title>Download | {about.data?.nickname ?? ""}</title>
+              <title>Download | {profile.data?.nickname ?? ""}</title>
               <meta
                 name="description"
                 content="Need a static version of this website? Just click the download button and you will get it."
@@ -89,17 +89,17 @@ const Download: React.FC = (): JSX.Element => {
         );
       }}
       pending={
-        about.pending ||
+        profile.pending ||
         languages.pending ||
-        career.pending ||
-        contact.pending ||
+        careerEvents.pending ||
+        contactMethods.pending ||
         technologies.pending
       }
       error={
-        about.error ||
+        profile.error ||
         languages.error ||
-        career.error ||
-        contact.error ||
+        careerEvents.error ||
+        contactMethods.error ||
         technologies.error
       }
     />

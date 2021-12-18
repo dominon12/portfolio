@@ -1,3 +1,4 @@
+import { InitialState } from "../Types";
 import {
   put,
   call,
@@ -16,7 +17,7 @@ import {
   technologiesSuccess,
   technologiesFetching,
 } from "./Actions";
-import { RootState } from "../Types";
+import { selectTechnologies } from "./Selectors";
 
 const fetchTechnologies = async () =>
   performGET<TechGroup[]>(URLS.technologies + "grouped");
@@ -24,16 +25,16 @@ const fetchTechnologies = async () =>
 export default function* loadTechnologies(): Generator<
   CallEffect<TechGroup[]> | PutEffect<TechnologiesAction> | SelectEffect,
   void,
-  TechGroup[]
+  InitialState<TechGroup[]> | TechGroup[]
 > {
-  const techData = yield select((state: RootState) => state.technologies.data);
+  const technologies = yield select(selectTechnologies);
 
-  if (!techData) {
+  if (!(technologies as InitialState<TechGroup[]>).data) {
     yield put(technologiesFetching());
 
     try {
       const data = yield call(fetchTechnologies);
-      yield put(technologiesSuccess(data));
+      yield put(technologiesSuccess(data as TechGroup[]));
     } catch (e) {
       yield put(technologiesFailure(e));
     }

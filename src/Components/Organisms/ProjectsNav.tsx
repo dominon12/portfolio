@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
+import { useSelector } from "react-redux";
 
 import "./ProjectsNav.scss";
 import Title from "../Atoms/Title";
@@ -11,8 +12,7 @@ import {
   handleChangeGetParams,
 } from "../../Services/ProjectsService";
 import { filterByKey, sortByKey } from "../../Services/GetParamKeys";
-import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/Types";
+import { selectTechnologies } from "../../Redux/Technologies/Selectors";
 
 /**
  * Renders a nav bar with select elements
@@ -26,9 +26,9 @@ const ProjectsNav: React.FC = (): JSX.Element => {
   const { pathname } = useLocation();
   const getParams = useGetParams();
 
-  const techGroups = useSelector((state: RootState) => state.technologies.data);
+  const technologies = useSelector(selectTechnologies);
   const sortValues = getSortValues();
-  const filterValues = getFilterValues(techGroups);
+  const filterValues = getFilterValues(technologies.data);
 
   /**
    * Sets url search param 'sortBy' to '-dateStarted'
