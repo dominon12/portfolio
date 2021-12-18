@@ -6,7 +6,6 @@ import "./Projects.scss";
 import ProjectsNav from "../Organisms/ProjectsNav";
 import ProjectsGrid from "../Organisms/ProjectsGrid";
 import Paginator from "../Molecules/Paginator";
-import LoadingTemplate from "../Templates/LoadingTemplate";
 import { RootState } from "../../Redux/Types";
 import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
 

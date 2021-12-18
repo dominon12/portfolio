@@ -1,10 +1,10 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/Types";
 
 import AboutUnits from "../Organisms/AboutUnits";
 import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
+import { RootState } from "../../Redux/Types";
 
 /**
  * About page with sections which represent

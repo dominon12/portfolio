@@ -10,7 +10,6 @@ import {
   getSortValues,
   handleChangeGetParams,
 } from "../../Services/ProjectsService";
-import { getProjects } from "../../Services/DataService";
 import { filterByKey, sortByKey } from "../../Services/GetParamKeys";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Types";

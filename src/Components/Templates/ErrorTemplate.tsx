@@ -1,11 +1,12 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 import "./ErrorTemplate.scss";
 import { IImage } from "../../Types/SystemTypes";
 import Title from "../Atoms/Title";
 import InfoSection from "./InfoSection";
-import { getAbout } from "../../Services/DataService";
+import { RootState } from "../../Redux/Types";
 
 interface Props {
   title: string;
@@ -20,13 +21,13 @@ interface Props {
  * title, description and additional content
  */
 const ErrorTemplate: React.FC<Props> = (props) => {
-  const { nickname } = getAbout();
+  const profile = useSelector((state: RootState) => state.about.data);
 
   return (
     <>
       <Helmet>
         <title>
-          {props.seoTitle} | {nickname}
+          {props.seoTitle} | {profile?.nickname ?? ""}
         </title>
         <meta name="description" content={props.seoDescription} />
       </Helmet>

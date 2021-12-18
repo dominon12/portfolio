@@ -42,6 +42,11 @@ function* routerWatcher(): Generator<TakeEffect | ForkEffect, void, undefined> {
       case "/contact":
         yield fork(loadContactMethods);
         break;
+      case "/download":
+        yield fork(loadLanguages);
+        yield fork(loadCareerEvents);
+        yield fork(loadContactMethods);
+        yield fork(loadTechnologies);
     }
   }
 }

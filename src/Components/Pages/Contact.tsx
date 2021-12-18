@@ -1,6 +1,7 @@
 import React from "react";
 import { TiMessageTyping } from "react-icons/ti";
 import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 import "./Contact.scss";
 import InfoSection from "../Templates/InfoSection";
@@ -8,7 +9,7 @@ import Title from "../Atoms/Title";
 import ContactForm from "../Organisms/ContactForm";
 import LinksColumn from "../Molecules/LinksColumn";
 import Divider from "../Atoms/Divider";
-import { getAbout } from "../../Services/DataService";
+import { RootState } from "../../Redux/Types";
 
 /**
  * Contact page with a contact form
@@ -17,12 +18,12 @@ import { getAbout } from "../../Services/DataService";
  * @return {*}  {JSX.Element}
  */
 const Contact: React.FC = (): JSX.Element => {
-  const { nickname } = getAbout();
+  const profile = useSelector((state: RootState) => state.about.data);
 
   return (
     <>
       <Helmet>
-        <title>Contact | {nickname}</title>
+        <title>Contact | {profile?.nickname ?? ""}</title>
         <meta
           name="description"
           content="Contact me by filling the form or by clicking one of the contact links below the contact form."

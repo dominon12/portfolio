@@ -1,11 +1,10 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 import "./Experience.scss";
 import ExperienceLiana from "../Organisms/ExperienceLiana";
 import Title from "../Atoms/Title";
-import { getAbout } from "../../Services/DataService";
-import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Types";
 import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
 import { CareerEvent } from "../../Types/ApiTypes";

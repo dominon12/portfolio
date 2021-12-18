@@ -1,7 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/Types";
 
 import "./Footer.scss";
-import { getAbout } from "../../Services/DataService";
 
 /**
  * Simple footer with a full name
@@ -10,8 +11,8 @@ import { getAbout } from "../../Services/DataService";
  * @return {*}  {JSX.Element}
  */
 const Footer: React.FC = (): JSX.Element => {
-  const about = getAbout();
-  const fullName = `${about.firstName} ${about.lastName}`;
+  const profile = useSelector((state: RootState) => state.about.data);
+  const fullName = `${profile?.firstName} ${profile?.lastName}`;
 
   return (
     <footer className="footer">
