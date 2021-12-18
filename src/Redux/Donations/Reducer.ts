@@ -1,23 +1,23 @@
 import { RootState } from "../Types";
-import { LanguagesAction, LanguagesActionTypes } from "./Types";
+import { DonationsAction, DonationsActionTypes } from "./Types";
 
-const INITIAL_STATE: RootState["languages"] = {
+const INITIAL_STATE: RootState["donations"] = {
   data: null,
   pending: false,
   error: null,
 };
 
-function languagesReducer(state = INITIAL_STATE, action: LanguagesAction) {
+function donationsReducer(state = INITIAL_STATE, action: DonationsAction) {
   switch (action.type) {
-    case LanguagesActionTypes.SUCCESS:
+    case DonationsActionTypes.SUCCESS:
       return { data: action.payload, pending: false, error: null };
-    case LanguagesActionTypes.FETCHING:
+    case DonationsActionTypes.FETCHING:
       return { ...state, pending: true, error: null };
-    case LanguagesActionTypes.FAILURE:
+    case DonationsActionTypes.FAILURE:
       return { ...state, pending: false, error: action.payload };
     default:
       return state;
   }
 }
 
-export default languagesReducer;
+export default donationsReducer;

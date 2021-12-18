@@ -68,3 +68,12 @@ export interface Language {
   level: string;
   learningHistory: string;
 }
+
+export interface DonationMethod {
+  pk: number;
+  comment: string;
+  name: string;
+  image: IImage;
+  link: string;
+  isLink?: boolean;
+}

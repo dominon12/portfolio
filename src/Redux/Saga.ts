@@ -11,6 +11,7 @@ import {
 
 import aboutSagaWatcher from "./About/Sagas";
 import loadCareerEvents from "./Career/Sagas";
+import loadDonationMethods from "./Donations/Sagas";
 import loadLanguages from "./Languages/Sagas";
 import projectsSagaWatcher from "./Projects/Sagas";
 import loadTechnologies from "./Technologies/Sagas";
@@ -33,6 +34,9 @@ function* routerWatcher(): Generator<TakeEffect | ForkEffect, void, undefined> {
         break;
       case "/languages":
         yield fork(loadLanguages);
+        break;
+      case "/donate":
+        yield fork(loadDonationMethods);
         break;
     }
   }
