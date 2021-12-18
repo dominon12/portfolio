@@ -17,8 +17,9 @@ enum Direction {
 }
 
 interface Props {
-  items: any[];
-  pageItems: any[];
+  itemsCount: number;
+  pageItemsCount: number;
+  totalPages: number;
 }
 
 /**
@@ -34,12 +35,11 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
   const getParams = useGetParams();
 
   const pageSize = parseInt(getParams.get(pageSizeKey) ?? "6");
-  const pagesNum = Math.ceil(props.items.length / pageSize);
 
   const disablePagination =
-    props.items.length === props.pageItems.length || pageSize <= 0;
+    props.itemsCount === props.pageItemsCount || pageSize <= 0;
 
-  const infiniteQueue = useInfiniteQueue(pagesNum);
+  const infiniteQueue = useInfiniteQueue(props.totalPages);
 
   const switchesContainer = useRef<HTMLDivElement | null>(null);
 

@@ -19,7 +19,7 @@ const About: React.FC = (): JSX.Element => {
 
   return (
     <ApiResponseTemplate
-      renderData={() =>
+      render={() =>
         data && (
           <>
             <Helmet>

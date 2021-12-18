@@ -1,23 +1,23 @@
 import { RootState } from "../Types";
-import { AboutAction, AboutActionTypes } from "./Types";
+import { ProjectsAction, ProjectsActionTypes } from "./Types";
 
-const INITIAL_STATE: RootState["about"] = {
+const INITIAL_STATE: RootState["projects"] = {
   data: null,
   pending: false,
   error: null,
 };
 
-function aboutReducer(state = INITIAL_STATE, action: AboutAction) {
+function projectsReducer(state = INITIAL_STATE, action: ProjectsAction) {
   switch (action.type) {
-    case AboutActionTypes.SUCCESS:
+    case ProjectsActionTypes.SUCCESS:
       return { data: action.payload, pending: false, error: null };
-    case AboutActionTypes.FETCHING:
+    case ProjectsActionTypes.FETCHING:
       return { ...state, pending: true, error: null };
-    case AboutActionTypes.FAILURE:
+    case ProjectsActionTypes.FAILURE:
       return { ...state, pending: false, error: action.payload };
     default:
       return state;
   }
 }
 
-export default aboutReducer;
+export default projectsReducer;

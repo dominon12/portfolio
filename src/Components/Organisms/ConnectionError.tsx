@@ -5,8 +5,7 @@ import Button from "../Atoms/Button";
 import ErrorTemplate from "../Templates/ErrorTemplate";
 
 /**
- * Page with info about an error and
- * a form to send a feedback about this error
+ * Page with info about an error
  *
  * @return {*}  {JSX.Element}
  */

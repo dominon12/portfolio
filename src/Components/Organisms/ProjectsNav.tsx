@@ -12,6 +12,8 @@ import {
 } from "../../Services/ProjectsService";
 import { getProjects } from "../../Services/DataService";
 import { filterByKey, sortByKey } from "../../Services/GetParamKeys";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/Types";
 
 /**
  * Renders a nav bar with select elements
@@ -25,9 +27,9 @@ const ProjectsNav: React.FC = (): JSX.Element => {
   const { pathname } = useLocation();
   const getParams = useGetParams();
 
-  const allProjects = getProjects();
+  const techGroups = useSelector((state: RootState) => state.technologies.data);
   const sortValues = getSortValues();
-  const filterValues = getFilterValues(allProjects);
+  const filterValues = getFilterValues(techGroups);
 
   /**
    * Sets url search param 'sortBy' to '-dateStarted'
@@ -36,7 +38,7 @@ const ProjectsNav: React.FC = (): JSX.Element => {
   const applyDefaultSorting = () => {
     const sortBy = getParams.get(sortByKey) ?? "";
     if (!sortBy) {
-      const defaultSortByParam = "-dateStarted";
+      const defaultSortByParam = "-date";
       handleChangeGetParams(
         sortByKey,
         defaultSortByParam,

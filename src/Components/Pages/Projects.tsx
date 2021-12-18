@@ -1,13 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 import "./Projects.scss";
 import ProjectsNav from "../Organisms/ProjectsNav";
 import ProjectsGrid from "../Organisms/ProjectsGrid";
 import Paginator from "../Molecules/Paginator";
-import useProjects from "../../Hooks/useProjects";
 import LoadingTemplate from "../Templates/LoadingTemplate";
-import { getAbout } from "../../Services/DataService";
+import { RootState } from "../../Redux/Types";
+import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
 
 /**
  * Page with a list of projects, navigation bar
@@ -17,16 +18,17 @@ import { getAbout } from "../../Services/DataService";
  * @return {*}  {JSX.Element}
  */
 const Projects: React.FC = (): JSX.Element => {
-  const { nickname } = getAbout();
-
-  const { projects, pageProjects, isLoading } = useProjects({
-    loadingDelay: 1000,
-  });
+  const profile = useSelector((state: RootState) => state.about.data);
+  const {
+    data: projectsData,
+    pending,
+    error,
+  } = useSelector((state: RootState) => state.projects);
 
   return (
     <>
       <Helmet>
-        <title>Projects | {nickname}</title>
+        <title>Projects | {profile?.nickname ?? ""}</title>
         <meta
           name="description"
           content="A list of almost all the projects and case studies I've done"
@@ -37,11 +39,17 @@ const Projects: React.FC = (): JSX.Element => {
         <ProjectsNav />
 
         <div className="projects__body">
-          <LoadingTemplate isLoading={isLoading}>
-            <ProjectsGrid projects={pageProjects} />
-          </LoadingTemplate>
+          <ApiResponseTemplate
+            render={() => <ProjectsGrid projects={projectsData?.results} />}
+            pending={pending}
+            error={error}
+          />
 
-          <Paginator items={projects} pageItems={pageProjects} />
+          <Paginator
+            itemsCount={projectsData?.count ?? 0}
+            pageItemsCount={projectsData?.results?.length ?? 0}
+            totalPages={projectsData?.totalPages ?? -1}
+          />
         </div>
       </div>
     </>

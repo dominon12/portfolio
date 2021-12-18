@@ -1,4 +1,4 @@
-import { Profile } from "./../Types/ApiTypes";
+import { PaginatedProjects, Profile, TechGroup } from "./../Types/ApiTypes";
 
 export interface InitialState<T> {
   data: T | null;
@@ -8,4 +8,6 @@ export interface InitialState<T> {
 
 export interface RootState {
   about: InitialState<Profile>;
+  projects: InitialState<PaginatedProjects>;
+  technologies: InitialState<TechGroup[]>;
 }

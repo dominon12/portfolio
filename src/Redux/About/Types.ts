@@ -1,26 +1,25 @@
 import { Profile } from "./../../Types/ApiTypes";
 
 export enum AboutActionTypes {
-  ABOUT_FETCHING = "ABOUT_FETCHING",
-  ABOUT_SUCCESS = "ABOUT_SUCCESS",
-  ABOUT_FAILURE = "ABOUT_FAILURE",
+  FETCHING = "ABOUT_FETCHING",
+  SUCCESS = "ABOUT_SUCCESS",
+  FAILURE = "ABOUT_FAILURE",
 }
 
-export interface AboutFetchingAction {
-  type: AboutActionTypes.ABOUT_FETCHING;
-}
+export type AboutFetchingAction = () => {
+  type: AboutActionTypes.FETCHING;
+};
 
-export interface AboutSuccessAction {
-  type: AboutActionTypes.ABOUT_SUCCESS;
+export type AboutSuccessAction = (payload: Profile) => {
+  type: AboutActionTypes.SUCCESS;
   payload: Profile;
-}
+};
 
-export interface AboutFailureAction {
-  type: AboutActionTypes.ABOUT_FAILURE;
+export type AboutFailureAction = (payload: unknown) => {
+  type: AboutActionTypes.FAILURE;
   payload: unknown;
-}
+};
 
-export type AboutAction =
-  | AboutFetchingAction
-  | AboutSuccessAction
-  | AboutFailureAction;
+export type AboutAction = ReturnType<
+  AboutFetchingAction | AboutSuccessAction | AboutFailureAction
+>;

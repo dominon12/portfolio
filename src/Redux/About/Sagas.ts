@@ -2,14 +2,12 @@ import { aboutFailure, aboutFetching, aboutSuccess } from "./Actions";
 import {
   put,
   call,
-  take,
   CallEffect,
   PutEffect,
   TakeEffect,
   fork,
   ForkEffect,
 } from "redux-saga/effects";
-import { LOCATION_CHANGE } from "connected-react-router";
 
 import { URLS } from "./../../Services/ApiService";
 import { performGET } from "../../Services/ApiService";
@@ -38,10 +36,5 @@ export default function* aboutSagaWatcher(): Generator<
   void,
   unknown
 > {
-  while (true) {
-    const action: any = yield take(LOCATION_CHANGE);
-    if (action.payload.location.pathname.endsWith("about")) {
-      yield fork(loadProfileData);
-    }
-  }
+  yield fork(loadProfileData);
 }

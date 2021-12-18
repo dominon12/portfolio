@@ -6,21 +6,22 @@ import FocusTrap from "focus-trap-react";
 
 import "./ProjectCard.scss";
 import BrickLink from "../Atoms/BrickLink";
-import { IProjectTechnologies } from "../../Types/PortfolioDataTypes";
 import { IImage } from "../../Types/SystemTypes";
 import useGetParams from "../../Hooks/useGetParams";
 import { projectIdKey } from "../../Services/GetParamKeys";
 import { updateUrlWithGetParams } from "../../Services/HelperService";
 import { ShareModalContext } from "../../Contexts/ShareModalContext";
+import { Technology } from "../../Types/ApiTypes";
+import { groupTechnologiesByGroupName } from "../../Services/ProjectsService";
 
 interface Props {
   id: number;
-  title: string;
+  name: string;
   image: IImage;
   shortDescription: string;
-  description: string[];
-  dateStarted: Date;
-  technologies: IProjectTechnologies;
+  description: string;
+  date: Date;
+  technologies: Technology[];
   repository?: string;
   link?: string;
 }
@@ -68,7 +69,7 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
     return (
       <article
         tabIndex={0}
-        aria-label={props.title}
+        aria-label={props.name}
         className="project-card hover-animation"
         onClick={() => setExpanded(true)}
       >
@@ -79,7 +80,7 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
           <div className="project-card__text-content">
             <div className="project-card__title-wrapper">
               <div className="project-card__bar_left">
-                <h2 className="project-card__title">{props.title}</h2>
+                <h2 className="project-card__title">{props.name}</h2>
               </div>
             </div>
             <p className="project-card__short-description">
@@ -100,11 +101,11 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
   const renderProjectHeader = (): JSX.Element => (
     <div className="project-card-expanded__header">
       <div className="project-card-expanded__header_left">
-        <h2 className="project-card-expanded__title">{props.title}</h2>
+        <h2 className="project-card-expanded__title">{props.name}</h2>
       </div>
       <div className="project-card-expanded__header_right">
         <span className="project-card-expanded__date">
-          {props.dateStarted.toDateString()}
+          {props.date.toDateString()}
         </span>
         <FiShare2
           tabIndex={0}
@@ -128,52 +129,38 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
    *
    * @return {*}  {JSX.Element}
    */
-  const renderExpandedDescription = (): JSX.Element => {
-    const technologies = [
-      {
-        id: 1,
-        groupName: "Back-end",
-        technologies: props.technologies.backend,
-      },
-      {
-        id: 2,
-        groupName: "Front-end",
-        technologies: props.technologies.frontend,
-      },
-      {
-        id: 3,
-        groupName: "DevOps",
-        technologies: props.technologies.devops,
-      },
-    ];
+  const renderExpandedDescription = (): JSX.Element => (
+    <div className="project-card-expanded__description-container">
+      <p
+        className="project-card-expanded__full-description"
+        dangerouslySetInnerHTML={{ __html: props.description }}
+      ></p>
+    </div>
+  );
+
+  /**
+   * Renders technologies used in
+   * the current project.
+   *
+   * @return {*} {JSX.Element}
+   */
+  const renderTechnologies = (): JSX.Element => {
+    const groupedTechnologies = groupTechnologiesByGroupName(
+      props.technologies
+    );
 
     return (
-      <>
-        <div className="project-card-expanded__description-container">
-          {props.description.map((descriptionUnit, index) => (
-            <p
-              key={index}
-              className="project-card-expanded__full-description"
-              dangerouslySetInnerHTML={{ __html: descriptionUnit }}
-            ></p>
-          ))}
-        </div>
-        <dl className="project-card-expanded__description-list">
-          {technologies
-            .filter(
-              (technologyGroup) => technologyGroup.technologies.length > 0
-            )
-            .map((technologyGroup) => (
-              <div
-                key={technologyGroup.id}
-                className="project-card-expanded__description-list_item"
-              >
-                <dt>{technologyGroup.groupName}</dt>
-                <dd>{technologyGroup.technologies.join(", ")}</dd>
-              </div>
-            ))}
-        </dl>
-      </>
+      <dl className="project-card-expanded__description-list">
+        {Object.keys(groupedTechnologies).map((groupName: string) => (
+          <div
+            key={groupName}
+            className="project-card-expanded__description-list_item"
+          >
+            <dt>{groupName}</dt>
+            <dd>{groupedTechnologies[groupName].join(", ")}</dd>
+          </div>
+        ))}
+      </dl>
     );
   };
 
@@ -225,6 +212,7 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
           <div className="project-card-expanded__text-content">
             {renderProjectHeader()}
             {renderExpandedDescription()}
+            {renderTechnologies()}
             {renderLinks()}
           </div>
         </div>
