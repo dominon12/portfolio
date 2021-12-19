@@ -1,13 +1,13 @@
 import { DonationMethod } from "./../../Types/ApiTypes";
 
 export enum DonationsActionTypes {
-  FETCHING = "DONATIONS_FETCHING",
+  FETCH = "DONATIONS_FETCH",
   SUCCESS = "DONATIONS_SUCCESS",
   FAILURE = "DONATIONS_FAILURE",
 }
 
-export type DonationsFetchingAction = () => {
-  type: DonationsActionTypes.FETCHING;
+export type DonationsFetchAction = () => {
+  type: DonationsActionTypes.FETCH;
 };
 
 export type DonationsSuccessAction = (payload: DonationMethod[]) => {
@@ -21,5 +21,5 @@ export type DonationsFailureAction = (payload: unknown) => {
 };
 
 export type DonationsAction = ReturnType<
-  DonationsFetchingAction | DonationsSuccessAction | DonationsFailureAction
+  DonationsFetchAction | DonationsSuccessAction | DonationsFailureAction
 >;

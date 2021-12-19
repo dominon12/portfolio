@@ -1,13 +1,16 @@
 import { PaginatedProjects } from "./../../Types/ApiTypes";
 
 export enum ProjectsActionTypes {
-  FETCHING = "PROJECTS_FETCHING",
+  FETCH = "PROJECTS_FETCH",
   SUCCESS = "PROJECTS_SUCCESS",
   FAILURE = "PROJECTS_FAILURE",
 }
 
-export type ProjectsFetchingAction = () => {
-  type: ProjectsActionTypes.FETCHING;
+export const PROJECTS_FETCH = "PROJECTS_FETCH";
+
+export type ProjectsFetchAction = (search: string) => {
+  type: ProjectsActionTypes.FETCH;
+  payload: string;
 };
 
 export type ProjectsSuccessAction = (payload: PaginatedProjects) => {
@@ -21,5 +24,5 @@ export type ProjectsFailureAction = (payload: unknown) => {
 };
 
 export type ProjectsAction = ReturnType<
-  ProjectsFetchingAction | ProjectsSuccessAction | ProjectsFailureAction
+  ProjectsFetchAction | ProjectsSuccessAction | ProjectsFailureAction
 >;

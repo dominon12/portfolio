@@ -1,13 +1,13 @@
 import { CareerEvent } from "./../../Types/ApiTypes";
 
 export enum CareerActionTypes {
-  FETCHING = "CAREER_FETCHING",
+  FETCH = "CAREER_FETCH",
   SUCCESS = "CAREER_SUCCESS",
   FAILURE = "CAREER_FAILURE",
 }
 
-export type CareerFetchingAction = () => {
-  type: CareerActionTypes.FETCHING;
+export type CareerFetchAction = () => {
+  type: CareerActionTypes.FETCH;
 };
 
 export type CareerSuccessAction = (payload: CareerEvent[]) => {
@@ -21,7 +21,7 @@ export type CareerFailureAction = (payload: unknown) => {
 };
 
 export type CareerAction = ReturnType<
-  | CareerFetchingAction
+  | CareerFetchAction
   | CareerSuccessAction
   | CareerFailureAction
 >;

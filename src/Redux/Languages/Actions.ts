@@ -1,12 +1,12 @@
 import {
   LanguagesActionTypes,
   LanguagesFailureAction,
-  LanguagesFetchingAction,
+  LanguagesFetchAction,
   LanguagesSuccessAction,
 } from "./Types";
 
-export const languagesFetching: LanguagesFetchingAction = () => ({
-  type: LanguagesActionTypes.FETCHING,
+export const fetchLanguages: LanguagesFetchAction = () => ({
+  type: LanguagesActionTypes.FETCH,
 });
 
 export const languagesSuccess: LanguagesSuccessAction = (payload) => ({

@@ -1,13 +1,13 @@
 import { ContactMethod } from "./../../Types/ApiTypes";
 
 export enum ContactActionTypes {
-  FETCHING = "CONTACT_FETCHING",
+  FETCH = "CONTACT_FETCH",
   SUCCESS = "CONTACT_SUCCESS",
   FAILURE = "CONTACT_FAILURE",
 }
 
-export type ContactFetchingAction = () => {
-  type: ContactActionTypes.FETCHING;
+export type ContactFetchAction = () => {
+  type: ContactActionTypes.FETCH;
 };
 
 export type ContactSuccessAction = (payload: ContactMethod[]) => {
@@ -21,5 +21,5 @@ export type ContactFailureAction = (payload: unknown) => {
 };
 
 export type ContactAction = ReturnType<
-  ContactFetchingAction | ContactSuccessAction | ContactFailureAction
+  ContactFetchAction | ContactSuccessAction | ContactFailureAction
 >;

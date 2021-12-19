@@ -1,12 +1,13 @@
 import {
   ProjectsActionTypes,
   ProjectsFailureAction,
-  ProjectsFetchingAction,
+  ProjectsFetchAction,
   ProjectsSuccessAction,
 } from "./Types";
 
-export const projectsFetching: ProjectsFetchingAction = () => ({
-  type: ProjectsActionTypes.FETCHING,
+export const fetchProjects: ProjectsFetchAction = (search) => ({
+  type: ProjectsActionTypes.FETCH,
+  payload: search,
 });
 
 export const projectsSuccess: ProjectsSuccessAction = (payload) => ({

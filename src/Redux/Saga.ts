@@ -1,58 +1,92 @@
+import {
+  getRouteId,
+  PROJECTS_ROUTE,
+  SKILLS_ROUTE,
+  EXPERIENCE_ROUTE,
+  LANGUAGES_ROUTE,
+  DONATE_ROUTE,
+  CONTACT_ROUTE,
+  DOWNLOAD_ROUTE,
+} from "./../Routes";
 import { LOCATION_CHANGE } from "connected-react-router";
 import {
   all,
   AllEffect,
   ForkEffect,
-  fork,
   spawn,
   take,
   TakeEffect,
+  put,
+  PutEffect,
 } from "redux-saga/effects";
 
-import aboutSagaWatcher from "./About/Sagas";
-import loadCareerEvents from "./Career/Sagas";
-import loadContactMethods from "./Contact/Sagas";
-import loadDonationMethods from "./Donations/Sagas";
-import loadLanguages from "./Languages/Sagas";
-import projectsSagaWatcher from "./Projects/Sagas";
-import loadTechnologies from "./Technologies/Sagas";
+// worker sagas
+import loadProfileData from "./About/Sagas";
+// watcher sagas
+import projectsWatcher from "./Projects/Sagas";
+import downloadWatcher from "./Download/Sagas";
+import technologiesWatcher from "./Technologies/Sagas";
+import contactWatcher from "./Contact/Sagas";
+import careerWatcher from "./Career/Sagas";
+import donationsWatcher from "./Donations/Sagas";
+import languagesWatcher from "./Languages/Sagas";
+// actions
+import { fetchCareerEvents } from "./Career/Actions";
+import { fetchLanguages } from "./Languages/Actions";
+import { fetchDonationMethods } from "./Donations/Actions";
+import { fetchTechnologies } from "./Technologies/Actions";
+import { fetchContactMethods } from "./Contact/Actions";
+import { fetchProjects } from "./Projects/Actions";
+import { loadDownloadData } from "./Download/Actions";
 
-function* routerWatcher(): Generator<TakeEffect | ForkEffect, void, undefined> {
+function* routerWatcher(): Generator<TakeEffect | PutEffect, void, unknown> {
   while (true) {
-    const action: any = yield take(LOCATION_CHANGE);
-    const { location } = action.payload;
+    const {
+      payload: { location },
+    }: any = yield take(LOCATION_CHANGE);
 
-    switch (location.pathname) {
-      case "/projects":
-        yield fork(projectsSagaWatcher, location);
-        yield fork(loadTechnologies);
+    const routeId = getRouteId(location.pathname);
+
+    switch (routeId) {
+      case PROJECTS_ROUTE:
+        yield put(fetchProjects(location.search));
         break;
-      case "/skills":
-        yield fork(loadTechnologies);
+      case SKILLS_ROUTE:
+        yield put(fetchTechnologies());
         break;
-      case "/experience":
-        yield fork(loadCareerEvents);
+      case EXPERIENCE_ROUTE:
+        yield put(fetchCareerEvents());
         break;
-      case "/languages":
-        yield fork(loadLanguages);
+      case LANGUAGES_ROUTE:
+        yield put(fetchLanguages());
         break;
-      case "/donate":
-        yield fork(loadDonationMethods);
+      case DONATE_ROUTE:
+        yield put(fetchDonationMethods());
         break;
-      case "/contact":
-        yield fork(loadContactMethods);
+      case CONTACT_ROUTE:
+        yield put(fetchContactMethods());
         break;
-      case "/download":
-        yield fork(loadLanguages);
-        yield fork(loadCareerEvents);
-        yield fork(loadContactMethods);
-        yield fork(loadTechnologies);
+      case DOWNLOAD_ROUTE:
+        yield put(loadDownloadData());
+        break;
     }
   }
 }
 
 function* rootSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
-  const sagas = [aboutSagaWatcher, routerWatcher];
+  const sagas = [
+    // workers
+    loadProfileData,
+    // watchers
+    routerWatcher,
+    projectsWatcher,
+    technologiesWatcher,
+    careerWatcher,
+    languagesWatcher,
+    donationsWatcher,
+    contactWatcher,
+    downloadWatcher,
+  ];
 
   yield all(sagas.map((s) => spawn(s)));
 }

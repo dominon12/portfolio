@@ -1,12 +1,12 @@
 import {
   DonationsActionTypes,
   DonationsFailureAction,
-  DonationsFetchingAction,
+  DonationsFetchAction,
   DonationsSuccessAction,
 } from "./Types";
 
-export const donationsFetching: DonationsFetchingAction = () => ({
-  type: DonationsActionTypes.FETCHING,
+export const fetchDonationMethods: DonationsFetchAction = () => ({
+  type: DonationsActionTypes.FETCH,
 });
 
 export const donationsSuccess: DonationsSuccessAction = (payload) => ({

@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import { Switch, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 
 import "./App.scss";
@@ -14,8 +13,7 @@ import Loading from "./Molecules/Loading";
 import ScrollToTop from "./Services/ScrollToTop";
 import ErrorBoundary from "./Services/ErrorBoundary";
 import PWAManager from "./Services/PWAManager";
-// routes
-import routes from "../Routes";
+import Routes from "../Routes";
 
 const App: React.FC = () => {
   return (
@@ -30,15 +28,7 @@ const App: React.FC = () => {
         <div role="main" className="content-wrapper" id="scrollContainer">
           <Suspense fallback={<Loading />}>
             <ErrorBoundary>
-              <Switch>
-                {routes.map((route) => (
-                  <Route
-                    path={route.path}
-                    component={route.component}
-                    exact={route.exact}
-                  />
-                ))}
-              </Switch>
+              <Routes />
             </ErrorBoundary>
           </Suspense>
 

@@ -1,52 +1,51 @@
 import {
-  put,
   call,
   CallEffect,
+  put,
   PutEffect,
-  fork,
-  ForkEffect,
+  select,
+  SelectEffect,
+  takeLatest,
 } from "redux-saga/effects";
 
-import { URLS } from "./../../Services/ApiService";
-import { performGET } from "../../Services/ApiService";
-import { PaginatedProjects } from "./../../Types/ApiTypes";
-import { ProjectsAction } from "./Types";
-import { projectsFailure, projectsSuccess, projectsFetching } from "./Actions";
+import { URLS, performGET } from "./../../Services/ApiService";
+import { PaginatedProjects, TechGroup } from "./../../Types/ApiTypes";
+import { selectTechnologies } from "../Technologies/Selectors";
+import { fetchTechnologies } from "../Technologies/Actions";
+import { TechnologiesAction } from "./../Technologies/Types";
+import { InitialState } from "../Types";
+import {
+  ProjectsFetchAction,
+  ProjectsAction,
+  ProjectsActionTypes,
+} from "./Types";
+import { projectsFailure, projectsSuccess } from "./Actions";
 
-const fetchProjects = async (search: string) =>
+const fetchProjects = (search: string) =>
   performGET<PaginatedProjects>(URLS.projects, search);
 
-function* loadProjects(
-  search: string
-): Generator<
-  CallEffect<PaginatedProjects> | PutEffect<ProjectsAction>,
+function* loadProjects({
+  payload: search,
+}: ReturnType<ProjectsFetchAction>): Generator<
+  | PutEffect<ProjectsAction | TechnologiesAction>
+  | SelectEffect
+  | CallEffect<PaginatedProjects>,
   void,
-  PaginatedProjects
+  PaginatedProjects | InitialState<TechGroup[]>
 > {
-  yield put(projectsFetching());
+  const technologies = yield select(selectTechnologies);
+  if (!(technologies as InitialState<TechGroup[]>).data) {
+    yield put(fetchTechnologies());
+  }
 
   try {
     const data = yield call(fetchProjects, search);
-    yield put(projectsSuccess(data));
+    yield put(projectsSuccess(data as PaginatedProjects));
   } catch (e) {
     yield put(projectsFailure(e));
   }
 }
 
-let includedProjectId = false;
-
-export default function* projectsSagaWatcher(
-  location: any
-): Generator<ForkEffect, void, unknown> {
-  const includesProjectId = location.search.includes("projectId");
-  const leftProjectPage = !includesProjectId && includedProjectId;
-
-  if (
-    (!leftProjectPage && !includesProjectId) ||
-    (includesProjectId && !includedProjectId)
-  ) {
-    yield fork(loadProjects, location.search as string);
-  }
-
-  includedProjectId = includesProjectId;
+export default function* projectsWatcher() {
+  yield takeLatest(ProjectsActionTypes.FETCH, loadProjects);
 }

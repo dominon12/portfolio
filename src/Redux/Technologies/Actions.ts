@@ -1,12 +1,12 @@
 import {
   TechnologiesActionTypes,
   TechnologiesFailureAction,
-  TechnologiesFetchingAction,
+  TechnologiesFetchAction,
   TechnologiesSuccessAction,
 } from "./Types";
 
-export const technologiesFetching: TechnologiesFetchingAction = () => ({
-  type: TechnologiesActionTypes.FETCHING,
+export const fetchTechnologies: TechnologiesFetchAction = () => ({
+  type: TechnologiesActionTypes.FETCH,
 });
 
 export const technologiesSuccess: TechnologiesSuccessAction = (payload) => ({

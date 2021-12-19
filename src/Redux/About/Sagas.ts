@@ -1,22 +1,13 @@
-import { aboutFailure, aboutFetching, aboutSuccess } from "./Actions";
-import {
-  put,
-  call,
-  CallEffect,
-  PutEffect,
-  TakeEffect,
-  fork,
-  ForkEffect,
-} from "redux-saga/effects";
+import { put, call, CallEffect, PutEffect } from "redux-saga/effects";
 
-import { URLS } from "./../../Services/ApiService";
-import { performGET } from "../../Services/ApiService";
+import { URLS, performGET } from "./../../Services/ApiService";
 import { Profile } from "./../../Types/ApiTypes";
+import { aboutFailure, aboutFetching, aboutSuccess } from "./Actions";
 import { AboutAction } from "./Types";
 
 const fetchAbout = async () => performGET<Profile>(URLS.about);
 
-function* loadProfileData(): Generator<
+export default function* loadProfileData(): Generator<
   CallEffect<Profile> | PutEffect<AboutAction>,
   void,
   Profile
@@ -29,12 +20,4 @@ function* loadProfileData(): Generator<
   } catch (e) {
     yield put(aboutFailure(e));
   }
-}
-
-export default function* aboutSagaWatcher(): Generator<
-  TakeEffect | ForkEffect,
-  void,
-  unknown
-> {
-  yield fork(loadProfileData);
 }

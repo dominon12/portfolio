@@ -11,7 +11,7 @@ function projectsReducer(state = INITIAL_STATE, action: ProjectsAction) {
   switch (action.type) {
     case ProjectsActionTypes.SUCCESS:
       return { data: action.payload, pending: false, error: null };
-    case ProjectsActionTypes.FETCHING:
+    case ProjectsActionTypes.FETCH:
       return { ...state, pending: true, error: null };
     case ProjectsActionTypes.FAILURE:
       return { ...state, pending: false, error: action.payload };

@@ -1,13 +1,13 @@
 import { TechGroup } from "./../../Types/ApiTypes";
 
 export enum TechnologiesActionTypes {
-  FETCHING = "TECHNOLOGIES_FETCHING",
+  FETCH = "TECHNOLOGIES_FETCH",
   SUCCESS = "TECHNOLOGIES_SUCCESS",
   FAILURE = "TECHNOLOGIES_FAILURE",
 }
 
-export type TechnologiesFetchingAction = () => {
-  type: TechnologiesActionTypes.FETCHING;
+export type TechnologiesFetchAction = () => {
+  type: TechnologiesActionTypes.FETCH;
 };
 
 export type TechnologiesSuccessAction = (payload: TechGroup[]) => {
@@ -21,7 +21,7 @@ export type TechnologiesFailureAction = (payload: unknown) => {
 };
 
 export type TechnologiesAction = ReturnType<
-  | TechnologiesFetchingAction
+  | TechnologiesFetchAction
   | TechnologiesSuccessAction
   | TechnologiesFailureAction
 >;

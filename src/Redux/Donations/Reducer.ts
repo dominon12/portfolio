@@ -11,7 +11,7 @@ function donationsReducer(state = INITIAL_STATE, action: DonationsAction) {
   switch (action.type) {
     case DonationsActionTypes.SUCCESS:
       return { data: action.payload, pending: false, error: null };
-    case DonationsActionTypes.FETCHING:
+    case DonationsActionTypes.FETCH:
       return { ...state, pending: true, error: null };
     case DonationsActionTypes.FAILURE:
       return { ...state, pending: false, error: action.payload };

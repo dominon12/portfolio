@@ -1,12 +1,12 @@
 import {
   ContactActionTypes,
   ContactFailureAction,
-  ContactFetchingAction,
+  ContactFetchAction,
   ContactSuccessAction,
 } from "./Types";
 
-export const contactMethodsFetching: ContactFetchingAction = () => ({
-  type: ContactActionTypes.FETCHING,
+export const fetchContactMethods: ContactFetchAction = () => ({
+  type: ContactActionTypes.FETCH,
 });
 
 export const contactMethodsSuccess: ContactSuccessAction = (payload) => ({

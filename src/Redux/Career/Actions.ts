@@ -1,12 +1,12 @@
 import {
   CareerActionTypes,
   CareerFailureAction,
-  CareerFetchingAction,
+  CareerFetchAction,
   CareerSuccessAction,
 } from "./Types";
 
-export const careerFetching: CareerFetchingAction = () => ({
-  type: CareerActionTypes.FETCHING,
+export const fetchCareerEvents: CareerFetchAction = () => ({
+  type: CareerActionTypes.FETCH,
 });
 
 export const careerSuccess: CareerSuccessAction = (payload) => ({

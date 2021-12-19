@@ -14,7 +14,7 @@ function technologiesReducer(
   switch (action.type) {
     case TechnologiesActionTypes.SUCCESS:
       return { data: action.payload, pending: false, error: null };
-    case TechnologiesActionTypes.FETCHING:
+    case TechnologiesActionTypes.FETCH:
       return { ...state, pending: true, error: null };
     case TechnologiesActionTypes.FAILURE:
       return { ...state, pending: false, error: action.payload };
