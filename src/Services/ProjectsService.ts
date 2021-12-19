@@ -23,11 +23,13 @@ export function getFilterValues(
   const filterValues: ISelectValuesGroup[] = techGroups.map((techGroup) => ({
     id: techGroup.pk,
     groupName: techGroup.name,
-    values: techGroup.skills.map((skill) => ({
-      id: skill.pk,
-      value: skill.name,
-      displayValue: skill.name,
-    })),
+    values: techGroup.skills
+      .filter((skill) => skill.showAsFilter)
+      .map((skill) => ({
+        id: skill.pk,
+        value: skill.name,
+        displayValue: skill.name,
+      })),
   }));
 
   return filterValues;

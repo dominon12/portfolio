@@ -31,9 +31,11 @@ const Skills: React.FC = (): JSX.Element => {
         <ApiResponseTemplate
           render={() => (
             <div className="skills__wrapper">
-              {(technologies.data as TechGroup[]).map((skill) => (
-                <SkillsTable key={skill.pk} skillsGroup={skill} />
-              ))}
+              {(technologies.data as TechGroup[])
+                .filter((skillsGroup) => skillsGroup.showAsSkill)
+                .map((skillsGroup) => (
+                  <SkillsTable key={skillsGroup.pk} skillsGroup={skillsGroup} />
+                ))}
             </div>
           )}
           pending={technologies.pending}

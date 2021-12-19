@@ -44,12 +44,14 @@ export interface Technology {
   name: string;
   level: number;
   isRelevant: boolean;
+  showAsFilter: boolean;
 }
 
 export interface TechGroup {
   pk: number;
   name: string;
   skills: Technology[];
+  showAsSkill: boolean;
 }
 
 export interface CareerEvent {

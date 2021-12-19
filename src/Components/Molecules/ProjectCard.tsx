@@ -130,12 +130,10 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
    * @return {*}  {JSX.Element}
    */
   const renderExpandedDescription = (): JSX.Element => (
-    <div className="project-card-expanded__description-container">
-      <p
-        className="project-card-expanded__full-description"
-        dangerouslySetInnerHTML={{ __html: props.description }}
-      ></p>
-    </div>
+    <p
+      className="project-card-expanded__full-description"
+      dangerouslySetInnerHTML={{ __html: props.description }}
+    ></p>
   );
 
   /**
