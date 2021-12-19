@@ -11,6 +11,7 @@ import { groupTechnologiesByGroupName } from "../../Services/ProjectsService";
 import TechnologiesDescriptionList from "./TechnologiesDescriptionList";
 import ProjectHeader from "./ProjectHeader";
 import ProjectLinks from "./ProjectLinks";
+import { Link, useLocation } from "react-router-dom";
 
 interface Props {
   id: number;
@@ -32,19 +33,28 @@ interface Props {
  */
 const ProjectCard: React.FC<Props> = (props): JSX.Element => {
   const getParams = useGetParams();
+  const location = useLocation();
 
   const expanded = parseInt(getParams.get(projectIdKey) ?? "0") === props.id;
+
+  const projectIdConnector = location.search ? "&" : "?";
+  
+  const projectLink =
+    location.pathname +
+    location.search +
+    projectIdConnector +
+    "projectId=" +
+    props.id.toString();
 
   if (!expanded) {
     // small card
     return (
       <article
         tabIndex={0}
-        id={`${props.id}`}
         aria-label={props.name}
         className="project-card hover-animation"
       >
-        <div className="project-card__content">
+        <Link to={projectLink} className="project-card__content">
           <div className="project-card__img-container">
             <img className="project-card__img" {...props.image} />
           </div>
@@ -60,7 +70,7 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
               {props.shortDescription}
             </p>
           </div>
-        </div>
+        </Link>
       </article>
     );
   }
