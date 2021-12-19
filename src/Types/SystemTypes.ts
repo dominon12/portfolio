@@ -40,11 +40,6 @@ export interface ISelectValuesGroup {
 }
 
 /**
- * button types
- */
-export type ButtonType = "primary" | "mini";
-
-/**
  * Button
  *
  * @export
@@ -52,10 +47,8 @@ export type ButtonType = "primary" | "mini";
  */
 export interface IButton {
   text: string;
-  type: ButtonType;
   link: string;
 }
-// TODO remove ButtonType
 
 /**
  * Image representation

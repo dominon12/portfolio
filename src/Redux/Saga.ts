@@ -39,6 +39,13 @@ import { fetchContactMethods } from "./Contact/Actions";
 import { fetchProjects } from "./Projects/Actions";
 import { loadDownloadData } from "./Download/Actions";
 
+/**
+ * Listens to LOCATION_CHANGE event and
+ * dispatches actions corresponding to 
+ * the new location.
+ *
+ * @return {*}  {(Generator<TakeEffect | PutEffect, void, unknown>)}
+ */
 function* routerWatcher(): Generator<TakeEffect | PutEffect, void, unknown> {
   while (true) {
     const {

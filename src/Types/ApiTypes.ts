@@ -1,5 +1,16 @@
+/**
+ * Contains interfaces and types to
+ * represent api models
+ */
+
 import { IButton, IImage } from "./SystemTypes";
 
+/**
+ * Profile representation.
+ *
+ * @export
+ * @interface Profile
+ */
 export interface Profile {
   firstName: string;
   lastName: string;
@@ -10,6 +21,12 @@ export interface Profile {
   aboutUnits: AboutUnit[];
 }
 
+/**
+ * Representation of profile's about units
+ *
+ * @export
+ * @interface AboutUnit
+ */
 export interface AboutUnit {
   pk: number;
   title: string;
@@ -18,6 +35,12 @@ export interface AboutUnit {
   button: IButton;
 }
 
+/**
+ * Project representation
+ *
+ * @export
+ * @interface Project
+ */
 export interface Project {
   pk: number;
   name: string;
@@ -32,12 +55,25 @@ export interface Project {
   link?: string;
 }
 
+/**
+ * Represents paginated projects.
+ *
+ * @export
+ * @interface PaginatedProjects
+ */
 export interface PaginatedProjects {
   count: number;
   totalPages: number;
   results: Project[];
 }
 
+/**
+ * Represents a technology used
+ * to create a project
+ *
+ * @export
+ * @interface Technology
+ */
 export interface Technology {
   pk: number;
   techGroup: string;
@@ -47,6 +83,12 @@ export interface Technology {
   showAsFilter: boolean;
 }
 
+/**
+ * Represents a group of technologies.
+ *
+ * @export
+ * @interface TechGroup
+ */
 export interface TechGroup {
   pk: number;
   name: string;
@@ -54,6 +96,12 @@ export interface TechGroup {
   showAsSkill: boolean;
 }
 
+/**
+ * Represents an event in career.
+ *
+ * @export
+ * @interface CareerEvent
+ */
 export interface CareerEvent {
   pk: number;
   title: string;
@@ -63,6 +111,12 @@ export interface CareerEvent {
   isRelevant: boolean;
 }
 
+/**
+ * Language representation.
+ *
+ * @export
+ * @interface Language
+ */
 export interface Language {
   pk: number;
   name: string;
@@ -71,6 +125,12 @@ export interface Language {
   learningHistory: string;
 }
 
+/**
+ * Represents a donation method.
+ *
+ * @export
+ * @interface DonationMethod
+ */
 export interface DonationMethod {
   pk: number;
   comment: string;
@@ -80,6 +140,12 @@ export interface DonationMethod {
   isLink?: boolean;
 }
 
+/**
+ * Represents a contact method.
+ *
+ * @export
+ * @interface ContactMethod
+ */
 export interface ContactMethod {
   pk: number;
   name: string;
