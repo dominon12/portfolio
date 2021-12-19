@@ -3,7 +3,7 @@ import { AiOutlineFileDone } from "react-icons/ai";
 
 import "./SkillsTable.scss";
 import Subtitle from "../Atoms/Subtitle";
-import { ISkillsGroup } from "../../Types/PortfolioDataTypes";
+import { TechGroup } from "../../Types/ApiTypes";
 
 const progressLevelNames = [
   "Beginner",
@@ -14,7 +14,7 @@ const progressLevelNames = [
 ];
 
 interface Props {
-  skillsGroup: ISkillsGroup;
+  skillsGroup: TechGroup;
 }
 
 /**
@@ -48,7 +48,7 @@ const SkillsTable: React.FC<Props> = (props): JSX.Element => {
           {props.skillsGroup.skills
             .sort((a, b) => b.level - a.level)
             .map((skill) => (
-              <tr key={skill.id}>
+              <tr key={skill.pk}>
                 <td>
                   <div
                     tabIndex={0}

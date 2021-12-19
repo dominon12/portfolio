@@ -102,16 +102,11 @@ const Select: React.FC<Props> = ({
   const renderSelectOptions = (selectValues: any): JSX.Element => {
     if (isSelectValuesGroup(selectValues[0])) {
       // SelectValuesGroup
-      return selectValues
-        .sort(
-          (a: ISelectValuesGroup, b: ISelectValuesGroup) =>
-            a.values.length - b.values.length
-        )
-        .map((value: ISelectValuesGroup) => (
-          <optgroup key={value.id} label={value.groupName}>
-            {renderSelectOptions(value.values)}
-          </optgroup>
-        ));
+      return selectValues.map((value: ISelectValuesGroup) => (
+        <optgroup key={value.id} label={value.groupName}>
+          {renderSelectOptions(value.values)}
+        </optgroup>
+      ));
     }
 
     // SelectValue

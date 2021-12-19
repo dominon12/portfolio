@@ -1,16 +1,14 @@
 import React from "react";
 
 import "./DonationMethod.scss";
-import { DonationMethodType } from "../../Types/PortfolioDataTypes";
 import { IImage } from "../../Types/SystemTypes";
 import Subtitle from "../Atoms/Subtitle";
 
 interface Props {
   name: string;
-  type: DonationMethodType;
-  linkUrl: string;
   comment: string;
   image: IImage;
+  link: string;
   isLink?: boolean;
 }
 
@@ -35,14 +33,14 @@ const DonationMethod: React.FC<Props> = (props): JSX.Element => {
         <div className="donation-method__link-container">
           {props.isLink ? (
             <a
-              href={props.linkUrl}
+              href={props.link}
               rel="noopener"
               className="donation-method__link"
             >
-              {props.linkUrl}
+              {props.link}
             </a>
           ) : (
-            <div className="donation-method__link">{props.linkUrl}</div>
+            <div className="donation-method__link">{props.link}</div>
           )}
         </div>
       </div>

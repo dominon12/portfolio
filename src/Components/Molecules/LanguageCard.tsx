@@ -7,7 +7,7 @@ interface Props {
   name: string;
   code: string;
   level: string;
-  learningStory: string;
+  learningHistory: string;
 }
 
 /**
@@ -29,7 +29,7 @@ const LanguageCard: React.FC<Props> = (props): JSX.Element => {
           {props.name} - {props.level}
         </Subtitle>
         <p className="language-card__content_learning-story">
-          {props.learningStory}
+          {props.learningHistory}
         </p>
       </div>
     </article>
