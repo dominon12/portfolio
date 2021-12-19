@@ -35,6 +35,11 @@ $mobile-devices: 425px;
     }
   }
 
+  &__content {
+    text-decoration: none;
+    display: block;
+  }
+
   &__img {
     width: 100%;
     object-fit: cover;
