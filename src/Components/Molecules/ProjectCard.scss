@@ -51,6 +51,7 @@ $mobile-devices: 425px;
     font-weight: 700;
     margin: 0;
     text-align: center;
+    font-size: 1.5rem;
   }
 
   &__short-description {
@@ -111,66 +112,7 @@ $mobile-devices: 425px;
     }
   }
 
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    &_left,
-    &_right {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 0.5rem;
-    }
-    &__left {
-      margin-right: 1rem;
-    }
-    &__right {
-      margin-left: 1rem;
-    }
-    &_icon {
-      font-size: 1rem;
-      cursor: pointer;
-      margin-left: 1rem;
-    }
-  }
-
-  &__title {
-    font-weight: 700;
-    margin: 0;
-  }
-
-  &__description-container {
-  }
-
   &__full-description {
     line-height: 1.6;
-  }
-
-  &__description-list {
-    &_item {
-      margin-bottom: 1rem;
-
-      dt {
-        font-weight: 700;
-        color: var(--headline-color);
-        margin-bottom: 0.5rem;
-      }
-      dd {
-        margin-left: 0;
-        line-height: 1.6;
-      }
-    }
-  }
-
-  &__links {
-    display: flex;
-  }
-
-  &__link {
-    margin-right: 1rem;
   }
 }
