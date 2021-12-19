@@ -1,0 +1,15 @@
+.description-list {
+  &__item {
+    margin-bottom: 1rem;
+
+    dt {
+      font-weight: 700;
+      color: var(--headline-color);
+      margin-bottom: 0.5rem;
+    }
+    dd {
+      margin-left: 0;
+      line-height: 1.6;
+    }
+  }
+}
