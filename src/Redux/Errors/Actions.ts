@@ -1,4 +1,8 @@
-import { ErrorsActionTypes, SubmitErrorAction } from "./Types";
+import {
+  ErrorsActionTypes,
+  ReportErrorAction,
+  SubmitErrorAction,
+} from "./Types";
 
 export const submitError: SubmitErrorAction = (
   data,
@@ -11,4 +15,9 @@ export const submitError: SubmitErrorAction = (
     setIsLoading,
     sendMessage,
   },
+});
+
+export const reportError: ReportErrorAction = (error, errorInfo) => ({
+  type: ErrorsActionTypes.REPORT_ERROR,
+  payload: { error, errorInfo },
 });
