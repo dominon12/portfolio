@@ -167,7 +167,28 @@ export interface ContactRequest {
   comment?: string;
 }
 
-
+/**
+ * Represents error feedback.
+ *
+ * @export
+ * @interface ErrorFeedback
+ */
 export interface ErrorFeedback {
   comment: string;
+}
+
+/**
+ * Represent an error happened
+ * on the client side.
+ *
+ * @export
+ * @interface ClientError
+ */
+export interface ClientError {
+  name: string;
+  message: string;
+  componentStack: string;
+  stack: string;
+  url: string;
+  userAgent: string;
 }

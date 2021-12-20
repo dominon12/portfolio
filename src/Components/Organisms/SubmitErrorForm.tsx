@@ -32,7 +32,6 @@ const SubmitErrorForm: React.FC = (): JSX.Element => {
    */
   const validateForm = () => {
     const valid = checkFormValid([commentInputRef]);
-    console.log({ valid });
     setIsValid(valid);
   };
 
