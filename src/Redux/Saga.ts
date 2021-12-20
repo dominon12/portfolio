@@ -30,6 +30,7 @@ import contactWatcher from "./Contact/Sagas";
 import careerWatcher from "./Career/Sagas";
 import donationsWatcher from "./Donations/Sagas";
 import languagesWatcher from "./Languages/Sagas";
+import errorsWatcher from "./Errors/Sagas";
 // actions
 import { fetchCareerEvents } from "./Career/Actions";
 import { fetchLanguages } from "./Languages/Actions";
@@ -41,7 +42,7 @@ import { loadDownloadData } from "./Download/Actions";
 
 /**
  * Listens to LOCATION_CHANGE event and
- * dispatches actions corresponding to 
+ * dispatches actions corresponding to
  * the new location.
  *
  * @return {*}  {(Generator<TakeEffect | PutEffect, void, unknown>)}
@@ -93,6 +94,7 @@ function* rootSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
     donationsWatcher,
     contactWatcher,
     downloadWatcher,
+    errorsWatcher,
   ];
 
   yield all(sagas.map((s) => spawn(s)));

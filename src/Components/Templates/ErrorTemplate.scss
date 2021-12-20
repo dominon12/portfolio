@@ -10,7 +10,7 @@ $mobile-devices: 425px;
   align-items: center;
 
   @media (max-width: $mobile-devices) {
-    height: calc(100vh - 2rem - 4rem);
+    min-height: calc(100vh - 2rem - 4rem);
   }
 
   &__title {
@@ -36,6 +36,9 @@ $mobile-devices: 425px;
     @media (max-width: $third-media) {
       width: 250px;
       height: 250px;
+    }
+    @media (max-width: $mobile-devices) {
+      margin-top: 2rem;
     }
   }
 }

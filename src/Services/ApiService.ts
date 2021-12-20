@@ -9,6 +9,7 @@ export const URLS = {
   languages: baseURL + "languages/",
   donations: baseURL + "donations/",
   contact: baseURL + "contact/",
+  errors: baseURL + "errors/",
 };
 
 /**
@@ -26,6 +27,9 @@ export async function performGET<T>(url: string, search?: string): Promise<T> {
   if (search) urlToFetch.search = search;
   // make request
   const res = await fetch(urlToFetch.toString());
+  // check if request was successful
+  if (!res.ok) throw new Error(res.statusText);
+  // get json
   const data: T = await res.json();
   return data;
 }
@@ -41,12 +45,17 @@ export async function performGET<T>(url: string, search?: string): Promise<T> {
  * @return {*}  {Promise<T>}
  */
 export async function performPOST<T>(url: string, body: any): Promise<T> {
+  // form url
   let urlToFetch = new URL(url);
+  // make request
   const res = await fetch(urlToFetch.toString(), {
     method: "POST",
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
   });
+  // check if request was successful
+  if (!res.ok) throw new Error(res.statusText);
+  // get json
   const data: T = await res.json();
   return data;
 }

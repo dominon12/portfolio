@@ -177,11 +177,11 @@ export function validateFormField(
  * (e.g. is not required and has 'valid' class)
  *
  * @export
- * @param {React.RefObject<HTMLInputElement>[]} refs - array of refs to check
+ * @param {React.RefObject<HTMLInputElement | HTMLTextAreaElement>[]} refs - array of refs to check
  * @return {*}  {boolean} - result
  */
 export function checkFormValid(
-  refs: React.RefObject<HTMLInputElement>[]
+  refs: React.RefObject<HTMLInputElement | HTMLTextAreaElement>[]
 ): boolean {
   let formValid = true;
 

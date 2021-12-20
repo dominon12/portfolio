@@ -166,3 +166,8 @@ export interface ContactRequest {
   email: string;
   comment?: string;
 }
+
+
+export interface ErrorFeedback {
+  comment: string;
+}
