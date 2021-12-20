@@ -1,11 +1,8 @@
+import { createInitialState } from "../Helpers";
 import { RootState } from "../Types";
 import { TechnologiesAction, TechnologiesActionTypes } from "./Types";
 
-const INITIAL_STATE: RootState["technologies"] = {
-  data: null,
-  pending: false,
-  error: null,
-};
+const INITIAL_STATE: RootState["technologies"] = createInitialState();
 
 function technologiesReducer(
   state = INITIAL_STATE,

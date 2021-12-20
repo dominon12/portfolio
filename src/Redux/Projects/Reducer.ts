@@ -1,11 +1,8 @@
+import { createInitialState } from "../Helpers";
 import { RootState } from "../Types";
 import { ProjectsAction, ProjectsActionTypes } from "./Types";
 
-const INITIAL_STATE: RootState["projects"] = {
-  data: null,
-  pending: false,
-  error: null,
-};
+const INITIAL_STATE: RootState["projects"] = createInitialState();
 
 function projectsReducer(state = INITIAL_STATE, action: ProjectsAction) {
   switch (action.type) {

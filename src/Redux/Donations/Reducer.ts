@@ -1,11 +1,8 @@
+import { createInitialState } from "./../Helpers";
 import { RootState } from "../Types";
 import { DonationsAction, DonationsActionTypes } from "./Types";
 
-const INITIAL_STATE: RootState["donations"] = {
-  data: null,
-  pending: false,
-  error: null,
-};
+const INITIAL_STATE: RootState["donations"] = createInitialState();
 
 function donationsReducer(state = INITIAL_STATE, action: DonationsAction) {
   switch (action.type) {
