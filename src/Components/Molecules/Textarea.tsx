@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 import FormFieldContainer from "../Atoms/FormFieldContainer";
 import FormLabel from "../Atoms/FormLabel";
@@ -23,38 +23,41 @@ interface Props {
  *
  * @return {*}  {JSX.Element}
  */
-const Textarea: React.FC<Props> = (props): JSX.Element => {
-  const { className, handleChangeInputValue, errorMessages, isValid } =
-    useFormFieldProps({
-      value: props.value,
-      setValue: props.setValue,
-      required: props.required,
-      validationOptions: props.validationOptions,
-    });
+const Textarea = forwardRef<HTMLTextAreaElement, Props>(
+  (props, ref): JSX.Element => {
+    const { className, handleChangeInputValue, errorMessages, isValid } =
+      useFormFieldProps({
+        value: props.value,
+        setValue: props.setValue,
+        required: props.required,
+        validationOptions: props.validationOptions,
+      });
 
-  return (
-    <FormFieldContainer>
-      {props.label && (
-        <FormLabel formFieldId={props.id} required={props.required}>
-          {props.label}
-        </FormLabel>
-      )}
+    return (
+      <FormFieldContainer>
+        {props.label && (
+          <FormLabel formFieldId={props.id} required={props.required}>
+            {props.label}
+          </FormLabel>
+        )}
 
-      <textarea
-        id={props.id}
-        className={`form-field ${className}`}
-        value={props.value}
-        onChange={handleChangeInputValue}
-        placeholder={props.placeholder ?? ""}
-        disabled={props.disabled}
-      />
+        <textarea
+          id={props.id}
+          ref={ref}
+          className={`form-field ${className}`}
+          value={props.value}
+          onChange={handleChangeInputValue}
+          placeholder={props.placeholder ?? ""}
+          disabled={props.disabled}
+        />
 
-      {!isValid &&
-        errorMessages.map((errMessage, index) => (
-          <FormError key={index}>{errMessage}</FormError>
-        ))}
-    </FormFieldContainer>
-  );
-};
+        {!isValid &&
+          errorMessages.map((errMessage, index) => (
+            <FormError key={index}>{errMessage}</FormError>
+          ))}
+      </FormFieldContainer>
+    );
+  }
+);
 
 export default Textarea;

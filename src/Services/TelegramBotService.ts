@@ -31,19 +31,6 @@ async function sendMessage(message: string): Promise<boolean> {
 }
 
 /**
- * Sends a message with feedback from
- * user about an error which he encountered
- *
- * @export
- * @param {string} comment comment about the error
- * @return {*}  {Promise<boolean>} indicated whether the message has been successfully sent
- */
-export async function submitErrorFeedback(comment: string): Promise<boolean> {
-  const message = `<b>New Error Feedback</b>%0A%0A${comment}`;
-  return await sendMessage(message);
-}
-
-/**
  * Sends a message to telegram bot's admin which
  * info about the error which has happened and details
  * about the user which has encountered the error

@@ -35,10 +35,10 @@ const ContactForm: React.FC = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
 
   /**
-   * Calls helper function to 
+   * Calls helper function to
    * validate form fields and
    * sets isValid state variable.
-   * 
+   *
    * @return {*}  {void}
    */
   function validateForm(): void {
@@ -46,10 +46,6 @@ const ContactForm: React.FC = (): JSX.Element => {
     setIsValid(isValid);
   }
 
-  /**
-   * Invokes 'validateForm' function on
-   * every 'email' and 'name' values change
-   */
   useEffect(() => validateForm(), [email, name]);
 
   /**
