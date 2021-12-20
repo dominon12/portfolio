@@ -19,10 +19,6 @@ const Languages: React.FC = (): JSX.Element => {
   const profile = useSelector(selectProfile);
   const languages = useSelector(selectLanguages);
 
-  useEffect(() => {
-    throw new Error();
-  }, []);
-
   return (
     <>
       <Helmet>
