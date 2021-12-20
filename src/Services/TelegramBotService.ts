@@ -31,27 +31,6 @@ async function sendMessage(message: string): Promise<boolean> {
 }
 
 /**
- * Sends a message to telegram bot's admin using a
- * template, representing a new contact request
- *
- * @export
- * @param {string} name name of the person
- * @param {string} email email of the person
- * @param {string} [comment] comment of the person
- * @return {*}  {Promise<boolean>} indicated whether the message has been successfully sent
- */
-export async function sendContactRequestMessage(
-  name: string,
-  email: string,
-  comment?: string
-): Promise<boolean> {
-  const message = `<b>New contact request</b>%0A%0A<b>From</b> ${name}%0A<b>Email</b> ${email}${
-    comment && `%0A%0A${comment}`
-  }`;
-  return await sendMessage(message);
-}
-
-/**
  * Sends a message with feedback from
  * user about an error which he encountered
  *

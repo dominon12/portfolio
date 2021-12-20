@@ -11,12 +11,41 @@ export const URLS = {
   contact: baseURL + "contact/",
 };
 
+/**
+ * Sends GET request to a specified url
+ *
+ * @export
+ * @template T - return type
+ * @param {string} url
+ * @param {string} [search] - url search params string
+ * @return {*}  {Promise<T>}
+ */
 export async function performGET<T>(url: string, search?: string): Promise<T> {
   // form url
   let urlToFetch = new URL(url);
   if (search) urlToFetch.search = search;
   // make request
   const res = await fetch(urlToFetch.toString());
-  const data = await res.json();
+  const data: T = await res.json();
+  return data;
+}
+
+/**
+ * Sends POST request to a specified url
+ * with specified body
+ *
+ * @export
+ * @template T
+ * @param {string} url
+ * @param {*} body
+ * @return {*}  {Promise<T>}
+ */
+export async function performPOST<T>(url: string, body: any): Promise<T> {
+  const res = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+  });
+  const data: T = await res.json();
   return data;
 }

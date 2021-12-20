@@ -1,15 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import "./ContactForm.scss";
 import Button from "../Atoms/Button";
 import Input from "../Molecules/Input";
 import Textarea from "../Molecules/Textarea";
-import { sendContactRequestMessage } from "../../Services/TelegramBotService";
-import { emailRegexp, nameRegexp } from "../../Services/FormService";
 import {
-  SnackBarContext,
-  SnackBarMessageColor,
-} from "../../Contexts/SnackBarContext";
+  checkFormValid,
+  emailPattern,
+  namePattern,
+} from "../../Services/FormService";
+import { SnackBarContext } from "../../Contexts/SnackBarContext";
+import { useDispatch } from "react-redux";
+import { sendContactRequest } from "../../Redux/Contact/Actions";
 
 /**
  * Interactive contact form which shows loading
@@ -19,34 +21,29 @@ import {
  * @return {*} {JSX.Element}
  */
 const ContactForm: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch();
   const { sendMessage } = useContext(SnackBarContext);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
 
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
+
   const [isValid, setIsValid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   /**
-   * Checks whether 'email' and 'name' values
-   * correspond to corresponding regular expressions
-   * and sets 'isValid' to true in case of passed tests.
-   *
-   * If on of the tests will fail, sets 'isValid' to false
-   *
+   * Calls helper function to 
+   * validate form fields and
+   * sets isValid state variable.
+   * 
    * @return {*}  {void}
    */
   function validateForm(): void {
-    if (!emailRegexp.test(email)) {
-      setIsValid(false);
-      return;
-    }
-    if (!nameRegexp.test(name)) {
-      setIsValid(false);
-      return;
-    }
-    setIsValid(true);
+    const isValid = checkFormValid([nameInputRef, emailInputRef]);
+    setIsValid(isValid);
   }
 
   /**
@@ -69,71 +66,55 @@ const ContactForm: React.FC = (): JSX.Element => {
    * setting state variables and showing
    * snackbar messages.
    */
-  const handleFormSubmit = async () => {
-    if (isValid) {
-      setIsLoading(true);
-      const success = await sendContactRequestMessage(name, email, comment);
-
-      setTimeout(() => {
-        if (success) {
-          sendMessage(
-            "Your contact request has been successfully sent! I will contact you ASAP.",
-            { color: SnackBarMessageColor.SUCCESS }
-          );
-        } else {
-          sendMessage(
-            "Something sent wrong. Please try again later or contact me via links below.",
-            { color: SnackBarMessageColor.DANGER }
-          );
-        }
-
-        cleanForm();
-        setIsLoading(false);
-      }, 1500);
-    }
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // prevent page from reloading
+    e.preventDefault();
+    // dispatch saga action
+    dispatch(
+      sendContactRequest({ name, email, comment }, setIsLoading, sendMessage)
+    );
+    // clean form
+    cleanForm();
   };
 
   return (
     <div className="contact-form">
-      <form className="contact-form__form">
+      <form className="contact-form__form" onSubmit={handleFormSubmit}>
         <Input
           id="contact-form-name"
+          ref={nameInputRef}
           value={name}
-          handleChange={setName}
+          setValue={setName}
           label="Your name"
           placeholder="Your name"
-          regexp={nameRegexp}
           disabled={isLoading}
+          validationOptions={{ regexp: namePattern }}
           required
         />
         <Input
           id="contact-form-email"
+          ref={emailInputRef}
           value={email}
-          handleChange={setEmail}
+          setValue={setEmail}
           label="Email"
           placeholder="Email"
-          regexp={emailRegexp}
           disabled={isLoading}
           type="email"
+          validationOptions={{ regexp: emailPattern }}
           required
         />
         <Textarea
           id="contact-form-comment"
           value={comment}
-          handleChange={setComment}
+          setValue={setComment}
           label="Comment"
           placeholder="Comment"
           disabled={isLoading}
         />
+        <Button type="primary" disabled={!isValid} isLoading={isLoading}>
+          Submit
+        </Button>
       </form>
-      <Button
-        type="primary"
-        onClick={handleFormSubmit}
-        disabled={!isValid}
-        isLoading={isLoading}
-      >
-        Submit
-      </Button>
     </div>
   );
 };

@@ -4,7 +4,7 @@
  */
 
 import { TechGroup, Technology } from "../Types/ApiTypes";
-import { ISelectValue, ISelectValuesGroup } from "../Types/SystemTypes";
+import { ISelectValue, ISelectValuesGroup } from "../Types/FormTypes";
 import { filterByKey, pageKey, pageSizeKey } from "./GetParamKeys";
 import { updateUrlWithGetParams } from "./HelperService";
 
