@@ -1,11 +1,8 @@
+import { createInitialState } from "./../Helpers";
 import { RootState } from "../Types";
 import { ContactAction, ContactActionTypes } from "./Types";
 
-const INITIAL_STATE: RootState["contact"] = {
-  data: null,
-  pending: false,
-  error: null,
-};
+const INITIAL_STATE: RootState["contact"] = createInitialState();
 
 function contactReducer(state = INITIAL_STATE, action: ContactAction) {
   switch (action.type) {

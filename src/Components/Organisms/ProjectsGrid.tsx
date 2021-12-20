@@ -22,6 +22,7 @@ const ProjectsGrid: React.FC<Props> = (props): JSX.Element => {
             key={project.pk}
             id={project.pk}
             name={project.name}
+            previewImage={project.previewImage}
             image={project.image}
             shortDescription={project.shortDescription}
             date={new Date(project.date)}

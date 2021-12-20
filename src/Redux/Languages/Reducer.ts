@@ -1,11 +1,8 @@
+import { createInitialState } from "../Helpers";
 import { RootState } from "../Types";
 import { LanguagesAction, LanguagesActionTypes } from "./Types";
 
-const INITIAL_STATE: RootState["languages"] = {
-  data: null,
-  pending: false,
-  error: null,
-};
+const INITIAL_STATE: RootState["languages"] = createInitialState();
 
 function languagesReducer(state = INITIAL_STATE, action: LanguagesAction) {
   switch (action.type) {

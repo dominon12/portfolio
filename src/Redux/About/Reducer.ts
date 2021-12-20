@@ -1,11 +1,8 @@
+import { createInitialState } from "./../Helpers";
 import { RootState } from "../Types";
 import { AboutAction, AboutActionTypes } from "./Types";
 
-const INITIAL_STATE: RootState["about"] = {
-  data: null,
-  pending: false,
-  error: null,
-};
+const INITIAL_STATE: RootState["about"] = createInitialState();
 
 function aboutReducer(state = INITIAL_STATE, action: AboutAction) {
   switch (action.type) {

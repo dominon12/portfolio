@@ -44,6 +44,7 @@ export interface AboutUnit {
 export interface Project {
   pk: number;
   name: string;
+  previewImage?: IImage;
   image: IImage;
   shortDescription: string;
   description: string;

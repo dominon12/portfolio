@@ -21,6 +21,7 @@ interface Props {
   description: string;
   date: Date;
   technologies: Technology[];
+  previewImage?: IImage;
   repository?: string;
   link?: string;
 }
@@ -38,13 +39,17 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
   const expanded = parseInt(getParams.get(projectIdKey) ?? "0") === props.id;
 
   const projectIdConnector = location.search ? "&" : "?";
-  
+
   const projectLink =
     location.pathname +
     location.search +
     projectIdConnector +
     "projectId=" +
     props.id.toString();
+
+  const previewImageProps = props.previewImage
+    ? props.previewImage
+    : props.image;
 
   if (!expanded) {
     // small card
@@ -56,7 +61,7 @@ const ProjectCard: React.FC<Props> = (props): JSX.Element => {
       >
         <Link to={projectLink} className="project-card__content">
           <div className="project-card__img-container">
-            <img className="project-card__img" {...props.image} />
+            <img className="project-card__img" {...previewImageProps} />
           </div>
           <div className="project-card__text-content">
             <div className="project-card__title-wrapper">

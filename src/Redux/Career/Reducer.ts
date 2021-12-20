@@ -1,11 +1,8 @@
+import { createInitialState } from "../Helpers";
 import { RootState } from "../Types";
 import { CareerAction, CareerActionTypes } from "./Types";
 
-const INITIAL_STATE: RootState["career"] = {
-  data: null,
-  pending: false,
-  error: null,
-};
+const INITIAL_STATE: RootState["career"] = createInitialState();
 
 function careerReducer(state = INITIAL_STATE, action: CareerAction) {
   switch (action.type) {
