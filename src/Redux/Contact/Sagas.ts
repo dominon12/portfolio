@@ -35,7 +35,7 @@ function* loadContactMethods(): Generator<
 }
 
 function* sendContactRequest({
-  payload: { data, setIsLoading, sendMessage, cleanForm },
+  payload: { data, setIsLoading, sendMessage },
 }: ReturnType<SendContactRequestAction>): Generator<CallEffect, void, unknown> {
   setIsLoading(true);
 
@@ -54,7 +54,6 @@ function* sendContactRequest({
     );
   } finally {
     setIsLoading(false);
-    cleanForm();
   }
 }
 

@@ -23,9 +23,8 @@ export const contactMethodsFailure: ContactFailureAction = (payload) => ({
 export const sendContactRequest: SendContactRequestAction = (
   data,
   setIsLoading,
-  sendMessage,
-  cleanForm
+  sendMessage
 ) => ({
   type: ContactActionTypes.SEND_CONTACT_REQUEST,
-  payload: { data, setIsLoading, sendMessage, cleanForm },
+  payload: { data, setIsLoading, sendMessage },
 });

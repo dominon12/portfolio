@@ -5,7 +5,7 @@ import "./Button.scss";
 
 interface Props {
   type: "primary";
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   isLoading?: boolean;
 }

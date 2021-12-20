@@ -70,7 +70,7 @@ const RuntimeError = (): JSX.Element => {
         value={comment}
         placeholder="What happened?"
         label="Feedback"
-        handleChange={setComment}
+        setValue={setComment}
         disabled={isLoading}
       />
       <Button

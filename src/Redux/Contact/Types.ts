@@ -25,15 +25,13 @@ export type ContactFailureAction = (payload: unknown) => {
 export type SendContactRequestAction = (
   data: ContactRequest,
   setIsLoading: (value: React.SetStateAction<boolean>) => void,
-  sendMessage: (text: string, options?: ISnackBarOptions) => void,
-  cleanForm: () => void
+  sendMessage: (text: string, options?: ISnackBarOptions) => void
 ) => {
   type: ContactActionTypes.SEND_CONTACT_REQUEST;
   payload: {
     data: ContactRequest;
     setIsLoading: (value: React.SetStateAction<boolean>) => void;
     sendMessage: (text: string, options?: ISnackBarOptions) => void;
-    cleanForm: () => void;
   };
 };
 

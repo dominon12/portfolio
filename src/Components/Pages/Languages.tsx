@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 
@@ -18,6 +18,10 @@ import { selectProfile } from "../../Redux/About/Selectors";
 const Languages: React.FC = (): JSX.Element => {
   const profile = useSelector(selectProfile);
   const languages = useSelector(selectLanguages);
+
+  useEffect(() => {
+    throw new Error();
+  }, []);
 
   return (
     <>
