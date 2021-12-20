@@ -41,7 +41,8 @@ export async function performGET<T>(url: string, search?: string): Promise<T> {
  * @return {*}  {Promise<T>}
  */
 export async function performPOST<T>(url: string, body: any): Promise<T> {
-  const res = await fetch(url, {
+  let urlToFetch = new URL(url);
+  const res = await fetch(urlToFetch.toString(), {
     method: "POST",
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
