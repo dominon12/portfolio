@@ -152,3 +152,17 @@ export interface ContactMethod {
   name: string;
   link: string;
 }
+
+
+/**
+ * Represents contact request
+ * sent by user.
+ *
+ * @export
+ * @interface ContactRequest
+ */
+export interface ContactRequest {
+  name: string;
+  email: string;
+  comment?: string;
+}

@@ -4,12 +4,10 @@ import "./ContactForm.scss";
 import Button from "../Atoms/Button";
 import Input from "../Molecules/Input";
 import Textarea from "../Molecules/Textarea";
-import { sendContactRequestMessage } from "../../Services/TelegramBotService";
 import { emailRegexp, nameRegexp } from "../../Services/FormService";
-import {
-  SnackBarContext,
-  SnackBarMessageColor,
-} from "../../Contexts/SnackBarContext";
+import { SnackBarContext } from "../../Contexts/SnackBarContext";
+import { useDispatch } from "react-redux";
+import { sendContactRequest } from "../../Redux/Contact/Actions";
 
 /**
  * Interactive contact form which shows loading
@@ -19,6 +17,7 @@ import {
  * @return {*} {JSX.Element}
  */
 const ContactForm: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch();
   const { sendMessage } = useContext(SnackBarContext);
 
   const [name, setName] = useState("");
@@ -70,27 +69,14 @@ const ContactForm: React.FC = (): JSX.Element => {
    * snackbar messages.
    */
   const handleFormSubmit = async () => {
-    if (isValid) {
-      setIsLoading(true);
-      const success = await sendContactRequestMessage(name, email, comment);
-
-      setTimeout(() => {
-        if (success) {
-          sendMessage(
-            "Your contact request has been successfully sent! I will contact you ASAP.",
-            { color: SnackBarMessageColor.SUCCESS }
-          );
-        } else {
-          sendMessage(
-            "Something sent wrong. Please try again later or contact me via links below.",
-            { color: SnackBarMessageColor.DANGER }
-          );
-        }
-
-        cleanForm();
-        setIsLoading(false);
-      }, 1500);
-    }
+    dispatch(
+      sendContactRequest(
+        { name, email, comment },
+        setIsLoading,
+        sendMessage,
+        cleanForm
+      )
+    );
   };
 
   return (

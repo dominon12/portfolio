@@ -1,9 +1,11 @@
-import { ContactMethod } from "./../../Types/ApiTypes";
+import { ISnackBarOptions } from "../../Contexts/SnackBarContext";
+import { ContactMethod, ContactRequest } from "./../../Types/ApiTypes";
 
 export enum ContactActionTypes {
   FETCH = "CONTACT_FETCH",
   SUCCESS = "CONTACT_SUCCESS",
   FAILURE = "CONTACT_FAILURE",
+  SEND_CONTACT_REQUEST = "SEND_CONTACT_REQUEST",
 }
 
 export type ContactFetchAction = () => {
@@ -20,6 +22,24 @@ export type ContactFailureAction = (payload: unknown) => {
   payload: unknown;
 };
 
+export type SendContactRequestAction = (
+  data: ContactRequest,
+  setIsLoading: (value: React.SetStateAction<boolean>) => void,
+  sendMessage: (text: string, options?: ISnackBarOptions) => void,
+  cleanForm: () => void
+) => {
+  type: ContactActionTypes.SEND_CONTACT_REQUEST;
+  payload: {
+    data: ContactRequest;
+    setIsLoading: (value: React.SetStateAction<boolean>) => void;
+    sendMessage: (text: string, options?: ISnackBarOptions) => void;
+    cleanForm: () => void;
+  };
+};
+
 export type ContactAction = ReturnType<
-  ContactFetchAction | ContactSuccessAction | ContactFailureAction
+  | ContactFetchAction
+  | ContactSuccessAction
+  | ContactFailureAction
+  | SendContactRequestAction
 >;

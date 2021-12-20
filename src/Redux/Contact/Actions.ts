@@ -3,6 +3,7 @@ import {
   ContactFailureAction,
   ContactFetchAction,
   ContactSuccessAction,
+  SendContactRequestAction,
 } from "./Types";
 
 export const fetchContactMethods: ContactFetchAction = () => ({
@@ -17,4 +18,14 @@ export const contactMethodsSuccess: ContactSuccessAction = (payload) => ({
 export const contactMethodsFailure: ContactFailureAction = (payload) => ({
   type: ContactActionTypes.FAILURE,
   payload,
+});
+
+export const sendContactRequest: SendContactRequestAction = (
+  data,
+  setIsLoading,
+  sendMessage,
+  cleanForm
+) => ({
+  type: ContactActionTypes.SEND_CONTACT_REQUEST,
+  payload: { data, setIsLoading, sendMessage, cleanForm },
 });
