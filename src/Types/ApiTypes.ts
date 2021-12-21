@@ -82,6 +82,7 @@ export interface Technology {
   level: number;
   isRelevant: boolean;
   showAsFilter: boolean;
+  showInTable: boolean;
 }
 
 /**

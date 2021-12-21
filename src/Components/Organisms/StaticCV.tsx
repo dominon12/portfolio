@@ -8,6 +8,7 @@ import {
   Image,
   Link,
 } from "@react-pdf/renderer";
+
 import {
   CareerEvent,
   ContactMethod,
@@ -15,6 +16,7 @@ import {
   Profile,
   TechGroup,
 } from "../../Types/ApiTypes";
+import profilePhoto from "../../Assets/Images/Profile/profile.jpeg";
 
 interface Props {
   profile: Profile;
@@ -39,6 +41,7 @@ const StaticCV: React.FC<Props> = ({
   const styles = StyleSheet.create({
     page: {
       padding: "16px",
+      paddingBottom: "0",
     },
     title: {
       fontSize: 32,
@@ -103,7 +106,7 @@ const StaticCV: React.FC<Props> = ({
           <Text style={styles.title}>{fullName}</Text>
           <Text style={[styles.subtitle, styles.link]}>{profile.jobTitle}</Text>
         </View>
-        <Image src={profile.photo.src} style={headerStyles.profileImage} />
+        <Image src={profilePhoto} style={headerStyles.profileImage} />
       </View>
     );
   };
@@ -204,21 +207,24 @@ const StaticCV: React.FC<Props> = ({
         marginBottom: 6,
       },
     });
+
     return (
       <View style={styles.section}>
         <Text style={styles.subtitle}>Experience</Text>
-        {careerEvents.map((careerEvent) => (
-          <View key={careerEvent.pk} style={experienceStyles.listItem}>
-            <View style={experienceStyles.header}>
-              <Text style={styles.subHeading}>• {careerEvent.title}</Text>
-              <Text style={styles.text}>
-                {new Date(careerEvent.date).toLocaleDateString()}
-              </Text>
+        {careerEvents
+          .filter((careerEvent) => careerEvent.isRelevant)
+          .map((careerEvent) => (
+            <View key={careerEvent.pk} style={experienceStyles.listItem}>
+              <View style={experienceStyles.header}>
+                <Text style={styles.subHeading}>• {careerEvent.title}</Text>
+                <Text style={styles.text}>
+                  {new Date(careerEvent.date).toLocaleDateString()}
+                </Text>
+              </View>
+              <Text style={styles.textSecondary}>{careerEvent.place}</Text>
+              <Text style={styles.text}>{careerEvent.description}</Text>
             </View>
-            <Text style={styles.textSecondary}>{careerEvent.place}</Text>
-            <Text style={styles.text}>{careerEvent.description}</Text>
-          </View>
-        ))}
+          ))}
       </View>
     );
   };
@@ -231,53 +237,56 @@ const StaticCV: React.FC<Props> = ({
    */
   const skillsSection = (): JSX.Element => {
     const skillStyles = StyleSheet.create({
-      group: {
-        marginBottom: 6,
-      },
-      table: {
-        marginTop: 6,
-      },
       skill: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        marginBottom: 4,
-        borderBottom: 0.2,
-        paddingBottom: 4,
+        marginBottom: 5,
+        paddingBottom: 6,
       },
-      relevantSkill: {
+      progressBar: {
+        marginTop: 6,
+        flexDirection: "row",
+      },
+      skillCell: {
+        width: 25,
+        height: 6,
+        transform: "skew(20deg)",
+        backgroundColor: "lightgray",
+        marginRight: 3,
+      },
+      filledCell: {
         backgroundColor: "#ff8e3c",
-        color: "white",
       },
     });
+
+    const preparedSkills = technologies
+      .filter((skillGroup) => skillGroup.showAsSkill)
+      .map((skillGroup) =>
+        skillGroup.skills.filter(
+          (skill) => skill.isRelevant && skill.showInTable
+        )
+      )
+      .flat();
 
     return (
       <View style={styles.section}>
         <Text style={styles.subtitle}>Skills</Text>
-        {technologies.map((skillGroup) => (
-          <View key={skillGroup.pk} style={skillStyles.group}>
-            <Text style={styles.subHeading}>{skillGroup.name}</Text>
-            <View style={skillStyles.table}>
-              {skillGroup.skills
-                .sort((a, b) => b.level - a.level)
-                .map((skill) => (
+        {preparedSkills
+          .sort((a, b) => b.level - a.level)
+          .map((skill) => (
+            <View key={skill.pk} style={skillStyles.skill}>
+              <Text style={styles.text}>{skill.name}</Text>
+              <View style={skillStyles.progressBar}>
+                {[1, 2, 3, 4, 5].map((i) => (
                   <View
-                    key={skill.pk}
-                    style={
-                      skill.isRelevant
-                        ? {
-                            ...skillStyles.skill,
-                            ...skillStyles.relevantSkill,
-                          }
-                        : skillStyles.skill
-                    }
-                  >
-                    <Text style={styles.text}>{skill.name}</Text>
-                    <Text style={styles.text}>{skill.level} / 5</Text>
-                  </View>
+                    key={i}
+                    style={{
+                      ...skillStyles.skillCell,
+                      ...(skill.level >= i && skillStyles.filledCell),
+                    }}
+                  ></View>
                 ))}
+              </View>
             </View>
-          </View>
-        ))}
+          ))}
       </View>
     );
   };
@@ -327,8 +336,8 @@ const StaticCV: React.FC<Props> = ({
       <View style={bodyStyles.container}>
         <View style={bodyStyles.leftPart}>
           {profileSection()}
-          {languagesSection()}
           {skillsSection()}
+          {languagesSection()}
         </View>
         <View style={bodyStyles.rightPart}>
           {projectsSection()}
