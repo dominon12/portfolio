@@ -57,5 +57,9 @@ $mobile-devices: 425px;
   &__link {
     padding: 0 1rem;
     color: var(--button-text);
+
+    &::selection {
+      background-color: var(--doc-background-color);
+    }
   }
 }
