@@ -24,6 +24,7 @@ const CareerEvent: React.FC<Props> = (props): JSX.Element => {
 
   return (
     <div
+      tabIndex={0}
       ref={leafRef}
       className={`career-event ${!props.isRelevant && "irrelevant"}`}
     >

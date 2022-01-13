@@ -10,22 +10,38 @@ import {
 } from "@react-pdf/renderer";
 
 import {
-  getAbout,
-  getContactMethods,
-  getExperience,
-  getLanguages,
-  getSkills,
-} from "../../Services/DataService";
+  CareerEvent,
+  ContactMethod,
+  Language,
+  Profile,
+  TechGroup,
+} from "../../Types/ApiTypes";
+import profilePhoto from "../../Assets/Images/Profile/profile.jpeg";
+
+interface Props {
+  profile: Profile;
+  languages: Language[];
+  careerEvents: CareerEvent[];
+  contactMethods: ContactMethod[];
+  technologies: TechGroup[];
+}
 
 /**
  * Renders a static pdf document - CV
  *
  * @return {*}  {JSX.Element}
  */
-const StaticCV: React.FC = (): JSX.Element => {
+const StaticCV: React.FC<Props> = ({
+  profile,
+  languages,
+  careerEvents,
+  contactMethods,
+  technologies,
+}): JSX.Element => {
   const styles = StyleSheet.create({
     page: {
       padding: "16px",
+      paddingBottom: "0",
     },
     title: {
       fontSize: 32,
@@ -62,15 +78,7 @@ const StaticCV: React.FC = (): JSX.Element => {
     },
   });
 
-  const about = getAbout();
-  const languages = getLanguages();
-  const experience = getExperience().filter(
-    (careerEvent) => careerEvent.isRelevant
-  );
-  const contactMethods = getContactMethods();
-  const skills = getSkills();
-
-  const fullName = `${about.firstName} ${about.lastName}`;
+  const fullName = `${profile.firstName} ${profile.lastName}`;
 
   /**
    * Renders header
@@ -96,22 +104,22 @@ const StaticCV: React.FC = (): JSX.Element => {
       <View style={headerStyles.header}>
         <View>
           <Text style={styles.title}>{fullName}</Text>
-          <Text style={[styles.subtitle, styles.link]}>{about.jobTitle}</Text>
+          <Text style={[styles.subtitle, styles.link]}>{profile.jobTitle}</Text>
         </View>
-        <Image src={about.profilePhoto.src} style={headerStyles.profileImage} />
+        <Image src={profilePhoto} style={headerStyles.profileImage} />
       </View>
     );
   };
 
   /**
-   * Renders about section
+   * Renders profile section
    *
    * @return {*}  {JSX.Element}
    */
-  const aboutSection = (): JSX.Element => (
+  const profileSection = (): JSX.Element => (
     <View style={styles.section}>
-      <Text style={styles.subtitle}>About</Text>
-      <Text style={styles.text}>{about.cvDescription}</Text>
+      <Text style={styles.subtitle}>profile</Text>
+      <Text style={styles.text}>{profile.cvDescription}</Text>
     </View>
   );
 
@@ -136,8 +144,8 @@ const StaticCV: React.FC = (): JSX.Element => {
         <View style={contactStyles.linksContainer}>
           {contactMethods.map((contactMethod) => (
             <Link
-              key={contactMethod.id}
-              src={contactMethod.url}
+              key={contactMethod.pk}
+              src={contactMethod.link}
               style={styles.link}
             >
               {contactMethod.name}
@@ -150,7 +158,7 @@ const StaticCV: React.FC = (): JSX.Element => {
 
   /**
    * Renders section with info
-   * about languages
+   * profile languages
    *
    * @return {*}  {JSX.Element}
    */
@@ -167,7 +175,7 @@ const StaticCV: React.FC = (): JSX.Element => {
       <View style={styles.section}>
         <Text style={styles.subtitle}>Languages</Text>
         {languages.map((lang) => (
-          <View key={lang.id} style={languagesStyles.container}>
+          <View key={lang.pk} style={languagesStyles.container}>
             <Image
               src={`https://flagcdn.com/16x12/${lang.code}.png`}
               style={languagesStyles.image}
@@ -183,7 +191,7 @@ const StaticCV: React.FC = (): JSX.Element => {
 
   /**
    * Renders a section with info
-   * about an experience
+   * profile an experience
    *
    * @return {*}  {JSX.Element}
    */
@@ -199,17 +207,18 @@ const StaticCV: React.FC = (): JSX.Element => {
         marginBottom: 6,
       },
     });
+
     return (
       <View style={styles.section}>
         <Text style={styles.subtitle}>Experience</Text>
-        {experience
-          .sort((a, b) => b.date.getTime() - a.date.getTime())
+        {careerEvents
+          .filter((careerEvent) => careerEvent.isRelevant)
           .map((careerEvent) => (
-            <View key={careerEvent.id} style={experienceStyles.listItem}>
+            <View key={careerEvent.pk} style={experienceStyles.listItem}>
               <View style={experienceStyles.header}>
                 <Text style={styles.subHeading}>• {careerEvent.title}</Text>
                 <Text style={styles.text}>
-                  {careerEvent.date.toLocaleDateString()}
+                  {new Date(careerEvent.date).toLocaleDateString()}
                 </Text>
               </View>
               <Text style={styles.textSecondary}>{careerEvent.place}</Text>
@@ -228,59 +237,62 @@ const StaticCV: React.FC = (): JSX.Element => {
    */
   const skillsSection = (): JSX.Element => {
     const skillStyles = StyleSheet.create({
-      group: {
-        marginBottom: 6,
-      },
-      table: {
-        marginTop: 6,
-      },
       skill: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        marginBottom: 4,
-        borderBottom: 0.2,
-        paddingBottom: 4,
+        marginBottom: 5,
+        paddingBottom: 6,
       },
-      relevantSkill: {
+      progressBar: {
+        marginTop: 6,
+        flexDirection: "row",
+      },
+      skillCell: {
+        width: 25,
+        height: 6,
+        transform: "skew(20deg)",
+        backgroundColor: "lightgray",
+        marginRight: 3,
+      },
+      filledCell: {
         backgroundColor: "#ff8e3c",
-        color: "white",
       },
     });
+
+    const preparedSkills = technologies
+      .filter((skillGroup) => skillGroup.showAsSkill)
+      .map((skillGroup) =>
+        skillGroup.skills.filter(
+          (skill) => skill.isRelevant && skill.showInTable
+        )
+      )
+      .flat();
 
     return (
       <View style={styles.section}>
         <Text style={styles.subtitle}>Skills</Text>
-        {skills.map((skillGroup) => (
-          <View key={skillGroup.id} style={skillStyles.group}>
-            <Text style={styles.subHeading}>{skillGroup.name}</Text>
-            <View style={skillStyles.table}>
-              {skillGroup.skills
-                .sort((a, b) => b.level - a.level)
-                .map((skill) => (
+        {preparedSkills
+          .sort((a, b) => b.level - a.level)
+          .map((skill) => (
+            <View key={skill.pk} style={skillStyles.skill}>
+              <Text style={styles.text}>{skill.name}</Text>
+              <View style={skillStyles.progressBar}>
+                {[1, 2, 3, 4, 5].map((i) => (
                   <View
-                    key={skill.id}
-                    style={
-                      skill.isRelevant
-                        ? {
-                            ...skillStyles.skill,
-                            ...skillStyles.relevantSkill,
-                          }
-                        : skillStyles.skill
-                    }
-                  >
-                    <Text style={styles.text}>{skill.name}</Text>
-                    <Text style={styles.text}>{skill.level} / 5</Text>
-                  </View>
+                    key={i}
+                    style={{
+                      ...skillStyles.skillCell,
+                      ...(skill.level >= i && skillStyles.filledCell),
+                    }}
+                  ></View>
                 ))}
+              </View>
             </View>
-          </View>
-        ))}
+          ))}
       </View>
     );
   };
 
   /**
-   * Renders a section with info about projects
+   * Renders a section with info profile projects
    *
    * @return {*}  {JSX.Element}
    */
@@ -323,9 +335,9 @@ const StaticCV: React.FC = (): JSX.Element => {
     return (
       <View style={bodyStyles.container}>
         <View style={bodyStyles.leftPart}>
-          {aboutSection()}
-          {languagesSection()}
+          {profileSection()}
           {skillsSection()}
+          {languagesSection()}
         </View>
         <View style={bodyStyles.rightPart}>
           {projectsSection()}

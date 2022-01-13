@@ -2,10 +2,10 @@ import React from "react";
 
 import "./ProjectsGrid.scss";
 import ProjectCard from "../Molecules/ProjectCard";
-import { IProject } from "../../Types/PortfolioDataTypes";
+import { Project } from "../../Types/ApiTypes";
 
 interface Props {
-  projects: IProject[];
+  projects?: Project[];
 }
 
 /**
@@ -16,20 +16,22 @@ interface Props {
 const ProjectsGrid: React.FC<Props> = (props): JSX.Element => {
   return (
     <div className="projects-grid">
-      {props.projects.map((project: IProject) => (
-        <ProjectCard
-          key={project.id}
-          id={project.id}
-          title={project.title}
-          image={project.image}
-          shortDescription={project.shortDescription}
-          dateStarted={project.dateStarted}
-          technologies={project.technologies}
-          description={project.description}
-          repository={project.repository}
-          link={project.link}
-        />
-      ))}
+      {props.projects &&
+        props.projects.map((project: Project) => (
+          <ProjectCard
+            key={project.pk}
+            id={project.pk}
+            name={project.name}
+            previewImage={project.previewImage}
+            image={project.image}
+            shortDescription={project.shortDescription}
+            date={new Date(project.date)}
+            technologies={project.technologies}
+            description={project.description}
+            repository={project.repository}
+            link={project.link}
+          />
+        ))}
     </div>
   );
 };

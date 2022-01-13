@@ -1,10 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 import "./Skills.scss";
 import Title from "../Atoms/Title";
 import SkillsTable from "../Organisms/SkillsTable";
-import { getAbout, getSkills } from "../../Services/DataService";
+import ApiResponseTemplate from "../Templates/ApiResponseTemplate";
+import { TechGroup } from "../../Types/ApiTypes";
+import { selectTechnologies } from "../../Redux/Technologies/Selectors";
+import { selectProfile } from "../../Redux/About/Selectors";
 
 /**
  * Page with a several tables showing
@@ -13,27 +17,30 @@ import { getAbout, getSkills } from "../../Services/DataService";
  * @return {*}  {JSX.Element}
  */
 const Skills: React.FC = (): JSX.Element => {
-  const { nickname } = getAbout();
-  const skills = getSkills();
-
-  /**
-   * Converts list of skills to SkillsTable[]
-   * @returns SkillsTable[]
-   */
-  const renderSkills = () =>
-    skills.map((skillsGroup) => (
-      <SkillsTable key={skillsGroup.id} skillsGroup={skillsGroup} />
-    ));
+  const profile = useSelector(selectProfile);
+  const technologies = useSelector(selectTechnologies);
 
   return (
     <>
       <Helmet>
-        <title>Skills | {nickname}</title>
+        <title>Skills | {profile.data?.nickname ?? ""}</title>
         <meta name="description" content="A table with my skills" />
       </Helmet>
       <div className="skills">
         <Title className="skills__title">My skills</Title>
-        <div className="skills__wrapper">{renderSkills()}</div>
+        <ApiResponseTemplate
+          render={() => (
+            <div className="skills__wrapper">
+              {(technologies.data as TechGroup[])
+                .filter((skillsGroup) => skillsGroup.showAsSkill)
+                .map((skillsGroup) => (
+                  <SkillsTable key={skillsGroup.pk} skillsGroup={skillsGroup} />
+                ))}
+            </div>
+          )}
+          pending={technologies.pending}
+          error={technologies.error}
+        />
       </div>
     </>
   );

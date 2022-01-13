@@ -1,16 +1,16 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 import "./ErrorTemplate.scss";
-import { IImage } from "../../Types/SystemTypes";
 import Title from "../Atoms/Title";
 import InfoSection from "./InfoSection";
-import { getAbout } from "../../Services/DataService";
+import { selectProfile } from "../../Redux/About/Selectors";
+import ErrorIllustration from "../../Assets/Images/System/ErrorIllustration.png";
 
 interface Props {
   title: string;
   description: string;
-  image: IImage;
   seoTitle: string;
   seoDescription: string;
 }
@@ -20,13 +20,13 @@ interface Props {
  * title, description and additional content
  */
 const ErrorTemplate: React.FC<Props> = (props) => {
-  const { nickname } = getAbout();
+  const profile = useSelector(selectProfile);
 
   return (
     <>
       <Helmet>
         <title>
-          {props.seoTitle} | {nickname}
+          {props.seoTitle} | {profile.data?.nickname ?? ""}
         </title>
         <meta name="description" content={props.seoDescription} />
       </Helmet>
@@ -43,10 +43,10 @@ const ErrorTemplate: React.FC<Props> = (props) => {
           <>
             <img
               className="error-template__illustration"
-              src={props.image.src}
-              alt={props.image.alt}
-              width={props.image.width}
-              height={props.image.height}
+              src={ErrorIllustration}
+              alt="Error illustration"
+              width="500"
+              height="500"
             />
           </>
         }

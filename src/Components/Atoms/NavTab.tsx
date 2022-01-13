@@ -38,6 +38,7 @@ const NavTab: React.FC<Props> = (props): JSX.Element => {
   return props.tabData ? (
     <Tooltip position="right" content={props.tabData.title} hideOnMobile>
       <Link
+        role="tab"
         to={props.tabData.link}
         className={`nav-tab ${
           isTabActive(props.tabData.link) ? "active" : "inactive"

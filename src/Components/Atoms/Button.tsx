@@ -2,11 +2,10 @@ import React from "react";
 import { SyncLoader } from "react-spinners";
 
 import "./Button.scss";
-import { ButtonType } from "../../Types/SystemTypes";
 
 interface Props {
-  type: ButtonType;
-  onClick: () => void;
+  type: "primary";
+  onClick?: () => void;
   disabled?: boolean;
   isLoading?: boolean;
 }

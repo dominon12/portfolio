@@ -24,7 +24,7 @@ const Tooltip: React.FC<Props> = (props): JSX.Element => {
   /**
    * Sets 'active' state variable to true
    * after some delay.
-   * 
+   *
    * If no 'showDelay' prop was provided,
    * delay will be set to 100ms.
    */
@@ -48,6 +48,7 @@ const Tooltip: React.FC<Props> = (props): JSX.Element => {
       {props.children}
       {active && (
         <div
+          role="tooltip"
           className={`tooltip__tip ${props.position || "top"} ${
             props.hideOnMobile ? "hide-on-mobile" : ""
           }`}

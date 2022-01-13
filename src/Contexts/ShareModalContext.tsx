@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import ShareModal from "../Components/Modals/ShareModal";
 
 export interface ShareModalContextState {
   visible: boolean;
@@ -65,6 +66,7 @@ const ShareModalProvider: React.FC = (props) => {
       }}
     >
       {props.children}
+      <ShareModal />
     </ShareModalContext.Provider>
   );
 };

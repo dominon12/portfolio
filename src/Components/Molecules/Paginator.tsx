@@ -17,8 +17,9 @@ enum Direction {
 }
 
 interface Props {
-  items: any[];
-  pageItems: any[];
+  itemsCount: number;
+  pageItemsCount: number;
+  totalPages: number;
 }
 
 /**
@@ -34,12 +35,11 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
   const getParams = useGetParams();
 
   const pageSize = parseInt(getParams.get(pageSizeKey) ?? "6");
-  const pagesNum = Math.ceil(props.items.length / pageSize);
 
   const disablePagination =
-    props.items.length === props.pageItems.length || pageSize <= 0;
+    props.itemsCount === props.pageItemsCount || pageSize <= 0;
 
-  const infiniteQueue = useInfiniteQueue(pagesNum);
+  const infiniteQueue = useInfiniteQueue(props.totalPages);
 
   const switchesContainer = useRef<HTMLDivElement | null>(null);
 
@@ -297,6 +297,9 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
         <div className="paginator__controls">
           <Tooltip content="Previous" position="left">
             <BiLeftArrow
+              tabIndex={0}
+              role="button"
+              aria-label="Previous page"
               className="paginator__control hover-highlight"
               onClick={() => handleSwitchPage(Direction.Right)}
             />
@@ -315,6 +318,9 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
 
           <Tooltip content="Next" position="right">
             <BiRightArrow
+              tabIndex={0}
+              role="button"
+              aria-label="Next page"
               className="paginator__control hover-highlight"
               onClick={() => handleSwitchPage(Direction.Left)}
             />
@@ -323,6 +329,7 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
       )}
       <div className="paginator__page-size-select">
         <Select
+          id="page-size-select"
           label="Page size"
           value={pageSize}
           values={[

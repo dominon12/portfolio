@@ -49,15 +49,18 @@ const CopyData: React.FC<Props> = (props): JSX.Element => {
 
   return (
     <div className="copy-menu">
-      <Input ref={inputRef} value={props.data} />
+      <Input id="copy-menu-input" ref={inputRef} value={props.data} />
 
       {isCopied ? (
         <MdDoneAll
+          tabIndex={0}
           className="copy-menu__icon hover-highlight"
           onClick={() => setIsCopied(false)}
         />
       ) : (
         <CgCopy
+          tabIndex={0}
+          aria-label="Copy share link"
           className="copy-menu__icon hover-highlight"
           onClick={copyHandler}
         />

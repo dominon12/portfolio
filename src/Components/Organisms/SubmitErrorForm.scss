@@ -1,0 +1,12 @@
+$mobile-devices: 425px;
+
+.submit-error-form {
+  width: 100%;
+  text-align: left;
+
+  @media (max-width: $mobile-devices) {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,19 +1,21 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 
 import FormFieldContainer from "../Atoms/FormFieldContainer";
 import FormLabel from "../Atoms/FormLabel";
 import FormError from "../Atoms/FormError";
-import { validateField } from "../../Services/FormService";
+import { ValidationOptions } from "../../Types/FormTypes";
+import useFormFieldProps from "../../Hooks/useFormFieldProps";
 
 interface Props {
+  id: string;
   value: string;
+  setValue?: (value: string) => void;
   placeholder?: string;
   label?: string;
-  type?: string;
-  handleChange?: (value: string) => void;
+  type?: React.HTMLInputTypeAttribute;
   required?: boolean;
   disabled?: boolean;
-  regexp?: RegExp;
+  validationOptions?: ValidationOptions;
 }
 
 /**
@@ -23,62 +25,37 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const Input = forwardRef<HTMLInputElement, Props>((props, ref): JSX.Element => {
-  const [touched, setTouched] = useState(false);
-  const [valid, setValid] = useState(true);
-  const [errMessage, setErrMessage] = useState<string | null>(null);
-
-  /**
-   * Proxy function for set state action.
-   *
-   * Validates value and sets 'valid' value
-   *
-   * After first invocation, sets 'touched' value to true
-   * in order to indicate that the field was touched
-   *
-   * @param {React.ChangeEvent<HTMLInputElement>} e - field's onChange event
-   */
-  const handleInputValueChangesFlow = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    let instantTouched = touched;
-    if (!touched) {
-      setTouched(true);
-      instantTouched = true;
-    }
-
-    props.handleChange && props.handleChange(e.target.value);
-
-    props.required &&
-      instantTouched &&
-      validateField(
-        e.target.value,
-        valid,
-        errMessage,
-        setValid,
-        setErrMessage,
-        { validateEmptyField: true, validateRegExp: true, regexp: props.regexp }
-      );
-  };
+  const { className, handleChangeInputValue, errorMessages, isValid } =
+    useFormFieldProps({
+      value: props.value,
+      setValue: props.setValue,
+      required: props.required,
+      validationOptions: props.validationOptions,
+    });
 
   return (
     <FormFieldContainer>
       {props.label && (
-        <FormLabel required={props.required}>{props.label}</FormLabel>
+        <FormLabel formFieldId={props.id} required={props.required}>
+          {props.label}
+        </FormLabel>
       )}
 
       <input
         ref={ref}
-        className={`form-field ${
-          touched ? (valid ? "valid" : "invalid") : "untouched"
-        }`}
+        id={props.id}
+        className={`form-field ${className}`}
         value={props.value}
         type={props.type ?? "text"}
-        onChange={handleInputValueChangesFlow}
+        onChange={handleChangeInputValue}
         placeholder={props.placeholder ?? ""}
         disabled={props.disabled}
       />
 
-      {touched && !valid && errMessage && <FormError>{errMessage}</FormError>}
+      {!isValid &&
+        errorMessages.map((errMessage, index) => (
+          <FormError key={index}>{errMessage}</FormError>
+        ))}
     </FormFieldContainer>
   );
 });

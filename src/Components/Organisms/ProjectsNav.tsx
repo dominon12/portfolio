@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
+import { useSelector } from "react-redux";
 
 import "./ProjectsNav.scss";
 import Title from "../Atoms/Title";
@@ -10,8 +11,8 @@ import {
   getSortValues,
   handleChangeGetParams,
 } from "../../Services/ProjectsService";
-import { getProjects } from "../../Services/DataService";
 import { filterByKey, sortByKey } from "../../Services/GetParamKeys";
+import { selectTechnologies } from "../../Redux/Technologies/Selectors";
 
 /**
  * Renders a nav bar with select elements
@@ -25,9 +26,9 @@ const ProjectsNav: React.FC = (): JSX.Element => {
   const { pathname } = useLocation();
   const getParams = useGetParams();
 
-  const allProjects = getProjects();
+  const technologies = useSelector(selectTechnologies);
   const sortValues = getSortValues();
-  const filterValues = getFilterValues(allProjects);
+  const filterValues = getFilterValues(technologies.data);
 
   /**
    * Sets url search param 'sortBy' to '-dateStarted'
@@ -36,7 +37,7 @@ const ProjectsNav: React.FC = (): JSX.Element => {
   const applyDefaultSorting = () => {
     const sortBy = getParams.get(sortByKey) ?? "";
     if (!sortBy) {
-      const defaultSortByParam = "-dateStarted";
+      const defaultSortByParam = "-date";
       handleChangeGetParams(
         sortByKey,
         defaultSortByParam,
@@ -48,10 +49,10 @@ const ProjectsNav: React.FC = (): JSX.Element => {
   };
 
   /**
-   * Invokes 'applyDefaultSorting' function 
-   * after component did mount in order to 
+   * Invokes 'applyDefaultSorting' function
+   * after component did mount in order to
    * sort projects by 'dateStarted' attribute.
-   * 
+   *
    * The idea of this action is to show to a user
    * a list of projects sorted from new to old
    */
@@ -62,6 +63,7 @@ const ProjectsNav: React.FC = (): JSX.Element => {
   return (
     <nav className="projects-nav">
       <Select
+        id="filter-projects-select"
         label="Filter"
         value={getParams.get(filterByKey) ?? ""}
         values={filterValues}
@@ -77,6 +79,7 @@ const ProjectsNav: React.FC = (): JSX.Element => {
       />
       <Title className="projects-nav__title">Projects</Title>
       <Select
+        id="sort-projects-select"
         label="Sort"
         value={getParams.get(sortByKey) ?? ""}
         values={sortValues}

@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./Select.scss";
-import FormError from "../Atoms/FormError";
-import { ISelectValue, ISelectValuesGroup } from "../../Types/SystemTypes";
-import { validateField } from "../../Services/FormService";
 import FormLabel from "../Atoms/FormLabel";
 import FormFieldContainer from "../Atoms/FormFieldContainer";
+import { ISelectValue, ISelectValuesGroup } from "../../Types/FormTypes";
 
 interface Props {
+  id: string;
   label: string;
   value: string | number;
   values: ISelectValue[] | ISelectValuesGroup[];
@@ -24,53 +23,13 @@ interface Props {
  * @return {*}  {JSX.Element}
  */
 const Select: React.FC<Props> = ({
+  id,
   label,
   value,
   values,
   required,
   handleChange,
 }): JSX.Element => {
-  const [touched, setTouched] = useState(false);
-  const [valid, setValid] = useState(true);
-  const [errMessage, setErrMessage] = useState<string | null>(null);
-
-  /**
-   * Proxy function for set state action.
-   *
-   * Validates value and sets 'valid' value
-   *
-   * After first invocation, sets 'touched' value to true
-   * in order to indicate that the field was touched
-   *
-   * @param {React.ChangeEvent<HTMLSelectElement>} e - select onChange event
-   */
-  const handleSelectValueChangesFlow = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    let instantTouched;
-    if (required) {
-      instantTouched = touched; // use a variable because React updates state asynchronously
-      if (!touched) {
-        setTouched(true);
-        instantTouched = true;
-      }
-    }
-
-    handleChange(e.target.value);
-
-    if (required) {
-      instantTouched &&
-        validateField(
-          e.target.value,
-          valid,
-          errMessage,
-          setValid,
-          setErrMessage,
-          { validateEmptyField: true }
-        );
-    }
-  };
-
   /**
    * Returns true if passed object is
    * of ISelectValuesGroup type. In other
@@ -100,16 +59,11 @@ const Select: React.FC<Props> = ({
   const renderSelectOptions = (selectValues: any): JSX.Element => {
     if (isSelectValuesGroup(selectValues[0])) {
       // SelectValuesGroup
-      return selectValues
-        .sort(
-          (a: ISelectValuesGroup, b: ISelectValuesGroup) =>
-            a.values.length - b.values.length
-        )
-        .map((value: ISelectValuesGroup) => (
-          <optgroup key={value.id} label={value.groupName}>
-            {renderSelectOptions(value.values)}
-          </optgroup>
-        ));
+      return selectValues.map((value: ISelectValuesGroup) => (
+        <optgroup key={value.id} label={value.groupName}>
+          {renderSelectOptions(value.values)}
+        </optgroup>
+      ));
     }
 
     // SelectValue
@@ -122,21 +76,22 @@ const Select: React.FC<Props> = ({
 
   return (
     <FormFieldContainer>
-      {label && <FormLabel required={required}>{label}</FormLabel>}
+      {label && (
+        <FormLabel formFieldId={id} required={required}>
+          {label}
+        </FormLabel>
+      )}
 
       <select
+        id={id}
         value={value}
-        onChange={handleSelectValueChangesFlow}
-        className={`form-field select ${
-          touched ? (valid ? "valid" : "invalid") : "untouched"
-        }`}
+        onChange={(e) => handleChange(e.target.value)}
+        className="form-field select"
         required={required}
       >
         <option value="">Please choose an option</option>
         {values.length && renderSelectOptions(values)}
       </select>
-
-      {touched && !valid && errMessage && <FormError>{errMessage}</FormError>}
     </FormFieldContainer>
   );
 };

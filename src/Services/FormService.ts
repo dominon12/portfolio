@@ -1,48 +1,195 @@
-/**
- * Module contains functions to work with forms
- */
+import { ToBeEqualValidation, ValidationOptions } from "./../Types/FormTypes";
 
-/**
- * Validates a form field's value based on passed 'options' param
- *
- * @param formValue value of the form field
- * @param valid indicates wether the field is valid
- * @param errMessage value of a previous error message produced by this function
- * @param setValid set state action for 'valid' param
- * @param setErrMessage set state action for 'errMessage' param
- * @param options validation options
- */
-export const validateField = (
-  formValue: string,
-  valid: boolean,
-  errMessage: string | null,
-  setValid: React.Dispatch<React.SetStateAction<boolean>>,
-  setErrMessage: React.Dispatch<React.SetStateAction<string | null>>,
-  options?: {
-    validateEmptyField?: boolean;
-    validateRegExp?: boolean;
-    regexp?: RegExp;
-  }
-) => {
-  if (options?.validateEmptyField && !formValue) {
-    // no value
-    setValid(false);
-    setErrMessage("This field is empty");
-  } else if (
-    options?.validateRegExp &&
-    options?.regexp &&
-    !options?.regexp.test(formValue)
-  ) {
-    // doesn't match with RegExp pattern
-    setValid(false);
-    setErrMessage("Value doesn't match field's pattern");
-  } else if (!valid) {
-    // valid
-    setValid(true);
-    if (errMessage) setErrMessage(null);
-  }
-};
-
-export const emailRegexp =
+export const emailPattern =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-export const nameRegexp = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
+export const namePattern = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
+
+/**
+ * Validates whether passed value is empty
+ * if 'required' param is truthy.
+ *
+ * @param {string} value - value to validate
+ * @param {boolean} [required] - is value required
+ * @return {*}  {(string | undefined)} - error message or undefined
+ */
+function emptyStringValidator(
+  value: string,
+  required?: boolean
+): string | undefined {
+  if (required && value.length === 0) {
+    return "This field can't be empty";
+  }
+}
+
+/**
+ * Validates whether passed value
+ * corresponds to passed regular expression.
+ *
+ * @param {string} value - value to validate
+ * @param {RegExp} [regexp] - regular expression
+ * @return {*}  {(string | undefined)} - error message or undefined
+ */
+function regexpValidator(value: string, regexp?: RegExp): string | undefined {
+  if (regexp && !regexp.test(value)) {
+    return "Field's value doesn't match with specified pattern";
+  }
+}
+
+/**
+ * Validates whether passed value
+ * is equal to passed 'toBeEqualTo.valueToBeEqualTo.
+ * param.
+ *
+ * @param {string} value - value to validate
+ * @param {ToBeEqualValidation} [toBeEqualTo]
+ * @return {*}  {(string | undefined)} - error message or undefined
+ */
+function toBeEqualToValidator(
+  value: string,
+  toBeEqualTo?: ToBeEqualValidation
+): string | undefined {
+  if (toBeEqualTo && value !== toBeEqualTo.valueToBeEqualTo) {
+    return `Field's value isn't equal to ${toBeEqualTo.valueName} field`;
+  }
+}
+
+/**
+ * Validates whether passed value
+ * includes at least one capital letter.
+ *
+ * @param {string} value - value to validate
+ * @param {boolean} [shouldValidate]
+ * @return {*}  {(string | undefined)} - error message or undefined
+ */
+function includesUppercaseLettersValidator(
+  value: string,
+  shouldValidate?: boolean
+): string | undefined {
+  if (shouldValidate) {
+    const hasUppercaseLetters =
+      value
+        .split("")
+        .filter(
+          (letter) => letter === letter.toUpperCase() && Number.isNaN(+letter)
+        ).length > 0;
+    if (!hasUppercaseLetters) {
+      return "Field's value must include at least one uppercase letter";
+    }
+  }
+}
+
+/**
+ * Validates whether passed value has
+ * length bigger than 'minLength' param.
+ *
+ * @param {string} value - value to validate
+ * @param {number} [minLength]
+ * @return {*}  {(string | undefined)} - error message or undefined
+ */
+function minLengthValidator(
+  value: string,
+  minLength?: number
+): string | undefined {
+  if (minLength && value.length < minLength) {
+    return `Field's value must be at least ${minLength} characters long`;
+  }
+}
+
+/**
+ * Validates whether passed value
+ * has length smaller than 'maxLength'
+ * param.
+ *
+ * @param {string} value - value to validate
+ * @param {number} [maxLength]
+ * @return {*}  {(string | undefined)} - error message or undefined
+ */
+function maxLengthValidator(
+  value: string,
+  maxLength?: number
+): string | undefined {
+  if (maxLength && value.length > maxLength) {
+    return `Field's value can't be longer than ${maxLength} characters`;
+  }
+}
+
+/**
+ * Validates passed 'value' param
+ * using different validators depending
+ * on 'validationOptions' param.
+ *
+ * @export
+ * @param {string} value - value to validate
+ * @param {ValidationOptions} [validationOptions] - validation options
+ * @param {boolean} [required] - is value required
+ * @return {*}  {{
+ *   isValid: boolean; - indicated whether value successfully passed validation
+ *   errors: string[]; - array of error messages
+ * }}
+ */
+export function validateFormField(
+  value: string,
+  validationOptions?: ValidationOptions,
+  required?: boolean
+): {
+  valid: boolean;
+  errors: string[];
+} {
+  let error;
+  let errors: string[] = [];
+
+  // test empty string
+  error = emptyStringValidator(value, required);
+  if (error) errors.push(error);
+
+  // test regexp
+  error = regexpValidator(value, validationOptions?.regexp);
+  if (error) errors.push(error);
+
+  // test to be equal
+  error = toBeEqualToValidator(value, validationOptions?.toBeEqualTo);
+  if (error) errors.push(error);
+
+  // check whether passed string includes at least
+  // one uppercase letter
+  error = includesUppercaseLettersValidator(
+    value,
+    validationOptions?.includeUppercaseLetters
+  );
+  if (error) errors.push(error);
+
+  // min length validation
+  error = minLengthValidator(value, validationOptions?.minLength);
+  if (error) errors.push(error);
+
+  // max length validation
+  error = maxLengthValidator(value, validationOptions?.maxLength);
+  if (error) errors.push(error);
+
+  return {
+    valid: errors.length === 0,
+    errors,
+  };
+}
+
+/**
+ * Checks whether every form field is valid
+ * (e.g. is not required and has 'valid' class)
+ *
+ * @export
+ * @param {React.RefObject<HTMLInputElement | HTMLTextAreaElement>[]} refs - array of refs to check
+ * @return {*}  {boolean} - result
+ */
+export function checkFormValid(
+  refs: React.RefObject<HTMLInputElement | HTMLTextAreaElement>[]
+): boolean {
+  let formValid = true;
+
+  refs.forEach((ref) => {
+    if (!ref.current || !ref.current.classList.contains("valid")) {
+      formValid = false;
+    }
+  });
+
+  return formValid;
+}

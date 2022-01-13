@@ -18,7 +18,12 @@ const ThemeSwitch: React.FC = (): JSX.Element => {
 
   return (
     <Tooltip content="Change theme" position="right" hideOnMobile>
-      <div className="theme-switch">
+      <div
+        role="button"
+        tabIndex={0}
+        title="Switch theme"
+        className="theme-switch"
+      >
         {mode === "light" ? (
           <FiSun
             className="theme-switch__icon"

@@ -16,35 +16,6 @@ export interface ITab {
 }
 
 /**
- * Representation of 'Select' component's value
- *
- * @export
- * @interface ISelectValue
- */
-export interface ISelectValue {
-  id: number;
-  value: string | number;
-  displayValue: string;
-}
-
-/**
- * Representation of a group of values to use with Select component
- *
- * @export
- * @interface ISelectValuesGroup
- */
-export interface ISelectValuesGroup {
-  id: number;
-  groupName: string;
-  values: ISelectValue[];
-}
-
-/**
- * button types
- */
-export type ButtonType = "primary" | "mini";
-
-/**
  * Button
  *
  * @export
@@ -52,7 +23,6 @@ export type ButtonType = "primary" | "mini";
  */
 export interface IButton {
   text: string;
-  type: ButtonType;
   link: string;
 }
 

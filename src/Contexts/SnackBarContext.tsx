@@ -1,4 +1,6 @@
 import React, { createContext, useReducer } from "react";
+
+import SnackBar from "../Components/Organisms/SnackBar";
 import { getRandomId } from "../Services/HelperService";
 
 /**
@@ -43,9 +45,10 @@ interface ISnackBarMessage {
  * Options of showing the
  * snackbar message
  *
+ * @export
  * @interface ISnackBarOptions
  */
-interface ISnackBarOptions {
+export interface ISnackBarOptions {
   color?: SnackBarMessageColor;
   delay?: number;
   action?: ISnackBarMessageAction;
@@ -179,6 +182,8 @@ const SnackBarProvider: React.FC<Props> = (props) => {
       }}
     >
       {props.children}
+
+      <SnackBar anchorOrigin={{ horizontal: "right", vertical: "bottom" }} />
     </SnackBarContext.Provider>
   );
 };
