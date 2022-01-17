@@ -20,6 +20,7 @@ interface Props {
   itemsCount: number;
   pageItemsCount: number;
   totalPages: number;
+  pageSize?: number;
 }
 
 /**
@@ -34,7 +35,10 @@ const Paginator: React.FC<Props> = (props): JSX.Element => {
   const { pathname } = useLocation();
   const getParams = useGetParams();
 
-  const pageSize = parseInt(getParams.get(pageSizeKey) ?? "6");
+  const defaultPageSize = 6;
+  const pageSize =
+    props.pageSize ||
+    parseInt(getParams.get(pageSizeKey) ?? defaultPageSize.toString());
 
   const disablePagination =
     props.itemsCount === props.pageItemsCount || pageSize <= 0;

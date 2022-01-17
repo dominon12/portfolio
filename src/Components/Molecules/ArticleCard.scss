@@ -1,0 +1,51 @@
+.article {
+  padding: 1rem;
+  background-color: var(--card-background-color);
+
+  &__img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    height: 58.64px;
+    overflow-y: hidden;
+    padding: 0.2rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      backdrop-filter: invert(100%);
+      transition: height var(--transition-off);
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        height: 100%;
+        transition: height var(--transition-on);
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__description {
+    line-height: 1.6;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

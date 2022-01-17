@@ -1,0 +1,9 @@
+.views {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    color: var(--paragraph-color);
+    margin-right: 0.5rem;
+  }
+}
