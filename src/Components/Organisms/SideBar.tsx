@@ -6,6 +6,7 @@ import { AiFillApi } from "react-icons/ai";
 import { MdWork } from "react-icons/md";
 import { FaProjectDiagram, FaDonate, FaDownload } from "react-icons/fa";
 import { TiMessageTyping } from "react-icons/ti";
+import { RiArticleLine } from "react-icons/ri";
 
 import "./SideBar.scss";
 import NavTab from "../Atoms/NavTab";
@@ -98,12 +99,20 @@ const SideBar: React.FC = (): JSX.Element => {
       orderNumber: 5,
     },
     {
+      id: 10,
+      link: "/blog",
+      icon: RiArticleLine,
+      title: "Blog",
+      isActive: false,
+      orderNumber: 6,
+    },
+    {
       id: 8,
       link: "/donate",
       icon: FaDonate,
       title: "Donate",
       isActive: false,
-      orderNumber: 6,
+      orderNumber: 7,
     },
     {
       id: 5,
@@ -111,7 +120,7 @@ const SideBar: React.FC = (): JSX.Element => {
       icon: TiMessageTyping,
       title: "Contact",
       isActive: false,
-      orderNumber: 7,
+      orderNumber: 8,
     },
     {
       id: 9,
@@ -119,7 +128,7 @@ const SideBar: React.FC = (): JSX.Element => {
       icon: FaDownload,
       title: "Download",
       isActive: false,
-      orderNumber: 8,
+      orderNumber: 9,
     },
   ];
 

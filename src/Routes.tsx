@@ -10,6 +10,7 @@ const Contact = lazy(() => import("./Components/Pages/Contact"));
 const Languages = lazy(() => import("./Components/Pages/Languages"));
 const Donate = lazy(() => import("./Components/Pages/Donate"));
 const Download = lazy(() => import("./Components/Pages/Download"));
+const Blog = lazy(() => import("./Components/Pages/Blog"));
 const NotFound = lazy(() => import("./Components/Pages/NotFound"));
 
 export const HOME_ROUTE = "HOME_ROUTE";
@@ -21,6 +22,7 @@ export const CONTACT_ROUTE = "CONTACT_ROUTE";
 export const LANGUAGES_ROUTE = "LANGUAGES_ROUTE";
 export const DONATE_ROUTE = "DONATE_ROUTE";
 export const DOWNLOAD_ROUTE = "DOWNLOAD_ROUTE";
+export const BLOG_ROUTE = "BLOG_ROUTE";
 export const NOT_FOUND_ROUTE = "NOT_FOUND_ROUTE";
 
 const routes = [
@@ -76,6 +78,12 @@ const routes = [
     id: DOWNLOAD_ROUTE,
     path: "/download",
     component: Download,
+    exact: true,
+  },
+  {
+    id: BLOG_ROUTE,
+    path: "/blog",
+    component: Blog,
     exact: true,
   },
   {
