@@ -154,7 +154,6 @@ export interface ContactMethod {
   link: string;
 }
 
-
 /**
  * Represents contact request
  * sent by user.
@@ -192,4 +191,34 @@ export interface ClientError {
   stack: string;
   url: string;
   userAgent: string;
+}
+
+/**
+ * Article representation.
+ *
+ * @export
+ * @interface Article
+ */
+export interface Article {
+  pk: number;
+  title: string;
+  slug: string;
+  description: string;
+  image: IImage;
+  body: string;
+  views: number;
+  dateCreated: string;
+  dateEdited: string;
+}
+
+/**
+ * Represents paginated articles.
+ *
+ * @export
+ * @interface PaginatedArticles
+ */
+export interface PaginatedArticles {
+  count: number;
+  totalPages: number;
+  results: Article[];
 }

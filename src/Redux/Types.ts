@@ -1,8 +1,10 @@
 import {
+  Article,
   CareerEvent,
   ContactMethod,
   DonationMethod,
   Language,
+  PaginatedArticles,
   PaginatedProjects,
   Profile,
   TechGroup,
@@ -35,4 +37,8 @@ export interface RootState {
   languages: InitialState<Language[]>;
   donations: InitialState<DonationMethod[]>;
   contact: InitialState<ContactMethod[]>;
+  blog: {
+    articles: InitialState<PaginatedArticles>;
+    article: InitialState<Article>;
+  };
 }

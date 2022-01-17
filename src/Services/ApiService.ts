@@ -1,5 +1,5 @@
-// const baseURL = "http://127.0.0.1:8000/api/v1/";
-const baseURL = "https:/dominon12.space/api/v1/";
+const baseURL = "http://127.0.0.1:8000/api/v1/";
+// const baseURL = "https:/dominon12.space/api/v1/";
 
 export const URLS = {
   about: baseURL + "about/",
@@ -10,6 +10,7 @@ export const URLS = {
   donations: baseURL + "donations/",
   contact: baseURL + "contact/",
   errors: baseURL + "errors/",
+  blog: baseURL + "blog/",
 };
 
 /**

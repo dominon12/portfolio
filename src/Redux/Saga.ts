@@ -7,6 +7,7 @@ import {
   DONATE_ROUTE,
   CONTACT_ROUTE,
   DOWNLOAD_ROUTE,
+  BLOG_ROUTE,
 } from "./../Routes";
 import { LOCATION_CHANGE } from "connected-react-router";
 import {
@@ -39,6 +40,8 @@ import { fetchTechnologies } from "./Technologies/Actions";
 import { fetchContactMethods } from "./Contact/Actions";
 import { fetchProjects } from "./Projects/Actions";
 import { loadDownloadData } from "./Download/Actions";
+import { fetchArticlesList } from "./Blog/Actions";
+import blogWatcher from "./Blog/Sagas";
 
 /**
  * Listens to LOCATION_CHANGE event and
@@ -77,6 +80,9 @@ function* routerWatcher(): Generator<TakeEffect | PutEffect, void, unknown> {
       case DOWNLOAD_ROUTE:
         yield put(loadDownloadData());
         break;
+      case BLOG_ROUTE:
+        yield put(fetchArticlesList());
+        break;
     }
   }
 }
@@ -95,6 +101,7 @@ function* rootSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
     contactWatcher,
     downloadWatcher,
     errorsWatcher,
+    blogWatcher,
   ];
 
   yield all(sagas.map((s) => spawn(s)));

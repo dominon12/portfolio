@@ -8,6 +8,7 @@ import careerReducer from "./Career/Reducer";
 import languagesReducer from "./Languages/Reducer";
 import donationsReducer from "./Donations/Reducer";
 import contactReducer from "./Contact/Reducer";
+import blogReducer from "./Blog/Reducer";
 
 const createRootReducer = (history: any) =>
   combineReducers({
@@ -19,6 +20,7 @@ const createRootReducer = (history: any) =>
     languages: languagesReducer,
     donations: donationsReducer,
     contact: contactReducer,
+    blog: blogReducer,
   });
 
 export default createRootReducer;
